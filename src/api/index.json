@@ -1,0 +1,111 @@
+{
+    "code": 200,
+    "message": "success",
+    "routes": [
+        {
+            "path": "/dashboard",
+            "name": "dashboard",
+            "component": "dashboard/index",
+            "meta": {
+                "title": "主页",
+                "isLink": "",
+                "isHide": false,
+                "isKeepAlive": true,
+                "isAffix": true,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "dashboard"
+            }
+        },
+        {
+            "path": "/system",
+            "name": "system",
+            "component": "layout/routerView/parent",
+            "redirect": "/system/menu",
+            "meta": {
+                "title": "系统设置",
+                "isLink": "",
+                "isHide": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "setting"
+            },
+            "children": [
+                {
+                    "path": "/system/menu",
+                    "name": "systemMenu",
+                    "component": "system/menu/index",
+                    "meta": {
+                        "title": "菜单管理",
+                        "isLink": "",
+                        "isHide": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "menu"
+                    }
+                },
+                {
+                    "path": "/system/role",
+                    "name": "systemRole",
+                    "component": "system/role/index",
+                    "meta": {
+                        "title": "角色管理",
+                        "isLink": "",
+                        "isHide": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "role"
+                    }
+                },
+                {
+                    "path": "/system/user",
+                    "name": "systemUser",
+                    "component": "system/user/index",
+                    "meta": {
+                        "title": "用户管理",
+                        "isLink": "",
+                        "isHide": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "user"
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/personal",
+            "name": "personal",
+            "component": "personal/index",
+            "meta": {
+                "title": "个人中心",
+                "isLink": "",
+                "isHide": true,
+                "isKeepAlive": true,
+                "isAffix": true,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "personal"
+            }
+        }
+    ]
+}

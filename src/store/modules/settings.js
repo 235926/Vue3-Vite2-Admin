@@ -1,0 +1,97 @@
+// 设置属性，主要承载一些属性，存储数据的
+const state = {
+    layoutConfig: { // 布局配置
+        /**
+         * @description 是否开启后端控制路由
+         * @type {boolean} true | false
+         */
+        isRequestRoutes: true,
+
+        /**
+         * @description 布局切换
+         * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
+         */
+        layout: 'defaults',
+
+        /**
+         * @description 主页面切换动画
+         * @type {string} 可选值"<slide-right|slide-left|opacitys>"，默认 slide-right
+         */
+        animation: 'slide-right',
+
+        /**
+         * @description 是否开启菜单手风琴效果
+         * @type {boolean} true | false
+         */
+        isUniqueOpened: false,
+
+        /**
+         * @description 是否开启菜单水平折叠效果
+         * @type {boolean} true | false
+         */
+        isCollapse: false,
+
+        /**
+         * @description 是否开启固定 Header
+         * @type {boolean} true | false
+         */
+        isFixedHeader: true,
+
+        /**
+         * @description 是否开启 Breadcrumb，强制经典、横向布局不显示
+         * @type {boolean} true | false
+         */
+        isBreadcrumb: true,
+
+        /**
+         * @description 是否开启 Breadcrumb 图标
+         * @type {boolean} true | false
+         */
+        isBreadcrumbIcon: false,
+
+        /**
+         * @description 是否开启 Tagsview 视图
+         * @type {boolean} true | false
+         */
+        isTagsview: true,
+
+        /**
+         * @description 是否开启 TagsView 缓存
+         * @type {boolean} true | false
+         */
+        isCacheTagsView: false,
+
+        /**
+         * @description 动态设置 tagsView 风格样式
+         * @type {boolean} 可选值"<tags-style-one|tags-style-two|tags-style-three>"，默认 tags-style-one
+         */
+        tagsViewStyle: 'tags-style-one',
+    }
+}
+
+
+// 主要用来更改属性(state)的状态，完全是同步的操作
+const mutations = {
+    // 设置布局配置
+    CHANGE_LAYOUT_CONFIG: (state, data) => {
+        state.layoutConfig = data
+    }
+}
+
+
+// 不直接操作，应用mutations，可以实现异步的操作
+const actions = {
+    // 设置布局配置
+    changeLayoutConfig({ commit }, data) {
+        commit('CHANGE_LAYOUT_CONFIG', data)
+    }
+}
+
+
+// 暴露对象，让其他页面可以拿到
+export default {
+    namespaced: true, // 命名空间，必须加文件名/方法函数
+    state,
+    mutations,
+    actions
+}

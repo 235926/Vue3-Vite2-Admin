@@ -1,0 +1,43 @@
+import { nextTick } from 'vue' // vue 内置方法
+import '@/assets/scss/loading.scss' // 页面全局 Loading 样式
+
+/**
+ * 页面全局 Loading
+ * @method start 创建 loading
+ * @method done 移除 loading
+ */
+export const NextLoading = {
+    // 创建 loading
+    start: () => {
+        const bodys = document.body;
+        const div = document.createElement('div')
+        div.setAttribute('class', 'loading-next')
+        const htmls =
+            `<div class="loading-next-box">
+                <div class="loading-next-box-warp">
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                    <div class="loading-next-box-item"></div>
+                </div>
+            </div>`
+        div.innerHTML = htmls
+        bodys.insertBefore(div, bodys.childNodes[0])
+        window.nextLoading = true
+    },
+
+
+    // 移除 loading
+    done: () => {
+        nextTick(() => {
+            window.nextLoading = false
+            const el = document.querySelector('.loading-next')
+            el?.parentNode?.removeChild(el)
+        })
+    }
+}

@@ -1,0 +1,94 @@
+@import './reset.scss'; // 重置 css 样式
+@import './element-ui.scss'; // ElementPlus 重置样式
+@import './transition.scss'; // 动画样式
+@import './layout.scss'; // 布局样式
+
+
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    background-color: $-color-bg-main;
+    font-size: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* flex 弹性布局
+------------------------------- */
+.flex {
+    display: flex;
+}
+
+.flex-auto {
+    flex: 1;
+    overflow: hidden;
+}
+
+.flex-column {
+    @extend .flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.flex-margin {
+    margin: auto;
+}
+
+.flex-warp {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin: 0 -5px;
+
+    .flex-warp-item {
+        padding: 5px;
+
+        .flex-warp-item-box {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+
+/* 宽高 100%
+------------------------------- */
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.vh100 {
+    height: 100vh;
+}
+
+.max100vh {
+    max-height: 100vh;
+}
+
+.min100vh {
+    min-height: 100vh;
+}
+
+
+
+/* nprogress 进度条跟随主题颜色
+------------------------------- */
+#nprogress {
+    .bar {
+        background: $-color-primary;
+        z-index: 9999999 !important;
+    }
+}

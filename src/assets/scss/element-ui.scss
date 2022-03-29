@@ -1,0 +1,100 @@
+/* Scrollbar 滚动条
+------------------------------- */
+.el-scrollbar {
+    width: 100%;
+
+    .el-scrollbar__wrap {
+        max-height: 100%; // 防止页面切换时，滚动条高度不变的问题（滚动条高度非滚动条滚动高度）
+    }
+}
+
+
+
+/* Input 输入框
+------------------------------- */
+.el-input {
+    .el-input__prefix {
+        .el-input__prefix-inner {
+            align-items: center;
+        }
+    }
+}
+
+
+
+/* Menu 菜单
+------------------------------- */
+
+.el-menu {
+    border-right: none;
+    width: 100%;
+
+    // 一级菜单
+    .el-menu-item {
+        color: $-color-text;
+        background: $-color-sidebar-bg;
+
+        &:hover {
+            background-color: $-color-sidebar-bg-hover;
+        }
+
+        &.is-active {
+            color: $-color-primary;
+            background-color: $-color-sidebar-bg-active !important;
+        }
+    }
+
+    // 子级
+    .el-sub-menu {
+        .el-sub-menu__title {
+            color: $-color-text;
+        }
+
+        .el-menu-item {
+            background-color: $-color-sidebar-sub-bg;
+
+            &:hover {
+                background-color: $-color-sidebar-bg-hover;
+            }
+
+            &.is-active {
+                color: $-color-primary;
+                background-color: $-color-sidebar-bg-active !important;
+            }
+        }
+    }
+
+    .svg-icon {
+        font-size: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+        text-align: center;
+    }
+
+    // 收缩样式
+    &.el-menu--collapse {
+
+        // 一级菜单
+        >.el-menu-item {
+            .el-menu-tooltip__trigger {
+                justify-content: center;
+
+                .svg-icon {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        // 带子级菜单
+        .el-sub-menu {
+            >.el-sub-menu__title {
+                justify-content: center;
+
+                .svg-icon {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
