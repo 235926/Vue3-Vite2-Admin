@@ -144,7 +144,7 @@ export function setFilterRoute(chil) {
 /**
  * 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
  * @description 用于左侧菜单、横向菜单的显示
- * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHide)
+ * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHidden)
  */
 export function setFilterMenuAndCacheTagsViewRoutes() {
     store.dispatch('routesList/setRoutesList', setFilterHasRolesMenu(dynamicRoutes[0].children, store.getters.userInfo.roles))
@@ -175,7 +175,7 @@ export function setFilterHasRolesMenu(routes, roles) {
 
 /**
  * 缓存多级嵌套数组处理后的一维数组
- * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHide)
+ * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHidden)
  */
 export function setCacheTagsViewRoutes() {
     // 获取有权限的路由，否则 tagsView、菜单搜索中无权限的路由也将显示

@@ -75,7 +75,7 @@ const setFilterRoutes = () => {
 
 // 路由过滤递归函数
 const filterRoutesFun = (arr) => {
-    return arr.filter((item) => !item.meta.isHide).map((item) => {
+    return arr.filter((item) => !item.meta.isHidden).map((item) => {
         item = Object.assign({}, item);
         if (item.children) item.children = filterRoutesFun(item.children)
         return item
@@ -87,7 +87,7 @@ const filterRoutesFun = (arr) => {
 const setParentHighlight = (currentRoute) => {
     const { path, meta } = currentRoute
     const pathSplit = meta.isDynamic ? meta.isDynamicPath.split('/') : path.split('/')
-    if (pathSplit.length >= 4 && meta.isHide) return pathSplit.splice(0, 3).join('/')
+    if (pathSplit.length >= 4 && meta.isHidden) return pathSplit.splice(0, 3).join('/')
     else return path
 }
 

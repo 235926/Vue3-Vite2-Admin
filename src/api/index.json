@@ -9,7 +9,7 @@
             "meta": {
                 "title": "主页",
                 "isLink": "",
-                "isHide": false,
+                "isHidden": false,
                 "isKeepAlive": true,
                 "isAffix": true,
                 "isIframe": false,
@@ -27,7 +27,7 @@
             "meta": {
                 "title": "系统设置",
                 "isLink": "",
-                "isHide": false,
+                "isHidden": false,
                 "isKeepAlive": true,
                 "isAffix": false,
                 "isIframe": false,
@@ -44,7 +44,7 @@
                     "meta": {
                         "title": "菜单管理",
                         "isLink": "",
-                        "isHide": false,
+                        "isHidden": false,
                         "isKeepAlive": true,
                         "isAffix": false,
                         "isIframe": false,
@@ -61,7 +61,7 @@
                     "meta": {
                         "title": "角色管理",
                         "isLink": "",
-                        "isHide": false,
+                        "isHidden": false,
                         "isKeepAlive": true,
                         "isAffix": false,
                         "isIframe": false,
@@ -78,7 +78,7 @@
                     "meta": {
                         "title": "用户管理",
                         "isLink": "",
-                        "isHide": false,
+                        "isHidden": false,
                         "isKeepAlive": true,
                         "isAffix": false,
                         "isIframe": false,
@@ -97,7 +97,7 @@
             "meta": {
                 "title": "个人中心",
                 "isLink": "",
-                "isHide": true,
+                "isHidden": true,
                 "isKeepAlive": true,
                 "isAffix": true,
                 "isIframe": false,
