@@ -1,7 +1,7 @@
 import store from '@/store/index.js' // vuex
 import { Session } from '@/utils/storage.js' // 浏览器临时缓存
 import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
-// import { setAddRoute, setFilterMenuAndCacheTagsViewRoutes } from '@/router/index.js' // 动态添加路由方法
+import { setAddRoute, setFilterMenuAndCacheTagsViewRoutes } from '@/router/index.js' // 动态添加路由方法
 import { dynamicRoutes } from '@/router/modules/dynamicRoutes.js' // 动态路由表
 import { generateRoutes } from '@/api/user.js' // 获取后端路由菜单 api
 
@@ -26,7 +26,7 @@ const dynamicViewsModules = Object.assign({}, { ...layouModules }, { ...viewsMod
  * @method setAddRoute 添加动态路由
  * @method setFilterMenuAndCacheTagsViewRoutes 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
  */
-export const initBackEndControlRoutes = () => {
+export const initBackEndControlRoutes = async () => {
     // 界面 loading 动画开始执行
     if (window.nextLoading === undefined) NextLoading.start()
 
@@ -37,8 +37,19 @@ export const initBackEndControlRoutes = () => {
     store.dispatch('user/setUserInfo')
 
     // 获取路由菜单数据
-    // const res = await getBackEndControlRoutes()
+    const res = await getBackEndControlRoutes()
 
+    // 存储接口原始路由（未处理component），根据需求选择使用
+    store.dispatch('routesList/setBackEndControlRoutes', JSON.parse(JSON.stringify(res.data.routes)))
+
+    // 处理路由（component），替换 dynamicRoutes（@/router/modules/dynamicRoutes.js）第一个顶级 children 的路由
+    dynamicRoutes[0].children = await backEndComponent(res.data.routes)
+
+    // 添加动态路由
+    await setAddRoute()
+
+    // 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
+    setFilterMenuAndCacheTagsViewRoutes()
 }
 
 
@@ -58,16 +69,13 @@ export const getBackEndControlRoutes = () => {
  * @param routes 后端返回的路由表数组
  * @returns 返回处理成函数后的 component
  */
- export const backEndComponent = (routes) => {
+export const backEndComponent = (routes) => {
     if (!routes) return
-    let newr = routes.map((item) => {
-        if (item.component) {
-            item.component = dynamicImport(dynamicViewsModules, item.component)
-        }
+    return routes.map((item) => {
+        if (item.component) item.component = dynamicImport(dynamicViewsModules, item.component)
         item.children && backEndComponent(item.children)
         return item
     })
-    console.log(newr)
 }
 
 

@@ -20,19 +20,6 @@
  */
 export const staticRoutes = [
     {
-        path: '/',
-        name: '/',
-        redirect: '/home',
-        component: () => import('@/layout/index.vue'),
-        children: [
-            {
-                path: '/home',
-                name: 'home',
-                component: () => import('@/views/home/index.vue'),
-            },
-        ]
-    },
-    {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
