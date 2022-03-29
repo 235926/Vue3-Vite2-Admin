@@ -69,6 +69,7 @@
 <script setup name="loginAccount">
 import { login } from '@/api/user.js' // api
 import { formatAxis } from '@/utils/formatTime.js' // 时间问候语
+import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法，防止刷新时路由丢失
 const router = useRouter() // 定义 router 实例
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
@@ -116,17 +117,16 @@ const submitForm = () => {
                 store.dispatch('user/setUserInfo', res.data.userInfo)
 
                 // 1、请注意执行顺序(用户信息已经存储到vuex)
-                // if (!store.getters.layoutConfig.isRequestRoutes) {
-                //     // 前端控制路由，2、请注意执行顺序
-                //     initFrontEndControlRoutes()
-                //     signInSuccess()
-                // } else {
-                //     // 模拟后端控制路由，isRequestRoutes 为 true，则开启后端控制路由
-                //     // 添加完动态路由，再进行 router 跳转，否则可能报错 No match found for location with path "/"
-                //     initBackEndControlRoutes()
-                //     // 执行完 initBackEndControlRoutes，再执行 signInSuccess
-                //     signInSuccess()
-                // }
+                if (!store.getters.layoutConfig.isRequestRoutes) {
+                    // 前端控制路由，2、请注意执行顺序
+                    // initFrontEndControlRoutes()
+                    // signInSuccess()
+                } else {
+                    // 添加完动态路由，再进行 router 跳转，否则可能报错 No match found for location with path "/"
+                    // initBackEndControlRoutes()
+                    // 执行完 initBackEndControlRoutes，再执行 signInSuccess
+                    // signInSuccess()
+                }
             }).catch(error => {
                 state.loading = false
             })
