@@ -9,7 +9,7 @@
  * @description format 季度 + 星期 + 几周："YYYY-mm-dd HH:MM:SS WWW QQQQ ZZZ"
  * @returns 返回拼接后的时间字符串
  */
-export function formatDate(date, format) {
+export const formatDate = (date, format) => {
     let we = date.getDay() // 星期
     let z = getWeek(date) // 周
     let qut = Math.floor((date.getMonth() + 3) / 3).toString() // 季度
@@ -58,7 +58,7 @@ export function formatDate(date, format) {
  * @param dateTime 当前传入的日期值
  * @returns 返回第几周数字值
  */
-export function getWeek(dateTime) {
+export const getWeek = (dateTime) => {
     let temptTime = new Date(dateTime.getTime())
     // 周几
     let weekday = temptTime.getDay() || 7
@@ -87,7 +87,7 @@ export function getWeek(dateTime) {
  * @description param 3天：   60 * 60* 24 * 1000 * 3
  * @returns 返回拼接后的时间字符串
  */
-export function formatPast(param, format = 'YYYY-mm-dd') {
+export const formatPast = (param, format = 'YYYY-mm-dd') => {
     // 传入格式处理、存储转换值
     let t, s
     // 获取js 时间戳
@@ -130,7 +130,7 @@ export function formatPast(param, format = 'YYYY-mm-dd') {
  * @description param 调用 `formatAxis(new Date())` 输出 `上午好`
  * @returns 返回拼接后的时间字符串
  */
-export function formatAxis(param) {
+export const formatAxis = (param) => {
     let hour = new Date(param).getHours()
     if (hour < 6) return '凌晨好'
     else if (hour < 9) return '早上好'

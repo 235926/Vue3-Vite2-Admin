@@ -9,7 +9,7 @@
                 <UserInfo />
             </div>
         </div>
-        <!-- <TagsView v-if="layoutConfig.isTagsview"/> -->
+        <TagsView v-if="layoutConfig.isTagsview"/>
     </el-header>
 </template>
 

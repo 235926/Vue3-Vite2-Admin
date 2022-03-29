@@ -63,7 +63,7 @@ const initTags = () => {
     let affixTags = state.affixTags = filterAffixTags(router.getRoutes())
     // 添加固定视图到视图列表中
     for (let tag of affixTags) {
-        store.dispatch('tagsView/setTagsView', tag)
+        // store.dispatch('tagsView/setTagsView', tag)
     }
 }
 
@@ -90,7 +90,7 @@ const filterAffixTags = (routes) => {
 
 // 添加视图包括缓存视图
 const addTags = () => {
-    store.dispatch('tagsView/setTagsView', route)
+    // store.dispatch('tagsView/setTagsView', route)
     addBrowserSetSession(visitedViews.value)
 }
 
