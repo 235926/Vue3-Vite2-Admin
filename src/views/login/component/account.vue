@@ -73,7 +73,7 @@ import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端
 const router = useRouter() // 定义 router 实例
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
-const { proxy: ctx } = getCurrentInstance() // 获取 vue 实例
+const { proxy } = getCurrentInstance() // 获取 vue 实例
 
 
 // 定义响应式数据>
@@ -154,7 +154,7 @@ const signInSuccess = () => {
     state.loading = false
     // 登录成功提示
     const signInText = '欢迎回来！'
-    ctx.$message.success(`${currentTimeInfo}，${signInText}`)
+    proxy.$message.success(`${currentTimeInfo}，${signInText}`)
 }
 </script>
 

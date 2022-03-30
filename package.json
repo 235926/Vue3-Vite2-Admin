@@ -14,14 +14,18 @@
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "qrcodejs2-fixes": "^0.0.2",
+    "sortablejs": "^1.15.0",
     "vue": "^3.2.25",
+    "vue-clipboard3": "^2.0.0",
     "vue-router": "4",
+    "vue3-count-to": "^1.1.2",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
     "fast-glob": "^3.2.11",
     "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
     "unplugin-auto-import": "^0.6.6",
     "vite": "^2.8.0",
     "vite-plugin-svg-icons": "^2.0.1",

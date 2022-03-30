@@ -1,4 +1,6 @@
-<template>system-menu</template>
+<template>
+    <div class="system-menu">system-menu</div>
+</template>
 
 <script setup name="systemMenu">
 </script>

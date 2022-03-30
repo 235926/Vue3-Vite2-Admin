@@ -59,7 +59,7 @@ const state = {
          * @description 是否开启 TagsView 缓存
          * @type {boolean} true | false
          */
-        isCacheTagsView: false,
+        isCacheTagsView: true,
 
         /**
          * @description 动态设置 tagsView 风格样式

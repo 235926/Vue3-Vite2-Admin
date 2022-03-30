@@ -9,8 +9,8 @@ export default {
     routesList: (state) => state.routesList.routesList,
 
     // 路由缓存（name字段）
-    keepAlive: (state) => state.keepAlive.keepAlive,
+    keepAlive: (state) => state.keepAlive.keepAliveNames,
 
     // tagsView 视图列表
-    tagsView: (state) => state.tagsView.tagsView,
+    tagsViewRoutes: (state) => state.tagsView.tagsViewRoutes,
 }

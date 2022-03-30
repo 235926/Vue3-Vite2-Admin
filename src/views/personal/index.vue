@@ -1,4 +1,6 @@
-<template>personal</template>
+<template>
+    <div class="personal"></div>
+</template>
 
 <script setup>
 const { proxy: ctx } = getCurrentInstance() // 获取 vue 实例

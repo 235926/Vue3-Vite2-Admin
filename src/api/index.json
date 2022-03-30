@@ -91,6 +91,23 @@
             ]
         },
         {
+            "path": "/icons",
+            "name": "icons",
+            "component": "icons/index",
+            "meta": {
+                "title": "icons",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "icons"
+            }
+        },
+        {
             "path": "/personal",
             "name": "personal",
             "component": "personal/index",
@@ -99,7 +116,7 @@
                 "isLink": "",
                 "isHidden": true,
                 "isKeepAlive": true,
-                "isAffix": true,
+                "isAffix": false,
                 "isIframe": false,
                 "roles": [
                     "admin"

@@ -1,4 +1,6 @@
-<template>system-user</template>
+<template>
+    <div class="system-user">system-user</div>
+</template>
 
 <script setup name="systemName">
 const { proxy: ctx } = getCurrentInstance() // 获取 vue 实例

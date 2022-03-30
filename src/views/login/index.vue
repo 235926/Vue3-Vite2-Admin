@@ -23,9 +23,9 @@
 </template>
 
 <script setup>
-import Account from './components/account.vue' // 账号登录
-import Mobile from './components/mobile.vue' // 手机号登录
-import Scan from './components/scan.vue' // 扫码登录
+import Account from './component/account.vue' // 账号登录
+import Mobile from './component/mobile.vue' // 手机号登录
+import Scan from './component/scan.vue' // 扫码登录
 
 
 // 定义响应式数据>

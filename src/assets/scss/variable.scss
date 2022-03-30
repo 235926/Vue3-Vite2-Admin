@@ -1,13 +1,16 @@
 /* 项目主题色
 ------------------------------- */
-$-color-primary: #409eff;
+$-color-primary: #409eff; // 主题色
+$-color-success: #67c23a; // 成功
+$-color-warning: #e6a23c; // 警告
+$-color-danger: #f56c6c; // 危险
+$-color-info: #909399; // 信息
 $-color-primary-hover:#66b1ff;
+$-color-success-hover:#85ce61;
+$-color-warning-hover:#ebb563;
+$-color-danger-hover: #f78989;
+$-color-info-hover: #a6a9ad;
 
-
-$-color-success: #67c23a;
-$-color-warning: #e6a23c;
-$-color-danger: #f56c6c;
-$-color-info: #909399;
 
 
 /* main
@@ -17,7 +20,7 @@ $-color-border-light: #f1f2f3; // 边框线颜色
 $-color-text-white:#ffffff; // 白色字体
 $-color-text-black:#000000; // 黑色字体
 $-color-text-regular:#606266; // 常规字体颜色
-$-height-header:50px; // 头部高度
+
 
 
 /* 侧边栏样式
@@ -34,4 +37,5 @@ $-color-sidebar-bg-active:#001528; // 选中状态
 
 /* header 部样式
 ------------------------------- */
+$-height-header:50px; // 头部高度
 $-color-svg-bg-hover:rgba(0, 0, 0, 0.04); // svg 鼠标滑过背景色
