@@ -1,6 +1,10 @@
 <template>
     <el-main class="layout-main">
-        <el-scrollbar class="layout-scrollbar" ref="layoutScrollbarRef">
+        <el-scrollbar
+            class="layout-scrollbar"
+            ref="layoutScrollbarRef"
+            :style="{ padding: state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe ? 0 : '', transition: 'padding 0.3s ease-in-out' }"
+        >
             <!-- 40 是 padding 的值 -->
             <LayoutParent
                 :minHeight="state.headerHeight"
@@ -20,6 +24,7 @@ const store = useStore() // vuex
 // 定义响应式数据
 const state = reactive({
     headerHeight: '', // 计算头部高度
+    currentRouteMeta: {}, // 当前路由 meta
 })
 
 
@@ -31,10 +36,16 @@ const initHeaderHeight = () => {
 }
 
 
+// 初始化获取当前路由 meta，用于设置 iframes padding
+const initGetMeta = () => {
+    state.currentRouteMeta = route.meta
+}
+
 
 // 页面加载前
 onBeforeMount(() => {
     initHeaderHeight()
+    initGetMeta()
 })
 </script>
 
