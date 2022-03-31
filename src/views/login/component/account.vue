@@ -70,9 +70,9 @@
 import { login } from '@/api/user.js' // api
 import { formatAxis } from '@/utils/formatTime.js' // 时间问候语
 import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法，防止刷新时路由丢失
-const router = useRouter() // 定义 router 实例
+const router = useRouter() // router 实例
 const route = useRoute() // 路由参数
-const store = useStore() // 定义 vuex 实例
+const store = useStore() // vuex 实例
 const { proxy } = getCurrentInstance() // 获取 vue 实例
 
 

@@ -9,9 +9,12 @@
 </template>
 
 <script setup>
-import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
-const store = useStore() // 定义 vuex 实例
+import { Local, Session } from '@/utils/storage.js' // 浏览器存储
+import { useTitle } from '@/utils/global.js' // 设置浏览器标题国际化
+const router = useRouter() // router 实例
+const route = useRoute() // 路由参数
+const store = useStore() // vuex 实例
 
 
 // 获取布局配置信息
@@ -36,6 +39,10 @@ onMounted(() => {
 })
 
 
+// 监听路由的变化，设置网站标题
+watch(() => route.path, () => {
+    useTitle()
+})
 </script>
 
 <style lang="scss" scoped>

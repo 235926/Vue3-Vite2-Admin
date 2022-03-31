@@ -85,6 +85,11 @@ const state = {
          * @type {boolean} 可选值"<tags-style-one|tags-style-two|tags-style-three>"，默认 tags-style-one
          */
         tagsViewStyle: 'tags-style-one',
+
+        /**
+         * @description 网站主标题（菜单导航、浏览器当前网页标题）
+         */
+        globalTitle: 'Vue3-Vite2-Admin',
     }
 }
 
