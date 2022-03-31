@@ -19,7 +19,7 @@
                         v-if="!v.affix"
                         @click="onCurrentContextmenuClick(v.contextMenuClickId)"
                     >
-                        <SvgIcon :name="v.icon" />
+                        <svg-icon :name="v.icon" />
                         <span>{{ v.txt }}</span>
                     </li>
                 </template>
@@ -47,11 +47,11 @@ const emit = defineEmits(['currentContextmenuClick'])
 const state = reactive({
     isShow: false,
     dropdownList: [
-        { contextMenuClickId: 0, txt: '刷新', affix: false, icon: 'ele-RefreshRight' },
-        { contextMenuClickId: 1, txt: '关闭', affix: false, icon: 'ele-Close' },
-        { contextMenuClickId: 2, txt: '关闭其它', affix: false, icon: 'ele-CircleClose' },
-        { contextMenuClickId: 3, txt: '全部关闭', affix: false, icon: 'ele-FolderDelete' },
-        { contextMenuClickId: 4, txt: '当前页全屏', affix: false, icon: 'iconfont icon-fullscreen' },
+        { contextMenuClickId: 0, txt: '刷新', affix: false, icon: 'refresh' },
+        { contextMenuClickId: 1, txt: '关闭', affix: false, icon: 'close' },
+        { contextMenuClickId: 2, txt: '关闭其它', affix: false, icon: 'close-other' },
+        { contextMenuClickId: 3, txt: '全部关闭', affix: false, icon: 'close-all' },
+        { contextMenuClickId: 4, txt: '当前页全屏', affix: false, icon: 'fullscreen' },
     ],
     item: {},
     arrowLeft: 10,
@@ -113,10 +113,11 @@ watch(() => props.dropdown, ({ x }) => {
     else state.arrowLeft = 10
 }, { deep: true })
 
+
 // 暴露变量
 defineExpose({
-    openContextmenu,
-});
+    openContextmenu
+})
 </script>
 
 <style scoped lang="scss">
@@ -126,11 +127,12 @@ defineExpose({
     position: fixed;
 
     .el-dropdown-menu__item {
-        font-size: 12px !important;
+        font-size: 12px;
         white-space: nowrap;
 
-        i {
-            font-size: 12px !important;
+        .svg-icon {
+            font-size: 14px;
+            margin-right: 5px;
         }
     }
 }

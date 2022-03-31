@@ -56,10 +56,29 @@ const state = {
         isTagsview: true,
 
         /**
+         * @description 是否开启 Tagsview 图标
+         * @type {boolean} true | false
+         */
+        isTagsviewIcon: false,
+
+        /**
          * @description 是否开启 TagsView 缓存
          * @type {boolean} true | false
          */
         isCacheTagsView: true,
+
+        /**
+         * @description 是否开启 TagsView 拖拽
+         * @type {boolean} true | false
+         */
+        isSortableTagsView: true,
+
+        /**
+         * @description 是否开启 TagsView 共用
+         * @description 地址相同但是查询字符串不同的时候是否共用同一个页面
+         * @type {boolean} true | false
+         */
+        isShareTagsView: false,
 
         /**
          * @description 动态设置 tagsView 风格样式

@@ -1,6 +1,10 @@
+import { Session } from '@/utils/storage.js' // 浏览器存储
+
+
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
     tagsViewRoutes: [], // TagsView 路由
+    isTagsViewCurrenFull: false, // 卡片全屏
 }
 
 
@@ -10,6 +14,13 @@ const mutations = {
     SET_TAGS_VIEW_ROUTES(state, data) {
         state.tagsViewRoutes = data
     },
+
+
+    // 设置卡片全屏
+    SET_CURREN_FULL_SCREEN(state, bool) {
+        Session.set('isTagsViewCurrenFull', bool)
+        state.isTagsViewCurrenFull = bool
+    },
 }
 
 
@@ -18,6 +29,12 @@ const actions = {
     // 设置 TagsView 路由
     async setTagsViewRoutes({ commit }, data) {
         commit('SET_TAGS_VIEW_ROUTES', data)
+    },
+
+
+    // 设置卡片全屏
+    setCurrenFullscreen({ commit }, bool) {
+        commit('SET_CURREN_FULL_SCREEN', bool)
     },
 }
 
