@@ -47,8 +47,8 @@ const emit = defineEmits(['currentContextmenuClick'])
 const state = reactive({
     isShow: false,
     dropdownList: [
-        { contextMenuClickId: 0, txt: '刷新', affix: false, icon: 'refresh' },
-        { contextMenuClickId: 1, txt: '关闭', affix: false, icon: 'close' },
+        { contextMenuClickId: 0, txt: '刷新页面', affix: false, icon: 'refresh' },
+        { contextMenuClickId: 1, txt: '关闭页面', affix: false, icon: 'close' },
         { contextMenuClickId: 2, txt: '关闭其它', affix: false, icon: 'close-other' },
         { contextMenuClickId: 3, txt: '全部关闭', affix: false, icon: 'close-all' },
         { contextMenuClickId: 4, txt: '当前页全屏', affix: false, icon: 'fullscreen' },

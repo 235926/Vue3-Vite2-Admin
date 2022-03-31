@@ -1,15 +1,17 @@
 <template>
-    <router-view></router-view>
+    <el-config-provider>
+        <!-- 路由出口 -->
+        <router-view />
 
-    <!-- 关闭全屏展示 -->
-    <CloseFullscreen/>
+        <!-- 关闭全屏展示 -->
+        <CloseFullscreen />
+    </el-config-provider>
 </template>
 
 <script setup>
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
 const store = useStore() // 定义 vuex 实例
-
 
 
 // 获取布局配置信息
