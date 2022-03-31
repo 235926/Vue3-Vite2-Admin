@@ -24,6 +24,9 @@ import mitt from 'mitt'
 // 引入进度条插件
 import '@/plugin/nprogress.js'
 
+// 解决 Added non-passive event listener to a scroll-blocking 'wheel' event. Consider marking event handler as 'passive' to make the page more responsive. See 警告
+import 'default-passive-events'
+
 // 注册全局组件
 import * as Components from '@/plugin/global-components.js'
 Object.entries(Components).forEach(([key, component]) => {

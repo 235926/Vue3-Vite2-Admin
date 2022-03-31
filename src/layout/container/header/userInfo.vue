@@ -85,6 +85,7 @@ const handleLogout = () => {
     align-items: center;
     white-space: nowrap;
     cursor: pointer;
+    margin-left: 5px;
 
     .avatar {
         width: 25px;

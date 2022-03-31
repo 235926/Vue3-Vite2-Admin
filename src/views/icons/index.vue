@@ -1,17 +1,23 @@
 <template>
-    <div class="svg-container">
-        <div class="title">Svg 图标</div>
-        <ul class="icon-list">
-            <li v-for="icon in icons" :key="icon" @click="handleCopy(icon, $event)">
-                <div class="icon-item">
-                    <span class="icon">
-                        <svg-icon :name="icon" />
-                    </span>
+    <el-card shadow="hover" :header="`Svg-Icon 图标：${icons.length}个`">
+        <el-row class="svg-container">
+            <el-col
+                :xs="12"
+                :sm="8"
+                :md="6"
+                :lg="4"
+                :xl="2"
+                v-for="(icon, index) in icons"
+                :key="index"
+                class="icon-item"
+            >
+                <div class="flex-center" @click="handleCopy(icon, $event)">
+                    <svg-icon :name="icon" />
                     <span class="icon-name">{{ icon }}</span>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </el-col>
+        </el-row>
+    </el-card>
 </template>
 
 <script setup>
@@ -38,60 +44,39 @@ const handleCopy = (name, event) => {
 
 <style lang='scss' scoped>
 .svg-container {
-    box-sizing: border-box;
-    border-radius: 3px;
+    border-top: 1px solid $-color-border-light;
+    border-left: 1px solid $-color-border-light;
 
-    .title {
-        font-weight: 400;
-        color: #1f2f3d;
-        font-size: 28px;
-    }
+    .icon-item {
+        text-align: center;
+        border-right: 1px solid $-color-border-light;
+        border-bottom: 1px solid $-color-border-light;
+        height: 120px;
+        overflow: hidden;
+        display: flex;
+        transition: all 0.3s ease;
 
-    .icon-list {
-        margin: 20px 0;
-        display: grid;
-        justify-content: space-between;
-        grid-template-columns: repeat(auto-fill, 150px);
-        grid-gap: 10px;
+        .svg-icon {
+            font-size: 30px;
+        }
 
-        li {
-            color: #666;
-            font-size: 13px;
-            border: 1px solid #ccc;
-            height: 150px;
+        .icon-name {
+            margin-top: 10px;
+        }
 
-            .icon-item {
-                width: 100%;
-                height: 100%;
-                cursor: pointer;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
+        &:hover {
+            box-shadow: 0 2px 12px $-color-dark-hover;
+            cursor: pointer;
+            transition: all 0.3s ease;
 
-            &:hover {
-                box-shadow: 0 2px 12px #0000001a;
-                transition: all 0.3s ease 0s;
-
-                .icon,
-                .icon-name {
-                    color: #0095e1;
-                }
-            }
-
-            .icon {
-                font-size: 32px;
-                margin-bottom: 15px;
+            .svg-icon {
+                color: $-color-primary;
+                transition: all 0.3s ease;
             }
 
             .icon-name {
-                text-align: center;
-                display: inline-block;
-                vertical-align: middle;
-                line-height: normal;
-                color: #99a9bf;
-                transition: color 0.15s linear;
+                color: $-color-primary;
+                transition: all 0.3s ease;
             }
         }
     }

@@ -6,10 +6,11 @@
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />
             </div>
             <div class="right">
+                <FullScreen />
                 <UserInfo />
             </div>
         </div>
-        <TagsView v-if="layoutConfig.isTagsview"/>
+        <TagsView v-if="layoutConfig.isTagsview" />
     </el-header>
 </template>
 
@@ -18,6 +19,7 @@ import ToggleSideBar from './toggleSideBar.vue' // 切换 sidebar
 import Breadcrumb from './breadcrumb.vue' // 面包屑
 import TagsView from './tagsView/index.vue' // 导航视图
 import UserInfo from './userInfo.vue' // 用户信息
+import FullScreen from './fullScreen.vue' // 开启全屏
 const store = useStore() // 定义 vuex 实例
 
 
@@ -32,7 +34,7 @@ const setHeaderHeight = computed(() => {
     let { isTagsview, layout } = store.getters.layoutConfig
     if (isTagsview && layout !== 'classic') return '85px'
     else return '50px'
-});
+})
 </script>
 
 <style lang='scss' scoped>

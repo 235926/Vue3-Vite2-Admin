@@ -13,7 +13,7 @@
                     @click="onTagsClick(tag, index)"
                 >
                     <span class="dot" v-if="isActive(tag)"></span>
-                    <svg-icon :name="tag.meta.icon" v-if="!isActive(tag)"/>
+                    <svg-icon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"/>
                     <span class="title">{{ tag.meta.title }}</span>
                     <svg-icon
                         class="refresh"
