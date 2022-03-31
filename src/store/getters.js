@@ -13,4 +13,7 @@ export default {
 
     // tagsView 视图列表
     tagsViewRoutes: (state) => state.tagsView.tagsViewRoutes,
+
+    // 卡片全屏
+    isTagsViewCurrenFull: (state) => state.tagsView.isTagsViewCurrenFull,
 }
