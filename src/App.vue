@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider>
+    <el-config-provider :size="getGlobalComponentSize">
         <!-- 路由出口 -->
         <router-view />
 
@@ -11,15 +11,14 @@
 <script setup>
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
-import { useTitle } from '@/utils/global.js' // 设置浏览器标题国际化
-const router = useRouter() // router 实例
+import { useTitle, globalComponentSize } from '@/utils/global.js' // 修改项目布局方法
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
-// 获取布局配置信息
-const layoutConfig = computed(() => {
-    return store.getters.layoutConfig
+// 获取全局组件大小
+const getGlobalComponentSize = computed(() => {
+    return globalComponentSize
 })
 
 

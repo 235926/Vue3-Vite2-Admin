@@ -4,7 +4,7 @@ import { Session } from '@/utils/storage.js' // 浏览器临时缓存
 import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
 import { staticRoutes } from './modules/staticRoutes.js' // 静态路由
 import { dynamicRoutes } from './modules/dynamicRoutes.js' // 动态路由
-// import { initFrontEndControlRoutes } from '@/router/modules/frontEnd.js' // 前端控制路由：初始化方法
+import { initFrontEndControlRoutes } from '@/router/modules/frontEnd.js' // 前端控制路由：初始化方法
 import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法
 
 

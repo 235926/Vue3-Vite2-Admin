@@ -3,6 +3,7 @@ import nprogress from 'nprogress' // 进度条插件
 import 'nprogress/nprogress.css' // 进度条样式
 
 
+// 进度条配置
 nprogress.configure({
     easing: 'ease',  // 动画方式
     speed: 200,  // 递增进度条的速度,默认200

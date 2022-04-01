@@ -96,6 +96,12 @@ const state = {
          * @type {boolean} true | false
          */
         isLogo: true,
+
+        /**
+         * @description 默认全局组件大小
+         * @type {boolean} 可选值"<large|''|small>"，默认 ''
+         */
+        globalComponentSize: '',
     }
 }
 

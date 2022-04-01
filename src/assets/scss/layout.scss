@@ -28,6 +28,10 @@
             width: $-width-sidebar-open;
             transition: width 0.3s ease;
 
+            .el-menu {
+                min-width: $-width-sidebar-open;
+            }
+
             // logo
             .layout-logo {
                 width: $-width-sidebar-open;
@@ -38,6 +42,10 @@
         &.hideSidebar {
             width: $-width-sidebar-hide;
             transition: width 0.3s ease;
+
+            .el-menu {
+                min-width: $-width-sidebar-hide;
+            }
 
             // logo
             .layout-logo {

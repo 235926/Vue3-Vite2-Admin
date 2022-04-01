@@ -6,6 +6,7 @@
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />
             </div>
             <div class="right">
+                <SizeSelect/>
                 <FullScreen />
                 <UserInfo />
             </div>
@@ -20,6 +21,7 @@ import Breadcrumb from './breadcrumb.vue' // 面包屑
 import TagsView from './tagsView/index.vue' // 导航视图
 import UserInfo from './userInfo.vue' // 用户信息
 import FullScreen from './fullScreen.vue' // 开启全屏
+import SizeSelect from './sizeSelect.vue' // 开启全屏
 const store = useStore() // 定义 vuex 实例
 
 
