@@ -16,8 +16,6 @@
 <script setup>
 import { Local } from '@/utils/storage.js' // 浏览器存储
 import { refreshCurrentTagsView } from '@/utils/global.js' // 修改项目布局方法
-const router = useRouter() // 定义 router 实例
-const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
 
 
