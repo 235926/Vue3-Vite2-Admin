@@ -1,5 +1,7 @@
 <template>
     <el-aside class="layout-aside" :class="setCollapseStyle">
+        <Logo />
+
         <el-scrollbar class="flex-auto">
             <el-menu
                 router
@@ -47,8 +49,9 @@
 </template>
 
 <script setup name="layoutAsideVertical">
+import SubItem from './subItem.vue' // 子级递归菜单
+import Logo from '../logo/index.vue' // Logo 页面
 import { onBeforeRouteUpdate } from 'vue-router' // 路由方法
-import SubItem from '@/layout/container/aside/subItem.vue' // 子级递归菜单
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
 

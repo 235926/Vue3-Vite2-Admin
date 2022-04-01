@@ -90,6 +90,12 @@ const state = {
          * @description 网站主标题（菜单导航、浏览器当前网页标题）
          */
         globalTitle: 'Vue3-Vite2-Admin',
+
+        /**
+         * @description 是否开启 logo 图标展示
+         * @type {boolean} true | false
+         */
+        isLogo: true,
     }
 }
 

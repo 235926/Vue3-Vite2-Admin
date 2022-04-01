@@ -19,16 +19,30 @@
             overflow: hidden;
         }
 
+        .layout-logo {
+            height: $-height-header;
+        }
+
         // 侧边栏展开
         &.openSidebar {
             width: $-width-sidebar-open;
             transition: width 0.3s ease;
+
+            // logo
+            .layout-logo {
+                width: $-width-sidebar-open;
+            }
         }
 
         // 侧边栏收起
         &.hideSidebar {
             width: $-width-sidebar-hide;
             transition: width 0.3s ease;
+
+            // logo
+            .layout-logo {
+                width: $-width-sidebar-hide;
+            }
         }
     }
 
