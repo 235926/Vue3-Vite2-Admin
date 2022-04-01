@@ -10,6 +10,7 @@
                 :collapse="layoutConfig.isCollapse"
                 :unique-opened="layoutConfig.isUniqueOpened"
                 :collapse-transition="false"
+                class="el-menu-vertical-demo"
             >
                 <template v-for="val in state.menuList">
                     <el-sub-menu
@@ -19,7 +20,7 @@
                     >
                         <template #title>
                             <svg-icon :name="val.meta.icon" />
-                            <span>{{ val.meta.title }}</span>
+                            <span class="title">{{ val.meta.title }}</span>
                         </template>
                         <SubItem :chil="val.children" />
                     </el-sub-menu>
@@ -30,14 +31,14 @@
                                 #title
                                 v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)"
                             >
-                                <span>{{ val.meta.title }}</span>
+                                <span class="title">{{ val.meta.title }}</span>
                             </template>
                             <template #title v-else>
                                 <a
                                     :href="val.meta.isLink"
                                     target="_blank"
                                     rel="opener"
-                                    class="w100"
+                                    class="w100 title"
                                 >{{ val.meta.title }}</a>
                             </template>
                         </el-menu-item>
