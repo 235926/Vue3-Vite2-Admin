@@ -45,7 +45,7 @@ import { isObjectValueEqual, isMobile } from '@/utils/tools.js' // 工具方法
 import { Session } from '@/utils/storage.js' // 浏览器存储
 import Sortable from 'sortablejs' // 拖拽插件
 import { ElMessage } from 'element-plus' // 消息组件
-const { proxy } = getCurrentInstance() // 获取 vue 实例
+const { proxy } = getCurrentInstance() // vue 实例
 const store = useStore() // vuex 实例
 const route = useRoute() // 路由参数
 const router = useRouter() // 路由实例

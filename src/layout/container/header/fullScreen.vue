@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup name="fullScreen">
 import screenfull from 'screenfull' // 全屏插件
 
 

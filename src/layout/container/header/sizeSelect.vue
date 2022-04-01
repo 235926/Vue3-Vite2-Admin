@@ -13,10 +13,9 @@
     </el-dropdown>
 </template>
 
-<script setup>
+<script setup name="sizeSelect">
 import { Local } from '@/utils/storage.js' // 浏览器存储
-import { refreshCurrentTagsView } from '@/utils/global.js' // 修改项目布局方法
-const store = useStore() // 定义 vuex 实例
+const store = useStore() // vuex 实例
 
 
 // 定义响应式数据>
@@ -53,8 +52,7 @@ const handleSetSize = (size) => {
     layoutConfig.value.globalComponentSize = size
     Local.set('layoutConfig', layoutConfig.value)
     initComponentSize()
-    window.location.reload()
-    // refreshCurrentTagsView(route.fullPath) // 刷新页面
+    window.location.reload() // 需要重新加载下页面才能生效
 }
 
 
