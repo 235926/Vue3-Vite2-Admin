@@ -9,10 +9,10 @@
 </template>
 
 <script setup>
+import zhCn from 'element-plus/es/locale/lang/zh-cn' // 汉语
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import { useTitle, globalComponentSize } from '@/utils/global.js' // 修改项目布局方法
-import zhCn from 'element-plus/es/locale/lang/zh-cn' // 汉语
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 

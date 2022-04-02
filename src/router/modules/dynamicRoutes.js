@@ -1,9 +1,9 @@
 /**
  * 路由对象参数说明
  * meta: {
- *      title:          菜单栏及 tagsView 栏、菜单搜索名称（国际化）
+ *      title：         菜单栏及 tagsView 栏、菜单搜索名称（国际化）
  *      isLink：        是否超链接菜单，开启外链条件，`1、isLink:true 2、链接地址不为空`
- *      isHidden：        是否隐藏此路由，不在侧边栏展示
+ *      isHidden：      是否隐藏此路由，不在侧边栏展示
  *      isKeepAlive：   是否缓存组件状态
  *      isAffix：       是否固定在 tagsView 栏上
  *      isIframe：      是否内嵌窗口，，开启条件，`1、isIframe:true 2、链接地址不为空`

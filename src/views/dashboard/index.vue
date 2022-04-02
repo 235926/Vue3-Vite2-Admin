@@ -1,27 +1,51 @@
 <template>
     <div class="dashboard">
-        <el-button>Default</el-button>
-        <el-pagination
-            v-model:currentPage="currentPage1"
-            :page-size="100"
-            background="background"
-            layout="total, prev, pager, next"
-            :total="1000"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-        />
+        <!-- 面板部分 -->
+        <PanelGroup @handleSetLineChartData="handleSetLineChartData" />
+
+        a
     </div>
 </template>
 
 <script setup name="dashboard">
-const currentPage1 = ref(5)
-const handleSizeChange = (val) => {
-    console.log(`${val} items per page`)
+import PanelGroup from './component/panelGroup.vue' // 面板部分
+
+
+// 折线图数据
+const lineChartData = {
+    newVisitis: {
+        expectedData: [100, 120, 161, 134, 105, 160, 165],
+        actualData: [120, 82, 91, 154, 162, 140, 145]
+    },
+    messages: {
+        expectedData: [200, 192, 120, 144, 160, 130, 140],
+        actualData: [180, 160, 151, 106, 145, 150, 130]
+    },
+    purchases: {
+        expectedData: [80, 100, 121, 104, 105, 90, 100],
+        actualData: [120, 90, 100, 138, 142, 130, 130]
+    },
+    shoppings: {
+        expectedData: [130, 140, 141, 142, 145, 150, 160],
+        actualData: [120, 82, 91, 154, 162, 140, 130]
+    }
 }
-const handleCurrentChange = (val) => {
-    console.log(`current page: ${val}`)
+
+
+// 定义响应式数据>
+const state = reactive({
+    chartData: lineChartData.newVisitis
+})
+
+
+// 调用子组件切换折线图数据
+const handleSetLineChartData = (type) => {
+    state.chartData = lineChartData[type]
 }
 </script>
 
 <style lang='scss' scoped>
+.dashboard{
+    overflow: hidden;
+}
 </style>
