@@ -1,9 +1,9 @@
 <template>
-    <div class="layout-logo" v-if="setShowLogo">
+    <div class="layout-logo" v-if="!layoutConfig.isCollapse">
         <img :src="logoImg" class="layout-logo-img" />
         <span>{{ layoutConfig.globalTitle }}</span>
     </div>
-    <div class="layout-logo" v-if="!setShowLogo">
+    <div class="layout-logo" v-if="layoutConfig.isCollapse">
         <img :src="logoImg" class="layout-logo-img" />
     </div>
 </template>
@@ -16,13 +16,6 @@ const store = useStore() // 定义 vuex 实例
 // 获取布局配置信息
 const layoutConfig = computed(() => {
     return store.getters.layoutConfig
-})
-
-
-// 设置 logo 的显示。classic 经典布局默认显示 logo
-const setShowLogo = computed(() => {
-    let { isCollapse, layout } = store.getters.layoutConfig
-    return !isCollapse || layout === 'classic' || document.body.clientWidth < 1000
 })
 </script>
 
