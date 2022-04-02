@@ -82,6 +82,8 @@ const handleSetLineChartData = (type) => {
 
 <style lang='scss' scoped>
 .panel-group {
+    margin-bottom: 0;
+
     :deep(.el-card__body) {
         cursor: pointer;
         color: #666;

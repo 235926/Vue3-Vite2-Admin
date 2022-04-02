@@ -3,12 +3,14 @@
         <!-- 面板部分 -->
         <PanelGroup @handleSetLineChartData="handleSetLineChartData" />
 
-        a
+        <!-- 折线图 -->
+        <line-chart :chartData="state.chartData" />
     </div>
 </template>
 
 <script setup name="dashboard">
 import PanelGroup from './component/panelGroup.vue' // 面板部分
+import LineChart from './component/lineChart.vue' // 折线图
 
 
 // 折线图数据
@@ -45,7 +47,7 @@ const handleSetLineChartData = (type) => {
 </script>
 
 <style lang='scss' scoped>
-.dashboard{
+.dashboard {
     overflow: hidden;
 }
 </style>
