@@ -6,8 +6,8 @@
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />
             </div>
             <div class="right">
-                <SizeSelect/>
-                <FullScreen />
+                <SizeSelect v-if="layoutConfig.isGlobalComponentSize" />
+                <FullScreen v-if="layoutConfig.isFullScreen" />
                 <UserInfo />
             </div>
         </div>

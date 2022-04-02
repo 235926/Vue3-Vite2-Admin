@@ -2,6 +2,11 @@
 const state = {
     layoutConfig: { // 布局配置
         /**
+         * @description 网站主标题（菜单导航、浏览器当前网页标题）
+         */
+        globalTitle: 'Vue3-Vite2-Admin',
+
+        /**
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
          */
@@ -87,21 +92,28 @@ const state = {
         tagsViewStyle: 'tags-style-one',
 
         /**
-         * @description 网站主标题（菜单导航、浏览器当前网页标题）
-         */
-        globalTitle: 'Vue3-Vite2-Admin',
-
-        /**
          * @description 是否开启 logo 图标展示
          * @type {boolean} true | false
          */
         isLogo: true,
 
         /**
+         * @description 是否开启默认全局组件大小
+         * @type {boolean} true | false
+         */
+        isGlobalComponentSize: true,
+
+        /**
          * @description 默认全局组件大小
          * @type {boolean} 可选值"<large|''|small>"，默认 ''
          */
         globalComponentSize: '',
+
+        /**
+         * @description 是否开启全屏展示组件
+         * @type {boolean} true | false
+         */
+        isFullScreen: true,
     }
 }
 

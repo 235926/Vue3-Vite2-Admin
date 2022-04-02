@@ -113,14 +113,14 @@ const submitForm = () => {
 
             // 调用登录接口，获取用户信息
             await login(Object.assign(params, state.formModel)).then(res => {
-                store.dispatch('user/setToken', res.data.token)
-                store.dispatch('user/setUserInfo', res.data.userInfo)
+                store.dispatch('user/setToken', res.token)
+                store.dispatch('user/setUserInfo', res.userInfo)
 
                 // 1、请注意执行顺序(用户信息已经存储到vuex)
                 if (!store.getters.layoutConfig.isRequestRoutes) {
                     // 前端控制路由，2、请注意执行顺序
-                    // initFrontEndControlRoutes()
-                    // signInSuccess()
+                    initFrontEndControlRoutes()
+                    signInSuccess()
                 } else {
                     // 添加完动态路由，再进行 router 跳转，否则可能报错 No match found for location with path "/"
                     initBackEndControlRoutes()

@@ -8,6 +8,12 @@
         <template #dropdown>
             <el-dropdown-menu>
                 <el-dropdown-item command="personal">个人中心</el-dropdown-item>
+                <a target="_blank" href="https://github.com/235926/Vue3-Vite2-Admin">
+                    <el-dropdown-item command="personal">项目地址</el-dropdown-item>
+                </a>
+                <a target="_blank" href="https://vue3-vite2-admin.vercel.app/#/login?redirect=/&params={}">
+                    <el-dropdown-item command="personal">线上预览</el-dropdown-item>
+                </a>
                 <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
@@ -54,7 +60,7 @@ const handleLogout = () => {
 
                 // 调用退出登录接口
                 logout().then(res => {
-                    if (res.data.code === 200) {
+                    if (res.code === 200) {
                         setTimeout(() => {
                             done()
                             setTimeout(() => {
