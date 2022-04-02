@@ -105,7 +105,7 @@ const setOptions = ({ expectedData, actualData }) => {
                     color: '#FF005A',
                     lineStyle: {
                         color: '#FF005A',
-                        width: 2
+                        width: 2,
                     }
                 },
                 animationDuration: 2800,
@@ -145,4 +145,7 @@ onUnmounted(() => {
 </script>
 
 <style lang='scss' scoped>
+.line-chart {
+    margin: 20px 0;
+}
 </style>

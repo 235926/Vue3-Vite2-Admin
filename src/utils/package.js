@@ -1,4 +1,6 @@
 import packageJson from '../../package.json'
+const dependencies = packageJson.dependencies
+const devDependencies = packageJson.devDependencies
 
 
-export const dependencies = packageJson.dependencies
+export const packages = Object.assign(dependencies, devDependencies)

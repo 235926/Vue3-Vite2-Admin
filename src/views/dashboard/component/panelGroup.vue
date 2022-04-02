@@ -1,6 +1,6 @@
 <template>
     <el-row :gutter="20" class="panel-group">
-        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+        <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card class="card-panel" @click="handleSetLineChartData('newVisitis')">
                 <div
                     :class="{ active: state.active == 'newVisitis' }"
@@ -15,7 +15,7 @@
             </el-card>
         </el-col>
 
-        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+        <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card class="card-panel" @click="handleSetLineChartData('messages')">
                 <div
                     :class="{ active: state.active == 'messages' }"
@@ -30,7 +30,7 @@
             </el-card>
         </el-col>
 
-        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+        <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card class="card-panel" @click="handleSetLineChartData('purchases')">
                 <div
                     :class="{ active: state.active == 'purchases' }"
@@ -45,7 +45,7 @@
             </el-card>
         </el-col>
 
-        <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+        <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card class="card-panel" @click="handleSetLineChartData('shoppings')">
                 <div
                     :class="{ active: state.active == 'shoppings' }"
@@ -82,7 +82,7 @@ const handleSetLineChartData = (type) => {
 
 <style lang='scss' scoped>
 .panel-group {
-    margin-bottom: 0;
+    row-gap: 20px;
 
     :deep(.el-card__body) {
         cursor: pointer;
