@@ -600,7 +600,7 @@ watch(store.state, (val) => {
         justify-content: space-between;
 
         &.is-active {
-            color: $-color-text-white;
+            color: #fff;
             background: $-color-primary;
             border-color: $-color-primary;
             transition: border-color 3s ease;

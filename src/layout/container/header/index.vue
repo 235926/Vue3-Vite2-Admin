@@ -2,13 +2,26 @@
     <el-header class="layout-header" :height="setHeaderHeight">
         <div class="layout-navbars-container">
             <div class="left">
+                <!-- 切换 sidebar -->
                 <ToggleSideBar />
+
+                <!-- 面包屑 -->
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />
             </div>
             <div class="right">
+                <!-- 设置打开布局配置 -->
+                <Settings v-if="layoutConfig.isSettings" />
+
+                <!-- 设置全局组件大小 -->
                 <SizeSelect v-if="layoutConfig.isGlobalComponentSize" />
+
+                <!-- 开启全屏 -->
                 <FullScreen v-if="layoutConfig.isFullScreen" />
-                <Language v-if="layoutConfig.isLanguage"/>
+
+                <!-- 国际化切换语言 -->
+                <Language v-if="layoutConfig.isLanguage" />
+
+                <!-- 用户信息 -->
                 <UserInfo />
             </div>
         </div>
@@ -24,6 +37,7 @@ import UserInfo from './userInfo.vue' // 用户信息
 import FullScreen from './fullScreen.vue' // 开启全屏
 import SizeSelect from './sizeSelect.vue' // 设置全局组件大小
 import Language from './language.vue' // 国际化切换语言
+import Settings from './settings.vue' // 设置打开布局配置
 const store = useStore() // 定义 vuex 实例
 
 

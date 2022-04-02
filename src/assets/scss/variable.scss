@@ -17,8 +17,7 @@ $-color-info-hover: #a6a9ad;
 ------------------------------- */
 $-color-bg-main:#f8f8f8; // main 主页背景色
 $-color-border-light: #f1f2f3; // 边框线颜色
-$-color-text-white:#ffffff; // 白色字体
-$-color-text-black:#000000; // 黑色字体
+$-color-text-primary: #303133; // 字体主颜色
 $-color-text-regular:#606266; // 常规字体颜色
 
 
@@ -27,7 +26,7 @@ $-color-text-regular:#606266; // 常规字体颜色
 ------------------------------- */
 $-width-sidebar-open:210px; // 侧边栏展开宽度
 $-width-sidebar-hide:54px; // 侧边栏收起时的宽度
-$-color-text:#fff; // 字体颜色
+$-color-sidebar-text:#fff; // 侧边栏字体颜色
 $-color-sidebar-bg:#304156; // 背景色
 $-color-sidebar-bg-hover:#001528; // 鼠标滑过
 $-color-sidebar-sub-bg:#1f2d3d; // 子级背景色

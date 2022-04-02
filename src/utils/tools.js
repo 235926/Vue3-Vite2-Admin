@@ -104,3 +104,145 @@ export const isMobile = () => {
         return false
     }
 }
+
+
+
+/**
+ * 将一维的扁平数组转换为多层级对象
+ * @param  {[type]} list 一维数组，数组中每一个元素需包含id和parent_id两个属性
+ * @return {[type]} tree 多层级树状结构
+ */
+export const buildTree = (list) => {
+    let temp = {}
+    let tree = {}
+    for (let i in list) {
+        temp[list[i].id] = list[i]
+    }
+    for (let i in temp) {
+        if (temp[i].parent_id) {
+            if (!temp[temp[i].parent_id].children) {
+                temp[temp[i].parent_id].children = new Object()
+            }
+            temp[temp[i].parent_id].children[temp[i].id] = temp[i]
+        } else {
+            tree[temp[i].id] = temp[i]
+        }
+    }
+    return tree
+}
+
+
+
+/**
+ * 防抖函数
+ * @param {Function} func
+ * @param {number} wait
+ * @param {boolean} immediate
+ * @return {*}
+ */
+export const debounce = (func, wait, immediate) => {
+    let timeout, args, context, timestamp, result
+
+    const later = function () {
+        // 据上一次触发时间间隔
+        const last = +new Date() - timestamp
+
+        // 上次被包装函数被调用时间间隔 last 小于设定时间间隔 wait
+        if (last < wait && last > 0) {
+            timeout = setTimeout(later, wait - last)
+        } else {
+            timeout = null
+            // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+            if (!immediate) {
+                result = func.apply(context, args)
+                if (!timeout) context = args = null
+            }
+        }
+    }
+
+    return function (...args) {
+        context = this
+        timestamp = +new Date()
+        const callNow = immediate && !timeout
+        // 如果延时不存在，重新设定延时
+        if (!timeout) timeout = setTimeout(later, wait)
+        if (callNow) {
+            result = func.apply(context, args)
+            context = args = null
+        }
+        return result
+    }
+}
+
+
+
+/**
+ * 切换 class 类
+ * @param {HTMLElement} element
+ * @param {string} className
+ * toggleClass(document.body, 'custom-theme')
+ */
+export const toggleClass = (element, className) => {
+    if (!element || !className) {
+        return
+    }
+    let classString = element.className
+    const nameIndex = classString.indexOf(className)
+    if (nameIndex === -1) {
+        classString += '' + className
+    } else {
+        classString =
+            classString.substring(0, nameIndex) +
+            classString.substring(nameIndex + className.length)
+    }
+    element.className = classString
+}
+
+
+
+/**
+ * 检查一个元素是否有类
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ * @returns {boolean}
+ */
+export function hasClass(ele, cls) {
+    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
+}
+
+
+
+/**
+ * 向元素添加类
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ * addClass(document.body, 'showRightPanel')
+ */
+export const addClass = (ele, cls) => {
+    if (!hasClass(ele, cls)) ele.className += ' ' + cls
+}
+
+
+
+/**
+ * 从元素中移除类
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ * removeClass(document.body, 'showRightPanel')
+ */
+export const removeClass = (ele, cls) => {
+    if (hasClass(ele, cls)) {
+        const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
+        ele.className = ele.className.replace(reg, ' ')
+    }
+}
+
+
+
+/**
+ * 判断内容是否为空
+ * isNull(value)
+ */
+export const isNull = (value) => {
+    return value === '' || value === undefined || value === null
+}

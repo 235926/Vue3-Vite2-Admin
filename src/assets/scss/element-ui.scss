@@ -24,14 +24,13 @@
 
 /* Menu 菜单
 ------------------------------- */
-
 .el-menu {
     border-right: none;
     width: 100%;
 
     // 一级菜单
     .el-menu-item {
-        color: $-color-text;
+        color: $-color-sidebar-text;
         background: $-color-sidebar-bg;
 
         &:hover {
@@ -47,7 +46,7 @@
     // 子级
     .el-sub-menu {
         .el-sub-menu__title {
-            color: $-color-text;
+            color: $-color-sidebar-text;
         }
 
         .el-menu-item {
@@ -91,6 +90,25 @@
                     margin-right: 0;
                 }
             }
+        }
+    }
+}
+
+
+
+/* Drawer 抽屉
+------------------------------- */
+.el-drawer {
+    .el-drawer__header {
+        height: 50px;
+        margin-bottom: 0;
+        padding: 15px 20px;
+        border-bottom: 1px solid $-color-border-light;
+
+        >:first-child {
+            font-size: 16px;
+            line-height: 1;
+            color: $-color-text-primary;
         }
     }
 }
