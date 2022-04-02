@@ -62,7 +62,7 @@
     </el-row>
 </template>
 
-<script setup>
+<script setup name="panelGroup">
 import { CountTo } from 'vue3-count-to' // 数字滚动插件
 const emit = defineEmits(['handleSetLineChartData']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 

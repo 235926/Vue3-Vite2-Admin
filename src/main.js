@@ -15,6 +15,10 @@ import router from '@/router/index.js'
 // 引入 vuex store
 import store from '@/store/index.js'
 
+// 引入自定义指令
+import { loadDirectives } from '@/directive/index.js'
+loadDirectives(app)
+
 // 引入 svg 图标注册脚本
 import 'virtual:svg-icons-register'
 

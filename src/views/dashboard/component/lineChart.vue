@@ -1,10 +1,10 @@
 <template>
     <el-card class="line-chart">
-        <div :style="{ height: height, width: width }" ref="main"></div>
+        <div v-chartResize :style="{ height: height, width: width }" ref="main"></div>
     </el-card>
 </template>
 
-<script setup>
+<script setup name="lineChart">
 import * as echarts from 'echarts' // echarts 图表
 
 
@@ -145,7 +145,4 @@ onUnmounted(() => {
 </script>
 
 <style lang='scss' scoped>
-.line-chart {
-    // margin: 0 0 30px 0;
-}
 </style>
