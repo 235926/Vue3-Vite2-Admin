@@ -114,6 +114,12 @@ const state = {
          * @type {boolean} true | false
          */
         isFullScreen: true,
+
+        /**
+         * @description 是否开启国际化切换语言
+         * @type {boolean} true | false
+         */
+        isLanguage: false,
     }
 }
 

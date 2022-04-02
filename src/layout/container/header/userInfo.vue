@@ -11,7 +11,7 @@
                 <a target="_blank" href="https://github.com/235926/Vue3-Vite2-Admin">
                     <el-dropdown-item command="personal">项目地址</el-dropdown-item>
                 </a>
-                <a target="_blank" href="https://vue3-vite2-admin.vercel.app/#/login?redirect=/&params={}">
+                <a target="_blank" href="https://vue3-vite2-admin.vercel.app/#/dashboard">
                     <el-dropdown-item command="personal">线上预览</el-dropdown-item>
                 </a>
                 <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>

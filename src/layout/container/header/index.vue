@@ -8,6 +8,7 @@
             <div class="right">
                 <SizeSelect v-if="layoutConfig.isGlobalComponentSize" />
                 <FullScreen v-if="layoutConfig.isFullScreen" />
+                <Language v-if="layoutConfig.isLanguage"/>
                 <UserInfo />
             </div>
         </div>
@@ -21,7 +22,8 @@ import Breadcrumb from './breadcrumb.vue' // 面包屑
 import TagsView from './tagsView/index.vue' // 导航视图
 import UserInfo from './userInfo.vue' // 用户信息
 import FullScreen from './fullScreen.vue' // 开启全屏
-import SizeSelect from './sizeSelect.vue' // 开启全屏
+import SizeSelect from './sizeSelect.vue' // 设置全局组件大小
+import Language from './language.vue' // 国际化切换语言
 const store = useStore() // 定义 vuex 实例
 
 

@@ -47,9 +47,9 @@ const initComponentSize = () => {
 
 
 // 切换组件默认大小
-const handleSetSize = (size) => {
+const handleSetSize = (command) => {
     Local.remove('layoutConfig')
-    layoutConfig.value.globalComponentSize = size
+    layoutConfig.value.globalComponentSize = command
     Local.set('layoutConfig', layoutConfig.value)
     initComponentSize()
     window.location.reload() // 需要重新加载下页面才能生效
