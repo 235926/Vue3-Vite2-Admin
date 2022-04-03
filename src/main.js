@@ -29,6 +29,7 @@ import mitt from 'mitt'
 import '@/plugin/nprogress.js'
 
 // 解决 Added non-passive event listener to a scroll-blocking 'wheel' event. Consider marking event handler as 'passive' to make the page more responsive. See 警告
+// 但是与 ElementPlus 中组件的 change 冲突
 import 'default-passive-events'
 
 // 注册全局组件

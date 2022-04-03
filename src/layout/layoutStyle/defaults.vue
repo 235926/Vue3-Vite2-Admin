@@ -1,5 +1,5 @@
 <template>
-    <el-container class="layout-container">
+    <el-container class="layout-container custom-class">
         <Vertical v-show="!isTagsViewCurrenFull" />
         <el-container class="flex-column">
             <Header v-if="layoutConfig.isFixedHeader && !isTagsViewCurrenFull" />
@@ -26,7 +26,7 @@ const layoutConfig = computed(() => {
 
 // 获取卡片全屏信息
 const isTagsViewCurrenFull = computed(() => {
-	return store.getters.isTagsViewCurrenFull
+    return store.getters.isTagsViewCurrenFull
 })
 </script>
 

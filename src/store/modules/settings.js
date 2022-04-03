@@ -13,6 +13,11 @@ const state = {
         isSettings: true,
 
         /**
+         * @description 默认 primary 主题颜色
+         */
+        primary: '#409eff',
+
+        /**
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
          */
@@ -126,6 +131,19 @@ const state = {
          * @type {boolean} true | false
          */
         isLanguage: false,
+
+        /**
+         * @type {boolean} true | false
+         * @description 灰色模式
+         */
+        isGrayscale: false,
+
+        /**
+         * @type {boolean} true | false
+         * @description 色弱模式
+         */
+        isInvert: false,
+
     }
 }
 

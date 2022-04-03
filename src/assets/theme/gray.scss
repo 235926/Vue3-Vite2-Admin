@@ -1,0 +1,8 @@
+/* 灰色色模式样式
+------------------------------- */
+[data-theme='dark'] {
+    body {
+        filter: grayscale(100%);
+        filter: progid:dximagetransform.microsoft.basicimage(grayscale=1)
+    }
+}

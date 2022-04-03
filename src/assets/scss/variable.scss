@@ -1,46 +1,46 @@
+:root {
+    /* 项目主题色
+    ------------------------------- */
+    --el-color-primary: #c9def3; // 项目主题色
+}
+
+
 /* 项目主题色
 ------------------------------- */
-$-color-primary: #409eff; // 主题色
+$-color-primary: var(--el-color-primary); // 主题色
 $-color-success: #67c23a; // 成功
 $-color-warning: #e6a23c; // 警告
 $-color-danger: #f56c6c; // 危险
 $-color-info: #909399; // 信息
-$-color-primary-hover:#66b1ff;
-$-color-success-hover:#85ce61;
-$-color-warning-hover:#ebb563;
+$-color-primary-hover: #66b1ff;
+$-color-success-hover: #85ce61;
+$-color-warning-hover: #ebb563;
 $-color-danger-hover: #f78989;
 $-color-info-hover: #a6a9ad;
 
-
-
 /* main
 ------------------------------- */
-$-color-bg-main:#f8f8f8; // main 主页背景色
+$-color-bg-main: #f8f8f8; // main 主页背景色
 $-color-border-light: #f1f2f3; // 边框线颜色
 $-color-text-primary: #303133; // 字体主颜色
-$-color-text-regular:#606266; // 常规字体颜色
-
-
+$-color-text-default: #606266; // 常规字体颜色
 
 /* 侧边栏样式
 ------------------------------- */
-$-width-sidebar-open:210px; // 侧边栏展开宽度
-$-width-sidebar-hide:54px; // 侧边栏收起时的宽度
-$-color-sidebar-text:#fff; // 侧边栏字体颜色
-$-color-sidebar-bg:#304156; // 背景色
-$-color-sidebar-bg-hover:#001528; // 鼠标滑过
-$-color-sidebar-sub-bg:#1f2d3d; // 子级背景色
-$-color-sidebar-bg-active:#001528; // 选中状态
-
-
+$-width-sidebar-open: 210px; // 侧边栏展开宽度
+$-width-sidebar-hide: 54px; // 侧边栏收起时的宽度
+$-color-sidebar-text: #fff; // 侧边栏字体颜色
+$-color-sidebar-bg: #304156; // 背景色
+$-color-sidebar-bg-hover: #001528; // 鼠标滑过
+$-color-sidebar-sub-bg: #1f2d3d; // 子级背景色
+$-color-sidebar-bg-active: #001528; // 选中状态
 
 /* header 部样式
 ------------------------------- */
-$-height-header:50px; // 头部高度
-$-color-svg-bg-hover:rgba(0, 0, 0, 0.04); // svg 鼠标滑过背景色
-
-
-
+$-height-header: 50px; // 头部高度
+$-color-header-bg: #fff;
+$-color-svg-bg-hover: rgba(0, 0, 0, 0.04); // svg 鼠标滑过背景色
+$-color-border-default: var(--el-border-color);
 
 // dark 主题
-$-color-dark-hover:#0000001a;
+$-color-dark-hover: #0000001a;

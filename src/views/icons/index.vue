@@ -44,13 +44,13 @@ const handleCopy = (name, event) => {
 
 <style lang='scss' scoped>
 .svg-container {
-    border-top: 1px solid $-color-border-light;
-    border-left: 1px solid $-color-border-light;
+    border-top: 1px solid $-color-border-default;
+    border-left: 1px solid $-color-border-default;
 
     .icon-item {
         text-align: center;
-        border-right: 1px solid $-color-border-light;
-        border-bottom: 1px solid $-color-border-light;
+        border-right: 1px solid $-color-border-default;
+        border-bottom: 1px solid $-color-border-default;
         height: 120px;
         overflow: hidden;
         display: flex;

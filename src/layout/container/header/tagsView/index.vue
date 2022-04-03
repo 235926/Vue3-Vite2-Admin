@@ -13,7 +13,10 @@
                     @click="onTagsClick(tag, index)"
                 >
                     <span class="dot" v-if="isActive(tag)"></span>
-                    <svg-icon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"/>
+                    <svg-icon
+                        :name="tag.meta.icon"
+                        v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"
+                    />
                     <span class="title">{{ tag.meta.title }}</span>
                     <svg-icon
                         class="refresh"
@@ -537,7 +540,7 @@ watch(store.state, (val) => {
 
 <style lang='scss' scoped>
 .tagsView {
-    border-bottom: 1px solid $-color-border-light;
+    border-bottom: 1px solid $-color-border-default;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
 
     .tagsView-ul {
@@ -548,7 +551,7 @@ watch(store.state, (val) => {
         font-size: 12px;
         white-space: nowrap;
         padding: 0 15px;
-        color: $-color-text-regular;
+        color: $-color-text-default;
 
         .tagsView-li {
             .dot {
