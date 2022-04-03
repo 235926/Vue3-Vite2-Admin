@@ -2,9 +2,10 @@
 const state = {
     layoutConfig: { // 布局配置
         /**
-         * @description 网站主标题（菜单导航、浏览器当前网页标题）
+         * @description 是否开启后端控制路由
+         * @type {boolean} true | false
          */
-        globalTitle: 'Vue3-Vite2-Admin',
+        isRequestRoutes: true,
 
         /**
          * @description 是否开启布局配置
@@ -13,15 +14,14 @@ const state = {
         isSettings: true,
 
         /**
+         * @description 网站主标题（菜单导航、浏览器当前网页标题）
+         */
+        globalTitle: 'Vue3-Vite2-Admin',
+
+        /**
          * @description 默认 primary 主题颜色
          */
         primary: '#409eff',
-
-        /**
-         * @description 是否开启后端控制路由
-         * @type {boolean} true | false
-         */
-        isRequestRoutes: true,
 
         /**
          * @description 布局切换
@@ -134,16 +134,21 @@ const state = {
 
         /**
          * @type {boolean} true | false
-         * @description 灰色模式
+         * @description 是否开启灰色模式
          */
         isGrayscale: false,
 
         /**
          * @type {boolean} true | false
-         * @description 色弱模式
+         * @description 是否开启色弱模式
          */
         isInvert: false,
 
+        /**
+         * @type {boolean} true | false
+         * @description 是否开启深色模式
+         */
+        isDark: false,
     }
 }
 

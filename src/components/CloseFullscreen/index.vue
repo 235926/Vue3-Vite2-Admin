@@ -51,7 +51,7 @@ const onCloseFullscreen = () => {
             transition: all 0.3s ease;
 
             .svg-icon {
-                color: $-color-primary;
+                color: var(--el-color-primary);
                 transition: all 0.3s ease;
             }
         }

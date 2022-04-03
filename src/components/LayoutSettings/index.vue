@@ -7,8 +7,21 @@
             <el-scrollbar class="layout-settings-main">
                 <el-divider content-position="left">全局主题</el-divider>
                 <div class="drawer-item">
+                    <span>项目标题</span>
+                    <el-input
+                        v-model="layoutConfig.globalTitle"
+                        placeholder="项目标题"
+                        @change="onAddTitleChange"
+                    />
+                </div>
+
+                <div class="drawer-item">
                     <span>主题颜色</span>
-                    <el-color-picker v-model="layoutConfig.primary" @change="onColorPickerChange"></el-color-picker>
+                    <el-color-picker
+                        v-model="layoutConfig.primary"
+                        @change="onColorPickerChange"
+                        :predefine="predefineColors"
+                    ></el-color-picker>
                 </div>
 
                 <div class="drawer-item">
@@ -26,6 +39,11 @@
                         @change="onAddFilterChange('invert')"
                     />
                 </div>
+
+                <div class="drawer-item">
+                    <span>深色模式</span>
+                    <el-switch v-model="layoutConfig.isDark" @change="onAddDarkChange" />
+                </div>
             </el-scrollbar>
         </template>
     </el-drawer>
@@ -40,6 +58,9 @@ const store = useStore() // vuex 实例
 
 
 // 定义响应式数据>
+const predefineColors = ref([ // 更改主题预定义颜色
+    '#409eff', '#ff8c00', '#ffd700', '#90ee90', '#00ced1', '#1e90ff', '#c71585',
+])
 const state = reactive({
     drawer: false, // 是否显示 Drawer
     direction: 'rtl', // Drawer 打开的方向
@@ -50,6 +71,12 @@ const state = reactive({
 const layoutConfig = computed(() => {
     return store.getters.layoutConfig
 })
+
+
+// 设置网站主标题
+const onAddTitleChange = () => {
+    setLocalThemeConfig()
+}
 
 
 // 切换主题颜色
@@ -73,7 +100,12 @@ const onAddFilterChange = (attr) => {
 }
 
 
-
+// 深色模式
+const onAddDarkChange = () => {
+    const body = document.documentElement
+    if (layoutConfig.value.isDark) body.setAttribute('data-theme', 'dark')
+    else body.setAttribute('data-theme', '')
+}
 
 
 // 触发 store 布局配置更新
@@ -124,6 +156,8 @@ onMounted(() => {
             // 色弱模式
             if (layoutConfig.value.isInvert) onAddFilterChange('invert')
 
+            // 深色模式
+            if (layoutConfig.value.isDark) onAddDarkChange()
         }, 100)
     })
 })
@@ -137,7 +171,8 @@ onUnmounted(() => {
 
 <style lang='scss' scoped>
 .layout-settings-main {
-    height: calc(100vh - 50px - 40px);
+    height: calc(100vh - 50px);
+    padding: 0 20px;
 
     .drawer-item {
         color: $-color-text-default;
@@ -146,6 +181,11 @@ onUnmounted(() => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        > span,
+        >.el-input {
+            flex: 1;
+        }
     }
 }
 </style>

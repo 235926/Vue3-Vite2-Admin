@@ -1,3 +1,21 @@
+/* Container 布局容器
+------------------------------- */
+.el-container {
+    .el-header {
+        padding: 0;
+    }
+
+    .el-main {
+        padding: 0;
+    }
+
+    .el-footer {
+        padding: 0;
+    }
+}
+
+
+
 /* Scrollbar 滚动条
 ------------------------------- */
 .el-scrollbar {
@@ -38,7 +56,7 @@
         }
 
         &.is-active {
-            color: $-color-primary;
+            color: var(--el-color-primary);
             background-color: $-color-sidebar-bg-active !important;
         }
     }
@@ -57,7 +75,7 @@
             }
 
             &.is-active {
-                color: $-color-primary;
+                color: var(--el-color-primary);
                 background-color: $-color-sidebar-bg-active !important;
             }
         }
@@ -110,5 +128,9 @@
             line-height: 1;
             color: $-color-text-default;
         }
+    }
+
+    .el-drawer__body {
+        padding: 0;
     }
 }

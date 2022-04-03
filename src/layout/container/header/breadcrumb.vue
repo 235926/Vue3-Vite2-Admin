@@ -100,7 +100,7 @@ onBeforeRouteUpdate((to) => {
             font-weight: 400;
 
             &:hover {
-                color: $-color-primary;
+                color: var(--el-color-primary)
             }
         }
 

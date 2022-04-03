@@ -1,8 +1,9 @@
 @import './reset.scss'; // 重置 css 样式
+@import './root.scss'; // 重置 css 变量
 @import './element-ui.scss'; // ElementPlus 重置样式
 @import './transition.scss'; // 动画样式
 @import './layout.scss'; // 布局样式
-@import '../theme/gray.scss'; // 灰色样式
+@import '../theme/dark.scss'; // 深色模式
 
 
 
@@ -98,7 +99,7 @@ body,
 ------------------------------- */
 #nprogress {
     .bar {
-        background: $-color-primary;
+        background: var(--el-color-primary);
         z-index: 9999999 !important;
     }
 }

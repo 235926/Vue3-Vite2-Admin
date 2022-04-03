@@ -101,7 +101,7 @@ const state = reactive({
                 font-size: 50px;
 
                 &:hover {
-                    color: $-color-primary;
+                    color: var(--el-color-primary)
                 }
             }
 

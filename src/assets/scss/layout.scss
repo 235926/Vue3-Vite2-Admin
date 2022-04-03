@@ -56,7 +56,6 @@
 
     // 头部
     .layout-header {
-        padding: 0;
         background: $-color-header-bg;
 
         .layout-navbars-container {
@@ -104,7 +103,6 @@
 
     // 主体内容
     .layout-main {
-        padding: 0 !important;
         overflow: hidden;
         width: 100%;
         background: $-color-bg-main;

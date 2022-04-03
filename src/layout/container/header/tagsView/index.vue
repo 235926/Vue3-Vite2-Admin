@@ -604,8 +604,8 @@ watch(store.state, (val) => {
 
         &.is-active {
             color: #fff;
-            background: $-color-primary;
-            border-color: $-color-primary;
+            background: var(--el-color-primary);
+            border-color: var(--el-color-primary);
             transition: border-color 3s ease;
         }
     }
