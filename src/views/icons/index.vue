@@ -70,12 +70,12 @@ const handleCopy = (name, event) => {
             transition: all 0.3s ease;
 
             .svg-icon {
-                color: var(--el-color-primary)
+                color: var(--el-color-primary);
                 transition: all 0.3s ease;
             }
 
             .icon-name {
-                color: var(--el-color-primary)
+                color: var(--el-color-primary);
                 transition: all 0.3s ease;
             }
         }

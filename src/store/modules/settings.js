@@ -1,6 +1,8 @@
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
     layoutConfig: { // 布局配置
+        /* 全局主题部分
+        -------------------------------------------------------------- */
         /**
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
@@ -19,15 +21,9 @@ const state = {
         globalTitle: 'Vue3-Vite2-Admin',
 
         /**
-         * @description 默认 primary 主题颜色
+         * @description 默认 element primary 主题颜色
          */
         primary: '#409eff',
-
-        /**
-         * @description 布局切换
-         * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
-         */
-        layout: 'defaults',
 
         /**
          * @description 主页面切换动画
@@ -36,10 +32,32 @@ const state = {
         animation: 'slide-right',
 
         /**
-         * @description 是否开启菜单手风琴效果
+         * @type {boolean} true | false
+         * @description 是否开启灰色模式
+         */
+        isGrayscale: false,
+
+        /**
+         * @type {boolean} true | false
+         * @description 是否开启色弱模式
+         */
+        isInvert: false,
+
+        /**
+         * @type {boolean} true | false
+         * @description 是否开启深色模式
+         */
+        isDark: false,
+
+
+
+        /* Header 部分
+        -------------------------------------------------------------- */
+        /**
+         * @description 是否开启固定 Header
          * @type {boolean} true | false
          */
-        isUniqueOpened: false,
+        isFixedHeader: true,
 
         /**
          * @description 是否开启菜单水平折叠效果
@@ -48,10 +66,10 @@ const state = {
         isCollapse: false,
 
         /**
-         * @description 是否开启固定 Header
+         * @description 是否显示菜单水平折叠按钮
          * @type {boolean} true | false
          */
-        isFixedHeader: true,
+        isShowCollapse: true,
 
         /**
          * @description 是否开启 Breadcrumb，强制经典、横向布局不显示
@@ -64,6 +82,30 @@ const state = {
          * @type {boolean} true | false
          */
         isBreadcrumbIcon: false,
+
+        /**
+         * @description 是否开启修改全局组件大小按钮
+         * @type {boolean} true | false
+         */
+        isGlobalComponentSize: true,
+
+        /**
+         * @description 默认全局组件大小
+         * @type {boolean} 可选值"<large|''|small>"，默认 ''
+         */
+        globalComponentSize: '',
+
+        /**
+         * @description 是否开启全屏展示组件
+         * @type {boolean} true | false
+         */
+        isFullScreen: true,
+
+        /**
+         * @description 是否开启国际化切换语言
+         * @type {boolean} true | false
+         */
+        isLanguage: false,
 
         /**
          * @description 是否开启 Tagsview 视图
@@ -102,6 +144,11 @@ const state = {
          */
         tagsViewStyle: 'tags-style-one',
 
+
+
+
+
+
         /**
          * @description 是否开启 logo 图标展示
          * @type {boolean} true | false
@@ -109,46 +156,18 @@ const state = {
         isLogo: true,
 
         /**
-         * @description 是否开启默认全局组件大小
-         * @type {boolean} true | false
+         * @description 布局切换
+         * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
          */
-        isGlobalComponentSize: true,
+        layout: 'defaults',
 
         /**
-         * @description 默认全局组件大小
-         * @type {boolean} 可选值"<large|''|small>"，默认 ''
-         */
-        globalComponentSize: '',
-
-        /**
-         * @description 是否开启全屏展示组件
+         * @description 是否开启菜单手风琴效果
          * @type {boolean} true | false
          */
-        isFullScreen: true,
+        isUniqueOpened: false,
 
-        /**
-         * @description 是否开启国际化切换语言
-         * @type {boolean} true | false
-         */
-        isLanguage: false,
 
-        /**
-         * @type {boolean} true | false
-         * @description 是否开启灰色模式
-         */
-        isGrayscale: false,
-
-        /**
-         * @type {boolean} true | false
-         * @description 是否开启色弱模式
-         */
-        isInvert: false,
-
-        /**
-         * @type {boolean} true | false
-         * @description 是否开启深色模式
-         */
-        isDark: false,
     }
 }
 

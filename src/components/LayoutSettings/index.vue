@@ -11,8 +11,21 @@
                     <el-input
                         v-model="layoutConfig.globalTitle"
                         placeholder="项目标题"
-                        @change="onAddTitleChange"
+                        @change="switchLayoutConfig"
                     />
+                </div>
+
+                <div class="drawer-item">
+                    <span>主页面切换动画</span>
+                    <el-select
+                        v-model="layoutConfig.animation"
+                        placeholder="请选择"
+                        @change="switchLayoutConfig"
+                    >
+                        <el-option label="slide-right" value="slide-right"></el-option>
+                        <el-option label="slide-left" value="slide-left"></el-option>
+                        <el-option label="opacitys" value="opacitys"></el-option>
+                    </el-select>
                 </div>
 
                 <div class="drawer-item">
@@ -44,6 +57,89 @@
                     <span>深色模式</span>
                     <el-switch v-model="layoutConfig.isDark" @change="onAddDarkChange" />
                 </div>
+
+                <el-divider content-position="left">Header 部分</el-divider>
+                <div class="drawer-item">
+                    <span>开启固定 Header</span>
+                    <el-switch v-model="layoutConfig.isFixedHeader" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启显示菜单水平折叠</span>
+                    <el-switch v-model="layoutConfig.isShowCollapse" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Breadcrumb</span>
+                    <el-switch v-model="layoutConfig.isBreadcrumb" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Breadcrumb 图标</span>
+                    <el-switch
+                        v-model="layoutConfig.isBreadcrumbIcon"
+                        @change="switchLayoutConfig"
+                    />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启修改全局组件大小</span>
+                    <el-switch
+                        v-model="layoutConfig.isGlobalComponentSize"
+                        @change="switchLayoutConfig"
+                    />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启全屏展示组件</span>
+                    <el-switch v-model="layoutConfig.isFullScreen" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启国际化切换语言</span>
+                    <el-switch v-model="layoutConfig.isLanguage" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Tagsview 视图</span>
+                    <el-switch v-model="layoutConfig.isTagsview" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Tagsview 图标</span>
+                    <el-switch v-model="layoutConfig.isTagsviewIcon" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Tagsview 缓存</span>
+                    <el-switch v-model="layoutConfig.isCacheTagsView" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Tagsview 拖拽</span>
+                    <el-switch
+                        v-model="layoutConfig.isSortableTagsView"
+                        @change="switchLayoutConfig"
+                    />
+                </div>
+
+                <div class="drawer-item">
+                    <span>开启 Tagsview 共用</span>
+                    <el-switch v-model="layoutConfig.isShareTagsView" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
+                    <span>设置 tagsView 风格</span>
+                    <el-select
+                        v-model="layoutConfig.tagsViewStyle"
+                        placeholder="请选择"
+                        @change="switchLayoutConfig"
+                    >
+                        <el-option label="风格1" value="tags-style-one"></el-option>
+                        <el-option label="风格2" value="tags-style-two"></el-option>
+                        <el-option label="风格3" value="tags-style-three"></el-option>
+                    </el-select>
+                </div>
             </el-scrollbar>
         </template>
     </el-drawer>
@@ -62,7 +158,7 @@ const predefineColors = ref([ // 更改主题预定义颜色
     '#409eff', '#ff8c00', '#ffd700', '#90ee90', '#00ced1', '#1e90ff', '#c71585',
 ])
 const state = reactive({
-    drawer: false, // 是否显示 Drawer
+    drawer: false, // 开启显示 Drawer
     direction: 'rtl', // Drawer 打开的方向
 })
 
@@ -73,8 +169,8 @@ const layoutConfig = computed(() => {
 })
 
 
-// 设置网站主标题
-const onAddTitleChange = () => {
+// 切换 layoutConfig 状态
+const switchLayoutConfig = () => {
     setLocalThemeConfig()
 }
 
@@ -117,7 +213,7 @@ const setDispatchThemeConfig = () => {
 
 // 存储布局配置
 const setLocalThemeConfig = () => {
-    Local.remove('layoutConfig');
+    Local.remove('layoutConfig')
     Local.set('layoutConfig', layoutConfig.value)
 }
 
@@ -183,7 +279,8 @@ onUnmounted(() => {
         align-items: center;
 
         > span,
-        >.el-input {
+        > .el-input,
+        > .el-select {
             flex: 1;
         }
     }

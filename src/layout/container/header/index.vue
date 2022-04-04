@@ -3,7 +3,7 @@
         <div class="layout-navbars-container">
             <div class="left">
                 <!-- 切换 sidebar -->
-                <ToggleSideBar />
+                <ToggleSideBar v-if="layoutConfig.isShowCollapse"/>
 
                 <!-- 面包屑 -->
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />

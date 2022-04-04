@@ -1,5 +1,8 @@
 <template>
-    <el-breadcrumb class="layout-breadcrumb">
+    <el-breadcrumb
+        class="layout-breadcrumb"
+        :style="{ 'padding-left': layoutConfig.isShowCollapse ? '5px' : '20px' }"
+    >
         <transition-group name="breadcrumb" mode="out-in">
             <el-breadcrumb-item v-for="(v, k) in state.breadcrumbList" :key="v.meta.title">
                 <span v-if="k === state.breadcrumbList.length - 1">
@@ -91,7 +94,6 @@ onBeforeRouteUpdate((to) => {
     height: inherit;
     display: flex;
     align-items: center;
-    padding-left: 5px;
 
     .el-breadcrumb__item {
         .el-breadcrumb__inner.is-link,
@@ -100,7 +102,7 @@ onBeforeRouteUpdate((to) => {
             font-weight: 400;
 
             &:hover {
-                color: var(--el-color-primary)
+                color: var(--el-color-primary);
             }
         }
 
