@@ -140,6 +140,14 @@
                         <el-option label="风格3" value="tags-style-three"></el-option>
                     </el-select>
                 </div>
+
+                <el-divider content-position="left">Aside 部分</el-divider>
+                <div class="drawer-item">
+                    <span>是否开启 logo 图标展示</span>
+                    <el-switch v-model="layoutConfig.isLogo" @change="switchLayoutConfig" />
+                </div>
+
+                <el-divider>到底了</el-divider>
             </el-scrollbar>
         </template>
     </el-drawer>
@@ -147,6 +155,7 @@
 
 <script setup name="layoutSettings">
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
+import { getLightColor, getDarkColor } from '@/utils/theme.js' // 改变主题色方法
 const { proxy } = getCurrentInstance() // vue 实例
 const router = useRouter() // router 实例
 const route = useRoute() // 路由参数
@@ -178,6 +187,10 @@ const switchLayoutConfig = () => {
 // 切换主题颜色
 const onColorPickerChange = () => {
     document.documentElement.style.setProperty('--el-color-primary', layoutConfig.value.primary)
+    // 颜色变浅，不设置的话，更改完主题色，hover 效果什么的不发生变化，还是原来的主题色配套
+    for (let i = 1; i <= 9; i++) {
+        document.documentElement.style.setProperty(`--el-color-primary-light-${i}`, `${getLightColor(layoutConfig.value.primary, i / 10)}`)
+    }
     setDispatchThemeConfig()
 }
 

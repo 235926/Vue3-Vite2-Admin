@@ -571,7 +571,8 @@ watch(store.state, (val) => {
             .close,
             .refresh {
                 &:hover {
-                    background: $-color-primary-hover;
+                    color: var(--el-color-white);
+                    background-color: var(--el-color-primary-light-3);
                     border-radius: 50%;
                 }
             }

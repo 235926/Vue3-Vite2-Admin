@@ -56,7 +56,7 @@
 
     // 头部
     .layout-header {
-        background: $-color-header-bg;
+        background: var(--dl-header-bg);
 
         .layout-navbars-container {
             width: 100%;

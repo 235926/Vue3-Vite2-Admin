@@ -1,6 +1,6 @@
 <template>
     <el-aside class="layout-aside" :class="setCollapseStyle">
-        <Logo />
+        <Logo v-if="layoutConfig.isLogo"/>
 
         <el-scrollbar class="flex-auto">
             <el-menu

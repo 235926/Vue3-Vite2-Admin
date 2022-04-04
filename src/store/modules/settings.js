@@ -49,6 +49,11 @@ const state = {
          */
         isDark: false,
 
+        /**
+         * @description 布局切换
+         * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
+         */
+        layout: 'defaults',
 
 
         /* Header 部分
@@ -146,9 +151,8 @@ const state = {
 
 
 
-
-
-
+        /* 侧边栏 aside
+        -------------------------------------------------------------- */
         /**
          * @description 是否开启 logo 图标展示
          * @type {boolean} true | false
@@ -156,18 +160,10 @@ const state = {
         isLogo: true,
 
         /**
-         * @description 布局切换
-         * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
-         */
-        layout: 'defaults',
-
-        /**
          * @description 是否开启菜单手风琴效果
          * @type {boolean} true | false
          */
         isUniqueOpened: false,
-
-
     }
 }
 
