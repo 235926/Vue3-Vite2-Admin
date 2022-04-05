@@ -1,7 +1,7 @@
 import request from '@/plugin/axios.js' // axios
 
-// 用户登录
-export const getSystemMenu = (data) => {
+// 获取菜单列表
+export const systemMenu = (data) => {
     return request({
         url: '/system/menu',
         method: 'get',

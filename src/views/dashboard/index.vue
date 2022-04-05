@@ -38,6 +38,9 @@ const lineChartData = {
 }
 
 
+
+
+
 // 定义响应式数据>
 const state = reactive({
     chartData: lineChartData.newVisitis

@@ -15,7 +15,7 @@
         </div>
 
         <el-table
-            :data="menuTableData"
+            :data="state.menuTableData"
             row-key="path"
             :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         >
@@ -43,22 +43,54 @@
                     <span>{{ scope.row.meta.roles }}</span>
                 </template>
             </el-table-column>
+
+            <el-table-column label="操作" show-overflow-tooltip width="140">
+                <template #default="scope">
+                    <el-button size="small" type="text" @click="addMenu(scope.row)">编辑</el-button>
+                    <el-button size="small" type="text" @click="delMenu(scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </el-card>
 </template>
 
 <script setup name="systemMenu">
-import { getSystemMenu } from '@/api/system.js' // api
-const router = useRouter() // router 实例
+import { systemMenu } from '@/api/system.js' // api
+const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
-// 获取 vuex 中的路由
-const menuTableData = computed(() => {
-    return store.getters.routesList
+// 定义响应式数据
+const state = reactive({
+    menuTableData: [], // 菜单列表数据
 })
-// console.log(menuTableData.value)
+
+
+// 获取菜单列表数据
+const getSystemMenu = () => {
+    systemMenu().then(res => {
+        state.menuTableData = res.data
+    })
+}
+
+
+// 编辑菜单
+const addMenu = (row) => {
+
+}
+
+
+// 删除菜单
+const delMenu = (row) => {
+
+}
+
+
+// 组件挂载后，此方法执行后，页面显示
+onBeforeMount(() => {
+    getSystemMenu()
+})
 </script>
 
 <style lang='scss' scoped>

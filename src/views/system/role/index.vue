@@ -3,8 +3,6 @@
 </template>
 
 <script setup name="systemRole">
-const store = useStore() // vuex 实例
-
 
 </script>
 
