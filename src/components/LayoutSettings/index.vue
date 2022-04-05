@@ -186,6 +186,8 @@ const switchLayoutConfig = () => {
 
 // 切换主题颜色
 const onColorPickerChange = () => {
+    // 颜色加深
+    document.documentElement.style.setProperty('--el-color-primary-dark-2', `${getDarkColor(layoutConfig.value.primary, 0.1)}`)
     document.documentElement.style.setProperty('--el-color-primary', layoutConfig.value.primary)
     // 颜色变浅，不设置的话，更改完主题色，hover 效果什么的不发生变化，还是原来的主题色配套
     for (let i = 1; i <= 9; i++) {

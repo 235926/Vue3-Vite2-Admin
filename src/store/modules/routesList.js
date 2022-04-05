@@ -14,7 +14,7 @@ const mutations = {
 
     // 设置路由，菜单中使用到（处理过component）
     SET_ROUTES_LIST(state, data) {
-        state.routesList = data;
+        state.routesList = data
     },
 }
 

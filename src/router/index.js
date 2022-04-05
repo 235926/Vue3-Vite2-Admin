@@ -45,7 +45,7 @@ const pathMatch = {
  * @description 此处循环为 dynamicRoutes（@/router/modules/dynamicRoutes.js）第一个顶级 children 的路由一维数组，非多级嵌套
  * @link 参考：https://next.router.vuejs.org/zh/api/#addroute
  */
-export function setAddRoute(routes) {
+export function setAddRoute() {
     setFilterRouteEnd().forEach((route) => {
         const routeName = route.name
         if (!router.hasRoute(routeName)) router.addRoute(route)

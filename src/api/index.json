@@ -22,7 +22,7 @@
         {
             "path": "/system",
             "name": "system",
-            "component": "layout/routerView/parent",
+            "component": "routerView/parent",
             "redirect": "/system/menu",
             "meta": {
                 "title": "系统设置",

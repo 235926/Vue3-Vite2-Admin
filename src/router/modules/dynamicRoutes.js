@@ -47,7 +47,7 @@
             {
                 path: '/system',
                 name: 'system',
-                component: () => import('@/views/system/index.vue'),
+                component: () => import('@/layout/routerView/parent.vue'),
                 redirect: '/system/menu',
                 meta: {
                     title: '系统设置',
