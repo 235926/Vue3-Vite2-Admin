@@ -8,7 +8,7 @@
 // export default svgIcons
 
 let svgIcons = []
-const svgFiles = import.meta.globEager('../../assets/svg/*.svg')
+const svgFiles = import.meta.globEager('../../../assets/svg/*.svg')
 for (const path in svgFiles) {
     const moduleName = path.replace(/(.*\/)*([^.]+).*/gi, '$2')
     svgIcons = [

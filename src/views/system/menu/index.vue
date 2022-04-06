@@ -4,12 +4,12 @@
             <el-input placeholder="请输入菜单名称"></el-input>
             <el-button type="primary">
                 <el-icon>
-                    <search />
+                    <Search />
                 </el-icon>查询
             </el-button>
             <el-button type="success">
                 <el-icon>
-                    <folder-add />
+                    <FolderAdd />
                 </el-icon>新增菜单
             </el-button>
         </div>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup name="systemMenu">
-import { systemMenu } from '@/api/system.js' // api
+import { systemMenu, systemMenuDelete } from '@/api/system.js' // api
 const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
@@ -83,7 +83,19 @@ const addMenu = (row) => {
 
 // 删除菜单
 const delMenu = (row) => {
-
+    let params = {
+        id: row.name,
+        time: new Date().getTime()
+    }
+    proxy.$confirm(`此操作将永久删除路由：${row.path}, 是否继续?`, '提示', {
+        confirmButtonText: '删除',
+        cancelButtonText: '取消',
+        type: 'warning',
+    }).then(() => {
+        systemMenuDelete(params).then(res => {
+            proxy.$message.success('删除成功')
+        })
+    }).catch(() => { })
 }
 
 

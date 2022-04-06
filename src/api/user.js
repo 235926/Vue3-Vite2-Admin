@@ -5,7 +5,7 @@ export const login = (data) => {
     return request({
         url: '/login',
         method: 'get',
-        data
+        params: data
     })
 }
 
@@ -15,7 +15,7 @@ export const getUserInfo = (data) => {
     return request({
         url: '/userInfo',
         method: 'get',
-        data
+        params: data
     })
 }
 
@@ -25,7 +25,7 @@ export const generateRoutes = (data) => {
     return request({
         url: '/routes',
         method: 'get',
-        data
+        params: data
     })
 }
 
@@ -35,7 +35,7 @@ export const logout = (data) => {
     return request({
         url: '/logout',
         method: 'get',
-        data
+        params: data
     })
 }
 

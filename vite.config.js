@@ -29,6 +29,7 @@ export default defineConfig(({ command, mode }) => {
             host: "0.0.0.0", // 主机名， 127.0.0.1，  真机 0.0.0.0
             https: false, // 协议
             open: true, // 在服务器启动时自动在浏览器中打开应用程序
+            hmr: true, // 是否开启热跟新
             proxy: { // 反向代理配置，注意 rewrite 写法，开始没看文档在这里踩了坑
                 '/api': {
                     target: env.VITE_BASE_URL,

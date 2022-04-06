@@ -112,7 +112,7 @@ const submitForm = () => {
             state.loading = true
 
             // 调用登录接口，获取用户信息
-            await login(Object.assign(params, state.formModel)).then(res => {
+            await login(Object.assign(state.formModel, params)).then(res => {
                 store.dispatch('user/setToken', res.token)
                 store.dispatch('user/setUserInfo', res.userInfo)
 

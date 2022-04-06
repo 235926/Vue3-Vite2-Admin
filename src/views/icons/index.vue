@@ -1,45 +1,19 @@
 <template>
-    <el-card shadow="hover" :header="`Svg-Icon 图标：${icons.length}个`">
-        <el-row class="svg-container">
-            <el-col
-                :xs="12"
-                :sm="8"
-                :md="6"
-                :lg="4"
-                :xl="2"
-                v-for="(icon, index) in icons"
-                :key="index"
-                class="icon-item"
-            >
-                <div class="flex-center" @click="handleCopy(icon, $event)">
-                    <svg-icon :name="icon" />
-                    <span class="icon-name">{{ icon }}</span>
-                </div>
-            </el-col>
-        </el-row>
+    <el-card>
+        <el-tabs>
+            <el-tab-pane label="Svg-Icons">
+                <SvgIcons />
+            </el-tab-pane>
+            <el-tab-pane label="Element-Icons">
+                <ElementIcons />
+            </el-tab-pane>
+        </el-tabs>
     </el-card>
 </template>
 
 <script setup>
-import svgIcons from "./svg-icons.js" // svg 图标集合
-import { handleClipboard } from "@/plugin/clipboard3.js" // 复制粘贴
-
-
-// 定义响应式数据
-const icons = ref(svgIcons)
-
-
-// svg 图标集合名称
-const generateIconCode = (name) => {
-    return `<svg-icon name="${name}" />`
-}
-
-
-// 复制粘贴
-const handleCopy = (name, event) => {
-    let text = generateIconCode(name)
-    handleClipboard(text, event)
-}
+import SvgIcons from './component/svg-icon.vue' // 个人 svg 图标
+import ElementIcons from './component/element-icon.vue' // element 图标
 </script>
 
 <style lang='scss' scoped>
@@ -47,7 +21,7 @@ const handleCopy = (name, event) => {
     border-top: 1px solid $-color-border-default;
     border-left: 1px solid $-color-border-default;
 
-    .icon-item {
+    :deep(.icon-item) {
         text-align: center;
         border-right: 1px solid $-color-border-default;
         border-bottom: 1px solid $-color-border-default;

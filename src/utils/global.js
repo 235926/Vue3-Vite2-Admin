@@ -1,7 +1,7 @@
+import { nextTick } from 'vue' // vue 内置方法
 import router from '@/router/index.js' // 路由
 import store from '@/store/index.js' // vuex
 import { Local } from '@/utils/storage.js' // 浏览器存储
-
 
 
 /**
