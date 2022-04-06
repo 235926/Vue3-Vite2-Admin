@@ -17,6 +17,10 @@ import LineChart from './component/lineChart.vue' // 折线图
 import Packages from './component/packages.vue' // 安装的插件依赖
 
 
+
+
+
+
 // 折线图数据
 const lineChartData = {
     newVisitis: {

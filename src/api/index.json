@@ -123,6 +123,23 @@
                 ],
                 "icon": "personal"
             }
+        },
+        {
+            "path": "/color",
+            "name": "color",
+            "component": "color/index",
+            "meta": {
+                "title": "颜色变量",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "color"
+            }
         }
     ]
 }

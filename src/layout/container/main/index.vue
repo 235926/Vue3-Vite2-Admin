@@ -16,7 +16,7 @@
 
 <script setup name="layoutMain">
 import LayoutParent from '@/layout/routerView/parent.vue' // 路由出口
-const { proxy } = getCurrentInstance() // 获取 vue 实例
+import elementResizeDetectorMaker from "element-resize-detector" // 获取DOM元素宽高
 const route = useRoute() // 路由参数
 const store = useStore() // vuex
 
@@ -25,6 +25,12 @@ const store = useStore() // vuex
 const state = reactive({
     headerHeight: '', // 计算头部高度
     currentRouteMeta: {}, // 当前路由 meta
+})
+
+
+// 获取布局配置信息
+const layoutConfig = computed(() => {
+    return store.getters.layoutConfig
 })
 
 
@@ -42,10 +48,26 @@ const initGetMeta = () => {
 }
 
 
+// 计算页面宽度，小于550侧边栏收缩
+const pageWidth = () => {
+    let app = document.querySelector('#app')
+    let erd = elementResizeDetectorMaker()
+    erd.listenTo(app, (element) => {
+        let width = element.offsetWidth
+        if (width <= 550) {
+            layoutConfig.value.isCollapse = true
+        }else{
+            layoutConfig.value.isCollapse = false
+        }
+    })
+}
+
+
 // 页面加载前
 onBeforeMount(() => {
     initHeaderHeight()
     initGetMeta()
+    pageWidth()
 })
 </script>
 

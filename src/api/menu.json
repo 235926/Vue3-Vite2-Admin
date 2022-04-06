@@ -123,6 +123,23 @@
                 ],
                 "icon": "personal"
             }
+        },
+        {
+            "path": "/color",
+            "name": "color",
+            "component": "views/color/index",
+            "meta": {
+                "title": "个人中心",
+                "isLink": "",
+                "isHidden": true,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "color"
+            }
         }
     ]
 }
