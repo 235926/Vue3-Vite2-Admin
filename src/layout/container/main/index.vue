@@ -54,7 +54,7 @@ const pageWidth = () => {
     let erd = elementResizeDetectorMaker()
     erd.listenTo(app, (element) => {
         let width = element.offsetWidth
-        if (width <= 550) {
+        if (width <= 1000) {
             layoutConfig.value.isCollapse = true
         }else{
             layoutConfig.value.isCollapse = false

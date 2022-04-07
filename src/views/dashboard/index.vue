@@ -55,7 +55,4 @@ const handleSetLineChartData = (type) => {
 </script>
 
 <style lang='scss' scoped>
-.dashboard {
-    overflow: hidden;
-}
 </style>

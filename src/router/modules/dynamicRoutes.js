@@ -106,7 +106,52 @@ export const dynamicRoutes = [
                         }
                     },
                 ]
-            }
+            },
+            {
+                path: '/icons',
+                name: 'icons',
+                component: () => import('@/views/icons/index.vue'),
+                meta: {
+                    title: 'icons',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: true,
+                    isIframe: false,
+                    roles: ['admin', 'common'],
+                    icon: 'icons',
+                },
+            },
+            {
+                path: '/personal',
+                name: 'personal',
+                component: () => import('@/views/personal/index.vue'),
+                meta: {
+                    title: '个人中心',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: true,
+                    isIframe: false,
+                    roles: ['admin', 'common'],
+                    icon: 'personal',
+                },
+            },
+            {
+                path: '/color',
+                name: 'color',
+                component: () => import('@/views/color/index.vue'),
+                meta: {
+                    title: '颜色变量',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: true,
+                    isIframe: false,
+                    roles: ['admin', 'common'],
+                    icon: 'color',
+                },
+            },
         ]
     }
 ]

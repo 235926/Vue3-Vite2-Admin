@@ -39,3 +39,22 @@ export const logout = (data) => {
     })
 }
 
+
+// 用户消息通知
+export const userMessageNotice = (data) => {
+    return request({
+        url: '/user/message/notice',
+        method: 'get',
+        params: data
+    })
+}
+
+
+// 用户营销推荐
+export const userRecommendList = (data) => {
+    return request({
+        url: '/user/recommendList',
+        method: 'get',
+        params: data
+    })
+}

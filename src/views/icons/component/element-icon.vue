@@ -10,7 +10,7 @@
             :key="index"
             class="icon-item"
         >
-            <div class="flex-center" @click="handleCopy(icon.name, $event)">
+            <div class="flex-column-center" @click="handleCopy(icon.name, $event)">
                 <el-icon class="svg-icon">
                     <component :is="icon.name" />
                 </el-icon>

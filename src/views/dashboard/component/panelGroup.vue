@@ -1,7 +1,7 @@
 <template>
-    <el-row :gutter="20" class="panel-group">
+    <el-row :gutter="20" class="panel-group row-gap">
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
-            <el-card class="card-panel" @click="handleSetLineChartData('newVisitis')">
+            <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('newVisitis')">
                 <div
                     :class="{ active: state.active == 'newVisitis' }"
                     class="card-panel-icon-wrapper icon-people"
@@ -16,7 +16,7 @@
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
-            <el-card class="card-panel" @click="handleSetLineChartData('messages')">
+            <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('messages')">
                 <div
                     :class="{ active: state.active == 'messages' }"
                     class="card-panel-icon-wrapper icon-message"
@@ -31,7 +31,7 @@
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
-            <el-card class="card-panel" @click="handleSetLineChartData('purchases')">
+            <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('purchases')">
                 <div
                     :class="{ active: state.active == 'purchases' }"
                     class="card-panel-icon-wrapper icon-money"
@@ -46,7 +46,7 @@
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
-            <el-card class="card-panel" @click="handleSetLineChartData('shoppings')">
+            <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('shoppings')">
                 <div
                     :class="{ active: state.active == 'shoppings' }"
                     class="card-panel-icon-wrapper icon-shopping"
@@ -82,8 +82,6 @@ const handleSetLineChartData = (type) => {
 
 <style lang='scss' scoped>
 .panel-group {
-    row-gap: 20px;
-
     :deep(.el-card__body) {
         cursor: pointer;
         color: #666;

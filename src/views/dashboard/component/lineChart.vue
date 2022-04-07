@@ -1,5 +1,5 @@
 <template>
-    <el-card class="line-chart">
+    <el-card shadow="hover" class="line-chart">
         <div v-chartResize :style="{ height: height, width: width }" ref="main"></div>
     </el-card>
 </template>

@@ -10,7 +10,7 @@
             :key="index"
             class="icon-item"
         >
-            <div class="flex-center" @click="handleCopy(icon, $event)">
+            <div class="flex-column-center" @click="handleCopy(icon, $event)">
                 <svg-icon :name="icon" />
                 <span class="icon-name">{{ icon }}</span>
             </div>

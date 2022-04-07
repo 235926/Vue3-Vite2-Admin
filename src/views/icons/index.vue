@@ -1,5 +1,5 @@
 <template>
-    <el-card>
+    <el-card shadow="hover">
         <el-tabs>
             <el-tab-pane label="Svg-Icons">
                 <SvgIcons />

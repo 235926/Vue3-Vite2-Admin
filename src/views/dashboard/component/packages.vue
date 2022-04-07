@@ -1,5 +1,5 @@
 <template>
-    <el-card class="packages">
+    <el-card shadow="hover" class="packages">
         <template #header>
             <div class="card-header">
                 <span>Packages</span>
