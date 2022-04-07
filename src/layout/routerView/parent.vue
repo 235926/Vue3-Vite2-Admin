@@ -15,7 +15,7 @@ const { proxy } = getCurrentInstance() // 获取 vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
 const state = reactive({ // 定义响应式数据
-    refreshRouterViewKey: route.path, // 刷新页面key值
+    refreshRouterViewKey: null, // 刷新页面key值
     keepAliveNameList: [], // 组件缓存列表(name值)
 })
 

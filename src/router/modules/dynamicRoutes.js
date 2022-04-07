@@ -19,7 +19,7 @@
  * @description 各字段请查看 `/@/views/system/menu/component/addMenu.vue 下的 ruleForm`
  * @returns 返回路由菜单数据
  */
- export const dynamicRoutes = [
+export const dynamicRoutes = [
     {
         path: '/',
         name: 'layout',
@@ -74,7 +74,37 @@
                             roles: ['admin'],
                             icon: 'menu'
                         }
-                    }
+                    },
+                    {
+                        path: '/system/role',
+                        name: 'systemRole',
+                        component: () => import('@/views/system/role/index.vue'),
+                        meta: {
+                            title: '角色管理',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'role'
+                        }
+                    },
+                    {
+                        path: '/system/user',
+                        name: 'systemUser',
+                        component: () => import('@/views/system/user/index.vue'),
+                        meta: {
+                            title: '用户管理',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'user'
+                        }
+                    },
                 ]
             }
         ]
