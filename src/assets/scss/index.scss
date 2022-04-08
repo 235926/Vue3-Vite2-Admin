@@ -102,7 +102,7 @@ body,
 ------------------------------- */
 #nprogress {
     .bar {
-        background: var(--el-color-primary);
+        background: var(--el-color-primary) !important;
         z-index: 9999999 !important;
     }
 }
