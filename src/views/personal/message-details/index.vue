@@ -1,5 +1,7 @@
 <template>
-    <div>message-details</div>
+    <el-card shadow="hover" class="message-details">
+        <h1>{{ state.item.title }}</h1>
+    </el-card>
 </template>
 
 <script setup>
@@ -11,25 +13,14 @@ const store = useStore() // vuex 实例
 
 // 定义响应式数据>
 const state = reactive({
-    tempRoute: {}, // 临时路由
-})
-
-
-// 设置临时 TagsView 组件标题
-const setTagsViewTitle = () => {
-    // let title = '消息详情'
-    // let newRoute = Object.assign({}, state.tempRoute, { title: `${title}-${route.params.id}` })
-    // route.meta.title = '123'
-    // console.log(route.meta)
-}
-
-
-// 组件挂载后，此方法执行后，页面显示
-onMounted(() => {
-    setTagsViewTitle()
-    // console.log(route.params.id)
+    item: JSON.parse(route.query.item)
 })
 </script>
 
 <style lang='scss' scoped>
+.message-details {
+    h1 {
+        text-align: center;
+    }
+}
 </style>

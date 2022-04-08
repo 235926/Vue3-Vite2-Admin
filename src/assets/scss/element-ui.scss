@@ -69,17 +69,15 @@
 
 /* Form 表单
 ------------------------------- */
-.el-form{
-    .el-form-item{
-        .el-form-item__content{
-            .el-select{
+.el-form {
+    .el-form-item {
+        .el-form-item__content {
+            .el-select {
                 flex: 1;
             }
         }
     }
 }
-
-
 
 
 
@@ -91,6 +89,14 @@
             align-items: center;
         }
     }
+}
+
+
+
+/* Pagination 分页
+------------------------------- */
+.el-pagination {
+    margin-top: 20px;
 }
 
 

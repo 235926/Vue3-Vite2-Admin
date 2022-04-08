@@ -17,7 +17,7 @@
                     >
                         <a
                             class="personal-message-li-title"
-                            @click="router.push({ name: 'messageDetails', params: { id: index } })"
+                            @click="jumpDetails(item, index)"
                         >{{ item.title }}</a>
                     </li>
                 </ul>
@@ -44,6 +44,18 @@ const state = reactive({
 const getUserMessageNotice = () => {
     userMessageNotice().then(res => {
         state.newsInfoList = res.newsInfoList
+    })
+}
+
+
+// 跳转详情页
+const jumpDetails = (item, index) => {
+    router.push({
+        path: '/personal/message-details',
+        query: {
+            id: index,
+            item: JSON.stringify(item)
+        }
     })
 }
 

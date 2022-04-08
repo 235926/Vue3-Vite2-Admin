@@ -153,7 +153,7 @@ export const dynamicRoutes = [
                         },
                     },
                     {
-                        path: '/personal/message-details/:id',
+                        path: '/personal/message-details',
                         name: 'messageDetails',
                         component: () => import('@/views/personal/message-details/index.vue'),
                         meta: {
