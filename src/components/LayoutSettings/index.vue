@@ -7,6 +7,11 @@
             <el-scrollbar class="layout-settings-main">
                 <el-divider content-position="left">全局主题</el-divider>
                 <div class="drawer-item">
+                    <span>是否开启后端控制路由</span>
+                    <el-switch v-model="layoutConfig.isRequestRoutes" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
                     <span>项目标题</span>
                     <el-input
                         v-model="layoutConfig.globalTitle"

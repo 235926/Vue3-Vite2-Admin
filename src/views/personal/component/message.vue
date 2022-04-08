@@ -3,16 +3,22 @@
         <el-card shadow="hover">
             <template #header>
                 <span>消息通知</span>
-                <span class="personal-message-more">更多</span>
+                <span
+                    class="personal-message-more"
+                    @click="router.push('/personal/message-more')"
+                >更多</span>
             </template>
             <div class="personal-message-box">
                 <ul class="personal-message-ul">
-                    <li v-for="(v, k) in state.newsInfoList" :key="k" class="personal-message-li">
+                    <li
+                        v-for="(item, index) in state.newsInfoList"
+                        :key="index"
+                        class="personal-message-li"
+                    >
                         <a
-                            :href="v.link"
-                            target="_block"
                             class="personal-message-li-title"
-                        >{{ v.title }}</a>
+                            @click="router.push({ name: 'messageDetails', params: { id: index } })"
+                        >{{ item.title }}</a>
                     </li>
                 </ul>
             </div>
@@ -22,6 +28,10 @@
 
 <script setup>
 import { userMessageNotice } from '@/api/user.js' // api
+const { proxy } = getCurrentInstance() // 获取 vue 实例
+const router = useRouter() // 定义 router 实例
+const route = useRoute() // 路由参数
+const store = useStore() // 定义 vuex 实例
 
 
 // 定义响应式数据>

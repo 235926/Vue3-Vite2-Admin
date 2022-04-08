@@ -41,7 +41,6 @@
                             <el-select
                                 v-model="state.userInfo.gender"
                                 placeholder="请选择性别"
-                                clearable
                                 @change="changeUserInfo"
                             >
                                 <el-option label="男" :value="0"></el-option>
@@ -106,7 +105,7 @@ const changeUserInfo = () => {
         setTimeout(() => {
             state.loading = false
             proxy.$message.success('个人信息更新成功！')
-        }, 500)
+        }, 300)
     })
 }
 

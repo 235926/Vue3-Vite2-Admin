@@ -7,7 +7,7 @@ const state = {
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
          */
-        isRequestRoutes: true,
+        isRequestRoutes: false,
 
         /**
          * @description 是否开启布局配置

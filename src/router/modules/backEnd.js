@@ -87,13 +87,18 @@ export const backEndComponent = (routes) => {
  * @returns 返回处理成函数后的 component
  */
 export const dynamicImport = (dynamicViewsModules, component) => {
-    const keys = Object.keys(dynamicViewsModules)
-    const matchKeys = keys.filter((key) => {
-        const k = key.replace(/..\/..\/views|../, '')
-        return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
+    let keys = Object.keys(dynamicViewsModules)
+    let matchKeys = keys.filter((key) => {
+        if (key.startsWith('../../layout/routerView')) {
+            let k = key.replace(/..\/..\/layout|../, '')
+            return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
+        } else {
+            let k = key.replace(/..\/..\/views|../, '')
+            return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
+        }
     })
     if (matchKeys?.length === 1) {
-        const matchKey = matchKeys[0]
+        let matchKey = matchKeys[0]
         return dynamicViewsModules[matchKey]
     }
     if (matchKeys?.length > 1) {

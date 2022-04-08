@@ -17,7 +17,9 @@
                         :name="tag.meta.icon"
                         v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"
                     />
-                    <span class="title">{{ tag.meta.title }}</span>
+                    <span class="title">
+                        {{ tag.meta.title }}
+                    </span>
                     <svg-icon
                         class="refresh"
                         name="refresh"
@@ -124,14 +126,11 @@ const initTagsView = async () => {
 // 处理可开启多标签详情，单标签详情（动态路由（xxx/:id/:name"），普通路由处理）
 const solveAddTagsView = async (path, to) => {
     let isDynamicPath = to.meta.isDynamic ? to.meta.isDynamicPath : path
-    let current = state.tagsViewList.filter(
-        (v) =>
-            v.path === isDynamicPath &&
-            isObjectValueEqual(
-                to.meta.isDynamic ? (v.params ? v.params : null) : v.query ? v.query : null,
-                to.meta.isDynamic ? (to?.params ? to?.params : null) : to?.query ? to?.query : null
-            )
-    )
+    let current = state.tagsViewList.filter((v) => v.path === isDynamicPath && isObjectValueEqual(
+        to.meta.isDynamic ? (v.params ? v.params : null) : v.query ? v.query : null,
+        to.meta.isDynamic ? (to?.params ? to?.params : null) : to?.query ? to?.query : null
+    ))
+
     if (current.length <= 0) {
         // 防止：Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.
         let findItem = state.tagsViewRoutesList.find((v) => v.path === isDynamicPath)
