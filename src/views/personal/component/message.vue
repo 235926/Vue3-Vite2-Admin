@@ -1,17 +1,17 @@
 <template>
-    <el-col :xs="24" :sm="8" class="personal-info">
+    <el-col :xs="24" :sm="8" class="personal-message">
         <el-card shadow="hover">
             <template #header>
                 <span>消息通知</span>
-                <span class="personal-info-more">更多</span>
+                <span class="personal-message-more">更多</span>
             </template>
-            <div class="personal-info-box">
-                <ul class="personal-info-ul">
-                    <li v-for="(v, k) in state.newsInfoList" :key="k" class="personal-info-li">
+            <div class="personal-message-box">
+                <ul class="personal-message-ul">
+                    <li v-for="(v, k) in state.newsInfoList" :key="k" class="personal-message-li">
                         <a
                             :href="v.link"
                             target="_block"
-                            class="personal-info-li-title"
+                            class="personal-message-li-title"
                         >{{ v.title }}</a>
                     </li>
                 </ul>
@@ -46,8 +46,8 @@ onMounted(() => {
 
 <style lang='scss' scoped>
 @import "@/assets/scss/mixin.scss";
-.personal-info {
-    .personal-info-more {
+.personal-message {
+    .personal-message-more {
         float: right;
         color: var(--el-text-color-secondary);
         font-size: 13px;
@@ -58,18 +58,18 @@ onMounted(() => {
         }
     }
 
-    .personal-info-box {
+    .personal-message-box {
         height: 130px;
         overflow: hidden;
 
-        .personal-info-ul {
+        .personal-message-ul {
             list-style: none;
 
-            .personal-info-li {
+            .personal-message-li {
                 font-size: 13px;
                 padding-bottom: 10px;
 
-                .personal-info-li-title {
+                .personal-message-li-title {
                     display: inline-block;
                     @include text-ellipsis(1);
                     color: var(--el-text-color-secondary);

@@ -10,7 +10,7 @@
 
 
 
-/* Container 布局容器
+/* Button 按钮
 ------------------------------- */
 .el-button {
     .el-icon {
@@ -64,6 +64,22 @@
         }
     }
 }
+
+
+
+/* Form 表单
+------------------------------- */
+.el-form{
+    .el-form-item{
+        .el-form-item__content{
+            .el-select{
+                flex: 1;
+            }
+        }
+    }
+}
+
+
 
 
 

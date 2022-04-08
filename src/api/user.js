@@ -11,7 +11,7 @@ export const login = (data) => {
 
 
 // 获取用户信息
-export const getUserInfo = (data) => {
+export const userInfo = (data) => {
     return request({
         url: '/userInfo',
         method: 'get',

@@ -1,8 +1,8 @@
 <template>
     <el-col :xs="24" :sm="16">
-        <el-card shadow="hover" header="个人信息">
-            <div class="personal-user">
-                <div class="personal-user-left">
+        <el-card shadow="hover" header="欢迎回来">
+            <div class="personal-welcome">
+                <div class="personal-welcome-left">
                     <el-upload
                         class="avatar-uploader"
                         action="https://jsonplaceholder.typicode.com/posts/"
@@ -15,7 +15,7 @@
                         <img :src="userInfo.avatar" />
                     </el-upload>
                 </div>
-                <div class="personal-user-right">
+                <div class="personal-welcome-right">
                     <el-row>
                         <el-col
                             :span="24"
@@ -25,7 +25,7 @@
                             <el-row>
                                 <el-col :xs="24" :sm="8" class="personal-item">
                                     <div class="personal-item-label">昵称：</div>
-                                    <div class="personal-item-value">{{ userInfo.name }}</div>
+                                    <div class="personal-item-value">{{ userInfo.nickname }}</div>
                                 </el-col>
                                 <el-col :xs="24" :sm="16" class="personal-item">
                                     <div class="personal-item-label">身份：</div>
@@ -93,12 +93,12 @@ const handleAvatarSuccess = (response, uploadFile) => {
 
 <style lang='scss' scoped>
 @import "@/assets/scss/mixin.scss";
-.personal-user {
+.personal-welcome {
     height: 130px;
     display: flex;
     align-items: center;
 
-    .personal-user-left {
+    .personal-welcome-left {
         width: 100px;
         height: 130px;
         border-radius: 3px;
@@ -124,7 +124,7 @@ const handleAvatarSuccess = (response, uploadFile) => {
         }
     }
 
-    .personal-user-right {
+    .personal-welcome-right {
         flex: 1;
         padding: 0 15px;
 
