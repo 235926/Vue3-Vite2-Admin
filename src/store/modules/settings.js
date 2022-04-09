@@ -66,18 +66,6 @@ const state = {
         isFixedHeader: true,
 
         /**
-         * @description 是否开启菜单水平折叠效果
-         * @type {boolean} true | false
-         */
-        isCollapse: false,
-
-        /**
-         * @description 是否显示菜单水平折叠按钮
-         * @type {boolean} true | false
-         */
-        isShowCollapse: true,
-
-        /**
          * @description 是否开启 Breadcrumb，强制经典、横向布局不显示
          * @type {boolean} true | false
          */
@@ -165,6 +153,18 @@ const state = {
          * @type {boolean} true | false
          */
         isUniqueOpened: false,
+
+        /**
+         * @description 是否开启菜单水平折叠效果
+         * @type {boolean} true | false
+         */
+        isCollapse: false,
+
+        /**
+         * @description 是否显示菜单水平折叠按钮
+         * @type {boolean} true | false
+         */
+        isShowCollapse: true,
     }
 }
 
