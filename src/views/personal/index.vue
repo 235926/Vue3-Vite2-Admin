@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup name="personal">
 import Welcome from './component/welcome.vue' // 欢迎回来
 import Message from './component/message.vue' // 消息通知
 import Recommend from './component/recommend.vue' // 营销推荐
