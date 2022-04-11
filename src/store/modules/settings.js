@@ -7,7 +7,7 @@ const state = {
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
          */
-        isRequestRoutes: false,
+        isRequestRoutes: true,
 
         /**
          * @description 是否开启布局配置
@@ -60,6 +60,12 @@ const state = {
          * @type {string} 可选值"<defaults|classic|transverse|columns>"，默认 defaults
          */
         layout: 'defaults',
+
+        /**
+         * @description 国际化
+         * @type {string} 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
+         */
+        globalI18n: 'zh-cn',
 
 
 
