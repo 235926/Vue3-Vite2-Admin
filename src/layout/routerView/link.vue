@@ -38,3 +38,9 @@ watch(() => route.path, () => {
     immediate: true
 })
 </script>
+
+<style lang="scss" scoped>
+a {
+    text-decoration: underline;
+}
+</style>
