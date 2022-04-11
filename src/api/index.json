@@ -140,6 +140,40 @@
                 ],
                 "icon": "color"
             }
+        },
+        {
+            "path": "/link",
+            "name": "layoutLinkView",
+            "component": "routerView/link",
+            "meta": {
+                "title": "外链",
+                "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
+                "isHidden": false,
+                "isKeepAlive": false,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "link"
+            }
+        },
+        {
+            "path": "/iframe",
+            "name": "layoutIfameView",
+            "component": "routerView/iframe",
+            "meta": {
+                "title": "内嵌 iframe",
+                "isLink": "https://nodejs.org/zh-cn/",
+                "isHidden": false,
+                "isKeepAlive": false,
+                "isAffix": false,
+                "isIframe": true,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "iframe"
+            }
         }
     ]
 }

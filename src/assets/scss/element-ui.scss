@@ -112,6 +112,10 @@
         color: $-color-sidebar-text;
         background: $-color-sidebar-bg;
 
+        a {
+            color: $-color-sidebar-text;
+        }
+
         &:hover {
             background-color: $-color-sidebar-bg-hover;
         }
