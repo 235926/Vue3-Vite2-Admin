@@ -4,7 +4,8 @@
         <router-view v-if="state.isShow" />
 
         <!-- 布局配置页面 -->
-        <LayoutSettingsDrawer />
+        <LayoutSettingsDrawer v-if="layoutConfig.isLayoutPlan" />
+        <LayoutSettingsDialog v-else />
 
         <!-- 关闭全屏展示 -->
         <CloseFullscreen />
@@ -15,6 +16,7 @@
 import zhCn from 'element-plus/es/locale/lang/zh-cn' // 汉语
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
 import LayoutSettingsDrawer from '@/components/LayoutSettings/drawer.vue' // 布局配置页面(drawer)
+import LayoutSettingsDialog from '@/components/LayoutSettings/dialog.vue' // 布局配置页面(dialog)
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import { useTitle, globalComponentSize } from '@/utils/global.js' // 修改项目布局方法
 const route = useRoute() // 路由参数
@@ -24,6 +26,12 @@ const store = useStore() // vuex 实例
 // 定义响应式数据
 const state = reactive({
     isShow: true, // 是否刷新页面
+})
+
+
+// 获取布局配置信息
+const layoutConfig = computed(() => {
+    return store.getters.layoutConfig
 })
 
 

@@ -16,6 +16,12 @@ const state = {
         isSettings: true,
 
         /**
+         * @description 布局配置方案
+         * @type {boolean} true = Drawer | false = Dialog
+         */
+        isLayoutPlan: true,
+
+        /**
          * @description 网站主标题（菜单导航、浏览器当前网页标题）
          */
         globalTitle: 'Vue3-Vite2-Admin',

@@ -248,7 +248,7 @@ const setLocalThemeConfigStyle = () => {
 onMounted(() => {
     // 监听布局配置弹窗点击打开
     nextTick(() => {
-        proxy.mittBus.on('openSetingsDrawer', () => {
+        proxy.mittBus.on('openLayoutSetings', () => {
             state.drawer = true
         })
 
@@ -271,7 +271,7 @@ onMounted(() => {
 
 // 页面卸载时
 onUnmounted(() => {
-    proxy.mittBus.off('openSetingsDrawer')
+    proxy.mittBus.off('openLayoutSetings')
 })
 </script>
 

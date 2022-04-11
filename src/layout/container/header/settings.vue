@@ -10,7 +10,7 @@ const { proxy } = getCurrentInstance() // vue 实例
 
 // 打开布局设置抽屉
 const onLayoutSetingClick = () => {
-    proxy.mittBus.emit('openSetingsDrawer')
+    proxy.mittBus.emit('openLayoutSetings')
 }
 </script>
 
