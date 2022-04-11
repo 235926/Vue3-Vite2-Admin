@@ -8,7 +8,7 @@
             <!-- 40 是 padding 的值 -->
             <LayoutParent
                 :minHeight="state.headerHeight"
-                :style="{ minHeight: `calc(100vh - ${state.headerHeight} - 40px)` }"
+                :style="{ minHeight: `calc(100vh - ${state.headerHeight})` }"
             />
         </el-scrollbar>
     </el-main>
@@ -17,6 +17,7 @@
 <script setup name="layoutMain">
 import LayoutParent from '@/layout/routerView/parent.vue' // 路由出口
 import elementResizeDetectorMaker from "element-resize-detector" // 获取DOM元素宽高
+const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex
 
@@ -56,7 +57,7 @@ const pageWidth = () => {
         let width = element.offsetWidth
         if (width <= 1000) {
             layoutConfig.value.isCollapse = true
-        }else{
+        } else {
             layoutConfig.value.isCollapse = false
         }
     })
@@ -68,6 +69,37 @@ onBeforeMount(() => {
     initHeaderHeight()
     initGetMeta()
     pageWidth()
+})
+
+
+// 监听 layoutConfig 配置文件的变化，更新菜单 el-scrollbar 的高度
+watch(store.getters.layoutConfig, (val) => {
+    state.headerHeight = val.isTagsview ? '85px' : '50px'
+    if (val.isFixedHeaderChange !== val.isFixedHeader) {
+        if (!proxy.$refs.layoutScrollbarRef) return false
+        proxy.$refs.layoutScrollbarRef.update()
+    }
+})
+
+
+// 监听路由变化
+watch(() => route.path, () => {
+    state.currentRouteMeta = route.meta
+    const bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
+    state.headerHeight = bool ? `85px` : `125px`
+    proxy.$refs.layoutScrollbarRef.update()
+})
+
+
+// 监听 layoutConfig 配置文件的变化，更新菜单 el-scrollbar 的高度
+watch(store.getters.layoutConfig, (val) => {
+    state.currentRouteMeta = route.meta
+    const bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
+    state.headerHeight = val.isTagsview ? (bool ? `85px` : `125px`) : '50px'
+    if (val.isFixedHeaderChange !== val.isFixedHeader) {
+        if (!proxy.$refs.layoutScrollbarRef) return false
+        proxy.$refs.layoutScrollbarRef.update()
+    }
 })
 </script>
 

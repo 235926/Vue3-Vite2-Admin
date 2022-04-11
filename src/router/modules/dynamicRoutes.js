@@ -184,6 +184,21 @@ export const dynamicRoutes = [
                     icon: 'color',
                 },
             },
+            {
+                path: '/iframe',
+                name: 'layoutIfameView',
+                component: () => import('@/layout/routerView/iframes.vue'),
+                meta: {
+                    title: '内嵌 iframe',
+                    isLink: 'https://nodejs.org/zh-cn/',
+                    isHide: false,
+                    isKeepAlive: false,
+                    isAffix: true,
+                    isIframe: true,
+                    roles: ['admin'],
+                    icon: 'iframe',
+                },
+            },
         ]
     }
 ]
