@@ -1,6 +1,6 @@
 <template>
     <el-aside class="layout-aside" :class="setCollapseStyle">
-        <Logo v-if="layoutConfig.isLogo"/>
+        <Logo v-if="layoutConfig.isLogo" />
 
         <el-scrollbar class="flex-auto">
             <el-menu
@@ -10,7 +10,6 @@
                 :collapse="layoutConfig.isCollapse"
                 :unique-opened="layoutConfig.isUniqueOpened"
                 :collapse-transition="false"
-                class="el-menu-vertical-demo"
             >
                 <template v-for="val in state.menuList">
                     <el-sub-menu
@@ -53,6 +52,8 @@
 import SubItem from './subItem.vue' // 子级递归菜单
 import Logo from '../logo/index.vue' // Logo 页面
 import { onBeforeRouteUpdate } from 'vue-router' // 路由方法
+import elementResizeDetectorMaker from "element-resize-detector" // 获取DOM元素宽高
+import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
 
@@ -65,6 +66,7 @@ const layoutConfig = computed(() => {
 
 // 定义响应式数据>
 const state = reactive({
+    isCollapse: false, // 是否开启菜单水平折叠效果
     menuList: [], // 菜单列表
     defaultActive: route.meta.isDynamic ? route.meta.isDynamicPath : route.path, // 菜单高亮（详情时，父级高亮）
 })
@@ -106,8 +108,38 @@ const setCollapseStyle = computed(() => {
 })
 
 
+// 计算页面宽度，小于1000侧边栏收缩
+const pageWidth = () => {
+    // 获取缓存中的布局配置
+    let localLayoutConfig = Local.get('layoutConfig')
+    let app = document.querySelector('#app')
+    let erd = elementResizeDetectorMaker()
+    erd.listenTo(app, (element) => {
+        let width = element.offsetWidth
+        if (width <= 1000 && localLayoutConfig.isCollapse) {
+            layoutConfig.value.isCollapse = true
+        } else if (width <= 1000 && !localLayoutConfig.isCollapse) {
+            layoutConfig.value.isCollapse = true
+        } else if (width >= 1001 && localLayoutConfig.isCollapse) {
+            layoutConfig.value.isCollapse = true
+        } else if (width >= 1001 && !localLayoutConfig.isCollapse) {
+            layoutConfig.value.isCollapse = false
+        }
+    })
+}
+
+
+// 监听
+watch(store.getters.layoutConfig, () => {
+    pageWidth()
+}, {
+    immediate: true,
+})
+
+
 // 组件挂载前，页面仍未展示，但虚拟DOM已经配置
 onBeforeMount(() => {
+    pageWidth()
     setFilterRoutes()
 })
 

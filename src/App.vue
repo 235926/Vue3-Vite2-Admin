@@ -4,7 +4,7 @@
         <router-view v-if="state.isShow" />
 
         <!-- 布局配置页面 -->
-        <LayoutSettings />
+        <LayoutSettingsDrawer />
 
         <!-- 关闭全屏展示 -->
         <CloseFullscreen />
@@ -14,7 +14,7 @@
 <script setup>
 import zhCn from 'element-plus/es/locale/lang/zh-cn' // 汉语
 import CloseFullscreen from '@/components/CloseFullscreen/index.vue' // 关闭全屏
-import LayoutSettings from '@/components/LayoutSettings/index.vue' // 布局配置页面
+import LayoutSettingsDrawer from '@/components/LayoutSettings/drawer.vue' // 布局配置页面(drawer)
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import { useTitle, globalComponentSize } from '@/utils/global.js' // 修改项目布局方法
 const route = useRoute() // 路由参数

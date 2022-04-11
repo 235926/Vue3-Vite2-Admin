@@ -158,7 +158,7 @@
     </el-drawer>
 </template>
 
-<script setup name="layoutSettings">
+<script setup name="layoutSettingsDrawer">
 import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import { getLightColor, getDarkColor } from '@/utils/theme.js' // 改变主题色方法
 const { proxy } = getCurrentInstance() // vue 实例
