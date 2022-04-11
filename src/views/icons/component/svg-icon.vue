@@ -38,6 +38,12 @@ const handleCopy = (name, event) => {
     let text = generateIconCode(name)
     handleClipboard(text, event)
 }
+
+
+// 暴露给vue实例上的数据
+defineExpose({
+    count: svgIcons.length
+})
 </script>
 
 <style lang='scss' scoped>

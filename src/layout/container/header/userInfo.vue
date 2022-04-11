@@ -14,6 +14,8 @@
                 <a target="_blank" href="https://vue3-vite2-admin.vercel.app/#/dashboard">
                     <el-dropdown-item command="personal">线上预览</el-dropdown-item>
                 </a>
+                <el-dropdown-item divided command="401">401页面</el-dropdown-item>
+                <el-dropdown-item command="404">404页面</el-dropdown-item>
                 <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
@@ -40,6 +42,12 @@ const handleCommand = (command) => {
     switch (command) {
         case 'personal':
             router.push('/personal') // 跳转个人中心
+            break
+        case '401':
+            router.push('/401') // 跳转401
+            break
+        case '404':
+            router.push('/404') // 跳转404
             break
         case 'logout':
             handleLogout() // 退出登录

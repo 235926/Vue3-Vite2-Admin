@@ -1,11 +1,11 @@
 <template>
     <el-card shadow="hover">
         <el-tabs>
-            <el-tab-pane label="Svg-Icons">
-                <SvgIcons />
+            <el-tab-pane :label="`Svg-Icons(${state.svgIconsCount})`">
+                <SvgIcons ref="svgIcons" />
             </el-tab-pane>
-            <el-tab-pane label="Element-Icons">
-                <ElementIcons />
+            <el-tab-pane :label="`Element-Icons(${state.elementIconsCount})`">
+                <ElementIcons ref="elementIcons" />
             </el-tab-pane>
         </el-tabs>
     </el-card>
@@ -14,6 +14,19 @@
 <script setup>
 import SvgIcons from './component/svg-icon.vue' // 个人 svg 图标
 import ElementIcons from './component/element-icon.vue' // element 图标
+const svgIcons = ref()
+const elementIcons = ref()
+const state = reactive({
+    svgIconsCount: 0,
+    elementIconsCount: 0,
+})
+
+
+// 组件挂载后，此方法执行后，页面显示
+onMounted(() => {
+    state.svgIconsCount = svgIcons?.value?.count
+    state.elementIconsCount = elementIcons?.value?.count
+})
 </script>
 
 <style lang='scss' scoped>
