@@ -14,6 +14,7 @@
 
 <script setup>
 import { Local } from '@/utils/storage.js' // 浏览器存储
+import { useTitle } from '@/utils/global.js' // 修改项目布局方法
 const { proxy } = getCurrentInstance() // vue 实例
 const store = useStore() // 定义 vuex 实例
 
@@ -37,6 +38,7 @@ const handleClick = (command) => {
     Local.set('layoutConfig', layoutConfig.value)
     proxy.$i18n.locale = command
     initI18n()
+    useTitle()
 }
 
 

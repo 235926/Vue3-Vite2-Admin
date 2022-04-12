@@ -7,7 +7,7 @@
         >
             <template #title>
                 <svg-icon :name="val.meta.icon" />
-                <span class="title">{{ val.meta.title }}</span>
+                <span class="title">{{ $t(val.meta.title) }}</span>
             </template>
             <sub-item :chil="val.children" />
         </el-sub-menu>
@@ -15,10 +15,10 @@
             <el-menu-item :index="val.path" :key="val.path">
                 <template v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)">
                     <svg-icon :name="val.meta.icon" />
-                    <span class="title">{{ val.meta.title }}</span>
+                    <span class="title">{{ $t(val.meta.title) }}</span>
                 </template>
                 <template v-else>
-                    <a :href="val.meta.isLink" target="_blank" rel="opener">{{ val.meta.title }}</a>
+                    <a :href="val.meta.isLink" target="_blank" rel="opener">{{ $t(val.meta.title) }}</a>
                 </template>
             </el-menu-item>
         </template>

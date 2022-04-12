@@ -7,7 +7,7 @@
             "name": "dashboard",
             "component": "dashboard/index",
             "meta": {
-                "title": "主页",
+                "title": "message.router.dashboard",
                 "isLink": "",
                 "isHidden": false,
                 "isKeepAlive": true,
@@ -25,7 +25,7 @@
             "component": "routerView/parent",
             "redirect": "/system/menu",
             "meta": {
-                "title": "系统设置",
+                "title": "message.router.system",
                 "isLink": "",
                 "isHidden": false,
                 "isKeepAlive": true,
@@ -42,7 +42,7 @@
                     "name": "systemMenu",
                     "component": "system/menu/index",
                     "meta": {
-                        "title": "菜单管理",
+                        "title": "message.router.systemMenu",
                         "isLink": "",
                         "isHidden": false,
                         "isKeepAlive": true,
@@ -59,7 +59,7 @@
                     "name": "systemRole",
                     "component": "system/role/index",
                     "meta": {
-                        "title": "角色管理",
+                        "title": "message.router.systemRole",
                         "isLink": "",
                         "isHidden": false,
                         "isKeepAlive": true,
@@ -76,7 +76,7 @@
                     "name": "systemUser",
                     "component": "system/user/index",
                     "meta": {
-                        "title": "用户管理",
+                        "title": "message.router.systemUser",
                         "isLink": "",
                         "isHidden": false,
                         "isKeepAlive": true,
@@ -95,7 +95,7 @@
             "name": "icons",
             "component": "icons/index",
             "meta": {
-                "title": "图标列表",
+                "title": "message.router.icons",
                 "isLink": "",
                 "isHidden": false,
                 "isKeepAlive": true,
@@ -112,7 +112,7 @@
             "name": "personal",
             "component": "personal/index",
             "meta": {
-                "title": "个人中心",
+                "title": "message.router.personal",
                 "isLink": "",
                 "isHidden": true,
                 "isKeepAlive": true,
@@ -129,7 +129,7 @@
                     "name": "messageMore",
                     "component": "personal/message-more/index",
                     "meta": {
-                        "title": "更多消息",
+                        "title": "message.router.personalMessageMore",
                         "isLink": "",
                         "isHidden": true,
                         "isKeepAlive": true,
@@ -146,7 +146,7 @@
                     "name": "messageDetails",
                     "component": "personal/message-details/index",
                     "meta": {
-                        "title": "消息详情",
+                        "title": "message.router.personalMessageDetails",
                         "isLink": "",
                         "isHidden": true,
                         "isKeepAlive": true,
@@ -165,7 +165,7 @@
             "name": "color",
             "component": "color/index",
             "meta": {
-                "title": "颜色变量",
+                "title": "message.router.color",
                 "isLink": "",
                 "isHidden": false,
                 "isKeepAlive": true,
@@ -182,7 +182,7 @@
             "name": "layoutLinkView",
             "component": "routerView/link",
             "meta": {
-                "title": "外链",
+                "title": "message.router.layoutLinkView",
                 "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
                 "isHidden": false,
                 "isKeepAlive": false,
@@ -199,7 +199,7 @@
             "name": "layoutIfameView",
             "component": "routerView/iframe",
             "meta": {
-                "title": "内嵌 iframe",
+                "title": "message.router.layoutIfameView",
                 "isLink": "https://nodejs.org/zh-cn/",
                 "isHidden": false,
                 "isKeepAlive": false,

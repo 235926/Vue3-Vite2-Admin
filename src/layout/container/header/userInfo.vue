@@ -24,7 +24,7 @@
 
 <script setup name="userInfo">
 import { logout } from '@/api/user.js' // api
-import { Session } from '@/utils/storage.js' // 浏览器存储
+import { Local, Session } from '@/utils/storage.js' // 浏览器存储
 import { resetRoute } from '@/router/index.js' // 删除/重置路由
 const { proxy: ctx } = getCurrentInstance() // 获取 vue 实例
 const store = useStore() // 定义 vuex 实例
@@ -82,6 +82,7 @@ const handleLogout = () => {
             }
         }
     }).then(() => {
+        Local.clear() // 清除永久缓存
         Session.clear() // 清除缓存/token等
         resetRoute() // 删除/重置路由
         ctx.$message.success('安全退出成功！')

@@ -40,7 +40,7 @@ const messages = {
 
 
 const locale = Local.get('layoutConfig')?.globalI18n || store.getters.layoutConfig?.globalI18n
-console.log(locale)
+
 // 导出语言国际化
 export const i18n = createI18n({
     locale: locale, // 默认语言

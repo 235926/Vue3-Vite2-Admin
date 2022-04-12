@@ -2,6 +2,7 @@ import { nextTick } from 'vue' // vue 内置方法
 import router from '@/router/index.js' // 路由
 import store from '@/store/index.js' // vuex
 import { Local } from '@/utils/storage.js' // 浏览器存储
+import { i18n } from '@/i18n/index.js' // 国际化
 
 
 /**
@@ -12,7 +13,9 @@ export const useTitle = () => {
     nextTick(() => {
         let webTitle = ''
         let globalTitle = store.getters.layoutConfig.globalTitle
-        webTitle = router.currentRoute.value.meta.title
+        router.currentRoute.value.path === '/login'
+            ? (webTitle = router.currentRoute.value.meta.title)
+            : (webTitle = i18n.global.t(router.currentRoute.value.meta.title))
         document.title = `${webTitle} - ${globalTitle}` || globalTitle
     })
 }

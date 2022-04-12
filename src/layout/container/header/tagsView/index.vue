@@ -18,7 +18,7 @@
                         v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"
                     />
                     <span class="title">
-                        {{ tag.meta.title }}
+                        {{ $t(tag.meta.title) }}
                     </span>
                     <svg-icon
                         class="refresh"
