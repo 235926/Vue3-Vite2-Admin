@@ -100,7 +100,7 @@ const delMenu = (row) => {
 
 
 // 组件挂载后，此方法执行后，页面显示
-onBeforeMount(() => {
+onMounted(() => {
     getSystemMenu()
 })
 </script>

@@ -61,12 +61,6 @@ const state = {
          */
         layout: 'defaults',
 
-        /**
-         * @description 国际化
-         * @type {string} 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
-         */
-        globalI18n: 'zh-cn',
-
 
 
         /* Header 部分
@@ -111,7 +105,13 @@ const state = {
          * @description 是否开启国际化切换语言
          * @type {boolean} true | false
          */
-        isLanguage: false,
+        isLanguage: true,
+
+        /**
+         * @description 国际化
+         * @type {string} 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
+         */
+        globalI18n: 'zh-cn',
 
         /**
          * @description 是否开启 Tagsview 视图

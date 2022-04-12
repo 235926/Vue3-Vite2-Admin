@@ -24,6 +24,9 @@ export default defineConfig(({ command, mode }) => {
                 symbolId: 'icon-[dir]-[name]',
             }),
         ],
+        optimizeDeps: { // 默认情况下，不在 node_modules 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
+            include: ['element-plus/lib/locale/lang/zh-cn', 'element-plus/lib/locale/lang/en'],
+        },
         server: { // 本地运行配置，及反向代理配置
             port: 8080, // 服务器端口
             host: "0.0.0.0", // 主机名， 127.0.0.1，  真机 0.0.0.0
@@ -42,6 +45,7 @@ export default defineConfig(({ command, mode }) => {
         resolve: {
             alias: { // 配置文件别名
                 '@': path.resolve(__dirname, 'src'), // 这里是将src目录配置别名为 @ 方便在项目中导入src目录下的文件
+                'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
             },
         },
         css: {
@@ -56,18 +60,28 @@ export default defineConfig(({ command, mode }) => {
             outDir: './dist', // 指定输出路径
             assetsDir: 'assets', // 指定生成静态资源的存放路径
             minify: 'terser', // 混淆器 terser 构建后文件体积更小
-            manifest: true,
+            chunkSizeWarningLimit: 1500, // chunk 大小警告的限制（以 kbs 为单位）
             rollupOptions: {
                 output: {
                     manualChunks: {
                         'element-plus': ['element-plus'],
+                        vue: ['vue', 'vue-router', 'vuex'],
                         echarts: ['echarts'],
                         // lodash: ['lodash']
                     }
                 }
             },
+            terserOptions: {
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true,
+                },
+                ie8: true,
+                output: {
+                    comments: true,
+                },
+            },
             brotliSize: false, // 关闭 brotliSize 显示可以稍微减少包装时间
-            chunkSizeWarningLimit: 600
         },
     }
 })
