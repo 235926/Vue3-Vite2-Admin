@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router' // 路由
 import store from '@/store/index.js' // vuex
-import { Session } from '@/utils/storage.js' // 浏览器临时缓存
+import { Session } from '@/utils/storage.js' // 浏览器存储
 import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
 import { staticRoutes } from './modules/staticRoutes.js' // 静态路由
 import { dynamicRoutes } from './modules/dynamicRoutes.js' // 动态路由

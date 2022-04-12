@@ -2,8 +2,8 @@
     <el-form
         :rules="state.rules"
         :model="state.formModel"
-        size="large"
         ref="loginForm"
+        size="large"
         class="login-content-form"
     >
         <el-form-item prop="username" class="login-animation1">
@@ -67,7 +67,7 @@
 </template>
 
 <script setup name="loginAccount">
-import { login, userInfo } from '@/api/user.js' // api
+import { login } from '@/api/user.js' // api
 import { formatAxis } from '@/utils/formatTime.js' // 时间问候语
 import { initFrontEndControlRoutes } from '@/router/modules/frontEnd.js' // 前端控制路由：初始化方法，防止刷新时路由丢失
 import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法，防止刷新时路由丢失
@@ -115,10 +115,10 @@ const submitForm = () => {
             // 调用登录接口，获取用户信息
             await login(Object.assign(state.formModel, params)).then(res => {
                 store.dispatch('user/setToken', res.token)
-                 store.dispatch('user/setUserInfo', res.userInfo)
+                store.dispatch('user/setUserInfo', res.userInfo)
 
                 // 1、请注意执行顺序(用户信息已经存储到vuex)
-                if (!store.getters.layoutConfig.isRequestRoutes) {
+                if (!store.getters.layoutConfig?.isRequestRoutes) {
                     // 前端控制路由，2、请注意执行顺序
                     initFrontEndControlRoutes()
                     signInSuccess()
@@ -183,6 +183,10 @@ const signInSuccess = () => {
     .login-content-submit {
         width: 100%;
         margin-top: 15px;
+    }
+
+    :deep(.el-input--large.el-input--prefix) .el-input__inner{
+        padding-left: 35px !important;
     }
 }
 </style>
