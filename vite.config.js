@@ -60,27 +60,27 @@ export default defineConfig(({ command, mode }) => {
             outDir: './dist', // 指定输出路径
             assetsDir: 'assets', // 指定生成静态资源的存放路径
             minify: 'terser', // 混淆器 terser 构建后文件体积更小
+            manifest: true,
             chunkSizeWarningLimit: 1500, // chunk 大小警告的限制（以 kbs 为单位）
             rollupOptions: {
                 output: {
                     manualChunks: {
                         'element-plus': ['element-plus'],
-                        vue: ['vue', 'vue-router', 'vuex'],
                         echarts: ['echarts'],
                         // lodash: ['lodash']
                     }
                 }
             },
-            // terserOptions: {
-            //     compress: {
-            //         drop_console: true,
-            //         drop_debugger: true,
-            //     },
-            //     ie8: true,
-            //     output: {
-            //         comments: true,
-            //     },
-            // },
+            terserOptions: {
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true,
+                },
+                ie8: true,
+                output: {
+                    comments: true,
+                },
+            },
             brotliSize: false, // 关闭 brotliSize 显示可以稍微减少包装时间
         },
     }
