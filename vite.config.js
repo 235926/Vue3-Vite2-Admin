@@ -71,16 +71,16 @@ export default defineConfig(({ command, mode }) => {
                     }
                 }
             },
-            terserOptions: {
-                compress: {
-                    drop_console: true,
-                    drop_debugger: true,
-                },
-                ie8: true,
-                output: {
-                    comments: true,
-                },
-            },
+            // terserOptions: {
+            //     compress: {
+            //         drop_console: true,
+            //         drop_debugger: true,
+            //     },
+            //     ie8: true,
+            //     output: {
+            //         comments: true,
+            //     },
+            // },
             brotliSize: false, // 关闭 brotliSize 显示可以稍微减少包装时间
         },
     }
