@@ -1,7 +1,5 @@
 <template>
-    <div class="system-role">
-        <span>{{ $t('message.router.dashboard') }}</span>
-    </div>
+    <div class="system-role">system-role</div>
 </template>
 
 <script setup name="systemRole">

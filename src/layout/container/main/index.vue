@@ -31,8 +31,8 @@ const state = reactive({
 // 计算头部高度
 const initHeaderHeight = () => {
     let { isTagsview } = store.getters.layoutConfig
-    if (isTagsview) return (state.headerHeight = `85px`)
-    else return (state.headerHeight = `50px`)
+    if (isTagsview) return (state.headerHeight = `125px`)
+    else return (state.headerHeight = `90px`)
 }
 
 
@@ -51,7 +51,7 @@ onBeforeMount(() => {
 
 // 监听 layoutConfig 配置文件的变化，更新菜单 el-scrollbar 的高度
 watch(store.getters.layoutConfig, (val) => {
-    state.headerHeight = val.isTagsview ? '85px' : '50px'
+    state.headerHeight = val.isTagsview ? '125px' : '90px'
     if (val.isFixedHeaderChange !== val.isFixedHeader) {
         if (!proxy.$refs.layoutScrollbarRef) return false
         proxy.$refs.layoutScrollbarRef.update()
@@ -62,7 +62,7 @@ watch(store.getters.layoutConfig, (val) => {
 // 监听路由变化
 watch(() => route.path, () => {
     state.currentRouteMeta = route.meta
-    const bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
+    let bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
     state.headerHeight = bool ? `85px` : `125px`
     proxy.$refs.layoutScrollbarRef.update()
 })
@@ -71,7 +71,7 @@ watch(() => route.path, () => {
 // 监听 layoutConfig 配置文件的变化，更新菜单 el-scrollbar 的高度
 watch(store.getters.layoutConfig, (val) => {
     state.currentRouteMeta = route.meta
-    const bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
+    let bool = state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe
     state.headerHeight = val.isTagsview ? (bool ? `85px` : `125px`) : '50px'
     if (val.isFixedHeaderChange !== val.isFixedHeader) {
         if (!proxy.$refs.layoutScrollbarRef) return false
