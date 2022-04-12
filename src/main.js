@@ -38,16 +38,13 @@ import '@/plugin/nprogress.js'
 // 但是与 ElementPlus 中组件的 change 冲突
 import 'default-passive-events'
 
-// 国际化
-import { i18n } from '@/i18n/index.js'
-
 // 注册全局组件
 import * as Components from '@/plugin/global-components.js'
 Object.entries(Components).forEach(([key, component]) => {
     app.component(key, component)
 })
 
-app.use(router).use(store).use(ElementPlus, { i18n: i18n.global.t }).use(i18n)
+app.use(router).use(store).use(ElementPlus)
 app.mount('#app')
 
 // 同级组件传值

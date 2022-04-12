@@ -7,7 +7,7 @@ const state = {
          * @description 是否开启后端控制路由
          * @type {boolean} true | false
          */
-        isRequestRoutes: true,
+        isRequestRoutes: false,
 
         /**
          * @description 是否开启布局配置
@@ -100,18 +100,6 @@ const state = {
          * @type {boolean} true | false
          */
         isFullScreen: true,
-
-        /**
-         * @description 是否开启国际化切换语言
-         * @type {boolean} true | false
-         */
-        isLanguage: true,
-
-        /**
-         * @description 国际化
-         * @type {string} 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
-         */
-        globalI18n: 'zh-cn',
 
         /**
          * @description 是否开启 Tagsview 视图
