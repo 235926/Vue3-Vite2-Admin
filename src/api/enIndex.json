@@ -1,0 +1,212 @@
+{
+    "code": 200,
+    "message": "success",
+    "routes": [{
+        "path": "/dashboard",
+        "name": "dashboard",
+        "component": "dashboard/index",
+        "meta": {
+          "title": "message.router.dashboard",
+          "isLink": "",
+          "isHidden": false,
+          "isKeepAlive": true,
+          "isAffix": true,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "dashboard"
+        }
+      },
+      {
+        "path": "/system",
+        "name": "system",
+        "component": "routerView/parent",
+        "redirect": "/system/menu",
+        "meta": {
+          "title": "message.router.system",
+          "isLink": "",
+          "isHidden": false,
+          "isKeepAlive": true,
+          "isAffix": false,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "setting"
+        },
+        "children": [{
+            "path": "/system/menu",
+            "name": "systemMenu",
+            "component": "system/menu/index",
+            "meta": {
+              "title": "message.router.systemMenu",
+              "isLink": "",
+              "isHidden": false,
+              "isKeepAlive": true,
+              "isAffix": false,
+              "isIframe": false,
+              "roles": [
+                "admin"
+              ],
+              "icon": "menu"
+            }
+          },
+          {
+            "path": "/system/role",
+            "name": "systemRole",
+            "component": "system/role/index",
+            "meta": {
+              "title": "message.router.systemRole",
+              "isLink": "",
+              "isHidden": false,
+              "isKeepAlive": true,
+              "isAffix": false,
+              "isIframe": false,
+              "roles": [
+                "admin"
+              ],
+              "icon": "role"
+            }
+          },
+          {
+            "path": "/system/user",
+            "name": "systemUser",
+            "component": "system/user/index",
+            "meta": {
+              "title": "message.router.systemUser",
+              "isLink": "",
+              "isHidden": false,
+              "isKeepAlive": true,
+              "isAffix": false,
+              "isIframe": false,
+              "roles": [
+                "admin"
+              ],
+              "icon": "user"
+            }
+          }
+        ]
+      },
+      {
+        "path": "/icons",
+        "name": "icons",
+        "component": "icons/index",
+        "meta": {
+          "title": "message.router.icons",
+          "isLink": "",
+          "isHidden": false,
+          "isKeepAlive": true,
+          "isAffix": false,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "icons"
+        }
+      },
+      {
+        "path": "/personal",
+        "name": "personal",
+        "component": "personal/index",
+        "meta": {
+          "title": "message.router.personal",
+          "isLink": "",
+          "isHidden": true,
+          "isKeepAlive": true,
+          "isAffix": false,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "personal"
+        },
+        "children": [{
+            "path": "/personal/message-more",
+            "name": "messageMore",
+            "component": "personal/message-more/index",
+            "meta": {
+              "title": "message.router.personalMessageMore",
+              "isLink": "",
+              "isHidden": true,
+              "isKeepAlive": true,
+              "isAffix": false,
+              "isIframe": false,
+              "roles": [
+                "admin"
+              ],
+              "icon": "more"
+            }
+          },
+          {
+            "path": "/personal/message-details",
+            "name": "messageDetails",
+            "component": "personal/message-details/index",
+            "meta": {
+              "title": "message.router.personalMessageDetails",
+              "isLink": "",
+              "isHidden": true,
+              "isKeepAlive": true,
+              "isAffix": false,
+              "isIframe": false,
+              "roles": [
+                "admin"
+              ],
+              "icon": "details"
+            }
+          }
+        ]
+      },
+      {
+        "path": "/color",
+        "name": "color",
+        "component": "color/index",
+        "meta": {
+          "title": "message.router.color",
+          "isLink": "",
+          "isHidden": false,
+          "isKeepAlive": true,
+          "isAffix": false,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "color"
+        }
+      },
+      {
+        "path": "/link",
+        "name": "layoutLinkView",
+        "component": "routerView/link",
+        "meta": {
+          "title": "message.router.layoutLinkView",
+          "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
+          "isHidden": false,
+          "isKeepAlive": false,
+          "isAffix": false,
+          "isIframe": false,
+          "roles": [
+            "admin"
+          ],
+          "icon": "link"
+        }
+      },
+      {
+        "path": "/iframe",
+        "name": "layoutIfameView",
+        "component": "routerView/iframe",
+        "meta": {
+          "title": "message.router.layoutIfameView",
+          "isLink": "https://nodejs.org/zh-cn/",
+          "isHidden": false,
+          "isKeepAlive": false,
+          "isAffix": false,
+          "isIframe": true,
+          "roles": [
+            "admin"
+          ],
+          "icon": "iframe"
+        }
+      }
+    ]
+  }
