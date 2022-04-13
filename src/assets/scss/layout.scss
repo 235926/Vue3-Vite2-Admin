@@ -106,17 +106,18 @@
         overflow: hidden;
         width: 100%;
         background: var(--dl-main-bg-color);
-
-        .routerView {
-            overflow-x: hidden;
-        }
     }
 
     // 滚动条
     .layout-scrollbar {
         padding: 20px;
+
+        .el-scrollbar__view {
+            overflow-x: hidden;
+        }
     }
 
+    // link.vue 和 iframe.vue 中用到
     .layout-view-bg-white {
         background: var(--el-color-white);
         width: 100%;
