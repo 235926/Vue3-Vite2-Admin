@@ -1,18 +1,7 @@
 <template>
-    <el-form
-        :rules="state.rules"
-        :model="state.formModel"
-        ref="loginForm"
-        size="large"
-        class="login-content-form"
-    >
+    <el-form :rules="state.rules" :model="state.formModel" ref="loginForm" size="large" class="login-content-form">
         <el-form-item prop="username" class="login-animation1">
-            <el-input
-                type="text"
-                v-model.trim="state.formModel.username"
-                autocomplete="off"
-                placeholder="请输入用户名"
-            >
+            <el-input type="text" v-model.trim="state.formModel.username" autocomplete="off" placeholder="请输入用户名">
                 <template #prefix>
                     <svg-icon name="user-center" />
                 </template>
@@ -20,29 +9,18 @@
         </el-form-item>
 
         <el-form-item prop="password" class="login-animation2">
-            <el-input
-                type="password"
-                v-model.trim="state.formModel.password"
-                show-password
-                autocomplete="off"
-                placeholder="请输入密码"
-            >
+            <el-input type="password" v-model.trim="state.formModel.password" show-password autocomplete="off"
+                placeholder="请输入密码">
                 <template #prefix>
                     <svg-icon name="password" />
                 </template>
             </el-input>
         </el-form-item>
 
-        <el-form-item class="login-animation3">
+        <el-form-item prop="code" class="login-animation3">
             <el-col :span="15">
-                <el-input
-                    type="text"
-                    maxlength="4"
-                    placeholder="请输入验证码"
-                    v-model="state.formModel.code"
-                    clearable
-                    autocomplete="off"
-                >
+                <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="state.formModel.code" clearable
+                    autocomplete="off">
                     <template #prefix>
                         <svg-icon name="position" />
                     </template>
@@ -55,13 +33,8 @@
         </el-form-item>
 
         <el-form-item class="login-animation4">
-            <el-button
-                type="primary"
-                round
-                :loading="state.loading"
-                class="login-content-submit"
-                @click="submitForm"
-            >登 录</el-button>
+            <el-button type="primary" round :loading="state.loading" class="login-content-submit" @click="submitForm">登录
+            </el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -71,10 +44,10 @@ import { login } from '@/api/user.js' // api
 import { formatAxis } from '@/utils/formatTime.js' // 时间问候语
 import { initFrontEndControlRoutes } from '@/router/modules/frontEnd.js' // 前端控制路由：初始化方法，防止刷新时路由丢失
 import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法，防止刷新时路由丢失
+const { proxy } = getCurrentInstance() // vue 实例
 const router = useRouter() // router 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
-const { proxy } = getCurrentInstance() // 获取 vue 实例
 
 
 // 定义响应式数据>
@@ -87,10 +60,13 @@ const state = reactive({
     },
     rules: { // 表单验证规则
         username: [
-            { required: 'true', message: '账户不能为空', trigger: 'blur' }
+            { required: true, message: '账户不能为空', trigger: 'blur' }
         ],
         password: [
-            { required: 'true', message: '密码不能为空', trigger: 'blur' }
+            { required: true, message: '密码不能为空', trigger: 'blur' }
+        ],
+        code: [
+            { required: true, message: '验证码不能为空', trigger: 'blur' }
         ]
     },
     loading: false, // 加载状态
@@ -178,15 +154,18 @@ const signInSuccess = () => {
         padding: 0;
         font-weight: bold;
         letter-spacing: 5px;
+        text-indent: 5px;
     }
 
     .login-content-submit {
         width: 100%;
+        letter-spacing: 5px;
+        text-indent: 5px;
         margin-top: 15px;
     }
 
-    :deep(.el-input--large.el-input--prefix) .el-input__inner{
-        padding-left: 35px !important;
+    :deep(.el-input--large.el-input--prefix) .el-input__inner {
+        padding-left: 40px !important;
     }
 }
 </style>

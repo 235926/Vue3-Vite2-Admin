@@ -40,13 +40,11 @@ const state = reactive({
     width: 100%;
     height: 100%;
     background-color: #fff;
-    background-image: linear-gradient(
-        25deg,
-        #077f7c,
-        #3aa693,
-        #5ecfaa,
-        #7ffac2
-    );
+    background-image: linear-gradient(25deg,
+            #077f7c,
+            #3aa693,
+            #5ecfaa,
+            #7ffac2);
     display: flex;
     justify-content: center;
     align-items: center;

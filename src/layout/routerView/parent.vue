@@ -8,6 +8,17 @@
                 <!-- <component :is="Component" :key="state.refreshRouterViewKey" /> -->
             </transition>
         </router-view>
+        <!-- <router-view v-slot="{ Component }">
+            <transition :name="layoutConfig.animation" mode="out-in">
+                <keep-alive>
+                    <component :is="Component" :key="state.refreshRouterViewKey" />
+                </keep-alive>
+            </transition>
+            <transition :name="layoutConfig.animation" mode="out-in">
+                <component :is="Component" :key="state.refreshRouterViewKey" />
+            </transition>
+        </router-view> -->
+
     </div>
 </template>
 
