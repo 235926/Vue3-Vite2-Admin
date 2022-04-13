@@ -209,18 +209,6 @@ export function verifyPhone(val) {
     else return true
 }
 
-/**
- * 国内电话号码
- * @param val 当前值字符串
- * @returns 返回 true: 国内电话号码正确
- */
-export function verifyTelPhone(val) {
-    // false: 国内电话号码不正确
-    if (!/\d{3}-\d{8}|\d{4}-\d{7}/.test(val)) return false
-    // true: 国内电话号码正确
-    else return true
-}
-
 
 
 /**

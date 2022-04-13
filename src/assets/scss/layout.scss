@@ -108,9 +108,7 @@
         background: var(--dl-main-bg-color);
 
         .routerView {
-            >div {
-                overflow-x: hidden;
-            }
+            overflow-x: hidden;
         }
     }
 

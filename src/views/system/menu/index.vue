@@ -1,6 +1,6 @@
 <template>
     <el-card class="system-menu">
-        <div class="system-menu-search">
+        <div class="system-search mb10">
             <el-input placeholder="请输入菜单名称"></el-input>
             <el-button type="primary">
                 <el-icon>
@@ -107,7 +107,7 @@ onMounted(() => {
 
 <style lang='scss' scoped>
 .system-menu {
-    .system-menu-search {
+    .system-search {
         .el-input {
             width: 180px;
         }

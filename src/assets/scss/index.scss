@@ -77,6 +77,17 @@ body,
 
 
 
+/* nprogress 进度条跟随主题颜色
+------------------------------- */
+#nprogress {
+    .bar {
+        background: var(--el-color-primary) !important;
+        z-index: 9999999 !important;
+    }
+}
+
+
+
 /* 宽高 100%
 ------------------------------- */
 .w100 {
@@ -101,23 +112,48 @@ body,
 
 
 
-/* nprogress 进度条跟随主题颜色
+/* 字体大小全局样式
 ------------------------------- */
-#nprogress {
-    .bar {
-        background: var(--el-color-primary) !important;
-        z-index: 9999999 !important;
+@for $i from 10 through 32 {
+    .font#{$i} {
+        font-size: #{$i}px !important;
     }
 }
 
 
 
-/* 间距样式
+/* 外边距、内边距全局样式
 ------------------------------- */
-.ml10 {
-    margin-left: 10px;
-}
+@for $i from 1 through 35 {
+    .mt#{$i} {
+        margin-top: #{$i}px !important;
+    }
 
-.mr10 {
-    margin-left: 10px;
+    .mr#{$i} {
+        margin-right: #{$i}px !important;
+    }
+
+    .mb#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+
+    .ml#{$i} {
+        margin-left: #{$i}px !important;
+    }
+
+    .pt#{$i} {
+        padding-top: #{$i}px !important;
+    }
+
+    .pr#{$i} {
+        padding-right: #{$i}px !important;
+    }
+
+    .pb#{$i} {
+        padding-bottom: #{$i}px !important;
+    }
+
+    .pl#{$i} {
+        padding-left: #{$i}px !important;
+    }
 }

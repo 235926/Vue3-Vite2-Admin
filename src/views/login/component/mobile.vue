@@ -1,8 +1,7 @@
 <template>
-    <el-form :rules="state.rules" :model="state.formModel" ref="loginForm" size="large" class="login-content-form">
+    <el-form :model="state.ruleForm" :rules="state.rules" ref="loginForm" size="large" class="login-content-form">
         <el-form-item prop="phone" class="login-animation1">
-            <el-input type="text" placeholder="请输入手机号" v-model.trim="state.formModel.phone" clearable
-                autocomplete="off">
+            <el-input type="text" placeholder="请输入手机号" v-model.trim="state.ruleForm.phone" clearable autocomplete="off">
                 <template #prefix>
                     <el-icon>
                         <Iphone />
@@ -13,7 +12,7 @@
 
         <el-form-item prop="code" class="login-animation2">
             <el-col :span="15">
-                <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model.trim="state.formModel.code" clearable
+                <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model.trim="state.ruleForm.code" clearable
                     autocomplete="off" class="login-content-code">
                     <template #prefix>
                         <el-icon>
@@ -56,7 +55,7 @@ const store = useStore() // vuex 实例
 // 定义响应式数据>
 const loginForm = ref(null)
 const state = reactive({
-    formModel: {
+    ruleForm: {
         phone: '13888888888', // 手机号
         code: '1234', // 验证码
     },
@@ -105,7 +104,7 @@ const submitForm = () => {
             state.loading = true
 
             // 调用登录接口，获取用户信息
-            await login(Object.assign(state.formModel, params)).then(res => {
+            await login(Object.assign(state.ruleForm, params)).then(res => {
                 store.dispatch('user/setToken', res.token)
                 store.dispatch('user/setUserInfo', res.userInfo)
 

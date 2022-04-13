@@ -111,7 +111,7 @@ const initTagsView = async () => {
         state.tagsViewList = await Session.get('tagsViewList')
     } else {
         await state.tagsViewRoutesList.map((v) => {
-            if (v.meta.isAffix && !v.meta.isHide) {
+            if (v.meta.isAffix && !v.meta.isHidden) {
                 v.url = setTagsViewHighlight(v)
                 state.tagsViewList.push({ ...v })
             }
@@ -163,7 +163,7 @@ const singleAddTagsView = (path, to) => {
 }
 
 
-// 1、添加 tagsView：未设置隐藏（isHide）也添加到在 tagsView 中（可开启多标签详情，单标签详情）
+// 1、添加 tagsView：未设置隐藏（isHidden）也添加到在 tagsView 中（可开启多标签详情，单标签详情）
 const addTagsView = (path, to) => {
     // 防止拿取不到路由信息
     nextTick(async () => {
@@ -240,7 +240,7 @@ const closeCurrentTagsView = (path) => {
 const closeOtherTagsView = (path) => {
     state.tagsViewList = []
     state.tagsViewRoutesList.map((v) => {
-        if (v.meta.isAffix && !v.meta.isHide) state.tagsViewList.push({ ...v })
+        if (v.meta.isAffix && !v.meta.isHidden) state.tagsViewList.push({ ...v })
     })
     addTagsView(path, route)
 }
@@ -250,7 +250,7 @@ const closeOtherTagsView = (path) => {
 const closeAllTagsView = () => {
     state.tagsViewList = []
     state.tagsViewRoutesList.map((v) => {
-        if (v.meta.isAffix && !v.meta.isHide) {
+        if (v.meta.isAffix && !v.meta.isHidden) {
             state.tagsViewList.push({ ...v })
             router.push({ path: state.tagsViewList[state.tagsViewList.length - 1].path })
         }
@@ -484,7 +484,7 @@ onBeforeMount(() => {
             router.push('/home')
             state.tagsViewList = []
             state.tagsViewRoutesList.map((v) => {
-                if (v.meta.isAffix && !v.meta.isHide) {
+                if (v.meta.isAffix && !v.meta.isHidden) {
                     v.url = setTagsViewHighlight(v)
                     state.tagsViewList.push({ ...v })
                 }

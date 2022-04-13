@@ -210,6 +210,42 @@
                 ],
                 "icon": "iframe"
             }
+        },
+        {
+            "path": "/tools",
+            "name": "tools",
+            "component": "layout/routerView/parent",
+            "meta": {
+                "title": "工具类合集",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "tools"
+            },
+            "children": [
+                {
+                    "path": "/tools/validate",
+                    "name": "toolsValidate",
+                    "component": "tools/validate",
+                    "meta": {
+                        "title": "验证规则",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "validate"
+                    }
+                }
+            ]
         }
     ]
 }

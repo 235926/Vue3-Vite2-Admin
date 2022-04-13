@@ -1,7 +1,7 @@
 <template>
-    <el-form :rules="state.rules" :model="state.formModel" ref="loginForm" size="large" class="login-content-form">
+    <el-form :model="state.ruleForm" :rules="state.rules" ref="loginForm" size="large" class="login-content-form">
         <el-form-item prop="username" class="login-animation1">
-            <el-input type="text" v-model.trim="state.formModel.username" autocomplete="off" placeholder="请输入用户名">
+            <el-input type="text" v-model.trim="state.ruleForm.username" autocomplete="off" placeholder="请输入用户名">
                 <template #prefix>
                     <svg-icon name="user-center" />
                 </template>
@@ -9,7 +9,7 @@
         </el-form-item>
 
         <el-form-item prop="password" class="login-animation2">
-            <el-input type="password" v-model.trim="state.formModel.password" show-password autocomplete="off"
+            <el-input type="password" v-model.trim="state.ruleForm.password" show-password autocomplete="off"
                 placeholder="请输入密码">
                 <template #prefix>
                     <svg-icon name="password" />
@@ -19,7 +19,7 @@
 
         <el-form-item prop="code" class="login-animation3">
             <el-col :span="15">
-                <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="state.formModel.code" clearable
+                <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="state.ruleForm.code" clearable
                     autocomplete="off">
                     <template #prefix>
                         <svg-icon name="position" />
@@ -53,7 +53,7 @@ const store = useStore() // vuex 实例
 // 定义响应式数据>
 const loginForm = ref(null)
 const state = reactive({
-    formModel: {
+    ruleForm: {
         username: 'admin', // 用户名
         password: '123456', // 用户密码
         code: '1234', // 验证码
@@ -89,7 +89,7 @@ const submitForm = () => {
             state.loading = true
 
             // 调用登录接口，获取用户信息
-            await login(Object.assign(state.formModel, params)).then(res => {
+            await login(Object.assign(state.ruleForm, params)).then(res => {
                 store.dispatch('user/setToken', res.token)
                 store.dispatch('user/setUserInfo', res.userInfo)
 

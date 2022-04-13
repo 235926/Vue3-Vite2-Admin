@@ -1,24 +1,14 @@
 <template>
-    <div class="h100 routerView">
+    <div class="h100">
         <router-view v-slot="{ Component }">
             <transition :name="layoutConfig.animation" mode="out-in">
                 <keep-alive :include="state.keepAliveNameList">
-                    <component :is="Component" :key="state.refreshRouterViewKey" />
+                    <div class="routerView" :key="state.refreshRouterViewKey">
+                        <component :is="Component" :key="state.refreshRouterViewKey" />
+                    </div>
                 </keep-alive>
-                <!-- <component :is="Component" :key="state.refreshRouterViewKey" /> -->
             </transition>
         </router-view>
-        <!-- <router-view v-slot="{ Component }">
-            <transition :name="layoutConfig.animation" mode="out-in">
-                <keep-alive>
-                    <component :is="Component" :key="state.refreshRouterViewKey" />
-                </keep-alive>
-            </transition>
-            <transition :name="layoutConfig.animation" mode="out-in">
-                <component :is="Component" :key="state.refreshRouterViewKey" />
-            </transition>
-        </router-view> -->
-
     </div>
 </template>
 
