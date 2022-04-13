@@ -23,7 +23,7 @@
         <el-card shadow="hover" header="小数或整数（不可以负数）">
             <el-form-item prop="numberIntegerAndFloat">
                 <div class="tools-warp-form-msg">
-                    验证可以输入小数或整数，0 开始， . 只能出现一次，保留小数点后保留2位小数。(负数时，模拟拼接负号给后台)
+                    验证可以输入小数或整数，0 开始，只能出现一次，保留小数点后保留2位小数，(负数时，模拟拼接负号给后台)
                 </div>
                 <el-input v-model="state.ruleForm.numberIntegerAndFloat" @input="onVerifyNumberIntegerAndFloat($event)"
                     placeholder="请输入小数或整数进行测试" />
@@ -63,7 +63,7 @@
 
         <el-card shadow="hover" header="金额用 `,` 区分开">
             <el-form-item prop="numberComma">
-                <div class="tools-warp-form-msg">金额添加 `,` 进行区分，便于阅读。{{ state.ruleForm.numberComma }}</div>
+                <div class="tools-warp-form-msg">金额添加 `,` 进行区分，便于阅读 {{ state.ruleForm.numberComma }}</div>
                 <el-input v-model="state.ruleForm.numberComma" @input="onVerifyNumberComma($event)"
                     placeholder="请输入金额进行测试" />
             </el-form-item>
@@ -91,9 +91,123 @@
         <el-card shadow="hover" header="手机号码">
             <el-form-item prop="phone">
                 <div class="tools-warp-form-msg">
-                    验证手机号码 (true: 正确，false: 不正确)。<span class="tools-warp-form-msg-red">{{ state.phone }}</span>
+                    验证手机号码 (true: 正确，false: 不正确) <span class="tools-warp-form-msg-red">{{ state.phone }}</span>
                 </div>
                 <el-input v-model="state.ruleForm.phone" @input="onVerifyPhone($event)" placeholder="请输入手机号进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="登录账号">
+            <el-form-item prop="account">
+                <div class="tools-warp-form-msg">
+                    验证登录账号是否正确，字母开头，允许5-16字节，允许字母数字下划线 (true: 正确，false: 不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.account }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.account" @input="onVerifyAccount($event)" placeholder="请输入账号进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="密码">
+            <el-form-item prop="password">
+                <div class="tools-warp-form-msg">
+                    验证密码是否正确，以字母开头，长度在6~16之间，只能包含字母、数字和下划线 (true: 正确，false: 不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.password }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.password" @input="onVerifyPassword($event)" placeholder="请输入密码进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="强密码">
+            <el-form-item prop="passwordPowerful">
+                <div class="tools-warp-form-msg">
+                    验证强密码是否正确，字母+数字+特殊字符，长度在6-16之间 (true: 正确，false: 不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.passwordPowerful }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.passwordPowerful" @input="onVerifyPasswordPowerful($event)"
+                    placeholder="请输入密码进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="密码强度">
+            <el-form-item prop="passwordStrength">
+                <div class="tools-warp-form-msg">
+                    验证密码强度，返回 强、中、弱 (弱：纯数字，纯字母，纯特殊字符，中：字母+数字，字母+特殊字符，数字+特殊字符，强：字母+数字+特殊字符)
+                    <span class="tools-warp-form-msg-red">{{ state.passwordStrength }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.passwordStrength" @input="onVerifyPasswordStrength($event)"
+                    placeholder="请输入密码进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="IP地址">
+            <el-form-item prop="iPAddress">
+                <div class="tools-warp-form-msg">
+                    验证IP地址是否正确 (true: 正确，false: 不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.iPAddress }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.iPAddress" @input="onVerifyIPAddress($event)"
+                    placeholder="请输入IP地址进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="邮箱">
+            <el-form-item prop="email">
+                <div class="tools-warp-form-msg">
+                    验证邮箱是否正确 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.email }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.email" @input="onVerifyEmail($event)" placeholder="请输入邮箱进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="身份证">
+            <el-form-item prop="idCard">
+                <div class="tools-warp-form-msg">
+                    验证身份证是否正确 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.idCard }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.idCard" @input="onVerifyIDCard($event)" placeholder="请输入身份证进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="姓名">
+            <el-form-item prop="fullName">
+                <div class="tools-warp-form-msg">
+                    验证姓名是否正确，包括少数民族名字 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.fullName }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.fullName" @input="onVerifyFullName($event)" placeholder="请输入姓名进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="邮政编码">
+            <el-form-item prop="postalCode">
+                <div class="tools-warp-form-msg">
+                    验证邮政编码是否正确，不能以 0 开始 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.postalCode }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.postalCode" @input="onVerifyPostalCode($event)"
+                    placeholder="请输入邮政编码进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="url">
+            <el-form-item prop="url">
+                <div class="tools-warp-form-msg">
+                    验证url是否正确 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.url }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.url" @input="onVerifyUrl($event)" placeholder="请输入内容进行测试" />
+            </el-form-item>
+        </el-card>
+
+        <el-card shadow="hover" header="车牌号">
+            <el-form-item prop="carNum">
+                <div class="tools-warp-form-msg">
+                    验证车牌号是否正确 (true: 正确，false:不正确)
+                    <span class="tools-warp-form-msg-red">{{ state.carNum }}</span>
+                </div>
+                <el-input v-model="state.ruleForm.carNum" @input="onVerifyCarNum($event)" placeholder="请输入车牌号进行测试" />
             </el-form-item>
         </el-card>
     </el-form>
@@ -101,10 +215,6 @@
 
 <script setup>
 import * as validate from '@/utils/validate.js' // 验证规则
-const { proxy } = getCurrentInstance() // vue 实例
-const router = useRouter() // router 实例
-const route = useRoute() // 路由参数
-const store = useStore() // vuex 实例
 
 
 // 定义响应式数据>
@@ -112,6 +222,17 @@ const state = reactive({
     text: '世间美好，与你环环相扣，祝你开心每一天！', // 测试匹配文字变色（搜索时）
     cnText: '', // 测试数字转中文大写
     phone: false, // 测试验证手机号码
+    account: false, // 测试登录账号
+    password: false, // 测试密码
+    passwordPowerful: false, // 测试强密码
+    passwordStrength: '', // 测试密码强度
+    iPAddress: false, // 测试IP地址
+    email: false, // 测试优秀
+    idCard: false, // 测试身份证
+    fullName: false, // 测试姓名
+    postalCode: false, // 测试邮政编码
+    url: false, // 测试 url
+    carNum: false, // 测试车牌号
     ruleForm: {
         numberPercentage: '', // 验证百分比（不可以小数）
         numberPercentageFloat: '', // 验证百分比（可以小数）
@@ -124,6 +245,17 @@ const state = reactive({
         textColor: '', // 匹配文字变色（搜索时）
         cnUppercase: '', // 数字转中文大写
         phone: '', // 手机号码
+        account: '', // 登录账号
+        password: '', // 密码
+        passwordPowerful: '', // 强密码
+        passwordStrength: '', // 密码强度
+        iPAddress: '', // IP地址
+        email: '', // 邮箱
+        idCard: '', // 身份证
+        fullName: '', // 姓名
+        postalCode: '', // 邮政编码
+        url: '', // url
+        carNum: '', // 车牌号
     },
     rules: {
         numberPercentage: [ // 验证百分比（不可以小数）
@@ -159,6 +291,39 @@ const state = reactive({
         phone: [ // 手机号码
             { required: true, message: '请输入手机号进行测试', trigger: 'change' }
         ],
+        account: [ // 登录账号
+            { required: true, message: '请输入账号进行测试', trigger: 'change' }
+        ],
+        password: [ // 密码
+            { required: true, message: '请输入密码进行测试', trigger: 'change' }
+        ],
+        passwordPowerful: [ // 强密码
+            { required: true, message: '请输入密码进行测试', trigger: 'change' }
+        ],
+        passwordStrength: [ // 强密码
+            { required: true, message: '请输入密码进行测试', trigger: 'change' }
+        ],
+        iPAddress: [ // 强密码
+            { required: true, message: '请输入IP地址进行测试', trigger: 'change' }
+        ],
+        email: [ // 邮箱
+            { required: true, message: '请输入邮箱进行测试', trigger: 'change' }
+        ],
+        idCard: [ // 身份证
+            { required: true, message: '请输入身份证进行测试', trigger: 'change' }
+        ],
+        fullName: [ // 姓名
+            { required: true, message: '请输入姓名进行测试', trigger: 'change' }
+        ],
+        postalCode: [ // 姓名
+            { required: true, message: '请输入邮政编码进行测试', trigger: 'change' }
+        ],
+        url: [ // url
+            { required: true, message: '请输入内容进行测试', trigger: 'change' }
+        ],
+        carNum: [ // 车牌号
+            { required: true, message: '请输入车牌号进行测试', trigger: 'change' }
+        ]
     }
 })
 
@@ -233,16 +398,80 @@ const onVerifyPhone = (val) => {
 }
 
 
+// 登录账号
+const onVerifyAccount = (val) => {
+    state.ruleForm.account = validate.verifyCnAndSpace(val)
+    state.account = validate.verifyAccount(state.ruleForm.account)
+}
 
 
+// 密码
+const onVerifyPassword = (val) => {
+    state.ruleForm.password = validate.verifyCnAndSpace(val)
+    state.password = validate.verifyPassword(state.ruleForm.password)
+}
 
 
+// 强密码
+const onVerifyPasswordPowerful = (val) => {
+    state.ruleForm.passwordPowerful = validate.verifyCnAndSpace(val)
+    state.passwordPowerful = validate.verifyPasswordPowerful(state.ruleForm.passwordPowerful)
+}
 
 
-// 组件挂载后，此方法执行后，页面显示
-onMounted(() => {
+// 密码强度
+const onVerifyPasswordStrength = (val) => {
+    state.ruleForm.passwordStrength = validate.verifyCnAndSpace(val)
+    state.passwordStrength = validate.verifyPasswordStrength(state.ruleForm.passwordStrength)
+}
 
-})
+
+// IP地址
+const onVerifyIPAddress = (val) => {
+    state.iPAddress = validate.verifyIPAddress(val)
+}
+
+
+// 邮箱
+const onVerifyEmail = (val) => {
+    state.ruleForm.email = validate.verifyCnAndSpace(val)
+    state.email = validate.verifyEmail(state.ruleForm.email)
+}
+
+
+// 身份证
+const onVerifyIDCard = (val) => {
+    state.ruleForm.idCard = validate.verifyCnAndSpace(val)
+    state.idCard = validate.verifyIdCard(state.ruleForm.idCard)
+}
+
+
+// 姓名
+const onVerifyFullName = (val) => {
+    state.ruleForm.fullName = validate.verifyAndSpace(val)
+    state.fullName = validate.verifyFullName(state.ruleForm.fullName)
+}
+
+
+// 邮政编码
+const onVerifyPostalCode = (val) => {
+    state.ruleForm.postalCode = validate.verifiyNumberInteger(val)
+    state.postalCode = validate.verifyPostalCode(state.ruleForm.postalCode)
+}
+
+
+// url
+const onVerifyUrl = (val) => {
+    state.ruleForm.url = validate.verifyAndSpace(val)
+    state.url = validate.verifyUrl(state.ruleForm.url)
+}
+
+
+// 车牌号
+const onVerifyCarNum = (val) => {
+    state.ruleForm.carNum = validate.verifyAndSpace(val)
+    state.carNum = validate.verifyCarNum(state.ruleForm.carNum)
+}
 </script>
 
 <style lang='scss' scoped>
