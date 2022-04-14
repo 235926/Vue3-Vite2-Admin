@@ -2,9 +2,13 @@
     <div class="h100">
         <router-view v-slot="{ Component }">
             <transition :name="layoutConfig.animation" mode="out-in">
-                <keep-alive :include="state.keepAliveNameList">
+                <!-- <keep-alive :include="state.keepAliveNameList">
                     <component :is="Component" :key="state.refreshRouterViewKey" />
-                </keep-alive>
+                </keep-alive> -->
+
+                <div class="w100" :key="state.refreshRouterViewKey">
+                    <component :is="Component" :key="state.refreshRouterViewKey" />
+                </div>
             </transition>
         </router-view>
     </div>

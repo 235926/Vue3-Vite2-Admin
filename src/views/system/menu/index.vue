@@ -1,6 +1,6 @@
 <template>
     <el-card class="system-menu">
-        <div class="system-search mb10">
+        <div class="system-search mb20">
             <el-input placeholder="请输入菜单名称"></el-input>
             <el-button type="primary">
                 <el-icon>
@@ -14,11 +14,8 @@
             </el-button>
         </div>
 
-        <el-table
-            :data="state.menuTableData"
-            row-key="path"
-            :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-        >
+        <el-table :data="state.menuTableData" row-key="path"
+            :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column label="菜单名称" show-overflow-tooltip>
                 <template #default="scope">
                     <svg-icon :name="scope.row.meta.icon" />
@@ -44,24 +41,39 @@
                 </template>
             </el-table-column>
 
+            <el-table-column label="类型" show-overflow-tooltip width="100">
+                <template #default="scope">
+                    <el-tag effect="dark" v-if="scope.row.type === 'menu'">菜单</el-tag>
+                    <el-tag effect="dark" v-if="scope.row.type === 'btn'">按钮</el-tag>
+                </template>
+            </el-table-column>
+
             <el-table-column label="操作" show-overflow-tooltip width="140">
                 <template #default="scope">
-                    <el-button size="small" type="text" @click="addMenu(scope.row)">编辑</el-button>
+                    <el-button size="small" type="text" @click="editMenu(scope.row)">编辑</el-button>
                     <el-button size="small" type="text" @click="delMenu(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
     </el-card>
+
+    <!-- 编辑菜单 -->
+    <EditMenu ref="editMenuRef" />
 </template>
 
 <script setup name="systemMenu">
 import { systemMenu, systemMenuDelete } from '@/api/system.js' // api
+import EditMenu from './component/editMenu.vue' // 编辑菜单
 const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
+
+
+
 // 定义响应式数据
+const editMenuRef = ref(null)
 const state = reactive({
     menuTableData: [], // 菜单列表数据
 })
@@ -76,8 +88,8 @@ const getSystemMenu = () => {
 
 
 // 编辑菜单
-const addMenu = (row) => {
-
+const editMenu = (row) => {
+    editMenuRef.value.openDialog()
 }
 
 

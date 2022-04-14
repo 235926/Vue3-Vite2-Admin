@@ -179,6 +179,39 @@
 
 
 
+/* Dialog 对话框
+------------------------------- */
+.el-dialog {
+    border: 1px solid var(--el-border-color-lighter);
+
+    .el-dialog__header {
+        padding: 20px;
+        margin-right: 0;
+        border-bottom: 1px solid var(--el-border-color-lighter);
+        color: var(--el-text-color-primary) !important;
+    }
+
+    .el-dialog__body {
+        padding: 20px;
+        max-height: calc(100vh - 30vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .el-dialog__footer {
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid var(--el-border-color-lighter);
+    }
+
+    // 关闭按钮
+    .el-dialog__headerbtn {
+        top: 0;
+    }
+}
+
+
+
 /* Drawer 抽屉
 ------------------------------- */
 .el-drawer {

@@ -6,6 +6,7 @@
             "path": "/dashboard",
             "name": "dashboard",
             "component": "dashboard/index",
+            "type": "menu",
             "meta": {
                 "title": "主页",
                 "isLink": "",
@@ -23,7 +24,7 @@
             "path": "/system",
             "name": "system",
             "component": "routerView/parent",
-            "redirect": "/system/menu",
+            "type": "menu",
             "meta": {
                 "title": "系统设置",
                 "isLink": "",
@@ -41,6 +42,7 @@
                     "path": "/system/menu",
                     "name": "systemMenu",
                     "component": "system/menu/index",
+                    "type": "menu",
                     "meta": {
                         "title": "菜单管理",
                         "isLink": "",
@@ -58,6 +60,7 @@
                     "path": "/system/role",
                     "name": "systemRole",
                     "component": "system/role/index",
+                    "type": "menu",
                     "meta": {
                         "title": "角色管理",
                         "isLink": "",
@@ -75,6 +78,7 @@
                     "path": "/system/user",
                     "name": "systemUser",
                     "component": "system/user/index",
+                    "type": "menu",
                     "meta": {
                         "title": "用户管理",
                         "isLink": "",
@@ -94,6 +98,7 @@
             "path": "/icons",
             "name": "icons",
             "component": "icons/index",
+            "type": "menu",
             "meta": {
                 "title": "图标列表",
                 "isLink": "",
@@ -111,6 +116,7 @@
             "path": "/personal",
             "name": "personal",
             "component": "personal/index",
+            "type": "menu",
             "meta": {
                 "title": "个人中心",
                 "isLink": "",
@@ -128,6 +134,7 @@
                     "path": "/personal/message-more",
                     "name": "messageMore",
                     "component": "personal/message-more/index",
+                    "type": "menu",
                     "meta": {
                         "title": "更多消息",
                         "isLink": "",
@@ -145,6 +152,7 @@
                     "path": "/personal/message-details",
                     "name": "messageDetails",
                     "component": "personal/message-details/index",
+                    "type": "menu",
                     "meta": {
                         "title": "消息详情",
                         "isLink": "",
@@ -164,6 +172,7 @@
             "path": "/color",
             "name": "color",
             "component": "color/index",
+            "type": "menu",
             "meta": {
                 "title": "颜色变量",
                 "isLink": "",
@@ -178,43 +187,10 @@
             }
         },
         {
-            "path": "/link",
-            "name": "layoutLinkView",
-            "component": "routerView/link",
-            "meta": {
-                "title": "外链",
-                "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
-                "isHidden": false,
-                "isKeepAlive": false,
-                "isAffix": false,
-                "isIframe": false,
-                "roles": [
-                    "admin"
-                ],
-                "icon": "link"
-            }
-        },
-        {
-            "path": "/iframe",
-            "name": "layoutIfameView",
-            "component": "routerView/iframe",
-            "meta": {
-                "title": "内嵌 iframe",
-                "isLink": "https://nodejs.org/zh-cn/",
-                "isHidden": false,
-                "isKeepAlive": false,
-                "isAffix": false,
-                "isIframe": true,
-                "roles": [
-                    "admin"
-                ],
-                "icon": "iframe"
-            }
-        },
-        {
             "path": "/tools",
             "name": "tools",
             "component": "routerView/parent",
+            "type": "menu",
             "meta": {
                 "title": "工具类合集",
                 "isLink": "",
@@ -232,6 +208,7 @@
                     "path": "/tools/validate",
                     "name": "toolsValidate",
                     "component": "tools/validate",
+                    "type": "menu",
                     "meta": {
                         "title": "验证规则",
                         "isLink": "",
@@ -246,6 +223,42 @@
                     }
                 }
             ]
+        },
+        {
+            "path": "/link",
+            "name": "layoutLinkView",
+            "component": "routerView/link",
+            "type": "menu",
+            "meta": {
+                "title": "外链",
+                "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
+                "isHidden": false,
+                "isKeepAlive": false,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "link"
+            }
+        },
+        {
+            "path": "/iframe",
+            "name": "layoutIfameView",
+            "component": "routerView/iframe",
+            "type": "menu",
+            "meta": {
+                "title": "内嵌 iframe",
+                "isLink": "https://nodejs.org/zh-cn/",
+                "isHidden": false,
+                "isKeepAlive": false,
+                "isAffix": false,
+                "isIframe": true,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "iframe"
+            }
         }
     ]
 }

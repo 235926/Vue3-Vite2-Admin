@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="state.dialogVisible" title="Tips" width="800px">
+    <el-dialog v-model="state.isShowDialog" title="Tips" width="800px">
         <span>This is a message</span>
     </el-dialog>
 </template>
@@ -13,7 +13,7 @@ const store = useStore() // vuex 实例
 
 // 定义响应式数据>
 const state = reactive({
-    dialogVisible: false, // 弹窗状态
+    isShowDialog: false, // 弹窗状态
 })
 
 
@@ -22,7 +22,7 @@ onMounted(() => {
     // 监听布局配置弹窗点击打开
     nextTick(() => {
         proxy.mittBus.on('openLayoutSetings', () => {
-            state.dialogVisible = true
+            state.isShowDialog = true
         })
     })
 })
