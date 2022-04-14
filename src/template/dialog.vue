@@ -1,11 +1,6 @@
 <template>
-    <el-dialog v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
-        <template #title>
-            <span class="dialog-title">Tips</span>
-        </template>
-        <template #default>
-            <div class="dialog-main">123</div>
-        </template>
+    <el-dialog title="Tips" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
+        <div class="dialog-main">123</div>
         <template #footer>
             <div class="dialog-footer">footer</div>
         </template>

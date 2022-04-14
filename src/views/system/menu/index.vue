@@ -89,7 +89,7 @@ const getSystemMenu = () => {
 
 // 编辑菜单
 const editMenu = (row) => {
-    editMenuRef.value.openDialog()
+    editMenuRef.value.openDialog(row)
 }
 
 
