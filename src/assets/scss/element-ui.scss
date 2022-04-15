@@ -74,9 +74,15 @@
 .el-form {
     .el-form-item {
         .el-form-item__content {
-            .el-select {
+
+            .el-select,
+            .el-input-number {
                 flex: 1;
             }
+        }
+
+        >&:last-of-type {
+            margin-bottom: 0;
         }
     }
 }
@@ -92,6 +98,48 @@
         }
     }
 }
+
+
+
+/* Input Number 数字输入框
+------------------------------- */
+.el-input-number {
+
+    // 按钮位置 - 默认
+    .el-input {
+        .el-input__inner {
+            padding-left: 0 !important;
+        }
+    }
+
+    // 按钮位置 - right
+    &.is-controls-right {
+        .el-input {
+            .el-input__inner {
+                padding-right: 33px !important;
+            }
+        }
+
+        // large
+        &.el-input-number--large {
+            .el-input.el-input--large {
+                .el-input__inner {
+                    padding-right: 41px !important;
+                }
+            }
+        }
+
+        // large
+        &.el-input-number--small {
+            .el-input.el-input--small {
+                .el-input__inner {
+                    padding-right: 25px !important;
+                }
+            }
+        }
+    }
+}
+
 
 
 
@@ -207,10 +255,14 @@
     .el-dialog__footer {
         padding: 0 20px;
         height: 55px;
-        text-align: center;
         border-top: 1px solid var(--el-border-color-lighter);
         display: flex;
         align-items: center;
+        justify-content: center;
+
+        .el-button {
+            min-width: 80px;
+        }
     }
 
     // 关闭按钮

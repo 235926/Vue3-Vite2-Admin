@@ -7,7 +7,7 @@
                     <Search />
                 </el-icon>查询
             </el-button>
-            <el-button type="success">
+            <el-button type="success" @click="onOpenAddMenu">
                 <el-icon>
                     <FolderAdd />
                 </el-icon>新增菜单
@@ -41,21 +41,25 @@
                 </template>
             </el-table-column>
 
-            <el-table-column label="类型" show-overflow-tooltip width="100">
+            <el-table-column label="菜单类型" show-overflow-tooltip width="150">
                 <template #default="scope">
-                    <el-tag effect="dark" v-if="scope.row.type === 'menu'">菜单</el-tag>
-                    <el-tag effect="dark" v-if="scope.row.type === 'btn'">按钮</el-tag>
+                    <el-tag effect="dark" v-if="scope.row.menuType === 'menu'">菜单</el-tag>
+                    <el-tag effect="dark" v-if="scope.row.menuType === 'btn'">按钮</el-tag>
                 </template>
             </el-table-column>
 
-            <el-table-column label="操作" show-overflow-tooltip width="140">
+            <el-table-column label="操作" show-overflow-tooltip width="150">
                 <template #default="scope">
-                    <el-button size="small" type="text" @click="editMenu(scope.row)">编辑</el-button>
-                    <el-button size="small" type="text" @click="delMenu(scope.row)">删除</el-button>
+                    <el-button type="text" @click="onOpenAddMenu">新增</el-button>
+                    <el-button type="text" @click="editMenu(scope.row)">编辑</el-button>
+                    <el-button type="text" @click="delMenu(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
     </el-card>
+
+    <!-- 新增菜单 -->
+    <addMenu ref="addMenuRef" />
 
     <!-- 编辑菜单 -->
     <EditMenu ref="editMenuRef" />
@@ -63,6 +67,7 @@
 
 <script setup name="systemMenu">
 import { systemMenu, systemMenuDelete } from '@/api/system.js' // api
+import addMenu from './component/addMenu.vue' // 新增菜单
 import EditMenu from './component/editMenu.vue' // 编辑菜单
 const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
@@ -73,9 +78,11 @@ const store = useStore() // vuex 实例
 
 
 // 定义响应式数据
+const addMenuRef = ref(null)
 const editMenuRef = ref(null)
 const state = reactive({
     menuTableData: [], // 菜单列表数据
+    editRuleForm: {}
 })
 
 
@@ -84,6 +91,12 @@ const getSystemMenu = () => {
     systemMenu().then(res => {
         state.menuTableData = res.data
     })
+}
+
+
+// 打开新增菜单弹窗
+const onOpenAddMenu = () => {
+    addMenuRef.value.openDialog()
 }
 
 

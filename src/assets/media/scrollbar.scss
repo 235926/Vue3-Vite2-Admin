@@ -1,5 +1,6 @@
 @import './variable.scss'; // 栅格布局（媒体查询变量）
 
+
 /* 页面宽度小于768px
 ------------------------------- */
 @media screen and (max-width: $sm) {
@@ -25,7 +26,8 @@
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(144, 147, 153, 0.5);
+        // background-color: rgba(144, 147, 153, 0.5);
+        background-color: var(--el-color-primary);
     }
 
     // element plus scrollbar
@@ -65,6 +67,7 @@
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(144, 147, 153, 0.5);
+        // background-color: rgba(144, 147, 153, 0.5);
+        background-color: var(--el-color-primary);
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="Tips" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
+    <el-dialog title="添加菜单" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
         <div class="dialog-main">123</div>
         <template #footer>
             <div class="dialog-footer">

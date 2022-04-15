@@ -115,7 +115,7 @@ body,
 
 /* 字体大小全局样式
 ------------------------------- */
-@for $i from 10 through 32 {
+@for $i from 12 through 32 {
     .font#{$i} {
         font-size: #{$i}px !important;
     }
@@ -125,7 +125,7 @@ body,
 
 /* 外边距、内边距全局样式
 ------------------------------- */
-@for $i from 1 through 35 {
+@for $i from 0 through 35 {
     .mt#{$i} {
         margin-top: #{$i}px !important;
     }

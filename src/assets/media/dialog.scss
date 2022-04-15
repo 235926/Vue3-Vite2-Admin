@@ -1,0 +1,14 @@
+@import './variable.scss'; // 栅格布局（媒体查询变量）
+
+
+/* 页面宽度小于800px
+------------------------------- */
+@media screen and (max-width: $sm) {
+    .el-dialog {
+        width: 90% !important;
+    }
+
+    .el-dialog.is-fullscreen {
+        width: 100% !important;
+    }
+}

@@ -6,7 +6,7 @@
             "path": "/dashboard",
             "name": "dashboard",
             "component": "views/dashboard/index",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "主页",
                 "isLink": "",
@@ -24,7 +24,7 @@
             "path": "/system",
             "name": "system",
             "component": "layout/routerView/parent",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "系统设置",
                 "isLink": "",
@@ -42,7 +42,7 @@
                     "path": "/system/menu",
                     "name": "systemMenu",
                     "component": "views/system/menu/index",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "菜单管理",
                         "isLink": "",
@@ -60,7 +60,7 @@
                     "path": "/system/role",
                     "name": "systemRole",
                     "component": "views/system/role/index",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "角色管理",
                         "isLink": "",
@@ -78,7 +78,7 @@
                     "path": "/system/user",
                     "name": "systemUser",
                     "component": "views/system/user/index",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "用户管理",
                         "isLink": "",
@@ -98,7 +98,7 @@
             "path": "/icons",
             "name": "icons",
             "component": "views/icons/index",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "图标列表",
                 "isLink": "",
@@ -116,7 +116,7 @@
             "path": "/personal",
             "name": "personal",
             "component": "views/personal/index",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "个人中心",
                 "isLink": "",
@@ -134,7 +134,7 @@
                     "path": "/personal/message-more",
                     "name": "messageMore",
                     "component": "views/personal/message-more/index",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "更多消息",
                         "isLink": "",
@@ -152,7 +152,7 @@
                     "path": "/personal/message-details",
                     "name": "messageDetails",
                     "component": "views/personal/message-details/index",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "消息详情",
                         "isLink": "",
@@ -172,7 +172,7 @@
             "path": "/color",
             "name": "color",
             "component": "views/color/index",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "个人中心",
                 "isLink": "",
@@ -190,7 +190,7 @@
             "path": "/tools",
             "name": "tools",
             "component": "layout/routerView/parent",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "工具类合集",
                 "isLink": "",
@@ -208,7 +208,7 @@
                     "path": "/tools/validate",
                     "name": "toolsValidate",
                     "component": "tools/validate",
-                    "type": "menu",
+                    "menuType": "menu",
                     "meta": {
                         "title": "验证规则",
                         "isLink": "",
@@ -228,7 +228,7 @@
             "path": "/link",
             "name": "layoutLinkView",
             "component": "layout/routerView/link",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "外链",
                 "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
@@ -246,7 +246,7 @@
             "path": "/iframe",
             "name": "layoutIfameView",
             "component": "layout/routerView/iframe",
-            "type": "menu",
+            "menuType": "menu",
             "meta": {
                 "title": "内嵌 iframe",
                 "isLink": "https://nodejs.org/zh-cn/",
