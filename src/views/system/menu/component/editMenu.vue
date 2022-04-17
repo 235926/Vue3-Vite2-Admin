@@ -51,7 +51,7 @@
 
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="菜单图标">
-                        <IconSelector />
+                        <IconSelector v-model="state.ruleForm.meta.icon" />
                     </el-form-item>
                 </el-col>
 
@@ -63,8 +63,7 @@
 
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="链接地址">
-                        <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）"
-                            :disabled="!state.ruleForm.isLink" clearable>
+                        <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）" clearable>
                         </el-input>
                     </el-form-item>
                 </el-col>
@@ -112,16 +111,6 @@
                 </el-col>
 
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="是否外链" class="mb0">
-                        <el-radio-group v-model="state.ruleForm.isLink" :disabled="state.ruleForm.meta.isIframe"
-                            class="radio-center">
-                            <el-radio :label="true" border>是</el-radio>
-                            <el-radio :label="false" border>否</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
-
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="是否内嵌" class="mb0">
                         <el-radio-group v-model="state.ruleForm.meta.isIframe" class="radio-center"
                             @change="onSelectIframeChange">
@@ -159,7 +148,6 @@ const state = reactive({
         menuType: 'menu', // 菜单类型
         name: '', // 路由名称
         component: '', // 组件路径
-        isLink: false, // 是否外链
         menuSort: 0, // 菜单排序
         path: '', // 路由路径
         redirect: '', // 路由重定向，有子集 children 时
@@ -219,8 +207,8 @@ const getMenuData = (routes) => {
 
 // 是否内嵌下拉改变
 const onSelectIframeChange = () => {
-    if (state.ruleForm.meta.isIframe) state.ruleForm.isLink = true
-    else state.ruleForm.isLink = false
+    // if (state.ruleForm.meta.isIframe) state.ruleForm.isLink = true
+    // else state.ruleForm.isLink = false
 }
 
 
