@@ -33,7 +33,8 @@
         </el-form-item>
 
         <el-form-item class="login-animation4">
-            <el-button type="primary" round :loading="state.loading" class="login-content-submit" @click="submitForm">登录
+            <el-button type="primary" round :loading="state.loading" class="login-content-submit" @click="submitForm">
+                登录
             </el-button>
         </el-form-item>
     </el-form>
@@ -56,20 +57,15 @@ const state = reactive({
     ruleForm: {
         username: 'admin', // 用户名
         password: '123456', // 用户密码
-        code: '1234', // 验证码
+        code: '1234' // 验证码
     },
-    rules: { // 表单验证规则
-        username: [
-            { required: true, message: '账户不能为空', trigger: 'blur' }
-        ],
-        password: [
-            { required: true, message: '密码不能为空', trigger: 'blur' }
-        ],
-        code: [
-            { required: true, message: '验证码不能为空', trigger: 'blur' }
-        ]
+    rules: {
+        // 表单验证规则
+        username: [{ required: true, message: '账户不能为空', trigger: 'blur' }],
+        password: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
+        code: [{ required: true, message: '验证码不能为空', trigger: 'blur' }]
     },
-    loading: false, // 加载状态
+    loading: false // 加载状态
 })
 
 
@@ -84,29 +80,31 @@ const submitForm = () => {
     let params = {
         time: new Date().getTime()
     }
-    loginForm.value.validate(async (valid) => {
+    loginForm.value.validate(async valid => {
         if (valid) {
             state.loading = true
 
             // 调用登录接口，获取用户信息
-            await login(Object.assign(state.ruleForm, params)).then(res => {
-                store.dispatch('user/setToken', res.token)
-                store.dispatch('user/setUserInfo', res.userInfo)
+            await login(Object.assign(state.ruleForm, params))
+                .then(res => {
+                    store.dispatch('user/setToken', res.token)
+                    store.dispatch('user/setUserInfo', res.userInfo)
 
-                // 1、请注意执行顺序(用户信息已经存储到vuex)
-                if (!store.getters.layoutConfig?.isRequestRoutes) {
-                    // 前端控制路由，2、请注意执行顺序
-                    initFrontEndControlRoutes()
-                    signInSuccess()
-                } else {
-                    // 添加完动态路由，再进行 router 跳转，否则可能报错 No match found for location with path "/"
-                    initBackEndControlRoutes()
-                    // 执行完 initBackEndControlRoutes，再执行 signInSuccess
-                    signInSuccess()
-                }
-            }).catch(error => {
-                state.loading = false
-            })
+                    // 1、请注意执行顺序(用户信息已经存储到vuex)
+                    if (!store.getters.layoutConfig?.isRequestRoutes) {
+                        // 前端控制路由，2、请注意执行顺序
+                        initFrontEndControlRoutes()
+                        signInSuccess()
+                    } else {
+                        // 添加完动态路由，再进行 router 跳转，否则可能报错 No match found for location with path "/"
+                        initBackEndControlRoutes()
+                        // 执行完 initBackEndControlRoutes，再执行 signInSuccess
+                        signInSuccess()
+                    }
+                })
+                .catch(error => {
+                    state.loading = false
+                })
         }
     })
 }
@@ -122,7 +120,8 @@ const signInSuccess = () => {
     if (route.query?.redirect) {
         router.push({
             path: route.query?.redirect,
-            query: Object.keys(route.query?.params).length > 0 ? JSON.parse(route.query?.params) : '',
+            query:
+                Object.keys(route.query?.params).length > 0 ? JSON.parse(route.query?.params) : ''
         })
     } else {
         router.push('/')
@@ -135,7 +134,7 @@ const signInSuccess = () => {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .login-content-form {
     margin-top: 20px;
 

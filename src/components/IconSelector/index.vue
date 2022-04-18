@@ -1,28 +1,32 @@
 <template>
-    <el-dropdown ref="dropdownRef" trigger="click" class="icon-selector" popper-class="icon-selector-dropdown">
-        <el-input ref="inputWidthRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
-            @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
-            <template #prepend>
-                <svg-icon :name="state.svgValue" />
-            </template>
-        </el-input>
-        <template #dropdown>
-            <div :style="{ width: `${state.inputWidth}px` }" class="icon-selector-dropdown-wrap">
-                <el-row :gutter="10">
-                    <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" v-for="(item, index) in svgIcons" :key="index"
-                        @click="onColClick(item)">
+    <el-popover ref="popoverRef" :width="`${state.inputWidth}px`" placement="bottom"
+        v-model:visible="state.popoverVisible" popper-class="icon-selector-popper" @click="func($event)">
+        <template #reference>
+            <el-input ref="inputWidthRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
+                @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
+                <template #prepend>
+                    <svg-icon class="font18" :name="state.svgValue" />
+                </template>
+            </el-input>
+        </template>
+        <div class="icon-selector-popover-wrap" v-show="state.popoverVisible">
+            <el-scrollbar class="scrollbar-x">
+                <el-row :gutter="10" v-if="onSheetsFilterList.length >= 0" class="row-gap10 padding10">
+                    <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" v-for="(item, index) in onSheetsFilterList"
+                        :key="index" @click="onColClick(item)">
                         <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
                             <svg-icon :name="item" />
                         </span>
                     </el-col>
                 </el-row>
-            </div>
-        </template>
-    </el-dropdown>
+                <el-empty description="无相关图标" v-if="onSheetsFilterList.length <= 0" />
+            </el-scrollbar>
+        </div>
+    </el-popover>
 </template>
 
 <script setup name="iconSelector">
-import svgIcons from "@/views/icons/component/svg-icon.js" // svg 图标集合
+import svgIcons from '@/views/icons/component/svg-icon.js' // svg 图标集合
 
 
 // props
@@ -34,22 +38,32 @@ const props = defineProps({
     // 输入框占位文本
     placeholder: {
         type: String,
-        default: () => '请输入内容搜索图标或者选择图标',
-    },
-
+        default: () => '请输入内容搜索图标或者选择图标'
+    }
 })
 
 
 // emit
 const emit = defineEmits(['update:modelValue', 'get', 'clear'])
 // 定义响应式数据>
-const dropdownRef = ref() // dropdown 本身
+const popoverRef = ref() // popover 本身
 const inputWidthRef = ref() // input ref
 const state = reactive({
+    popoverVisible: false, // 弹出框状态
     svgValue: '', // svg 图标名称
     inputValue: '', // input 输入的内容
     inputPlaceholder: '', // placeholder 值
-    inputWidth: 0, // input 宽度
+    inputWidth: 0 // input 宽度
+})
+
+
+// 图标搜索及图标数据显示
+const onSheetsFilterList = computed(() => {
+    if (!state.inputValue) return svgIcons
+    let search = state.inputValue.trim().toLowerCase()
+    return svgIcons.filter((item) => {
+        if (item.toLowerCase().indexOf(search) !== -1) return item
+    })
 })
 
 
@@ -64,7 +78,7 @@ const initModeValue = () => {
 // 获取 input 的宽度
 const getInputWidth = () => {
     nextTick(() => {
-        state.inputWidth = inputWidthRef.value.$el.offsetWidth
+        state.inputWidth = inputWidthRef.value?.$el.offsetWidth
     })
 }
 
@@ -79,6 +93,7 @@ const initResize = () => {
 
 // 处理 input 获取焦点时，modelValue 有值时，改变 input 的 placeholder 值
 const onInputValueFocus = () => {
+    state.popoverVisible = true
     if (!props.modelValue) return false
     state.inputValue = ''
 }
@@ -86,15 +101,17 @@ const onInputValueFocus = () => {
 
 // 处理 input 失去焦点时
 const onInputValueBlur = () => {
-    state.inputValue = ''
+    setTimeout(() => {
+        let icon = svgIcons.filter((icon) => icon === state.inputValue)
+        if (icon.length <= 0) state.inputValue = ''
+    }, 300)
 }
 
 
 // 清空当前点击的 icon 图标
 const onInputValueClear = () => {
-    console.log(1)
-}
 
+}
 
 
 // 获取当前点击的 icon 图标
@@ -104,17 +121,16 @@ const onColClick = (item) => {
     // svg 图标名称
     state.svgValue = item
 
-    // input placeholder 
+    // input placeholder
     state.inputPlaceholder = item
 
-    // 关闭 dropdown 本身
-    dropdownRef.value.handleClose()
+    // 关闭 popover 本身
+    state.popoverVisible = false
 
     // 更新 modelValue
     emit('get', state.svgValue)
     emit('update:modelValue', state.svgValue)
 }
-
 
 
 // 组件挂载后，此方法执行后，页面显示
@@ -131,7 +147,7 @@ watch(() => props.modelValue, () => {
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .icon-selector {
     flex: 1;
 
@@ -139,18 +155,27 @@ watch(() => props.modelValue, () => {
         flex: 1;
     }
 
-    .svg-icon {
-        font-size: 18px;
+    .icon-selector-search {
+        position: relative;
+
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
 </style>
 
 <style lang="scss">
 // 下拉框弹出窗的样式，不要加 scoped
-.icon-selector-dropdown {
-    .icon-selector-dropdown-wrap {
-        padding: 10px;
+.icon-selector-popper {
+    padding: 0 !important;
+
+    .icon-selector-popover-wrap {
         height: 260px;
+        overflow: hidden;
 
         .svg-wrap {
             display: flex;
@@ -159,7 +184,7 @@ watch(() => props.modelValue, () => {
             border: 1px solid #dcdfe6;
             padding: 10px;
             border-radius: 5px;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
 
             .svg-icon {
                 font-size: 18px;

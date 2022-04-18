@@ -4,9 +4,11 @@
             <el-row :gutter="40">
                 <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                     <el-form-item label="上级菜单">
-                        <el-cascader :options="state.menuData"
-                            :props="{ checkStrictly: true, value: 'path', label: 'title' }" placeholder="请选择上级菜单"
-                            clearable class="w100" v-model="state.ruleForm.menuSuperior">
+                        <el-cascader :options="state.menuData" :props="{
+                            checkStrictly: true,
+                            value: 'path',
+                            label: 'title'
+                        }" placeholder="请选择上级菜单" clearable class="w100" v-model="state.ruleForm.menuSuperior">
                             <template #default="{ node, data }">
                                 <span>{{ data.title }}</span>
                                 <span v-if="!node.isLeaf">({{ data.children.length }})</span>
@@ -26,8 +28,7 @@
 
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="菜单名称">
-                        <el-input v-model="state.ruleForm.meta.title" placeholder="请输入菜单名称" clearable>
-                        </el-input>
+                        <el-input v-model="state.ruleForm.meta.title" placeholder="请输入菜单名称" clearable></el-input>
                     </el-form-item>
                 </el-col>
 
@@ -63,8 +64,8 @@
 
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="链接地址">
-                        <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）" clearable>
-                        </el-input>
+                        <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）" clearable
+                            :disabled="!state.isLink && !state.ruleForm.meta.isIframe"></el-input>
                     </el-form-item>
                 </el-col>
 
@@ -110,6 +111,16 @@
                     </el-form-item>
                 </el-col>
 
+                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" >
+                    <el-form-item label="是否外链" class="mb0">
+                        <el-radio-group v-model="state.isLink" :disabled="state.ruleForm.meta.isIframe"
+                            class="radio-center">
+                            <el-radio :label="true" border>是</el-radio>
+                            <el-radio :label="false" border>否</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                </el-col>
+
                 <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
                     <el-form-item label="是否内嵌" class="mb0">
                         <el-radio-group v-model="state.ruleForm.meta.isIframe" class="radio-center"
@@ -143,7 +154,9 @@ const store = useStore() // vuex 实例
 const state = reactive({
     isShowDialog: false, // 弹窗状态
     menuData: [], // 上级菜单列表
-    ruleForm: { // 表单数据
+    isLink: false, // 是否外链
+    ruleForm: {
+        // 表单数据
         menuSuperior: [], // 上级菜单
         menuType: 'menu', // 菜单类型
         name: '', // 路由名称
@@ -159,16 +172,25 @@ const state = reactive({
             isAffix: false, // 是否固定
             isLink: '', // 外链/内嵌时链接地址（http:xxx.com），开启外链条件，`1、isLink:true 2、链接地址不为空`
             isIframe: false, // 是否内嵌，开启条件，`1、isIframe:true 2、链接地址不为空`
-            roles: '', // 权限标识，取角色管理
-        },
-    },
+            roles: '' // 权限标识，取角色管理
+        }
+    }
 })
 
 
 // 打开弹窗
-const openDialog = (row) => {
+const openDialog = row => {
     // 不使用深拷贝的话，v-model会修改你表单的数据,然后你的表单和你的tree用的是同一个数据结构
     state.ruleForm = Object.assign(state.ruleForm, deepClone(row))
+
+    // 判断 state.isLink 的状态
+    if (state.ruleForm.meta.isIframe && state.ruleForm.meta.isLink !== '') {
+        state.isLink = true
+    } else if (!state.ruleForm.meta.isIframe && state.ruleForm.meta.isLink !== '') {
+        state.isLink = true
+    } else if (!state.ruleForm.meta.isIframe && state.ruleForm.meta.isLink === '') {
+        state.isLink = false
+    }
     state.isShowDialog = true
 }
 
@@ -187,13 +209,12 @@ const onCancel = () => {
 
 // 新增
 const onSubmit = () => {
-    console.log(state.ruleForm)
-    // closeDialog()
+    closeDialog()
 }
 
 
 // 获取 vuex 中的路由
-const getMenuData = (routes) => {
+const getMenuData = routes => {
     let arr = [] // 重新变量，把 title 遍历出来
     routes.map(val => {
         val['title'] = val.meta.title
@@ -207,8 +228,8 @@ const getMenuData = (routes) => {
 
 // 是否内嵌下拉改变
 const onSelectIframeChange = () => {
-    // if (state.ruleForm.meta.isIframe) state.ruleForm.isLink = true
-    // else state.ruleForm.isLink = false
+    if (state.ruleForm.meta.isIframe) state.isLink = true
+    else state.isLink = false
 }
 
 
@@ -224,5 +245,5 @@ defineExpose({
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 </style>

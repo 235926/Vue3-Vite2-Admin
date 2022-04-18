@@ -65,6 +65,12 @@
             opacity: 1;
         }
     }
+
+    &.scrollbar-x {
+        .el-scrollbar__view {
+            overflow-x: hidden;
+        }
+    }
 }
 
 
@@ -325,4 +331,20 @@
     .el-drawer__body {
         padding: 0;
     }
+}
+
+
+
+/* Empty 空状态
+------------------------------- */
+.el-empty {
+    padding: 0;
+}
+
+
+
+/* Popover 气泡卡片
+------------------------------- */
+.el-popper {
+    padding: 0;
 }

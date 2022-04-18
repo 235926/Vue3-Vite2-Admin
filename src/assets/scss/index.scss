@@ -142,6 +142,10 @@ body,
         margin-left: #{$i}px !important;
     }
 
+    .margin#{$i} {
+        margin: #{$i}px !important;
+    }
+
     .pt#{$i} {
         padding-top: #{$i}px !important;
     }
@@ -156,5 +160,13 @@ body,
 
     .pl#{$i} {
         padding-left: #{$i}px !important;
+    }
+
+    .padding#{$i} {
+        padding: #{$i}px !important;
+    }
+
+    .row-gap#{$i} {
+        row-gap: #{$i}px !important;
     }
 }
