@@ -104,6 +104,7 @@ const onInputValueBlur = () => {
     setTimeout(() => {
         let icon = svgIcons.filter((icon) => icon === state.inputValue)
         if (icon.length <= 0) state.inputValue = ''
+        state.popoverVisible = false
     }, 300)
 }
 

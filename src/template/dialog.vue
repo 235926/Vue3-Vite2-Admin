@@ -1,6 +1,8 @@
 <template>
     <el-dialog title="Tips" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
-        <div class="dialog-main">123</div>
+        <el-scrollbar class="scrollbar-x">
+            <div class="dialog-main">123</div>
+        </el-scrollbar>
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="onCancel">取 消</el-button>

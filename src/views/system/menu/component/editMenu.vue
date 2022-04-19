@@ -1,137 +1,139 @@
 <template>
     <el-dialog title="修改菜单" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="900px">
-        <el-form :model="state.ruleForm" label-width="80px">
-            <el-row :gutter="40">
-                <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                    <el-form-item label="上级菜单">
-                        <el-cascader :options="state.menuData" :props="{
-                            checkStrictly: true,
-                            value: 'path',
-                            label: 'title'
-                        }" placeholder="请选择上级菜单" clearable class="w100" v-model="state.ruleForm.menuSuperior">
-                            <template #default="{ node, data }">
-                                <span>{{ data.title }}</span>
-                                <span v-if="!node.isLeaf">({{ data.children.length }})</span>
-                            </template>
-                        </el-cascader>
-                    </el-form-item>
-                </el-col>
+        <el-scrollbar class="scrollbar-x">
+            <el-form :model="state.ruleForm" label-width="80px">
+                <el-row :gutter="40">
+                    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                        <el-form-item label="上级菜单">
+                            <el-cascader :options="state.menuData" :props="{
+                                checkStrictly: true,
+                                value: 'path',
+                                label: 'title'
+                            }" placeholder="请选择上级菜单" clearable class="w100" v-model="state.ruleForm.menuSuperior">
+                                <template #default="{ node, data }">
+                                    <span>{{ data.title }}</span>
+                                    <span v-if="!node.isLeaf">({{ data.children.length }})</span>
+                                </template>
+                            </el-cascader>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                    <el-form-item label="菜单类型">
-                        <el-radio-group v-model="state.ruleForm.menuType">
-                            <el-radio label="menu" border>菜单</el-radio>
-                            <el-radio label="btn" border>按钮</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                        <el-form-item label="菜单类型">
+                            <el-radio-group v-model="state.ruleForm.menuType">
+                                <el-radio label="menu" border>菜单</el-radio>
+                                <el-radio label="btn" border>按钮</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="菜单名称">
-                        <el-input v-model="state.ruleForm.meta.title" placeholder="请输入菜单名称" clearable></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="菜单名称">
+                            <el-input v-model="state.ruleForm.meta.title" placeholder="请输入菜单名称" clearable></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="路由名称">
-                        <el-input v-model="state.ruleForm.name" placeholder="路由中的 name 值" clearable></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="路由名称">
+                            <el-input v-model="state.ruleForm.name" placeholder="路由中的 name 值" clearable></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="路由路径">
-                        <el-input v-model="state.ruleForm.path" placeholder="路由中的 path 值" clearable></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="路由路径">
+                            <el-input v-model="state.ruleForm.path" placeholder="路由中的 path 值" clearable></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="重定向">
-                        <el-input v-model="state.ruleForm.redirect" placeholder="请输入路由重定向" clearable></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="重定向">
+                            <el-input v-model="state.ruleForm.redirect" placeholder="请输入路由重定向" clearable></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="菜单图标">
-                        <IconSelector v-model="state.ruleForm.meta.icon" />
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="菜单图标">
+                            <IconSelector v-model="state.ruleForm.meta.icon" />
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="组件路径">
-                        <el-input v-model="state.ruleForm.component" placeholder="组件路径" clearable></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="组件路径">
+                            <el-input v-model="state.ruleForm.component" placeholder="组件路径" clearable></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="链接地址">
-                        <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）" clearable
-                            :disabled="!state.isLink && !state.ruleForm.meta.isIframe"></el-input>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="链接地址">
+                            <el-input v-model="state.ruleForm.meta.isLink" placeholder="外链/内嵌时链接地址（http:xxx.com）"
+                                clearable :disabled="!state.isLink && !state.ruleForm.meta.isIframe"></el-input>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="权限标识">
-                        <el-select v-model="state.ruleForm.meta.roles" multiple placeholder="取角色管理" clearable>
-                            <el-option label="admin" value="admin"></el-option>
-                            <el-option label="common" value="common"></el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="权限标识">
+                            <el-select v-model="state.ruleForm.meta.roles" multiple placeholder="取角色管理" clearable>
+                                <el-option label="admin" value="admin"></el-option>
+                                <el-option label="common" value="common"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="菜单排序">
-                        <el-input-number v-model="state.ruleForm.menuSort" :min="0" placeholder="请输入排序" />
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="菜单排序">
+                            <el-input-number v-model="state.ruleForm.menuSort" :min="0" placeholder="请输入排序" />
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="是否隐藏">
-                        <el-radio-group v-model="state.ruleForm.meta.isHidden" class="radio-center">
-                            <el-radio :label="true" border>隐藏</el-radio>
-                            <el-radio :label="false" border>不隐藏</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="是否隐藏">
+                            <el-radio-group v-model="state.ruleForm.meta.isHidden" class="radio-center">
+                                <el-radio :label="true" border>隐藏</el-radio>
+                                <el-radio :label="false" border>不隐藏</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="页面缓存">
-                        <el-radio-group v-model="state.ruleForm.meta.isKeepAlive" class="radio-center">
-                            <el-radio :label="true" border>缓存</el-radio>
-                            <el-radio :label="false" border>不缓存</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="页面缓存">
+                            <el-radio-group v-model="state.ruleForm.meta.isKeepAlive" class="radio-center">
+                                <el-radio :label="true" border>缓存</el-radio>
+                                <el-radio :label="false" border>不缓存</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="是否固定">
-                        <el-radio-group v-model="state.ruleForm.meta.isAffix" class="radio-center">
-                            <el-radio :label="true" border>固定</el-radio>
-                            <el-radio :label="false" border>不固定</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="是否固定">
+                            <el-radio-group v-model="state.ruleForm.meta.isAffix" class="radio-center">
+                                <el-radio :label="true" border>固定</el-radio>
+                                <el-radio :label="false" border>不固定</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" >
-                    <el-form-item label="是否外链" class="mb0">
-                        <el-radio-group v-model="state.isLink" :disabled="state.ruleForm.meta.isIframe"
-                            class="radio-center">
-                            <el-radio :label="true" border>是</el-radio>
-                            <el-radio :label="false" border>否</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="是否外链" class="mb0">
+                            <el-radio-group v-model="state.isLink" :disabled="state.ruleForm.meta.isIframe"
+                                class="radio-center">
+                                <el-radio :label="true" border>是</el-radio>
+                                <el-radio :label="false" border>否</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
 
-                <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                    <el-form-item label="是否内嵌" class="mb0">
-                        <el-radio-group v-model="state.ruleForm.meta.isIframe" class="radio-center"
-                            @change="onSelectIframeChange">
-                            <el-radio :label="true" border>是</el-radio>
-                            <el-radio :label="false" border>否</el-radio>
-                        </el-radio-group>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-        </el-form>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <el-form-item label="是否内嵌" class="mb0">
+                            <el-radio-group v-model="state.ruleForm.meta.isIframe" class="radio-center"
+                                @change="onSelectIframeChange">
+                                <el-radio :label="true" border>是</el-radio>
+                                <el-radio :label="false" border>否</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-form>
+        </el-scrollbar>
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="onCancel">取 消</el-button>
