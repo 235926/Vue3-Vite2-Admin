@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
             }
         },
         build: {
-            target: 'modules', // 浏览器兼容性 "esnext"|"modules"
+            target: 'esnext', // 浏览器兼容性 "esnext"|"modules"
             outDir: './dist', // 指定输出路径
             assetsDir: 'assets', // 指定生成静态资源的存放路径
             minify: 'terser', // 混淆器 terser 构建后文件体积更小
