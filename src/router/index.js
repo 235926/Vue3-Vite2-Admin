@@ -217,7 +217,7 @@ export async function resetRoute() {
 // isRequestRoutes 为 true，则开启后端控制路由，路径：`src/store/modules/settings.js`
 const isRequestRoutes = store.getters.layoutConfig.isRequestRoutes
 // 前端控制路由：初始化方法，防止刷新时路由丢失
-if (!isRequestRoutes) initFrontEndControlRoutes()
+if (!isRequestRoutes) await initFrontEndControlRoutes()
 
 
 
