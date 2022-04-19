@@ -45,8 +45,8 @@ const pathMatch = {
  * @description 此处循环为 dynamicRoutes（@/router/modules/dynamicRoutes.js）第一个顶级 children 的路由一维数组，非多级嵌套
  * @link 参考：https://next.router.vuejs.org/zh/api/#addroute
  */
-export function setAddRoute() {
-    setFilterRouteEnd().forEach((route) => {
+export async function setAddRoute() {
+    await setFilterRouteEnd().forEach((route) => {
         const routeName = route.name
         if (!router.hasRoute(routeName)) router.addRoute(route)
     })
@@ -205,8 +205,8 @@ export function hasRoles(roles, route) {
  * @description 此处循环为 dynamicRoutes（/@/router/route）第一个顶级 children 的路由一维数组，非多级嵌套
  * @link 参考：https://next.router.vuejs.org/zh/api/#push
  */
-export function resetRoute() {
-    setFilterRouteEnd().forEach((route) => {
+export async function resetRoute() {
+    await setFilterRouteEnd().forEach((route) => {
         const routeName = route.name
         router.hasRoute(routeName) && router.removeRoute(routeName)
     })
@@ -217,7 +217,7 @@ export function resetRoute() {
 // isRequestRoutes 为 true，则开启后端控制路由，路径：`src/store/modules/settings.js`
 const isRequestRoutes = store.getters.layoutConfig.isRequestRoutes
 // 前端控制路由：初始化方法，防止刷新时路由丢失
-if (!isRequestRoutes) initFrontEndControlRoutes()
+if (!isRequestRoutes) await initFrontEndControlRoutes()
 
 
 

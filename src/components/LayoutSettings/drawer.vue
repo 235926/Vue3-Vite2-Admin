@@ -191,6 +191,8 @@ const switchLayoutConfig = () => {
 
 // 切换主题颜色
 const onColorPickerChange = () => {
+    if (!layoutConfig.value.primary) return proxy.$message.warning('全局主题 primary 颜色值不能为空')
+
     // 颜色加深
     document.documentElement.style.setProperty('--el-color-primary-dark-2', `${getDarkColor(layoutConfig.value.primary, 0.1)}`)
     document.documentElement.style.setProperty('--el-color-primary', layoutConfig.value.primary)

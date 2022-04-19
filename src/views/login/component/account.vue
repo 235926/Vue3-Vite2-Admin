@@ -162,9 +162,5 @@ const signInSuccess = () => {
         text-indent: 5px;
         margin-top: 15px;
     }
-
-    :deep(.el-input--large.el-input--prefix) .el-input__inner {
-        padding-left: 40px !important;
-    }
 }
 </style>

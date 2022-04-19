@@ -183,9 +183,5 @@ const signInSuccess = () => {
     .login-msg {
         color: var(--el-text-color-placeholder);
     }
-
-    :deep(.el-input--large.el-input--prefix) .el-input__inner {
-        padding-left: 40px !important;
-    }
 }
 </style>

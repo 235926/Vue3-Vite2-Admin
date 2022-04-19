@@ -79,8 +79,6 @@
 ------------------------------- */
 .el-form {
     .el-form-item {
-        margin-bottom: 20px;
-
         .el-form-item__content {
 
             .el-select,
@@ -88,20 +86,6 @@
                 flex: 1;
             }
         }
-
-        >&:last-of-type {
-            margin-bottom: 0;
-        }
-    }
-
-    // large
-    .el-form-item.el-form-item--large {
-        margin-bottom: 22px;
-    }
-
-    // small
-    .el-form-item.el-form-item--small {
-        margin-bottom: 18px;
     }
 }
 
@@ -113,47 +97,6 @@
     .el-input__prefix {
         .el-input__prefix-inner {
             align-items: center;
-        }
-    }
-}
-
-
-
-/* Input Number 数字输入框
-------------------------------- */
-.el-input-number {
-
-    // 按钮位置 - 默认
-    .el-input {
-        .el-input__inner {
-            padding-left: 0 !important;
-        }
-    }
-
-    // 按钮位置 - right
-    &.is-controls-right {
-        .el-input {
-            .el-input__inner {
-                padding-right: 33px !important;
-            }
-        }
-
-        // large
-        &.el-input-number--large {
-            .el-input.el-input--large {
-                .el-input__inner {
-                    padding-right: 41px !important;
-                }
-            }
-        }
-
-        // large
-        &.el-input-number--small {
-            .el-input.el-input--small {
-                .el-input__inner {
-                    padding-right: 25px !important;
-                }
-            }
         }
     }
 }
@@ -337,20 +280,4 @@
     .el-drawer__body {
         padding: 0;
     }
-}
-
-
-
-/* Empty 空状态
-------------------------------- */
-.el-empty {
-    padding: 0;
-}
-
-
-
-/* Popover 气泡卡片
-------------------------------- */
-.el-popper {
-    padding: 0;
 }
