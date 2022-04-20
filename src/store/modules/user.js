@@ -3,8 +3,8 @@ import { Session } from '@/utils/storage.js' // localStorage 存储
 
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
-    token: Session.get('token') || null, // token
-    userInfo: Session.get('userInfo') || {}, // 用户信息
+    token: null, // token
+    userInfo: {}, // 用户信息
 }
 
 

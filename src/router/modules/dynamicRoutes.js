@@ -48,7 +48,6 @@ export const dynamicRoutes = [
                 path: '/system',
                 name: 'system',
                 component: () => import('@/layout/routerView/parent.vue'),
-                redirect: '/system/menu',
                 meta: {
                     title: '系统设置',
                     isLink: '',

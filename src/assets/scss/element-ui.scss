@@ -94,6 +94,8 @@
 /* Input 输入框
 ------------------------------- */
 .el-input {
+    height: 100%;
+
     .el-input__prefix {
         .el-input__prefix-inner {
             align-items: center;
@@ -230,6 +232,7 @@
     .el-dialog__body {
         padding: 0;
         overflow: hidden;
+        max-height: calc(100vh - 30vh - 110px);
 
         >.el-scrollbar {
             height: calc(100vh - 30vh - 110px);

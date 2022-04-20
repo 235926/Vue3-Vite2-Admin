@@ -130,7 +130,7 @@ export function setFilterRoute(chil) {
     chil.forEach((route) => {
         if (route.meta.roles) {
             route.meta.roles.forEach((metaRoles) => {
-                store.getters.userInfo.roles.forEach((roles) => {
+                store.getters.userInfo.roles?.forEach((roles) => {
                     if (metaRoles === roles) filterRoute.push({ ...route })
                 })
             })
@@ -217,7 +217,7 @@ export async function resetRoute() {
 // isRequestRoutes 为 true，则开启后端控制路由，路径：`src/store/modules/settings.js`
 const isRequestRoutes = store.getters.layoutConfig.isRequestRoutes
 // 前端控制路由：初始化方法，防止刷新时路由丢失
-if (!isRequestRoutes) await initFrontEndControlRoutes()
+if (!isRequestRoutes) initFrontEndControlRoutes()
 
 
 
