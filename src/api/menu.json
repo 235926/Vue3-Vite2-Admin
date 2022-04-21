@@ -207,7 +207,7 @@
                 {
                     "path": "/tools/validate",
                     "name": "toolsValidate",
-                    "component": "tools/validate",
+                    "component": "views/tools/validate",
                     "menuType": "menu",
                     "meta": {
                         "title": "验证规则",
@@ -223,6 +223,21 @@
                     }
                 }
             ]
+        },
+        {
+            "path": "/ceshi",
+            "name": "ceshi",
+            "component": "views/ceshi/index",
+            "meta": {
+                "title": "测试页面",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": true,
+                "isIframe": false,
+                "roles": ["admin"],
+                "icon": "test"
+            }
         },
         {
             "path": "/link",

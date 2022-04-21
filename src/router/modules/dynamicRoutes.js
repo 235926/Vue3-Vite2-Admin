@@ -44,6 +44,7 @@ export const dynamicRoutes = [
                     icon: 'dashboard',
                 },
             },
+
             {
                 path: '/system',
                 name: 'system',
@@ -106,6 +107,7 @@ export const dynamicRoutes = [
                     },
                 ]
             },
+
             {
                 path: '/icons',
                 name: 'icons',
@@ -121,6 +123,7 @@ export const dynamicRoutes = [
                     icon: 'icons',
                 },
             },
+
             {
                 path: '/personal',
                 name: 'personal',
@@ -168,6 +171,7 @@ export const dynamicRoutes = [
                     },
                 ]
             },
+
             {
                 path: '/color',
                 name: 'color',
@@ -183,6 +187,23 @@ export const dynamicRoutes = [
                     icon: 'color',
                 },
             },
+
+            {
+                path: '/ceshi',
+                name: 'ceshi',
+                component: () => import('@/views/ceshi/index.vue'),
+                meta: {
+                    title: '测试页面',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: true,
+                    isIframe: false,
+                    roles: ['admin'],
+                    icon: 'test',
+                },
+            },
+
             {
                 path: '/link',
                 name: 'layoutLinkView',

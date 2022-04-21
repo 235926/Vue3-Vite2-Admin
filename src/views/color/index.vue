@@ -1,23 +1,20 @@
 <template>
-    <div class="color">color</div>
+    <div class="color">
+        color
+    </div>
 </template>
 
 <script setup>
-const { proxy } = getCurrentInstance() // vue 实例
-const router = useRouter() // router 实例
-const route = useRoute() // 路由参数
-const store = useStore() // vuex 实例
-
-
-// 定义响应式数据>
-const state = reactive({
-
-})
-
-
-// 组件挂载后，此方法执行后，页面显示
 onMounted(() => {
-
+    const btnArr = [
+        { a: 1 },
+        { b: 2 },
+        { c: 3 },
+        { d: 4 },
+    ]
+    btnArr.unshift({ e: 5 })
+    btnArr.unshift({ f: 6 })
+    // console.log(btnArr)
 })
 </script>
 

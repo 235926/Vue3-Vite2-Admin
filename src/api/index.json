@@ -226,6 +226,21 @@
             ]
         },
         {
+            "path": "/ceshi",
+            "name": "ceshi",
+            "component": "ceshi/index",
+            "meta": {
+                "title": "测试页面",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": ["admin"],
+                "icon": "test"
+            }
+        },
+        {
             "path": "/link",
             "name": "layoutLinkView",
             "component": "routerView/link",

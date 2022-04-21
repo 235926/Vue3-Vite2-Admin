@@ -2,44 +2,24 @@
     <div class="tagsView">
         <el-scrollbar ref="scrollbarRef" @wheel.native.prevent="onHandleScroll">
             <ul ref="tagsUlRef" class="tagsView-ul">
-                <li
-                    v-for="(tag, index) in state.tagsViewList"
-                    :key="index"
-                    :data-url="tag.url"
-                    class="tagsView-li"
+                <li v-for="(tag, index) in state.tagsViewList" :key="index" :data-url="tag.url" class="tagsView-li"
                     :class="{ 'is-active': isActive(tag) }, layoutConfig.tagsViewStyle"
-                    :ref="(el) => { if (el) tagsRefs[index] = el }"
-                    @contextmenu.prevent="onContextmenu(tag, $event)"
-                    @click="onTagsClick(tag, index)"
-                >
+                    :ref="(el) => { if (el) tagsRefs[index] = el }" @contextmenu.prevent="onContextmenu(tag, $event)"
+                    @click="onTagsClick(tag, index)">
                     <span class="dot" v-if="isActive(tag)"></span>
-                    <svg-icon
-                        :name="tag.meta.icon"
-                        v-if="!isActive(tag) && layoutConfig.isTagsviewIcon"
-                    />
+                    <svg-icon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon" />
                     <span class="title">
                         {{ tag.meta.title }}
                     </span>
-                    <svg-icon
-                        class="refresh"
-                        name="refresh"
-                        v-if="isActive(tag)"
-                        @click.stop="refreshCurrentTagsView($route.fullPath)"
-                    />
-                    <svg-icon
-                        class="close"
-                        name="close"
-                        v-if="!tag.meta.isAffix && isActive(tag)"
-                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? tag.path : tag.url)"
-                    />
+                    <svg-icon class="refresh" name="refresh" v-if="isActive(tag)"
+                        @click.stop="refreshCurrentTagsView($route.fullPath)" />
+                    <svg-icon class="close" name="close" v-if="!tag.meta.isAffix && isActive(tag)"
+                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? tag.path : tag.url)" />
                 </li>
             </ul>
         </el-scrollbar>
-        <Contextmenu
-            :dropdown="state.dropdown"
-            ref="contextmenuRef"
-            @currentContextmenuClick="onCurrentContextmenuClick"
-        />
+        <Contextmenu :dropdown="state.dropdown" ref="contextmenuRef"
+            @currentContextmenuClick="onCurrentContextmenuClick" />
     </div>
 </template>
 
