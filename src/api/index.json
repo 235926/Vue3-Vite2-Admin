@@ -96,6 +96,44 @@
             ]
         },
         {
+            "path": "/func",
+            "name": "func",
+            "component": "routerView/parent",
+            "menuType": "menu",
+            "meta": {
+                "title": "功能组件",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "func"
+            },
+            "children": [
+                {
+                    "path": "/func/tagsView",
+                    "name": "funcTagsView",
+                    "component": "func/tagsView/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "tagsView 操作",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "tagsView"
+                    }
+                }
+            ]
+        },
+        {
             "path": "/icons",
             "name": "icons",
             "component": "icons/index",
@@ -229,6 +267,7 @@
             "path": "/ceshi",
             "name": "ceshi",
             "component": "ceshi/index",
+            "menuType": "menu",
             "meta": {
                 "title": "测试页面",
                 "isLink": "",

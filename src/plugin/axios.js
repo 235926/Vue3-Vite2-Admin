@@ -6,7 +6,7 @@ import { Session } from '@/utils/storage.js' // 浏览器存储
 // 创建一个 axios 实例
 const service = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
-    timeout: 50000,
+    timeout: 50000, // 请求时长
     withCredentials: true, // 当发送跨域请求时携带cookie
     headers: { 'Content-Type': 'application/json' },
 })

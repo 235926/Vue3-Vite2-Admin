@@ -74,9 +74,6 @@ const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
-
-
-
 // 定义响应式数据
 const addMenuRef = ref(null)
 const editMenuRef = ref(null)
@@ -89,7 +86,7 @@ const state = reactive({
 // 获取菜单列表数据
 const getSystemMenu = () => {
     systemMenu().then(res => {
-        state.menuTableData = res.data
+        state.menuTableData = res.routes
     })
 }
 

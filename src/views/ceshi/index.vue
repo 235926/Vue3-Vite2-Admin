@@ -18,7 +18,8 @@ function dataByGroup(params) {
     })
     console.log(finalyArr)
 }
-dataByGroup([1, 6, 12, 18, 19, 46, 16, 15, 17, 19, 22, 64, 76, 56, 45, 58, 93, 77, 12, 45])
+// dataByGroup([1, 6, 12, 18, 19, 46, 16, 15, 17, 19, 22, 64, 76, 56, 45, 58, 93, 77, 12, 45])
+
 </script>
 
 <style lang='scss' scoped>
