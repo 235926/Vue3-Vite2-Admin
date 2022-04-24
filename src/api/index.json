@@ -130,6 +130,24 @@
                         ],
                         "icon": "tagsView"
                     }
+                },
+                {
+                    "path": "/func/countup",
+                    "name": "funcCountup",
+                    "component": "func/countup/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "数字滚动",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "countup"
+                    }
                 }
             ]
         },

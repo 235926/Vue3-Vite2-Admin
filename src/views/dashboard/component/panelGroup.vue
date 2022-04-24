@@ -2,60 +2,48 @@
     <el-row :gutter="20" class="panel-group row-gap">
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('newVisitis')">
-                <div
-                    :class="{ active: state.active == 'newVisitis' }"
-                    class="card-panel-icon-wrapper icon-people"
-                >
+                <div :class="{ active: state.active == 'newVisitis' }" class="card-panel-icon-wrapper icon-people">
                     <svg-icon name="peoples" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">New Visits</div>
-                    <count-to :start-val="0" :end-val="102400" :duration="2600" class="panel-num" />
+                    <CountUp :endVal="102400" class="panel-num" />
                 </div>
             </el-card>
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('messages')">
-                <div
-                    :class="{ active: state.active == 'messages' }"
-                    class="card-panel-icon-wrapper icon-message"
-                >
+                <div :class="{ active: state.active == 'messages' }" class="card-panel-icon-wrapper icon-message">
                     <svg-icon name="message" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Messages</div>
-                    <count-to :start-val="0" :end-val="81212" :duration="3000" class="panel-num" />
+                    <CountUp :endVal="81212" class="panel-num" />
                 </div>
             </el-card>
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('purchases')">
-                <div
-                    :class="{ active: state.active == 'purchases' }"
-                    class="card-panel-icon-wrapper icon-money"
-                >
+                <div :class="{ active: state.active == 'purchases' }" class="card-panel-icon-wrapper icon-money">
                     <svg-icon name="money" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Purchases</div>
-                    <count-to :start-val="0" :end-val="9280" :duration="3200" class="panel-num" />
+                    <CountUp :endVal="9280" class="panel-num" />
                 </div>
             </el-card>
         </el-col>
 
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('shoppings')">
-                <div
-                    :class="{ active: state.active == 'shoppings' }"
-                    class="card-panel-icon-wrapper icon-shopping"
-                >
+                <div :class="{ active: state.active == 'shoppings' }" class="card-panel-icon-wrapper icon-shopping">
                     <svg-icon name="shopping" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Shoppings</div>
-                    <count-to :start-val="0" :end-val="13600" :duration="3600" class="panel-num" />
+                    <CountUp :endVal="13600" class="panel-num" />
                 </div>
             </el-card>
         </el-col>
@@ -63,7 +51,7 @@
 </template>
 
 <script setup name="panelGroup">
-import { CountTo } from 'vue3-count-to' // 数字滚动插件
+import CountUp from '@/components/CountUp/index.vue' // 数字滚动组件
 const emit = defineEmits(['handleSetLineChartData']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 
 

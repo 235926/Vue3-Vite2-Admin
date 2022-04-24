@@ -10,6 +10,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "axios": "^0.26.1",
+    "countup.js": "^2.1.0",
     "default-passive-events": "^2.0.0",
     "echarts": "^5.3.1",
     "element-plus": "^2.1.10",
@@ -21,9 +22,8 @@
     "sortablejs": "^1.15.0",
     "vue": "^3.2.31",
     "vue-clipboard3": "^2.0.0",
-    "vue3-count-to": "^1.1.2",
-    "vuex": "^4.0.2",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.4",

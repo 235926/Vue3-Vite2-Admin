@@ -59,7 +59,7 @@
     </el-card>
 </template>
 
-<script setup>
+<script setup name="funcTagsView">
 const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 

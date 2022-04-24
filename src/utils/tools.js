@@ -246,3 +246,25 @@ export const removeClass = (ele, cls) => {
 export const isNull = (value) => {
     return value === '' || value === undefined || value === null
 }
+
+
+
+/**
+ * 把数值以10位分割成不同的数组结构
+ * dataByGroup([1, 6, 12, 18, 19, 46, 16, 15, 17, 19, 22, 64, 76, 56, 45, 58, 93, 77, 12, 45])
+ * 结果：[1, 6]，[12, 15, 16, 17, 18, 19]，[22]，[45, 46]，[56, 58]，[64]，[76, 77]，[93]
+ */
+export const dataByGroup = (params) => {
+    const obj = {}
+    const finalyArr = []
+    params.filter((i, idx) => params.indexOf(i) === idx).sort((a, b) => a - b).forEach(i => {
+        if (obj[i / 10 | 0]) {
+            obj[i / 10 | 0].push(i)
+        } else {
+            obj[i / 10 | 0] = [i]
+        }
+    })
+    Object.keys(obj).forEach(i => {
+        finalyArr.push(obj[i])
+    })
+}

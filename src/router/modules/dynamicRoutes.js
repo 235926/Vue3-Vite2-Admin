@@ -109,11 +109,68 @@ export const dynamicRoutes = [
             },
 
             {
+                path: "/func",
+                name: "func",
+                component: () => import('@/layout/routerView/parent.vue'),
+                menuType: "menu",
+                meta: {
+                    title: "功能组件",
+                    isLink: "",
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: false,
+                    isIframe: false,
+                    roles: [
+                        "admin"
+                    ],
+                    icon: "func"
+                },
+                children: [
+                    {
+                        path: "/func/tagsView",
+                        name: "funcTagsView",
+                        component: () => import('@/views/func/tagsView/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "tagsView 操作",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "tagsView"
+                        }
+                    },
+                    {
+                        path: "/func/countup",
+                        name: "funcCountup",
+                        component: () => import('@/views/func/countup/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "数字滚动",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "countup"
+                        }
+                    }
+                ]
+            },
+
+            {
                 path: '/icons',
                 name: 'icons',
                 component: () => import('@/views/icons/index.vue'),
                 meta: {
-                    title: 'icons',
+                    title: '图标列表',
                     isLink: '',
                     isHidden: false,
                     isKeepAlive: true,

@@ -1,24 +1,60 @@
 <template>
-    ceshi
+    <CountUp :endVal="30000" :duration="5" ref="CountUpRef">
+        <template #prefix>
+            <span>金额</span>
+        </template>
+        <template #suffix>
+            <span>元</span>
+        </template>
+    </CountUp>
+
+    <div class="flex-warp">
+        <div class="flex-warp-item">
+            <div class="flex-warp-item-box">
+                <el-button type="primary" size="default" @click="refreshCurrent">
+                    <el-icon>
+                        <RefreshRight />
+                    </el-icon>
+                    重置/刷新数值
+                </el-button>
+                <el-button type="primary" size="default" @click="reset">
+                    <el-icon>
+                        <RefreshRight />
+                    </el-icon>
+                    重置/刷新数值
+                </el-button>
+                <el-button type="primary" size="default" @click="update">
+                    <el-icon>
+                        <RefreshRight />
+                    </el-icon>
+                    重置/刷新数值
+                </el-button>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
-function dataByGroup(params) {
-    const obj = {}
-    const finalyArr = []
-    params.filter((i, idx) => params.indexOf(i) === idx).sort((a, b) => a - b).forEach(i => {
-        if (obj[i / 10 | 0]) {
-            obj[i / 10 | 0].push(i)
-        } else {
-            obj[i / 10 | 0] = [i]
-        }
-    })
-    Object.keys(obj).forEach(i => {
-        finalyArr.push(obj[i])
-    })
-    console.log(finalyArr)
+import CountUp from '@/components/CountUp/index.vue' // 数字滚动组件
+const { proxy } = getCurrentInstance() // vue 实例
+
+const CountUpRef = ref()
+
+
+
+const refreshCurrent = () => {
+    CountUpRef.value.pauseResume()
 }
-// dataByGroup([1, 6, 12, 18, 19, 46, 16, 15, 17, 19, 22, 64, 76, 56, 45, 58, 93, 77, 12, 45])
+const reset = () => {
+    CountUpRef.value.reset()
+}
+const update = () => {
+    CountUpRef.value.update(9999999)
+}
+// 组件挂载后，此方法执行后，页面显示
+onMounted(() => {
+    console.log(CountUpRef.value)
+})
 
 </script>
 
