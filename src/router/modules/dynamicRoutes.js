@@ -161,6 +161,24 @@ export const dynamicRoutes = [
                             ],
                             icon: "countup"
                         }
+                    },
+                    {
+                        path: "/func/cropper",
+                        name: "funcCropper",
+                        component: () => import('@/views/func/cropper/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "图片裁剪",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "cropper"
+                        }
                     }
                 ]
             },

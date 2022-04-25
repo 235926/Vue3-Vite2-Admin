@@ -148,6 +148,24 @@
                         ],
                         "icon": "countup"
                     }
+                },
+                {
+                    "path": "/func/cropper",
+                    "name": "funcCropper",
+                    "component": "func/cropper/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "图片裁剪",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "cropper"
+                    }
                 }
             ]
         },
