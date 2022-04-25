@@ -1,7 +1,7 @@
 <template>
     <div class="CountUp">
         <slot name="prefix"></slot>
-        <span ref="number" class="number"></span>
+        <span ref="numberRef" class="number"></span>
         <slot name="suffix"></slot>
     </div>
 </template>
@@ -58,19 +58,11 @@ const props = defineProps({
         type: Number,
         default: 0
     },
-    // prefix: { // 数值前缀
-    //     type: String,
-    //     default: ''
-    // },
-    // suffix: { // 数值后缀
-    //     type: String,
-    //     default: ''
-    // },
 })
 
 
 // 定义响应式数据
-const number = ref() // 数值显示
+const numberRef = ref() // 数值显示
 const state = reactive({
     countup: null, // 定义数字滚动实例
     options: {
@@ -84,15 +76,13 @@ const state = reactive({
         smartEasingAmount: props.smartEasingAmount,
         enableScrollSpy: props.enableScrollSpy,
         scrollSpyDelay: props.scrollSpyDelay,
-        // prefix: props.prefix,
-        // suffix: props.suffix,
     }
 })
 
 
 // 初始化 countup.js
 const initCountUp = () => {
-    state.countup = new CountUp(proxy.$refs.number, props.endVal, state.options)
+    state.countup = new CountUp(proxy.$refs.numberRef, props.endVal, state.options)
 
     if (!state.countup.error) {
         state.countup.start()
@@ -126,19 +116,33 @@ onMounted(() => {
 })
 
 
-// 暴露数据到 vue 实例
+// 暴露数据到 vue 实例，给父组件使用
 defineExpose({
-    pauseResume,
-    reset,
-    update
+    pauseResume, reset, update
 })
 </script>
 
 <style lang='scss' scoped>
 .CountUp {
     .number {
-        color: var(--el-text-color-regular);
+        // color: var(--el-text-color-regular);
         font-weight: 700;
+    }
+
+    // 只有1个number插槽
+    span:only-child {
+        margin: 0;
+    }
+
+    // 必须是第二个元素，同时必须是倒数第一个元素
+    span:nth-child(2):nth-last-child(1) {
+        margin-left: 3px;
+    }
+
+    // 必须是第二个元素，同时必须是倒数第二个元素
+    span:nth-child(2):nth-last-child(2) {
+        margin-left: 3px;
+        margin-right: 3px;
     }
 }
 </style>

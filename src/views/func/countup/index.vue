@@ -177,11 +177,5 @@ const update = () => {
             font-size: 13px;
         }
     }
-
-    :deep(.CountUp) {
-        .number {
-            color: #fff;
-        }
-    }
 }
 </style>
