@@ -1,7 +1,7 @@
 <template>
     <div class="CountUp">
         <slot name="prefix"></slot>
-        <span ref="numberRef" class="number"></span>
+        <span ref="numberRef" class="number" :class="{ 'ml3': slots.prefix, 'mr3': slots.suffix }"></span>
         <slot name="suffix"></slot>
     </div>
 </template>
@@ -9,6 +9,7 @@
 <script setup name="CountUp">
 import { CountUp } from 'countup.js' // 数字滚动插件
 const { proxy } = getCurrentInstance() // vue 实例
+const slots = useSlots() // 获取插槽
 
 
 // props
@@ -127,22 +128,6 @@ defineExpose({
     .number {
         // color: var(--el-text-color-regular);
         font-weight: 700;
-    }
-
-    // 只有1个number插槽
-    span:only-child {
-        margin: 0;
-    }
-
-    // 必须是第二个元素，同时必须是倒数第一个元素
-    span:nth-child(2):nth-last-child(1) {
-        margin-left: 3px;
-    }
-
-    // 必须是第二个元素，同时必须是倒数第二个元素
-    span:nth-child(2):nth-last-child(2) {
-        margin-left: 3px;
-        margin-right: 3px;
     }
 }
 </style>
