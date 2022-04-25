@@ -25,10 +25,10 @@ export default defineConfig(({ command, mode }) => {
             }),
         ],
         server: { // 本地运行配置，及反向代理配置
-            port: 8888, // 服务器端口
             host: "0.0.0.0", // 主机名， 127.0.0.1，  真机 0.0.0.0
-            https: false, // 协议
+            port: env.VITE_PORT, // 服务器端口
             open: true, // 在服务器启动时自动在浏览器中打开应用程序
+            https: false, // 协议
             proxy: { // 反向代理配置，注意 rewrite 写法，开始没看文档在这里踩了坑
                 '/api': {
                     target: env.VITE_BASE_URL,
