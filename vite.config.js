@@ -62,7 +62,6 @@ export default defineConfig(({ command, mode }) => {
                     manualChunks: {
                         'element-plus': ['element-plus'],
                         echarts: ['echarts'],
-                        // lodash: ['lodash']
                     }
                 }
             },
