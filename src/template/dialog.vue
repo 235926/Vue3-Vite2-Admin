@@ -43,7 +43,7 @@ const onCancel = () => {
 }
 
 
-// 新增
+// 修改
 const onSubmit = () => {
     closeDialog()
 }

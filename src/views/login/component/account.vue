@@ -124,7 +124,6 @@ const signInSuccess = () => {
                 Object.keys(route.query?.params).length > 0 ? JSON.parse(route.query?.params) : ''
         })
     } else {
-        console.log(1)
         router.push('/')
     }
     // 关闭 loading

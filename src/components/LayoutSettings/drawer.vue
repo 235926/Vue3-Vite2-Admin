@@ -159,11 +159,9 @@
 </template>
 
 <script setup name="layoutSettingsDrawer">
-import { Local, Session } from '@/utils/storage.js' // 浏览器存储
+import { Local } from '@/utils/storage.js' // 浏览器存储
 import { getLightColor, getDarkColor } from '@/utils/theme.js' // 改变主题色方法
 const { proxy } = getCurrentInstance() // vue 实例
-const router = useRouter() // router 实例
-const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
