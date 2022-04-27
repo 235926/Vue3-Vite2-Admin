@@ -29,6 +29,6 @@ const state = reactive({
 
 <style lang='scss' scoped>
 .el-card {
-    overflow: initial;
+    overflow: visible;
 }
 </style>

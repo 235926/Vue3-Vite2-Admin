@@ -184,6 +184,24 @@
                         ],
                         "icon": "wangEditor"
                     }
+                },
+                {
+                    "path": "/func/qrcode",
+                    "name": "funcQrcode",
+                    "component": "func/qrcode/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "二维码生成",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "qrcode"
+                    }
                 }
             ]
         },

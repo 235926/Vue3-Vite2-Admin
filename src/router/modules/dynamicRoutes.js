@@ -197,6 +197,24 @@ export const dynamicRoutes = [
                             ],
                             icon: "wangEditor"
                         }
+                    },
+                    {
+                        path: "/func/qrcode",
+                        name: "funcQrcode",
+                        component: () => import('@/views/func/qrcode/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "二维码生成",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "qrcode"
+                        }
                     }
                 ]
             },
