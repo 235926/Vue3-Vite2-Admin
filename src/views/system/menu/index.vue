@@ -44,7 +44,8 @@
             <el-table-column label="菜单类型" show-overflow-tooltip width="150">
                 <template #default="scope">
                     <el-tag effect="dark" v-if="scope.row.menuType === 'menu'">菜单</el-tag>
-                    <el-tag effect="dark" v-if="scope.row.menuType === 'btn'">按钮</el-tag>
+                    <el-tag effect="dark" type="success" v-if="scope.row.menuType === 'link'">外链</el-tag>
+                    <el-tag effect="dark" type="warning" v-if="scope.row.menuType === 'iframe'">内嵌</el-tag>
                 </template>
             </el-table-column>
 

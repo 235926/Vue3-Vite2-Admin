@@ -33,6 +33,7 @@ export const dynamicRoutes = [
                 path: '/dashboard',
                 name: 'dashboard',
                 component: () => import('@/views/dashboard/index.vue'),
+                menuType: "menu",
                 meta: {
                     title: '首页',
                     isLink: '',
@@ -49,6 +50,8 @@ export const dynamicRoutes = [
                 path: '/system',
                 name: 'system',
                 component: () => import('@/layout/routerView/parent.vue'),
+                menuType: "menu",
+                redirect: '/system/menu',
                 meta: {
                     title: '系统设置',
                     isLink: '',
@@ -64,6 +67,7 @@ export const dynamicRoutes = [
                         path: '/system/menu',
                         name: 'systemMenu',
                         component: () => import('@/views/system/menu/index.vue'),
+                        menuType: "menu",
                         meta: {
                             title: '菜单管理',
                             isLink: '',
@@ -79,6 +83,7 @@ export const dynamicRoutes = [
                         path: '/system/role',
                         name: 'systemRole',
                         component: () => import('@/views/system/role/index.vue'),
+                        menuType: "menu",
                         meta: {
                             title: '角色管理',
                             isLink: '',
@@ -94,6 +99,7 @@ export const dynamicRoutes = [
                         path: '/system/user',
                         name: 'systemUser',
                         component: () => import('@/views/system/user/index.vue'),
+                        menuType: "menu",
                         meta: {
                             title: '用户管理',
                             isLink: '',
@@ -113,6 +119,7 @@ export const dynamicRoutes = [
                 name: "func",
                 component: () => import('@/layout/routerView/parent.vue'),
                 menuType: "menu",
+                redirect: '/func/tagsView',
                 meta: {
                     title: "功能组件",
                     isLink: "",
@@ -223,6 +230,7 @@ export const dynamicRoutes = [
                 path: '/icons',
                 name: 'icons',
                 component: () => import('@/views/icons/index.vue'),
+                menuType: "menu",
                 meta: {
                     title: '图标列表',
                     isLink: '',
@@ -239,6 +247,7 @@ export const dynamicRoutes = [
                 path: '/personal',
                 name: 'personal',
                 component: () => import('@/views/personal/index.vue'),
+                menuType: "menu",
                 meta: {
                     title: '个人中心',
                     isLink: '',
@@ -254,6 +263,7 @@ export const dynamicRoutes = [
                         path: '/personal/message-more',
                         name: 'messageMore',
                         component: () => import('@/views/personal/message-more/index.vue'),
+                        menuType: "menu",
                         meta: {
                             title: '更多消息',
                             isLink: '',
@@ -269,6 +279,7 @@ export const dynamicRoutes = [
                         path: '/personal/message-details',
                         name: 'messageDetails',
                         component: () => import('@/views/personal/message-details/index.vue'),
+                        menuType: "menu",
                         meta: {
                             title: '消息详情',
                             isLink: '',
@@ -287,6 +298,7 @@ export const dynamicRoutes = [
                 path: '/color',
                 name: 'color',
                 component: () => import('@/views/color/index.vue'),
+                menuType: "menu",
                 meta: {
                     title: '颜色变量',
                     isLink: '',
@@ -303,6 +315,7 @@ export const dynamicRoutes = [
                 path: '/ceshi',
                 name: 'ceshi',
                 component: () => import('@/views/ceshi/index.vue'),
+                menuType: "menu",
                 meta: {
                     title: '测试页面',
                     isLink: '',
@@ -319,6 +332,7 @@ export const dynamicRoutes = [
                 path: '/link',
                 name: 'layoutLinkView',
                 component: () => import('@/layout/routerView/link.vue'),
+                menuType: "link",
                 meta: {
                     title: '外链',
                     isLink: 'https://element-plus.gitee.io/#/zh-CN/component/installation',
@@ -334,6 +348,7 @@ export const dynamicRoutes = [
                 path: '/iframe',
                 name: 'layoutIfameView',
                 component: () => import('@/layout/routerView/iframe.vue'),
+                menuType: "iframe",
                 meta: {
                     title: '内嵌 iframe',
                     isLink: 'https://nodejs.org/zh-cn/',

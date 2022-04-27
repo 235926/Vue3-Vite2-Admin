@@ -7,7 +7,6 @@
             "name": "dashboard",
             "component": "dashboard/index",
             "menuType": "menu",
-            "menuSort": "1",
             "meta": {
                 "title": "主页",
                 "isLink": "",
@@ -26,6 +25,7 @@
             "name": "system",
             "component": "routerView/parent",
             "menuType": "menu",
+            "redirect": "/system/menu",
             "meta": {
                 "title": "系统设置",
                 "isLink": "",
@@ -100,6 +100,7 @@
             "name": "func",
             "component": "routerView/parent",
             "menuType": "menu",
+            "redirect": "/func/tagsView",
             "meta": {
                 "title": "功能组件",
                 "isLink": "",
@@ -302,6 +303,7 @@
             "name": "tools",
             "component": "routerView/parent",
             "menuType": "menu",
+            "redirect": "/tools/validate",
             "meta": {
                 "title": "工具类合集",
                 "isLink": "",
@@ -355,7 +357,7 @@
             "path": "/link",
             "name": "layoutLinkView",
             "component": "routerView/link",
-            "menuType": "menu",
+            "menuType": "link",
             "meta": {
                 "title": "外链",
                 "isLink": "https://element-plus.gitee.io/#/zh-CN/component/installation",
@@ -373,7 +375,7 @@
             "path": "/iframe",
             "name": "layoutIfameView",
             "component": "routerView/iframe",
-            "menuType": "menu",
+            "menuType": "iframe",
             "meta": {
                 "title": "内嵌 iframe",
                 "isLink": "https://nodejs.org/zh-cn/",
