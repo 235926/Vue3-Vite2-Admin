@@ -59,11 +59,12 @@
     </el-card>
 </template>
 
-<script setup name="funcCountup">
+<script setup name="funcCountUp">
 import CountUp from '@/components/CountUp/index.vue' // 数字滚动组件
 
-
+// 定义响应式数据
 const CountUpRef = ref()
+
 // 模拟数据
 const topCardItemList = [
     {

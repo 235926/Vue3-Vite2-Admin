@@ -2,6 +2,8 @@
     <el-card shadow="hover" header="cropper 图片裁剪">
         <el-alert title="感谢优秀的 `cropperjs`，项目地址：https://github.com/fengyuanchen/cropperjs" type="success"
             :closable="false" class="mb20"></el-alert>
+        <el-alert title="本项目根据 `cropperjs`，封装的图片裁剪组件 @/components/Cropper/index.vue" type="success" :closable="false"
+            class="mb20"></el-alert>
 
         <div class="cropper-img-warp">
             <div class="mb15 flex">

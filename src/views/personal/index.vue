@@ -1,6 +1,6 @@
 <template>
     <div class="personal">
-        <el-row :gutter="20" class="row-gap">
+        <el-row :gutter="20" class="row-gap20">
             <!-- 欢迎回来 -->
             <Welcome />
 

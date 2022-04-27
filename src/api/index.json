@@ -132,9 +132,9 @@
                     }
                 },
                 {
-                    "path": "/func/countup",
-                    "name": "funcCountup",
-                    "component": "func/countup/index",
+                    "path": "/func/countUp",
+                    "name": "funcCountUp",
+                    "component": "func/countUp/index",
                     "menuType": "menu",
                     "meta": {
                         "title": "数字滚动",
@@ -165,6 +165,24 @@
                             "admin"
                         ],
                         "icon": "cropper"
+                    }
+                },
+                {
+                    "path": "/func/wangEditor",
+                    "name": "funcWangEditor",
+                    "component": "func/wangEditor/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "Editor 编辑器",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "wangEditor"
                     }
                 }
             ]

@@ -9,3 +9,5 @@
 ├── addClass                        		# 向元素添加类
 ├── removeClass                        		# 从元素中移除类
 ├── isNull                        		    # 判断内容是否为空
+├── dataByGroup                        		# 把数组按规则分组
+├── duplicateRemoval                        # 数组去重

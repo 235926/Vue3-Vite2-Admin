@@ -1,9 +1,8 @@
 <template>
-    <div>ceshi</div>
+    <svg-icon name="404" />
 </template>
 
 <script setup>
-
 
 </script>
 

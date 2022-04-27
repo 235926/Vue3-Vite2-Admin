@@ -5,16 +5,9 @@
                 <span>Packages</span>
             </div>
         </template>
-        <el-row :gutter="20" class="list">
-            <el-col
-                :xs="24"
-                :sm="12"
-                :md="12"
-                :lg="6"
-                :xl="6"
-                v-for="(item, index) in state.dependenciesList"
-                :key="index"
-            >
+        <el-row :gutter="20" class="list row-gap20">
+            <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" v-for="(item, index) in state.dependenciesList"
+                :key="index">
                 <div class="item">
                     <span>{{ item.name }}</span>
                     <el-tag effect="dark">{{ item.value }}</el-tag>
@@ -54,8 +47,6 @@ const genDependencies = () => {
 <style lang='scss' scoped>
 .packages {
     .list {
-        row-gap: 20px;
-
         .item {
             display: flex;
             justify-content: space-between;

@@ -145,9 +145,9 @@ export const dynamicRoutes = [
                         }
                     },
                     {
-                        path: "/func/countup",
-                        name: "funcCountup",
-                        component: () => import('@/views/func/countup/index.vue'),
+                        path: "/func/countUp",
+                        name: "funcCountUp",
+                        component: () => import('@/views/func/countUp/index.vue'),
                         menuType: "menu",
                         meta: {
                             title: "数字滚动",
@@ -178,6 +178,24 @@ export const dynamicRoutes = [
                                 "admin"
                             ],
                             icon: "cropper"
+                        }
+                    },
+                    {
+                        path: "/func/wangEditor",
+                        name: "funcWangEditor",
+                        component: () => import('@/views/func/wangEditor/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "Editor 编辑器",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "wangEditor"
                         }
                     }
                 ]

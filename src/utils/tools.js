@@ -268,3 +268,16 @@ export const dataByGroup = (params) => {
         finalyArr.push(obj[i])
     })
 }
+
+
+
+/**
+ * 数组去重
+ * duplicateRemoval([1, 2, 3, 4, 5, 6, 72, 2, 1, 2, 3, 5])
+ * 结果：[1, 2, 3, 4, 5, 6, 72]
+ */
+export const duplicateRemoval = (data) => {
+    return data.filter((item, index, arr) => {
+        return arr.indexOf(item, 0) === index
+    })
+}

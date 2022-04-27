@@ -1,5 +1,5 @@
 <template>
-    <el-row :gutter="20" class="panel-group row-gap">
+    <el-row :gutter="20" class="panel-group row-gap20">
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('newVisitis')">
                 <div :class="{ active: state.active == 'newVisitis' }" class="card-panel-icon-wrapper icon-people">

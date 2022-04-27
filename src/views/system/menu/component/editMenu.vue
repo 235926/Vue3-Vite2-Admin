@@ -146,9 +146,6 @@
 <script setup>
 import IconSelector from '@/components/IconSelector/index.vue' // icon 图标选择器
 import { deepClone } from '@/utils/tools.js' // 工具方法
-const { proxy } = getCurrentInstance() // vue 实例
-const router = useRouter() // router 实例
-const route = useRoute() // 路由参数
 const store = useStore() // vuex 实例
 
 
@@ -181,10 +178,9 @@ const state = reactive({
 
 
 // 打开弹窗
-const openDialog = row => {
+const openDialog = (row) => {
     // 不使用深拷贝的话，v-model会修改你表单的数据,然后你的表单和你的tree用的是同一个数据结构
     state.ruleForm = Object.assign(state.ruleForm, deepClone(row))
-
     // 判断 state.isLink 的状态
     if (state.ruleForm.meta.isIframe && state.ruleForm.meta.isLink !== '') {
         state.isLink = true
