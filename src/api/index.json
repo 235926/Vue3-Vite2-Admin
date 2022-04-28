@@ -115,6 +115,24 @@
             },
             "children": [
                 {
+                    "path": "/func/lazyImg",
+                    "name": "funcLazyImg",
+                    "component": "func/lazyImg/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "图片懒加载",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "lazyImg"
+                    }
+                },
+                {
                     "path": "/func/tagsView",
                     "name": "funcTagsView",
                     "component": "func/tagsView/index",

@@ -1,3 +1,6 @@
+import { nextTick } from 'vue' // vue 内置方法
+
+
 /**
  * 判断两数组是否相同
  * @param news 新数据
@@ -279,5 +282,31 @@ export const dataByGroup = (params) => {
 export const duplicateRemoval = (data) => {
     return data.filter((item, index, arr) => {
         return arr.indexOf(item, 0) === index
+    })
+}
+
+
+
+/**
+ * 图片懒加载
+ * @param el dom 目标元素
+ * @param arr 列表数据
+ * @description data-xxx 属性用于存储页面或应用程序的私有自定义数据
+ */
+export const lazyImg = (el, arr) => {
+    let io = new IntersectionObserver((res) => {
+        res.forEach((v) => {
+            if (v.isIntersecting) {
+                let { img, key } = v.target.dataset
+                v.target.src = img
+                v.target.onload = () => {
+                    io.unobserve(v.target)
+                    arr[key]['loading'] = false
+                }
+            }
+        })
+    })
+    nextTick(() => {
+        document.querySelectorAll(el).forEach((img) => io.observe(img))
     })
 }

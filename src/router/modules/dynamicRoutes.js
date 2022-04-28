@@ -121,7 +121,7 @@ export const dynamicRoutes = [
                 menuType: "menu",
                 redirect: '/func/tagsView',
                 meta: {
-                    title: "功能组件",
+                    title: "功能展示",
                     isLink: "",
                     isHidden: false,
                     isKeepAlive: true,
@@ -133,6 +133,24 @@ export const dynamicRoutes = [
                     icon: "func"
                 },
                 children: [
+                    {
+                        path: "/func/lazyImg",
+                        name: "funcLazyImg",
+                        component: () => import('@/views/func/lazyImg/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "图片懒加载",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "lazyImg"
+                        }
+                    },
                     {
                         path: "/func/tagsView",
                         name: "funcTagsView",
