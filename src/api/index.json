@@ -203,6 +203,24 @@
                         ],
                         "icon": "qrcode"
                     }
+                },
+                {
+                    "path": "/func/printJs",
+                    "name": "funcPrintJs",
+                    "component": "func/printJs/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "页面打印",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "print"
+                    }
                 }
             ]
         },

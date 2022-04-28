@@ -7,9 +7,9 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 // 全局使用 ElementPlus 自带的图标
-import * as ElIconModules from '@element-plus/icons-vue'
-for (let iconName in ElIconModules) {
-    app.component(iconName, ElIconModules[iconName])
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+for (let [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
 }
 
 // 引入 自定义的scss文件

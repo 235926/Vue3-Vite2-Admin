@@ -222,6 +222,24 @@ export const dynamicRoutes = [
                             ],
                             icon: "qrcode"
                         }
+                    },
+                    {
+                        path: "/func/printJs",
+                        name: "funcPrintJs",
+                        component: () => import('@/views/func/printJs/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "页面打印",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "print"
+                        }
                     }
                 ]
             },
