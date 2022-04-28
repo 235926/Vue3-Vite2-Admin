@@ -205,6 +205,24 @@
                     }
                 },
                 {
+                    "path": "/func/clipboard",
+                    "name": "funcClipboard",
+                    "component": "func/clipboard/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "复制剪切",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "clipboard"
+                    }
+                },
+                {
                     "path": "/func/printJs",
                     "name": "funcPrintJs",
                     "component": "func/printJs/index",

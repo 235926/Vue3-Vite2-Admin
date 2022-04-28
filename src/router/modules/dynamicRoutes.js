@@ -224,6 +224,24 @@ export const dynamicRoutes = [
                         }
                     },
                     {
+                        path: "/func/clipboard",
+                        name: "funcClipboard",
+                        component: () => import('@/views/func/clipboard/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "复制剪切",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "clipboard"
+                        }
+                    },
+                    {
                         path: "/func/printJs",
                         name: "funcPrintJs",
                         component: () => import('@/views/func/printJs/index.vue'),
