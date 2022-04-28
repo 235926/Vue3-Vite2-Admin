@@ -242,6 +242,24 @@ export const dynamicRoutes = [
                         }
                     },
                     {
+                        path: "/func/splitpanes",
+                        name: "funcSplitpanes",
+                        component: () => import('@/views/func/splitpanes/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "窗格拆分器",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "panes"
+                        }
+                    },
+                    {
                         path: "/func/gridLayout",
                         name: "funcGridLayout",
                         component: () => import('@/views/func/gridLayout/index.vue'),

@@ -2166,6 +2166,11 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
+splitpanes@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmmirror.com/splitpanes/-/splitpanes-3.1.0.tgz#74876be93506a6884b53c3dba7cf94a446b573c9"
+  integrity sha512-O7yaiAJiqjnBW7nU96RwL5L0yu3F5zSjOwkTxrK4Ot63offVBt9KwORcydLsTkwVcQqwT3FTuKB77m5UGXKvcw==
+
 ssr-window@^3.0.0-alpha.1:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/ssr-window/-/ssr-window-3.0.0.tgz#fd5b82801638943e0cc704c4691801435af7ac37"

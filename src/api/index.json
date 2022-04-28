@@ -241,6 +241,24 @@
                     }
                 },
                 {
+                    "path": "/func/splitpanes",
+                    "name": "funcSplitpanes",
+                    "component": "func/splitpanes/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "窗格拆分器",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "panes"
+                    }
+                },
+                {
                     "path": "/func/printJs",
                     "name": "funcPrintJs",
                     "component": "func/printJs/index",
@@ -403,7 +421,9 @@
                 "isKeepAlive": true,
                 "isAffix": false,
                 "isIframe": false,
-                "roles": ["admin"],
+                "roles": [
+                    "admin"
+                ],
                 "icon": "test"
             }
         },
