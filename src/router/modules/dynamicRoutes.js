@@ -242,6 +242,24 @@ export const dynamicRoutes = [
                         }
                     },
                     {
+                        path: "/func/gridLayout",
+                        name: "funcGridLayout",
+                        component: () => import('@/views/func/gridLayout/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "拖拽布局",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "drag"
+                        }
+                    },
+                    {
                         path: "/func/printJs",
                         name: "funcPrintJs",
                         component: () => import('@/views/func/printJs/index.vue'),

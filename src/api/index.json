@@ -223,6 +223,24 @@
                     }
                 },
                 {
+                    "path": "/func/gridLayout",
+                    "name": "funcGridLayout",
+                    "component": "func/gridLayout/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "拖拽布局",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "drag"
+                    }
+                },
+                {
                     "path": "/func/printJs",
                     "name": "funcPrintJs",
                     "component": "func/printJs/index",
