@@ -3,22 +3,12 @@
         <el-card shadow="hover">
             <template #header>
                 <span>消息通知</span>
-                <span
-                    class="personal-message-more"
-                    @click="router.push('/personal/message-more')"
-                >更多</span>
+                <span class="personal-message-more" @click="router.push('/personal/message-more')">更多</span>
             </template>
             <div class="personal-message-box">
                 <ul class="personal-message-ul">
-                    <li
-                        v-for="(item, index) in state.newsInfoList"
-                        :key="index"
-                        class="personal-message-li"
-                    >
-                        <a
-                            class="personal-message-li-title"
-                            @click="jumpDetails(item, index)"
-                        >{{ item.title }}</a>
+                    <li v-for="(item, index) in state.newsInfoList" :key="index" class="personal-message-li">
+                        <a class="personal-message-li-title" @click="jumpDetails(item, index)">{{ item.title }}</a>
                     </li>
                 </ul>
             </div>
@@ -37,6 +27,7 @@ const store = useStore() // 定义 vuex 实例
 // 定义响应式数据>
 const state = reactive({
     newsInfoList: [], // 消息通知
+    value: '',
 })
 
 
@@ -53,10 +44,13 @@ const jumpDetails = (item, index) => {
     router.push({
         path: '/personal/message-details',
         query: {
-            id: index,
+            id: state.value,
+            tagsViewName: item.title,
             item: JSON.stringify(item)
         }
     })
+    state.value = ''
+
 }
 
 
@@ -68,6 +62,7 @@ onMounted(() => {
 
 <style lang='scss' scoped>
 @import "@/assets/scss/mixin.scss";
+
 .personal-message {
     .personal-message-more {
         float: right;

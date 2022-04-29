@@ -407,6 +407,96 @@
             }
         },
         {
+            "path": "/params",
+            "name": "params",
+            "component": "routerView/parent",
+            "menuType": "menu",
+            "redirect": "/params/common",
+            "meta": {
+                "title": "路由参数",
+                "isLink": "",
+                "isHidden": true,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "params"
+            },
+            "children": [
+                {
+                    "path": "/params/common",
+                    "name": "paramsCommon",
+                    "component": "params/common/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "普通路由",
+                        "isLink": "",
+                        "isHidden": true,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "common"
+                    }
+                },
+                {
+                    "path": "/params/common/details",
+                    "name": "paramsCommonDetails",
+                    "component": "params/common/details",
+                    "meta": {
+                        "title": "普通路由传参",
+                        "isLink": "",
+                        "isHidden": true,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "common"
+                    }
+                },
+                {
+                    "path": "/params/dynamic",
+                    "name": "paramsDynamic",
+                    "component": "params/dynamic/index",
+                    "meta": {
+                        "title": "动态路由",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "dynamic"
+                    }
+                },
+                {
+                    "path": "/params/dynamic/details/:t/:id/:tagsViewName",
+                    "name": "paramsDynamicDetails",
+                    "component": "params/dynamic/details",
+                    "meta": {
+                        "title": "动态路由传参",
+                        "isLink": "",
+                        "isHidden": true,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "dynamic"
+                    }
+                }
+            ]
+        },
+        {
             "path": "/tools",
             "name": "tools",
             "component": "routerView/parent",

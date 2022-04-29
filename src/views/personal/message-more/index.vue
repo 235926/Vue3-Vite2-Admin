@@ -3,12 +3,7 @@
         <template #header>
             <span>消息通知</span>
         </template>
-        <el-table
-            :data="state.newsInfoList"
-            border
-            v-loading="state.loading"
-            @row-click="jumpDetails"
-        >
+        <el-table :data="state.newsInfoList" border v-loading="state.loading" @row-click="jumpDetails">
             <el-table-column label="排序" align="center" type="index" width="55" />
 
             <el-table-column label="日期" show-overflow-tooltip width="100">
@@ -30,16 +25,9 @@
             </el-table-column>
         </el-table>
 
-        <el-pagination
-            v-model:currentPage="state.currentPage"
-            v-model:page-size="state.pageSize"
-            :page-sizes="[10, 20, 30, 50]"
-            background
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="state.total"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-        />
+        <el-pagination v-model:currentPage="state.currentPage" v-model:page-size="state.pageSize"
+            :page-sizes="[10, 20, 30, 50]" background layout="total, sizes, prev, pager, next, jumper"
+            :total="state.total" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
     </el-card>
 </template>
 
@@ -81,7 +69,8 @@ const jumpDetails = (row) => {
     router.push({
         path: '/personal/message-details',
         query: {
-            item: JSON.stringify(row)
+            tagsViewName: '跳转详情',
+            // item: JSON.stringify(row),
         }
     })
 }

@@ -2,19 +2,19 @@
     <div class="tagsView">
         <el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll">
             <ul ref="tagsUlRef" class="tagsView-ul">
-                <li v-for="(tag, index) in state.tagsViewList" :key="index" :data-url="tag.url" class="tagsView-li"
-                    :class="{ 'is-active': isActive(tag) }, layoutConfig.tagsViewStyle"
-                    :ref="(el) => { if (el) tagsRefs[index] = el }" @contextmenu.prevent="onContextmenu(tag, $event)"
-                    @click="onTagsClick(tag, index)">
-                    <span class="dot" v-if="isActive(tag)"></span>
-                    <SvgIcon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon" />
+                <li v-for="(v, k) in state.tagsViewList" :key="k" :data-url="v.url" class="tagsView-li"
+                    :class="{ 'is-active': isActive(v) }, layoutConfig.tagsViewStyle"
+                    :ref="(el) => { if (el) tagsRefs[k] = el }" @contextmenu.prevent="onContextmenu(v, $event)"
+                    @click="onTagsClick(v, k)">
+                    <span class="dot" v-if="isActive(v)"></span>
+                    <SvgIcon :name="v.meta.icon" v-if="!isActive(v) && layoutConfig.isTagsviewIcon" />
                     <span class="title">
-                        {{ tag.meta.title }}
+                        {{ v.query?.tagsViewName || v.params?.tagsViewName || v.meta.title }}
                     </span>
-                    <SvgIcon class="refresh" name="refresh" v-if="isActive(tag)"
+                    <SvgIcon class="refresh" name="refresh" v-if="isActive(v)"
                         @click.stop="refreshCurrentTagsView($route.fullPath)" />
-                    <SvgIcon class="close" name="close" v-if="!tag.meta.isAffix && isActive(tag)"
-                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? tag.path : tag.url)" />
+                    <SvgIcon class="close" name="close" v-if="!v.meta.isAffix && isActive(v)"
+                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? v.path : v.url)" />
                 </li>
             </ul>
         </el-scrollbar>
@@ -50,7 +50,6 @@ const state = reactive({
     sortable: '',
     tagsViewRoutesList: [],
 })
-
 
 
 // 获取布局配置信息
@@ -123,6 +122,7 @@ const solveAddTagsView = async (path, to) => {
     if (current.length <= 0) {
         // 防止：Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.
         let findItem = state.tagsViewRoutesList.find((v) => v.path === isDynamicPath)
+        if (!findItem) return false
         if (findItem.meta.isAffix) return false
         if (findItem.meta.isLink && !findItem.meta.isIframe) return false
         to.meta.isDynamic ? (findItem.params = to.params) : (findItem.query = to.query)
@@ -480,7 +480,7 @@ onBeforeMount(() => {
     // 监听布局配置开启 TagsView 共用，为了演示还原默认值
     proxy.mittBus.on('openShareTagsView', () => {
         if (layoutConfig.value.isShareTagsView) {
-            router.push('/home')
+            router.push('/dashboard')
             state.tagsViewList = []
             state.tagsViewRoutesList.map((v) => {
                 if (v.meta.isAffix && !v.meta.isHidden) {
@@ -533,6 +533,22 @@ onBeforeRouteUpdate(async (to) => {
 watch(store.state, (val) => {
     if (val.tagsView.tagsViewRoutes.length === state.tagsViewRoutesList.length) return false
     getTagsViewRoutes()
+})
+
+
+// 监听路由的变化，用于设置不同的 tagsViewName
+watch(() => route, (route1) => {
+    setTimeout(() => {
+        // 区分 "动态路由" 与 "普通路由"
+        state.tagsViewList.forEach((tagsItem) => {
+            let path = route.meta.isDynamic ? route.meta.isDynamicPath : route.path
+            let tagsName = route.meta.isDynamic ? route.params.tagsViewName : route.query.tagsViewName
+            if (path === tagsItem.path && tagsName) tagsItem.meta.title = tagsName
+        })
+    })
+}, {
+    deep: true,
+    immediate: true,
 })
 </script>
 

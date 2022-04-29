@@ -420,6 +420,91 @@ export const dynamicRoutes = [
             },
 
             {
+                path: '/params',
+                name: 'params',
+                component: () => import('@/layout/routerView/parent.vue'),
+                menuType: "menu",
+                redirect: '/params/common',
+                meta: {
+                    title: '路由参数',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: false,
+                    isIframe: false,
+                    roles: ['admin'],
+                    icon: 'params',
+                },
+                children: [
+                    {
+                        path: '/params/common',
+                        name: 'paramsCommon',
+                        component: () => import('@/views/params/common/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: '普通路由',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'common',
+                        },
+                    },
+                    {
+                        path: '/params/common/details',
+                        name: 'paramsCommonDetails',
+                        component: () => import('@/views/params/common/details.vue'),
+                        meta: {
+                            title: '普通路由传参',
+                            isLink: '',
+                            isHidden: true,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'common',
+                        },
+                    },
+                    {
+                        path: '/params/dynamic',
+                        name: 'paramsDynamic',
+                        component: () => import('@/views/params/dynamic/index.vue'),
+                        meta: {
+                            title: '动态路由',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'dynamic',
+                        },
+                    },
+                    /**
+                     * tagsViewName 为要设置不同的 "tagsView 名称" 字段
+                     * 如若需设置不同 "tagsView 名称"，tagsViewName 字段必须要有
+                     */
+                    {
+                        path: '/params/dynamic/details/:t/:id/:tagsViewName',
+                        name: 'paramsDynamicDetails',
+                        component: () => import('@/views/params/dynamic/details.vue'),
+                        meta: {
+                            title: '动态路由传参',
+                            isLink: '',
+                            isHidden: true,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin'],
+                            icon: 'dynamic',
+                        },
+                    },
+                ]
+            },
+
+            {
                 path: '/ceshi',
                 name: 'ceshi',
                 component: () => import('@/views/ceshi/index.vue'),
