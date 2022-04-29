@@ -1,6 +1,6 @@
 <template>
     <div class="svg-icon-container" @click="onScreenfullClick">
-        <svg-icon :name="state.isScreenfull ? 'exit-fullscreen' : 'fullscreen'" />
+        <SvgIcon :name="state.isScreenfull ? 'exit-fullscreen' : 'fullscreen'" />
     </div>
 </template>
 

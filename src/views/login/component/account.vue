@@ -3,7 +3,7 @@
         <el-form-item prop="username" class="login-animation1">
             <el-input type="text" v-model.trim="state.ruleForm.username" autocomplete="off" placeholder="请输入用户名">
                 <template #prefix>
-                    <svg-icon name="user-center" />
+                    <SvgIcon name="user-center" />
                 </template>
             </el-input>
         </el-form-item>
@@ -12,7 +12,7 @@
             <el-input type="password" v-model.trim="state.ruleForm.password" show-password autocomplete="off"
                 placeholder="请输入密码">
                 <template #prefix>
-                    <svg-icon name="password" />
+                    <SvgIcon name="password" />
                 </template>
             </el-input>
         </el-form-item>
@@ -22,7 +22,7 @@
                 <el-input type="text" maxlength="4" placeholder="请输入验证码" v-model="state.ruleForm.code" clearable
                     autocomplete="off">
                     <template #prefix>
-                        <svg-icon name="position" />
+                        <SvgIcon name="position" />
                     </template>
                 </el-input>
             </el-col>

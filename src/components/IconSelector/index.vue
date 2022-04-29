@@ -5,7 +5,7 @@
             <el-input ref="inputWidthRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
                 @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
                 <template #prepend>
-                    <svg-icon class="font18" :name="state.svgValue" />
+                    <SvgIcon class="font18" :name="state.svgValue" />
                 </template>
             </el-input>
         </template>
@@ -15,7 +15,7 @@
                     <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" v-for="(item, index) in onSheetsFilterList"
                         :key="index" @click="onColClick(item)">
                         <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
-                            <svg-icon :name="item" />
+                            <SvgIcon :name="item" />
                         </span>
                     </el-col>
                 </el-row>

@@ -11,7 +11,7 @@
             class="icon-item"
         >
             <div class="flex-column-center" @click="handleCopy(icon, $event)">
-                <svg-icon :name="icon" />
+                <SvgIcon :name="icon" />
                 <span class="icon-name">{{ icon }}</span>
             </div>
         </el-col>
@@ -29,7 +29,7 @@ const icons = ref(svgIcons)
 
 // svg 图标集合名称
 const generateIconCode = (name) => {
-    return `<svg-icon name="${name}" />`
+    return `<SvgIcon name="${name}" />`
 }
 
 

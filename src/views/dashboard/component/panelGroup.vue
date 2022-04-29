@@ -3,7 +3,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('newVisitis')">
                 <div :class="{ active: state.active == 'newVisitis' }" class="card-panel-icon-wrapper icon-people">
-                    <svg-icon name="peoples" />
+                    <SvgIcon name="peoples" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">New Visits</div>
@@ -15,7 +15,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('messages')">
                 <div :class="{ active: state.active == 'messages' }" class="card-panel-icon-wrapper icon-message">
-                    <svg-icon name="message" />
+                    <SvgIcon name="message" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Messages</div>
@@ -27,7 +27,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('purchases')">
                 <div :class="{ active: state.active == 'purchases' }" class="card-panel-icon-wrapper icon-money">
-                    <svg-icon name="money" />
+                    <SvgIcon name="money" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Purchases</div>
@@ -39,7 +39,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
             <el-card shadow="hover" class="card-panel" @click="handleSetLineChartData('shoppings')">
                 <div :class="{ active: state.active == 'shoppings' }" class="card-panel-icon-wrapper icon-shopping">
-                    <svg-icon name="shopping" />
+                    <SvgIcon name="shopping" />
                 </div>
                 <div class="card-panel-desc">
                     <div class="card-panel-text">Shoppings</div>

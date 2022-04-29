@@ -1,7 +1,7 @@
 <template>
     <el-dropdown trigger="click" :show-timeout="70" :hide-timeout="50" @command="handleSetSize">
         <div class="svg-icon-container">
-            <svg-icon name="size" />
+            <SvgIcon name="size" />
         </div>
         <template #dropdown>
             <el-dropdown-menu>

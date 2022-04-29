@@ -4,7 +4,7 @@
             type="success" :closable="false" class="mb20"></el-alert>
 
         <el-button @click="onPrintJs" type="primary">
-            <svg-icon name="print" />
+            <SvgIcon name="print" />
             点击打印演示
         </el-button>
     </el-card>

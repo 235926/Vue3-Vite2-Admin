@@ -52,6 +52,7 @@ const state = reactive({
 
 // 组件挂载后，此方法执行后，页面显示
 onMounted(() => {
+    // 与 <img :data-img="v.img" :data-key="k" :data-lazy-img-list="k" /> 对应
     lazyImg('[data-lazy-img-list]', state.dataList)
 })
 </script>

@@ -6,7 +6,7 @@
             v-if="val.children && val.children.length > 0"
         >
             <template #title>
-                <svg-icon :name="val.meta.icon" />
+                <SvgIcon :name="val.meta.icon" />
                 <span class="title">{{ val.meta.title }}</span>
             </template>
             <sub-item :chil="val.children" />
@@ -14,7 +14,7 @@
         <template v-else>
             <el-menu-item :index="val.path" :key="val.path">
                 <template v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)">
-                    <svg-icon :name="val.meta.icon" />
+                    <SvgIcon :name="val.meta.icon" />
                     <span class="title">{{ val.meta.title }}</span>
                 </template>
                 <template v-else>

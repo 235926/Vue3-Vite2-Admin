@@ -1,5 +1,5 @@
 <template>
-    <svg-icon name="404" />
+    <SvgIcon name="404" />
 </template>
 
 <script setup>

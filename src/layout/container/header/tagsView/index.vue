@@ -1,19 +1,19 @@
 <template>
     <div class="tagsView">
-        <el-scrollbar ref="scrollbarRef" @wheel.native.prevent="onHandleScroll">
+        <el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll">
             <ul ref="tagsUlRef" class="tagsView-ul">
                 <li v-for="(tag, index) in state.tagsViewList" :key="index" :data-url="tag.url" class="tagsView-li"
                     :class="{ 'is-active': isActive(tag) }, layoutConfig.tagsViewStyle"
                     :ref="(el) => { if (el) tagsRefs[index] = el }" @contextmenu.prevent="onContextmenu(tag, $event)"
                     @click="onTagsClick(tag, index)">
                     <span class="dot" v-if="isActive(tag)"></span>
-                    <svg-icon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon" />
+                    <SvgIcon :name="tag.meta.icon" v-if="!isActive(tag) && layoutConfig.isTagsviewIcon" />
                     <span class="title">
                         {{ tag.meta.title }}
                     </span>
-                    <svg-icon class="refresh" name="refresh" v-if="isActive(tag)"
+                    <SvgIcon class="refresh" name="refresh" v-if="isActive(tag)"
                         @click.stop="refreshCurrentTagsView($route.fullPath)" />
-                    <svg-icon class="close" name="close" v-if="!tag.meta.isAffix && isActive(tag)"
+                    <SvgIcon class="close" name="close" v-if="!tag.meta.isAffix && isActive(tag)"
                         @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? tag.path : tag.url)" />
                 </li>
             </ul>
@@ -64,7 +64,15 @@ const isActive = (v) => {
     if (layoutConfig.value.isShareTagsView) {
         return v.path === state.routePath
     } else {
-        return v.url ? v.url === state.routeActive : v.path === state.routeActive
+        // return v.url ? v.url === state.routeActive : v.path === state.routeActive
+        if ((v.query && Object.keys(v.query).length) || (v.params && Object.keys(v.params).length)) {
+            // 普通传参
+            return v.url ? v.url === state.routeActive : v.path === state.routeActive
+        } else {
+            // 通过 name 传参，params 取值，刷新页面参数消失
+            // https://gitee.com/lyt-top/vue-next-admin/issues/I51RS9
+            return v.path === state.routePath
+        }
     }
 }
 
@@ -94,6 +102,7 @@ const initTagsView = async () => {
             if (v.meta.isAffix && !v.meta.isHidden) {
                 v.url = setTagsViewHighlight(v)
                 state.tagsViewList.push({ ...v })
+                addBrowserSetSession(state.tagsViewList)
             }
         })
         await addTagsView(route.path, route)
@@ -162,6 +171,7 @@ const addTagsView = (path, to) => {
             if (state.tagsViewList.some((v) => v.path === path)) return false
             item = state.tagsViewRoutesList.find((v) => v.path === path)
         }
+        if (!item) return false
         if (item.meta.isLink && !item.meta.isIframe) return false
         if (to && to.meta.isDynamic) item.params = to?.params ? to?.params : route.params
         else item.query = to?.query ? to?.query : route.query
@@ -218,24 +228,33 @@ const closeCurrentTagsView = (path) => {
 
 // 4、关闭其它 tagsView：如果是设置了固定的（isAffix），不进行关闭
 const closeOtherTagsView = (path) => {
-    state.tagsViewList = []
-    state.tagsViewRoutesList.map((v) => {
-        if (v.meta.isAffix && !v.meta.isHidden) state.tagsViewList.push({ ...v })
-    })
-    addTagsView(path, route)
+    if (Session.get('tagsViewList')) {
+        state.tagsViewList = []
+        Session.get('tagsViewList').map((v) => {
+            if (v.meta.isAffix && !v.meta.isHidden) {
+                v.url = setTagsViewHighlight(v)
+                state.tagsViewList.push({ ...v })
+            }
+        })
+        addTagsView(path, route)
+        addBrowserSetSession(state.tagsViewList)
+    }
 }
 
 
 // 5、关闭全部 tagsView：如果是设置了固定的（isAffix），不进行关闭
 const closeAllTagsView = () => {
-    state.tagsViewList = []
-    state.tagsViewRoutesList.map((v) => {
-        if (v.meta.isAffix && !v.meta.isHidden) {
-            state.tagsViewList.push({ ...v })
-            router.push({ path: state.tagsViewList[state.tagsViewList.length - 1].path })
-        }
-    })
-    addBrowserSetSession(state.tagsViewList)
+    if (Session.get('tagsViewList')) {
+        state.tagsViewList = []
+        Session.get('tagsViewList').map((v) => {
+            if (v.meta.isAffix && !v.meta.isHidden) {
+                v.url = setTagsViewHighlight(v)
+                state.tagsViewList.push({ ...v })
+                router.push({ path: state.tagsViewList[state.tagsViewList.length - 1].path })
+            }
+        })
+        addBrowserSetSession(state.tagsViewList)
+    }
 }
 
 
@@ -417,7 +436,7 @@ const getTagsRefsIndex = (path) => {
 
 // 设置 tagsView 可以进行拖拽
 const initSortable = async () => {
-    const el = document.querySelector('.tagsView-ul')
+    let el = document.querySelector('.tagsView-ul')
     if (!el) return false
     state.sortable.el && state.sortable.destroy()
     state.sortable = Sortable.create(el, {
@@ -425,7 +444,7 @@ const initSortable = async () => {
         dataIdAttr: 'data-url',
         disabled: layoutConfig.value.isSortableTagsView ? false : true,
         onEnd: () => {
-            const sortEndList = []
+            let sortEndList = []
             state.sortable.toArray().map((val) => {
                 state.tagsViewList.map((v) => {
                     if (v.url === val) sortEndList.push({ ...v })

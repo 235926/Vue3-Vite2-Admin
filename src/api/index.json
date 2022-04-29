@@ -115,6 +115,24 @@
             },
             "children": [
                 {
+                    "path": "/func/waves",
+                    "name": "funcWaves",
+                    "component": "func/waves/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "波浪效果",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "waves"
+                    }
+                },
+                {
                     "path": "/func/lazyImg",
                     "name": "funcLazyImg",
                     "component": "func/lazyImg/index",

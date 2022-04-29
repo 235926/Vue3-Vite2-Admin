@@ -1,6 +1,6 @@
 <template>
     <div class="svg-icon-container" style="width: 50px;" @click="toggleSideBar">
-        <svg-icon :name="layoutConfig.isCollapse ? 'indent' : 'outdent'" />
+        <SvgIcon :name="layoutConfig.isCollapse ? 'indent' : 'outdent'" />
     </div>
 </template>
 

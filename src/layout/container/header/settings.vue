@@ -1,6 +1,6 @@
 <template>
     <div class="svg-icon-container" @click="onLayoutSetingClick">
-        <svg-icon name="layout-config" />
+        <SvgIcon name="layout-config" />
     </div>
 </template>
 

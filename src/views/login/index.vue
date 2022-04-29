@@ -15,7 +15,7 @@
 
             <!-- 扫码登录切换 -->
             <div class="login-content-main-sacn" @click="state.isScan = !state.isScan">
-                <svg-icon :name="state.isScan ? 'pc' : 'qrcode'" />
+                <SvgIcon :name="state.isScan ? 'pc' : 'qrcode'" />
                 <div class="login-content-main-sacn-delta"></div>
             </div>
         </div>

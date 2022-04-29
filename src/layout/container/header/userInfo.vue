@@ -3,7 +3,7 @@
         <span class="el-dropdown-link">
             <img class="avatar" :src="userInfo.avatar" />
             <span class="username">{{ userInfo.username }}</span>
-            <svg-icon name="arrow-down" />
+            <SvgIcon name="arrow-down" />
         </span>
         <template #dropdown>
             <el-dropdown-menu>

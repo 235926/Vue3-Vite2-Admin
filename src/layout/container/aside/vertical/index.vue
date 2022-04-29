@@ -18,14 +18,14 @@
                         :key="val.path"
                     >
                         <template #title>
-                            <svg-icon :name="val.meta.icon" />
+                            <SvgIcon :name="val.meta.icon" />
                             <span class="title">{{ val.meta.title }}</span>
                         </template>
                         <SubItem :chil="val.children" />
                     </el-sub-menu>
                     <template v-else>
                         <el-menu-item :index="val.path" :key="val.path">
-                            <svg-icon :name="val.meta.icon" />
+                            <SvgIcon :name="val.meta.icon" />
                             <template
                                 #title
                                 v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)"

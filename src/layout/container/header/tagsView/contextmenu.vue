@@ -19,7 +19,7 @@
                         v-if="!v.affix"
                         @click="onCurrentContextmenuClick(v.contextMenuClickId)"
                     >
-                        <svg-icon :name="v.icon" />
+                        <SvgIcon :name="v.icon" />
                         <span>{{ v.txt }}</span>
                     </li>
                 </template>

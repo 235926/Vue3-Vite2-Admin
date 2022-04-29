@@ -18,7 +18,7 @@
                             <CountUp :endVal="v.tipNum"></CountUp>
                         </div>
                     </div>
-                    <svg-icon :name="v.icon" :style="{ color: v.iconColor }" />
+                    <SvgIcon :name="v.icon" :style="{ color: v.iconColor }" />
                 </div>
             </el-col>
         </el-row>

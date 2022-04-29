@@ -134,6 +134,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/waves",
+                        name: "funcWaves",
+                        component: () => import('@/views/func/waves/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "波浪效果",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "waves"
+                        }
+                    },
+                    {
                         path: "/func/lazyImg",
                         name: "funcLazyImg",
                         component: () => import('@/views/func/lazyImg/index.vue'),

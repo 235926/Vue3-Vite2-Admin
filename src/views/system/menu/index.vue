@@ -18,7 +18,7 @@
             :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
             <el-table-column label="菜单名称" show-overflow-tooltip>
                 <template #default="scope">
-                    <svg-icon :name="scope.row.meta.icon" />
+                    <SvgIcon :name="scope.row.meta.icon" />
                     <span class="ml10">{{ scope.row.meta.title }}</span>
                 </template>
             </el-table-column>
