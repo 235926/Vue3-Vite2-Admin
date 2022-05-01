@@ -24,7 +24,7 @@
 </template>
 
 <script setup name="funcSelector">
-import IconSelector from '@/components/iconSelector/index.vue' // 图标选择器组件
+import IconSelector from '@/components/IconSelector/index.vue' // 图标选择器组件
 
 
 // 定义响应式数据>
