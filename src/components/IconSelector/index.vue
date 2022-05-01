@@ -12,7 +12,7 @@
         <div class="icon-selector-popover-wrap" v-show="state.popoverVisible">
             <el-scrollbar class="scrollbar-x">
                 <el-row :gutter="10" v-if="onSheetsFilterList.length >= 0" class="row-gap10 padding10">
-                    <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" v-for="(item, index) in onSheetsFilterList"
+                    <el-col :xs="4" :sm="4" :md="4" :lg="2" :xl="2" v-for="(item, index) in onSheetsFilterList"
                         :key="index" @click="onColClick(item)">
                         <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
                             <SvgIcon :name="item" />
@@ -35,6 +35,12 @@ const props = defineProps({
     // 参考：https://v3.cn.vuejs.org/guide/migration/v-model.html#%E8%BF%81%E7%A7%BB%E7%AD%96%E7%95%A5
     modelValue: String,
 
+    // 输入框前置内容
+    prepend: {
+        type: String,
+        default: () => 'pointer',
+    },
+
     // 输入框占位文本
     placeholder: {
         type: String,
@@ -50,7 +56,7 @@ const popoverRef = ref() // popover 本身
 const inputWidthRef = ref() // input ref
 const state = reactive({
     popoverVisible: false, // 弹出框状态
-    svgValue: '', // svg 图标名称
+    svgValue: 'pointer', // svg 图标名称
     inputValue: '', // input 输入的内容
     inputPlaceholder: '', // placeholder 值
     inputWidth: 0 // input 宽度
@@ -69,6 +75,7 @@ const onSheetsFilterList = computed(() => {
 
 // 处理 svg 图标双向绑定数值回显
 const initModeValue = () => {
+    state.inputPlaceholder = props.placeholder
     if (props.modelValue === '') return false
     state.svgValue = props.modelValue
     state.inputPlaceholder = props.modelValue
@@ -111,7 +118,9 @@ const onInputValueBlur = () => {
 
 // 清空当前点击的 icon 图标
 const onInputValueClear = () => {
-
+    // state.svgValue = ''
+    // emit('clear', state.svgValue)
+    // emit('update:modelValue', state.svgValue)
 }
 
 
@@ -148,27 +157,6 @@ watch(() => props.modelValue, () => {
 })
 </script>
 
-<style lang="scss" scoped>
-.icon-selector {
-    flex: 1;
-
-    :deep(.el-tooltip__trigger) {
-        flex: 1;
-    }
-
-    .icon-selector-search {
-        position: relative;
-
-        .close {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    }
-}
-</style>
-
 <style lang="scss">
 // 下拉框弹出窗的样式，不要加 scoped
 .icon-selector-popper {
@@ -185,7 +173,6 @@ watch(() => props.modelValue, () => {
             border: 1px solid #dcdfe6;
             padding: 10px;
             border-radius: 5px;
-            // margin-bottom: 10px;
 
             .svg-icon {
                 font-size: 18px;

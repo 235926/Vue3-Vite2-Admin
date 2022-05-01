@@ -134,6 +134,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/selector",
+                        name: "funcSelector",
+                        component: () => import('@/views/func/selector/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "图标选择器",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "selector"
+                        }
+                    },
+                    {
                         path: "/func/noticeBar",
                         name: "funcNoticeBar",
                         component: () => import('@/views/func/noticeBar/index.vue'),
