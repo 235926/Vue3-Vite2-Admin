@@ -112,7 +112,7 @@ defineExpose({
         display: inline-block;
         height: 350px;
         flex: 1;
-        border: 1px solid var(--el-border-color);
+        border: 1px solid var(--el-border-color-lighter);
         background: var(--el-color-white);
         overflow: hidden;
         background-repeat: no-repeat;

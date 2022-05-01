@@ -115,6 +115,24 @@
             },
             "children": [
                 {
+                    "path": "/func/noticeBar",
+                    "name": "funcNoticeBar",
+                    "component": "func/noticeBar/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "滚动通知栏",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "notice"
+                    }
+                },
+                {
                     "path": "/func/waves",
                     "name": "funcWaves",
                     "component": "func/waves/index",

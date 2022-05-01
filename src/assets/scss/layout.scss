@@ -91,7 +91,7 @@
                 justify-content: center;
 
                 &:hover {
-                    background-color: $-color-svg-bg-hover;
+                    background-color: var(--dl-header-svg-hover-bg-color);
 
                     .svg-icon {
                         animation: logoAnimation 0.3s ease-in-out;

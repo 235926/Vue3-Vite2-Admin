@@ -1,8 +1,8 @@
 <template>
-    <div class="full-screen-container">
-        <Toolbar style="border-bottom: 1px solid #ccc;" :editor="editorRef" :defaultConfig="state.toolbarConfig"
+    <div class="wangeditor-container">
+        <Toolbar :editor="editorRef" :defaultConfig="state.toolbarConfig"
             :mode="state.mode" />
-        <Editor style="height: 300px;" v-model="valueHtml" :defaultConfig="state.editorConfig" :mode="state.mode"
+        <Editor style="height: 350px;" v-model="valueHtml" :defaultConfig="state.editorConfig" :mode="state.mode"
             @onCreated="handleCreated" @onChange="handleChange" />
     </div>
 </template>
@@ -65,8 +65,4 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang='scss' scoped>
-.full-screen-container {
-    z-index: 9999; // 如有需要，可以自定义 z-index
-    border: 1px solid #ccc;
-}
 </style>

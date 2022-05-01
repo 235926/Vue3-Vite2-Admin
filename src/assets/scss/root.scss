@@ -1,12 +1,24 @@
 :root {
+    --dl-color-white: #ffffff;
+    --dl-color-dark-hover: #0000001a;
+
+
+
     /* Header 部分
     ------------------------------- */
     --dl-header-bg: #fff; // header 部分背景色
     --dl-header-height: 50px; // header 高度
+    --dl-header-svg-hover-bg-color: rgba(0, 0, 0, 0.04); // svg 鼠标滑过背景色
 
 
 
     /* main
     ------------------------------- */
     --dl-main-bg-color: #f8f8f8; // main 主页背景色
+
+
+
+    /* aside 侧边栏
+    ------------------------------- */
+
 }

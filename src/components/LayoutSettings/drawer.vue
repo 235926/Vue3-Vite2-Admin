@@ -13,20 +13,12 @@
 
                 <div class="drawer-item">
                     <span>项目标题</span>
-                    <el-input
-                        v-model="layoutConfig.globalTitle"
-                        placeholder="项目标题"
-                        @change="switchLayoutConfig"
-                    />
+                    <el-input v-model="layoutConfig.globalTitle" placeholder="项目标题" @change="switchLayoutConfig" />
                 </div>
 
                 <div class="drawer-item">
                     <span>主页面切换动画</span>
-                    <el-select
-                        v-model="layoutConfig.animation"
-                        placeholder="请选择"
-                        @change="switchLayoutConfig"
-                    >
+                    <el-select v-model="layoutConfig.animation" placeholder="请选择" @change="switchLayoutConfig">
                         <el-option label="slide-right" value="slide-right"></el-option>
                         <el-option label="slide-left" value="slide-left"></el-option>
                         <el-option label="opacitys" value="opacitys"></el-option>
@@ -35,27 +27,18 @@
 
                 <div class="drawer-item">
                     <span>主题颜色</span>
-                    <el-color-picker
-                        v-model="layoutConfig.primary"
-                        @change="onColorPickerChange"
-                        :predefine="predefineColors"
-                    ></el-color-picker>
+                    <el-color-picker v-model="layoutConfig.primary" @change="onColorPickerChange"
+                        :predefine="predefineColors"></el-color-picker>
                 </div>
 
                 <div class="drawer-item">
                     <span>灰色模式</span>
-                    <el-switch
-                        v-model="layoutConfig.isGrayscale"
-                        @change="onAddFilterChange('grayscale')"
-                    />
+                    <el-switch v-model="layoutConfig.isGrayscale" @change="onAddFilterChange('grayscale')" />
                 </div>
 
                 <div class="drawer-item">
                     <span>色弱模式</span>
-                    <el-switch
-                        v-model="layoutConfig.isInvert"
-                        @change="onAddFilterChange('invert')"
-                    />
+                    <el-switch v-model="layoutConfig.isInvert" @change="onAddFilterChange('invert')" />
                 </div>
 
                 <div class="drawer-item">
@@ -81,18 +64,12 @@
 
                 <div class="drawer-item">
                     <span>开启 Breadcrumb 图标</span>
-                    <el-switch
-                        v-model="layoutConfig.isBreadcrumbIcon"
-                        @change="switchLayoutConfig"
-                    />
+                    <el-switch v-model="layoutConfig.isBreadcrumbIcon" @change="switchLayoutConfig" />
                 </div>
 
                 <div class="drawer-item">
                     <span>开启修改全局组件大小</span>
-                    <el-switch
-                        v-model="layoutConfig.isGlobalComponentSize"
-                        @change="switchLayoutConfig"
-                    />
+                    <el-switch v-model="layoutConfig.isGlobalComponentSize" @change="switchLayoutConfig" />
                 </div>
 
                 <div class="drawer-item">
@@ -122,10 +99,7 @@
 
                 <div class="drawer-item">
                     <span>开启 Tagsview 拖拽</span>
-                    <el-switch
-                        v-model="layoutConfig.isSortableTagsView"
-                        @change="switchLayoutConfig"
-                    />
+                    <el-switch v-model="layoutConfig.isSortableTagsView" @change="switchLayoutConfig" />
                 </div>
 
                 <div class="drawer-item">
@@ -135,11 +109,7 @@
 
                 <div class="drawer-item">
                     <span>设置 tagsView 风格</span>
-                    <el-select
-                        v-model="layoutConfig.tagsViewStyle"
-                        placeholder="请选择"
-                        @change="switchLayoutConfig"
-                    >
+                    <el-select v-model="layoutConfig.tagsViewStyle" placeholder="请选择" @change="switchLayoutConfig">
                         <el-option label="风格1" value="tags-style-one"></el-option>
                         <el-option label="风格2" value="tags-style-two"></el-option>
                         <el-option label="风格3" value="tags-style-three"></el-option>
@@ -219,7 +189,10 @@ const onAddFilterChange = (attr) => {
 // 深色模式
 const onAddDarkChange = () => {
     const body = document.documentElement
-    if (layoutConfig.value.isDark) body.setAttribute('data-theme', 'dark')
+    if (layoutConfig.value.isDark) {
+        body.setAttribute('data-theme', 'dark')
+        setLocalThemeConfig()
+    }
     else body.setAttribute('data-theme', '')
 }
 
@@ -281,16 +254,16 @@ onUnmounted(() => {
     padding: 0 20px;
 
     .drawer-item {
-        color: $-color-text-default;
+        color: --el-text-color-primary;
         font-size: 14px;
         padding: 5px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        > span,
-        > .el-input,
-        > .el-select {
+        >span,
+        >.el-input,
+        >.el-select {
             flex: 1;
         }
     }

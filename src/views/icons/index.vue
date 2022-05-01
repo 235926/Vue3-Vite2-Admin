@@ -31,13 +31,13 @@ onMounted(() => {
 
 <style lang='scss' scoped>
 .svg-container {
-    border-top: 1px solid $-color-border-default;
-    border-left: 1px solid $-color-border-default;
+    border-top: 1px solid var(--el-border-color-lighter);
+    border-left: 1px solid var(--el-border-color-lighter);
 
     :deep(.icon-item) {
         text-align: center;
-        border-right: 1px solid $-color-border-default;
-        border-bottom: 1px solid $-color-border-default;
+        border-right: 1px solid var(--el-border-color-lighter);
+        border-bottom: 1px solid var(--el-border-color-lighter);
         height: 120px;
         overflow: hidden;
         display: flex;
@@ -52,7 +52,7 @@ onMounted(() => {
         }
 
         &:hover {
-            box-shadow: 0 2px 12px $-color-dark-hover;
+            box-shadow: 0 2px 12px var(--dl-color-dark-hover);
             cursor: pointer;
             transition: all 0.3s ease;
 

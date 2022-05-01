@@ -134,6 +134,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/noticeBar",
+                        name: "funcNoticeBar",
+                        component: () => import('@/views/func/noticeBar/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "滚动通知栏",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "notice"
+                        }
+                    },
+                    {
                         path: "/func/waves",
                         name: "funcWaves",
                         component: () => import('@/views/func/waves/index.vue'),
