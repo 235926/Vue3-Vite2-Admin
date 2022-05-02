@@ -84,8 +84,6 @@
 /* Input 输入框
 ------------------------------- */
 .el-input {
-    height: 100%;
-
     .el-input__prefix {
         .el-input__prefix-inner {
             align-items: center;
@@ -295,4 +293,12 @@
     .el-drawer__body {
         padding: 0;
     }
+}
+
+
+
+/* Empty 空状态
+------------------------------- */
+.el-empty {
+    padding: 0;
 }

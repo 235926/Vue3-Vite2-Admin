@@ -1,18 +1,18 @@
 <template>
-    <el-popover ref="popoverRef" :width="`${state.inputWidth}px`" placement="bottom"
-        v-model:visible="state.popoverVisible" popper-class="icon-selector-popper" @click="func($event)">
-        <template #reference>
-            <el-input ref="inputWidthRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
-                @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
-                <template #prepend>
-                    <SvgIcon class="font18" :name="state.svgValue" />
-                </template>
-            </el-input>
+    <el-input ref="inputRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
+        @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
+        <template #prepend>
+            <SvgIcon class="font18" :name="state.svgValue" />
         </template>
-        <div class="icon-selector-popover-wrap" v-show="state.popoverVisible">
+    </el-input>
+
+    <el-popover ref="popoverRef" :width="`${state.inputWidth}px`" trigger="click" placement="bottom"
+        popper-class="icon-selector-popper" :virtual-ref="inputRef" virtual-triggering>
+        <div class="icon-selector-warp-title">{{ title }}</div>
+        <div class="icon-selector-popover-wrap">
             <el-scrollbar class="scrollbar-x">
                 <el-row :gutter="10" v-if="onSheetsFilterList.length >= 0" class="row-gap10 padding10">
-                    <el-col :xs="4" :sm="4" :md="4" :lg="2" :xl="2" v-for="(item, index) in onSheetsFilterList"
+                    <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="2" v-for="(item, index) in onSheetsFilterList"
                         :key="index" @click="onColClick(item)">
                         <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
                             <SvgIcon :name="item" />
@@ -45,7 +45,13 @@ const props = defineProps({
     placeholder: {
         type: String,
         default: () => '请输入内容搜索图标或者选择图标'
-    }
+    },
+
+    // 弹窗标题
+    title: {
+        type: String,
+        default: () => '请选择图标',
+    },
 })
 
 
@@ -53,10 +59,9 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue', 'get', 'clear'])
 // 定义响应式数据>
 const popoverRef = ref() // popover 本身
-const inputWidthRef = ref() // input ref
+const inputRef = ref() // input ref
 const state = reactive({
-    popoverVisible: false, // 弹出框状态
-    svgValue: 'pointer', // svg 图标名称
+    svgValue: '', // svg 图标名称
     inputValue: '', // input 输入的内容
     inputPlaceholder: '', // placeholder 值
     inputWidth: 0 // input 宽度
@@ -75,6 +80,8 @@ const onSheetsFilterList = computed(() => {
 
 // 处理 svg 图标双向绑定数值回显
 const initModeValue = () => {
+    // 设置 svg 和 placeholder 默认值
+    state.svgValue = props.prepend
     state.inputPlaceholder = props.placeholder
     if (props.modelValue === '') return false
     state.svgValue = props.modelValue
@@ -85,7 +92,7 @@ const initModeValue = () => {
 // 获取 input 的宽度
 const getInputWidth = () => {
     nextTick(() => {
-        state.inputWidth = inputWidthRef.value?.$el.offsetWidth
+        state.inputWidth = inputRef.value?.$el.offsetWidth
     })
 }
 
@@ -100,9 +107,7 @@ const initResize = () => {
 
 // 处理 input 获取焦点时，modelValue 有值时，改变 input 的 placeholder 值
 const onInputValueFocus = () => {
-    state.popoverVisible = true
     if (!props.modelValue) return false
-    state.inputValue = ''
 }
 
 
@@ -111,7 +116,6 @@ const onInputValueBlur = () => {
     setTimeout(() => {
         let icon = svgIcons.filter((icon) => icon === state.inputValue)
         if (icon.length <= 0) state.inputValue = ''
-        state.popoverVisible = false
     }, 300)
 }
 
@@ -135,7 +139,7 @@ const onColClick = (item) => {
     state.inputPlaceholder = item
 
     // 关闭 popover 本身
-    state.popoverVisible = false
+    popoverRef.value.hide()
 
     // 更新 modelValue
     emit('get', state.svgValue)
@@ -161,6 +165,13 @@ watch(() => props.modelValue, () => {
 // 下拉框弹出窗的样式，不要加 scoped
 .icon-selector-popper {
     padding: 0 !important;
+
+    .icon-selector-warp-title {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        border-bottom: 1px solid var(--el-border-color);
+    }
 
     .icon-selector-popover-wrap {
         height: 260px;
