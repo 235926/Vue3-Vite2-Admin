@@ -366,6 +366,24 @@ export const dynamicRoutes = [
                             ],
                             icon: "print"
                         }
+                    },
+                    {
+                        path: "/func/svgIcon",
+                        name: "funcSvgIcon",
+                        component: () => import('@/views/func/svgIcon/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "svgIcon 演示",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "svgIcon"
+                        }
                     }
                 ]
             },

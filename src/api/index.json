@@ -347,6 +347,24 @@
                         ],
                         "icon": "print"
                     }
+                },
+                {
+                    "path": "/func/svgIcon",
+                    "name": "funcSvgIcon",
+                    "component": "func/svgIcon/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "svgIcon 演示",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "svgIcon"
+                    }
                 }
             ]
         },

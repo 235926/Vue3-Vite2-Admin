@@ -11,6 +11,15 @@
 
 
 
+## "version": "2.1.5"
+## "date": "2022.05.03"
+## "author": "cdl"
+
+- ❄️ 删除 插件 "default-passive-events"
+- 🎉 新增 svgIcon 演示页面 前往体验：[滚动通知栏](https://vue3-vite2-admin.vercel.app/#/func/svgIcon)
+
+
+
 ## "version": "2.1.4"
 ## "date": "2022.05.02"
 ## "author": "cdl"

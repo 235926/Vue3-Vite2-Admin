@@ -1,5 +1,5 @@
 <template>
-    <svg class="svg-icon" aria-hidden="true">
+    <svg class="svg-icon" aria-hidden="true" :style="{ 'font-size': size }">
         <use :xlink:href="symbolId" :fill="color" />
     </svg>
 </template>
@@ -10,14 +10,22 @@ import { defineComponent, computed } from 'vue' // vue 内置方法
 export default defineComponent({
     name: 'SvgIcon',
     props: {
+        // svg 前缀
         prefix: {
             type: String,
             default: 'icon',
         },
+        // svg 图标组件名字
         name: {
             type: String,
             required: true,
         },
+        // svg 大小
+        size: {
+            type: Number,
+            default: () => 14,
+        },
+        // svg 颜色
         color: {
             type: String,
         },
