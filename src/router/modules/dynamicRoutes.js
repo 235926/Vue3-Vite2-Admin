@@ -23,7 +23,7 @@
 export const dynamicRoutes = [
     {
         path: '/',
-        name: 'layout',
+        name: '/',
         component: () => import('@/layout/index.vue'),
         redirect: '/dashboard',
         meta: {
