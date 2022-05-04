@@ -131,7 +131,7 @@ body,
 ------------------------------- */
 @for $i from 12 through 32 {
     .font#{$i} {
-        font-size: #{$i}px !important;
+        font-size: #{$i}px;
     }
 }
 

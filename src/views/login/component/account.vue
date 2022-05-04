@@ -45,6 +45,7 @@ import { login } from '@/api/user.js' // api
 import { formatAxis } from '@/utils/formatTime.js' // 时间问候语
 import { initFrontEndControlRoutes } from '@/router/modules/frontEnd.js' // 前端控制路由：初始化方法，防止刷新时路由丢失
 import { initBackEndControlRoutes } from '@/router/modules/backEnd.js' // 后端控制路由：初始化方法，防止刷新时路由丢失
+import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
 const { proxy } = getCurrentInstance() // vue 实例
 const router = useRouter() // router 实例
 const route = useRoute() // 路由参数
@@ -131,6 +132,8 @@ const signInSuccess = () => {
     // 登录成功提示
     const signInText = '欢迎回来！'
     proxy.$message.success(`${currentTimeInfo}，${signInText}`)
+    // 添加 loading，防止第一次进入界面时出现短暂空白
+    NextLoading.start()
 }
 </script>
 

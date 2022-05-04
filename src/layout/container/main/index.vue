@@ -10,6 +10,7 @@
 
 <script setup name="layoutMain">
 import LayoutParent from '@/layout/routerView/parent.vue' // 路由出口
+import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
 const { proxy } = getCurrentInstance() // vue 实例
 const route = useRoute() // 路由参数
 const store = useStore() // vuex
@@ -40,6 +41,7 @@ const initGetMeta = () => {
 onBeforeMount(() => {
     initHeaderHeight()
     initGetMeta()
+    NextLoading.done()
 })
 
 

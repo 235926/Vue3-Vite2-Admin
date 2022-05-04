@@ -9,7 +9,7 @@ import '@/assets/scss/loading.scss' // 页面全局 Loading 样式
 export const NextLoading = {
     // 创建 loading
     start: () => {
-        const bodys = document.body;
+        const bodys = document.body
         const div = document.createElement('div')
         div.setAttribute('class', 'loading-next')
         const htmls =

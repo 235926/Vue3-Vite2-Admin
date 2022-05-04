@@ -26,12 +26,19 @@
 import Account from './component/account.vue' // 账号登录
 import Mobile from './component/mobile.vue' // 手机号登录
 import Scan from './component/scan.vue' // 扫码登录
+import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
 
 
 // 定义响应式数据>
 const state = reactive({
     activeName: 'account', // 默认选中
     isScan: false, // 是否扫码登录
+})
+
+
+// 组件挂载后，此方法执行后，页面显示
+onMounted(() => {
+    NextLoading.done()
 })
 </script>
 

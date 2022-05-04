@@ -88,6 +88,7 @@ const handleLogout = () => {
         ctx.$message.success('安全退出成功！')
         setTimeout(() => {
             window.location.href = `#/login?redirect=${route.path}&params=${JSON.stringify(route.query ? route.query : route.params)}`
+            // window.location.reload()
         }, 300)
     }).catch(() => { })
 }

@@ -1,5 +1,5 @@
 <template>
-    <svg class="svg-icon" aria-hidden="true" :style="{ 'font-size': size }">
+    <svg class="svg-icon" aria-hidden="true" :class="`font${size}`">
         <use :xlink:href="symbolId" :fill="color" />
     </svg>
 </template>
