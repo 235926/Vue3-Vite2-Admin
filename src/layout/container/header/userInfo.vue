@@ -25,7 +25,6 @@
 <script setup name="userInfo">
 import { logout } from '@/api/user.js' // api
 import { Session } from '@/utils/storage.js' // 浏览器存储
-import { resetRoute } from '@/router/index.js' // 删除/重置路由
 const { proxy: ctx } = getCurrentInstance() // vue 实例
 const store = useStore() // vuex 实例
 const route = useRoute() // route 参数
@@ -84,12 +83,9 @@ const handleLogout = () => {
         }
     }).then(() => {
         Session.clear() // 清除缓存/token等
-        resetRoute() // 删除/重置路由
         ctx.$message.success('安全退出成功！')
-        setTimeout(() => {
-            window.location.href = `#/login?redirect=${route.path}&params=${JSON.stringify(route.query ? route.query : route.params)}`
-            // window.location.reload()
-        }, 300)
+        // 使用 reload 时，不需要调用 resetRoute() 重置路由
+        window.location.reload()
     }).catch(() => { })
 }
 </script>

@@ -1,20 +1,8 @@
 import store from '@/store/index.js' // vuex
+import { formatTwoStageRoutes, formatFlatteningRoutes, router } from '@/router/index.js' // 处理嵌套数组
 import { Session } from '@/utils/storage.js' // 浏览器临时缓存
 import { NextLoading } from '@/utils/loading.js' // 页面全局 Loading
-import { setAddRoute, setFilterMenuAndCacheTagsViewRoutes } from '@/router/index.js' // 动态添加路由方法
 import { dynamicRoutes } from '@/router/modules/dynamicRoutes.js' // 动态路由表
-import { generateRoutes } from '@/api/user.js' // 获取后端路由菜单 api
-
-
-
-/**
- * 获取目录下的 .vue、.tsx 全部文件
- * @method import.meta.glob
- * @link 参考：https://cn.vitejs.dev/guide/features.html#json
- */
-const layouModules = import.meta.glob('../../layout/routerView/*.{vue,tsx}');
-const viewsModules = import.meta.glob('../../views/**/*.{vue,tsx}')
-const dynamicViewsModules = Object.assign({}, { ...layouModules }, { ...viewsModules })
 
 
 
@@ -36,15 +24,6 @@ export const initBackEndControlRoutes = async () => {
     // 触发初始化用户信息
     store.dispatch('user/setUserInfo')
 
-    // 获取路由菜单数据
-    const res = await getBackEndControlRoutes()
-
-    // 存储接口原始路由（未处理component），根据需求选择使用
-    store.dispatch('routesList/setBackEndControlRoutes', JSON.parse(JSON.stringify(res.routes)))
-
-    // 处理路由（component），替换 dynamicRoutes（@/router/modules/dynamicRoutes.js）第一个顶级 children 的路由
-    dynamicRoutes[0].children = await backEndComponent(res.routes)
-
     // 添加动态路由
     await setAddRoute()
 
@@ -53,55 +32,128 @@ export const initBackEndControlRoutes = async () => {
 }
 
 
+
 /**
- * 请求后端路由菜单接口
- * @description isRequestRoutes 为 true，则开启后端控制路由
- * @returns 返回后端路由菜单数据
+ * 添加动态路由
+ * @method router.addRoute
+ * @description 此处循环为 dynamicRoutes（@/router/modules/staticRoutes.js）第一个顶级 children 的路由一维数组，非多级嵌套
+ * @link 参考：https://next.router.vuejs.org/zh/api/#addroute
  */
-export const getBackEndControlRoutes = () => {
-    return generateRoutes()
+export async function setAddRoute() {
+    await setFilterRouteEnd().forEach((route) => {
+        router.addRoute(route)
+    })
 }
 
 
-
 /**
- * 后端路由 component 转换
- * @param routes 后端返回的路由表数组
- * @returns 返回处理成函数后的 component
+ * 删除/重置路由
+ * @method router.removeRoute
+ * @description 此处循环为 dynamicRoutes（@/router/modules/staticRoutes.js）第一个顶级 children 的路由一维数组，非多级嵌套
+ * @link 参考：https://next.router.vuejs.org/zh/api/#push
  */
-export const backEndComponent = (routes) => {
-    if (!routes) return
-    return routes.map((item) => {
-        if (item.component) item.component = dynamicImport(dynamicViewsModules, item.component)
-        item.children && backEndComponent(item.children)
-        return item
+export async function frontEndsResetRoute() {
+    await setFilterRouteEnd().forEach((route) => {
+        const routeName = route.name
+        router.hasRoute(routeName) && router.removeRoute(routeName)
     })
 }
 
 
 
 /**
- * 后端路由 component 转换函数
- * @param dynamicViewsModules 获取目录下的 .vue、.tsx 全部文件
- * @param component 当前要处理项 component
- * @returns 返回处理成函数后的 component
+ * 获取有当前用户权限标识的路由数组，进行对原路由的替换
+ * @description 替换 dynamicRoutes（@/router/modules/staticRoutes.js）第一个顶级 children 的路由
+ * @returns 返回替换后的路由数组
  */
-export const dynamicImport = (dynamicViewsModules, component) => {
-    let keys = Object.keys(dynamicViewsModules)
-    let matchKeys = keys.filter((key) => {
-        if (key.startsWith('../../layout/routerView')) {
-            let k = key.replace(/..\/..\/layout|../, '')
-            return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
-        } else {
-            let k = key.replace(/..\/..\/views|../, '')
-            return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
+export function setFilterRouteEnd() {
+    const filterRouteEnd = formatTwoStageRoutes(formatFlatteningRoutes(dynamicRoutes))
+    filterRouteEnd[0].children = [...setFilterRoute(filterRouteEnd[0].children), ...notFoundAndNoPower]
+    return filterRouteEnd;
+}
+
+
+
+/**
+ * 获取当前用户权限标识去比对路由表（未处理成多级嵌套路由）
+ * @description 这里主要用于动态路由的添加，router.addRoute
+ * @link 参考：https://next.router.vuejs.org/zh/api/#addroute
+ * @param chil dynamicRoutes（/@/router/route）第一个顶级 children 的下路由集合
+ * @returns 返回有当前用户权限标识的路由数组
+ */
+export function setFilterRoute(chil) {
+    const userInfo = store.getters.userInfo
+    const filterRoute = []
+    chil.forEach((route) => {
+        if (route.meta.roles) {
+            route.meta.roles.forEach((metaRoles) => {
+                userInfo.value.roles.forEach((roles) => {
+                    if (metaRoles === roles) filterRoute.push({ ...route })
+                })
+            })
         }
     })
-    if (matchKeys?.length === 1) {
-        let matchKey = matchKeys[0]
-        return dynamicViewsModules[matchKey]
-    }
-    if (matchKeys?.length > 1) {
-        return false
-    }
+    return filterRoute
+}
+
+
+
+/**
+ * 缓存多级嵌套数组处理后的一维数组
+ * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHidden)
+ */
+export function setCacheTagsViewRoutes() {
+    // 获取有权限的路由，否则 tagsView、菜单搜索中无权限的路由也将显示
+    const userInfo = store.getters.userInfo
+    const tagsViewRoutes = store.getters.tagsViewRoutes
+    const rolesRoutes = setFilterHasRolesMenu(dynamicRoutes, userInfo.value.roles)
+    // 添加到 pinia setTagsViewRoutes 中
+    tagsViewRoutes.setTagsViewRoutes(formatTwoStageRoutes(formatFlatteningRoutes(rolesRoutes))[0].children)
+}
+
+
+
+/**
+ * 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
+ * @description 用于左侧菜单、横向菜单的显示
+ * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHide)
+ */
+export function setFilterMenuAndCacheTagsViewRoutes() {
+    const routesList = store.getters.routesList
+    const userInfo = store.getters.userInfo
+    routesList.setRoutesList(setFilterHasRolesMenu(dynamicRoutes[0].children, userInfo.value.roles))
+    setCacheTagsViewRoutes()
+}
+
+
+
+/**
+ * 判断路由 `meta.roles` 中是否包含当前登录用户权限字段
+ * @param roles 用户权限标识，在 userInfos（用户信息）的 roles（登录页登录时缓存到浏览器）数组
+ * @param route 当前循环时的路由项
+ * @returns 返回对比后有权限的路由项
+ */
+export function hasRoles(roles, route) {
+    if (route.meta && route.meta.roles) return roles.some((role) => route.meta.roles.includes(role))
+    else return true
+}
+
+
+
+/**
+ * 获取当前用户权限标识去比对路由表，设置递归过滤有权限的路由
+ * @param routes 当前路由 children
+ * @param roles 用户权限标识，在 userInfos（用户信息）的 roles（登录页登录时缓存到浏览器）数组
+ * @returns 返回有权限的路由数组 `meta.roles` 中控制
+ */
+export function setFilterHasRolesMenu(routes, roles) {
+    const menu = []
+    routes.forEach((route) => {
+        const item = { ...route }
+        if (hasRoles(roles, item)) {
+            if (item.children) item.children = setFilterHasRolesMenu(item.children, roles)
+            menu.push(item)
+        }
+    })
+    return menu
 }
