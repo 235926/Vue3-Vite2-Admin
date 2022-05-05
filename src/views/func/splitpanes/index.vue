@@ -1,19 +1,21 @@
 <template>
-    <el-card shadow="hover" header="splitpanes 窗格拆分器">
-        <el-alert title="感谢优秀的 `splitpanes`，项目地址：https://github.com/antoniandre/splitpanes" type="success"
-            :closable="false" class="mb20"></el-alert>
+    <div class="page-container">
+        <el-card shadow="hover" header="splitpanes 窗格拆分器">
+            <el-alert title="感谢优秀的 `splitpanes`，项目地址：https://github.com/antoniandre/splitpanes" type="success"
+                :closable="false" class="mb20"></el-alert>
 
-        <splitpanes class="default-theme" @resize="state.paneSize = $event[0].size" style="height: 500px">
-            <pane :size="32">1</pane>
-            <pane :size="36">
-                <splitpanes class="default-theme" :horizontal="true">
-                    <pane :size="100">2</pane>
-                    <pane :size="100">3</pane>
-                </splitpanes>
-            </pane>
-            <pane :size="32">4</pane>
-        </splitpanes>
-    </el-card>
+            <splitpanes class="default-theme" @resize="state.paneSize = $event[0].size" style="height: 500px">
+                <pane :size="32">1</pane>
+                <pane :size="36">
+                    <splitpanes class="default-theme" :horizontal="true">
+                        <pane :size="100">2</pane>
+                        <pane :size="100">3</pane>
+                    </splitpanes>
+                </pane>
+                <pane :size="32">4</pane>
+            </splitpanes>
+        </el-card>
+    </div>
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-    <div class="color">
+    <div class="page-container color">
         color
     </div>
 </template>

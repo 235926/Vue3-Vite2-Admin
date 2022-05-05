@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard">
+    <div class="page-container dashboard">
         <!-- 面板部分 -->
         <PanelGroup @handleSetLineChartData="handleSetLineChartData" />
 
@@ -15,10 +15,6 @@
 import PanelGroup from './component/panelGroup.vue' // 面板部分
 import LineChart from './component/lineChart.vue' // 折线图
 import Packages from './component/packages.vue' // 安装的插件依赖
-
-
-
-
 
 
 // 折线图数据

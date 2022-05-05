@@ -1,5 +1,5 @@
 <template>
-    <div class="system-role">
+    <div class="page-container system-role">
         role
     </div>
 </template>

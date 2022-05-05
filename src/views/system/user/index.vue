@@ -1,5 +1,5 @@
 <template>
-    <div class="system-user">system-user</div>
+    <div class="page-container system-user">system-user</div>
 </template>
 
 <script setup name="systemName">

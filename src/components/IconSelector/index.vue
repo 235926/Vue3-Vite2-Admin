@@ -1,28 +1,30 @@
 <template>
-    <el-input ref="inputRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
-        @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
-        <template #prepend>
-            <SvgIcon class="font18" :name="state.svgValue" />
-        </template>
-    </el-input>
+    <div class="selector w100 h100">
+        <el-input ref="inputRef" v-model="state.inputValue" :placeholder="state.inputPlaceholder" clearable
+            @focus="onInputValueFocus" @blur="onInputValueBlur" @clear="onInputValueClear">
+            <template #prepend>
+                <SvgIcon class="font18" :name="state.svgValue" />
+            </template>
+        </el-input>
 
-    <el-popover ref="popoverRef" :width="`${state.inputWidth}px`" trigger="click" placement="bottom"
-        popper-class="icon-selector-popper" :virtual-ref="inputRef" virtual-triggering>
-        <div class="icon-selector-warp-title">{{ title }}</div>
-        <div class="icon-selector-popover-wrap">
-            <el-scrollbar class="scrollbar-x">
-                <el-row :gutter="10" v-if="onSheetsFilterList.length >= 0" class="row-gap10 padding10">
-                    <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="2" v-for="(item, index) in onSheetsFilterList"
-                        :key="index" @click="onColClick(item)">
-                        <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
-                            <SvgIcon :name="item" />
-                        </span>
-                    </el-col>
-                </el-row>
-                <el-empty description="无相关图标" v-if="onSheetsFilterList.length <= 0" />
-            </el-scrollbar>
-        </div>
-    </el-popover>
+        <el-popover ref="popoverRef" :width="`${state.inputWidth}px`" trigger="click" placement="bottom"
+            popper-class="icon-selector-popper" :virtual-ref="inputRef" virtual-triggering>
+            <div class="icon-selector-warp-title">{{ title }}</div>
+            <div class="icon-selector-popover-wrap">
+                <el-scrollbar class="scrollbar-x">
+                    <el-row :gutter="10" v-if="onSheetsFilterList.length >= 0" class="row-gap10 padding10">
+                        <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="2" v-for="(item, index) in onSheetsFilterList"
+                            :key="index" @click="onColClick(item)">
+                            <span class="svg-wrap" :class="{ 'is-active': item === modelValue }">
+                                <SvgIcon :name="item" />
+                            </span>
+                        </el-col>
+                    </el-row>
+                    <el-empty description="无相关图标" v-if="onSheetsFilterList.length <= 0" />
+                </el-scrollbar>
+            </div>
+        </el-popover>
+    </div>
 </template>
 
 <script setup name="iconSelector">

@@ -257,6 +257,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/drag",
+                        name: "funcDrag",
+                        component: () => import('@/views/func/drag/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "拖拽指令",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "drag"
+                        }
+                    },
+                    {
                         path: "/func/selector",
                         name: "funcSelector",
                         component: () => import('@/views/func/selector/index.vue'),

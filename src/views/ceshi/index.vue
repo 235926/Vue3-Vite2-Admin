@@ -1,12 +1,14 @@
 <template>
-    <el-button ref="buttonRef" v-click-outside="onClickOutside">
-        <span>Click me</span>
-        <span @click.stop.prevent>Click home</span>
-    </el-button>
+    <div class="page-container">
+        <el-button ref="buttonRef" v-click-outside="onClickOutside">
+            <span>Click me</span>
+            <span @click.stop.prevent>Click home</span>
+        </el-button>
 
-    <el-popover ref="popoverRef" :virtual-ref="buttonRef" trigger="click" title="With title" virtual-triggering>
-        <span> Some content </span>
-    </el-popover>
+        <el-popover ref="popoverRef" :virtual-ref="buttonRef" trigger="click" title="With title" virtual-triggering>
+            <span> Some content </span>
+        </el-popover>
+    </div>
 </template>
 
 <script setup>

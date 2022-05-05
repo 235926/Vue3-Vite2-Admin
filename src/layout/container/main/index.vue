@@ -3,7 +3,8 @@
         <el-scrollbar class="layout-scrollbar" ref="layoutScrollbarRef"
             :style="{ padding: state.currentRouteMeta.isLink && state.currentRouteMeta.isIframe ? 0 : '', transition: 'padding 0.3s ease-in-out' }">
             <!-- 40 是 padding 的值 -->
-            <LayoutParent :style="{ minHeight: `calc(100vh - ${state.headerHeight})` }" />
+            <LayoutParent
+                :style="{ minHeight: `calc(100vh - ${state.headerHeight})`, transition: 'padding 0.3s ease-in-out' }" />
         </el-scrollbar>
     </el-main>
 </template>

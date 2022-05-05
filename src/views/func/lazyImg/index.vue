@@ -1,38 +1,40 @@
 <template>
-    <el-card shadow="hover" header="图片懒加载演示（F12 切换到 Network Img下进行图片加载查看）">
-        <div class="flex-warp" v-if="state.dataList.length > 0">
-            <el-row :gutter="15">
-                <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb15" v-for="(v, k) in state.dataList" :key="k"
-                    @click="onTableItemClick(v)">
-                    <div class="flex-warp-item">
-                        <div class="flex-warp-item-box">
-                            <div class="item-img" v-loading="v.loading">
-                                <img :data-img="v.img" :data-key="k" :data-lazy-img-list="k" />
-                            </div>
-                            <div class="item-txt">
-                                <div class="item-txt-title">{{ v.title }}</div>
-                                <div class="item-txt-other">
-                                    <div style="width: 100%">
-                                        <div class="item-txt-msg mb10">
-                                            <span>评价 {{ v.evaluate }}</span>
-                                            <span class="ml10">收藏 {{ v.collection }}</span>
-                                        </div>
-                                        <div class="item-txt-msg item-txt-price">
-                                            <span class="font-price">
-                                                <span>￥</span>
-                                                <span class="font">{{ v.price }}</span>
-                                            </span>
-                                            <span>月销{{ v.monSales }}笔</span>
+    <div class="page-container">
+        <el-card shadow="hover" header="图片懒加载演示（F12 切换到 Network Img下进行图片加载查看）">
+            <div class="flex-warp" v-if="state.dataList.length > 0">
+                <el-row :gutter="15">
+                    <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb15" v-for="(v, k) in state.dataList"
+                        :key="k" @click="onTableItemClick(v)">
+                        <div class="flex-warp-item">
+                            <div class="flex-warp-item-box">
+                                <div class="item-img" v-loading="v.loading">
+                                    <img :data-img="v.img" :data-key="k" :data-lazy-img-list="k" />
+                                </div>
+                                <div class="item-txt">
+                                    <div class="item-txt-title">{{ v.title }}</div>
+                                    <div class="item-txt-other">
+                                        <div style="width: 100%">
+                                            <div class="item-txt-msg mb10">
+                                                <span>评价 {{ v.evaluate }}</span>
+                                                <span class="ml10">收藏 {{ v.collection }}</span>
+                                            </div>
+                                            <div class="item-txt-msg item-txt-price">
+                                                <span class="font-price">
+                                                    <span>￥</span>
+                                                    <span class="font">{{ v.price }}</span>
+                                                </span>
+                                                <span>月销{{ v.monSales }}笔</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
-    </el-card>
+                    </el-col>
+                </el-row>
+            </div>
+        </el-card>
+    </div>
 </template>
 
 <script setup>

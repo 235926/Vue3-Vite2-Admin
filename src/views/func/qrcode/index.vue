@@ -1,20 +1,22 @@
 <template>
-    <el-card shadow="hover" header="qrcodejs2 二维码生成">
-        <el-alert title="感谢优秀的 `qrcodejs2`，项目地址：https://github.com/davidshimjs/qrcodejs" type="success"
-            :closable="false" class="mb20"></el-alert>
+    <div class="page-container">
+        <el-card shadow="hover" header="qrcodejs2 二维码生成">
+            <el-alert title="感谢优秀的 `qrcodejs2`，项目地址：https://github.com/davidshimjs/qrcodejs" type="success"
+                :closable="false" class="mb20"></el-alert>
 
-        <div class="qrcode-img-warp">
-            <div class="mb20 qrcode-img">
-                <div class="qrcode" ref="qrcodeRef"></div>
+            <div class="qrcode-img-warp">
+                <div class="mb20 qrcode-img">
+                    <div class="qrcode" ref="qrcodeRef"></div>
+                </div>
+                <el-button type="primary" @click="onInitQrcode">
+                    <el-icon>
+                        <Refresh />
+                    </el-icon>
+                    重新生成
+                </el-button>
             </div>
-            <el-button type="primary" @click="onInitQrcode">
-                <el-icon>
-                    <Refresh />
-                </el-icon>
-                重新生成
-            </el-button>
-        </div>
-    </el-card>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcQrcode">

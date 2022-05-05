@@ -1,5 +1,5 @@
 <template>
-    backEnd-button
+    <div class="page-container">backEnd-button</div>
 </template>
 
 <script setup>

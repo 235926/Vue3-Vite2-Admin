@@ -37,6 +37,9 @@ export default defineConfig(({ command, mode }) => {
                     rewrite: (path) => path.replace(/^\/api/, '')
                 },
             },
+            watch: {
+                usePolling: true
+            }
         },
         resolve: {
             alias: { // 配置文件别名
@@ -60,6 +63,7 @@ export default defineConfig(({ command, mode }) => {
             rollupOptions: {
                 output: {
                     manualChunks: {
+                        vue: ['vue', 'vue-router', 'vuex'],
                         'element-plus': ['element-plus'],
                         echarts: ['echarts'],
                     }

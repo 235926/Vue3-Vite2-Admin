@@ -1,14 +1,16 @@
 <template>
-    <el-card shadow="hover">
-        <el-tabs>
-            <el-tab-pane :label="`Svg-Icons(${state.svgIconsCount})`">
-                <SvgIcons ref="svgIcons" />
-            </el-tab-pane>
-            <el-tab-pane :label="`Element-Icons(${state.elementIconsCount})`">
-                <ElementIcons ref="elementIcons" />
-            </el-tab-pane>
-        </el-tabs>
-    </el-card>
+    <div class="page-container">
+        <el-card shadow="hover">
+            <el-tabs>
+                <el-tab-pane :label="`Svg-Icons(${state.svgIconsCount})`">
+                    <SvgIcons ref="svgIcons" />
+                </el-tab-pane>
+                <el-tab-pane :label="`Element-Icons(${state.elementIconsCount})`">
+                    <ElementIcons ref="elementIcons" />
+                </el-tab-pane>
+            </el-tabs>
+        </el-card>
+    </div>
 </template>
 
 <script setup>

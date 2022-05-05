@@ -26,7 +26,7 @@ export function judementSameArr(news, old) {
  * @param b 要比较的对象二
  * @returns 相同返回 true，反之则反
  */
-export const isObjectValueEqual = (a, b) => {
+export function isObjectValueEqual(a, b) {
     if (!a || !b) return false
     let aProps = Object.getOwnPropertyNames(a)
     let bProps = Object.getOwnPropertyNames(b)
@@ -52,7 +52,7 @@ export const isObjectValueEqual = (a, b) => {
  * @param obj 源对象
  * @returns 克隆后的对象
  */
-export const deepClone = (obj) => {
+export function deepClone(obj) {
     let newObj
     try {
         newObj = obj.push ? [] : {}
@@ -76,7 +76,7 @@ export const deepClone = (obj) => {
  * @param list 数组对象
  * @returns 删除空值后的数组对象
  */
-export const handleEmpty = (list) => {
+export function handleEmpty(list) {
     let arr = []
     for (let i in list) {
         let d = []
@@ -96,7 +96,7 @@ export const handleEmpty = (list) => {
 /**
  * 判断是否是移动端
  */
-export const isMobile = () => {
+export function isMobile() {
     if (
         navigator.userAgent.match(
             /('phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone')/i
@@ -115,7 +115,7 @@ export const isMobile = () => {
  * @param  {[type]} list 一维数组，数组中每一个元素需包含id和parent_id两个属性
  * @return {[type]} tree 多层级树状结构
  */
-export const buildTree = (list) => {
+export function buildTree(list) {
     let temp = {}
     let tree = {}
     for (let i in list) {
@@ -143,7 +143,7 @@ export const buildTree = (list) => {
  * @param {boolean} immediate
  * @return {*}
  */
-export const debounce = (func, wait, immediate) => {
+export function debounce(func, wait, immediate) {
     let timeout, args, context, timestamp, result
 
     const later = function () {
@@ -185,7 +185,7 @@ export const debounce = (func, wait, immediate) => {
  * @param {string} className
  * toggleClass(document.body, 'custom-theme')
  */
-export const toggleClass = (element, className) => {
+export function toggleClass(element, className) {
     if (!element || !className) {
         return
     }
@@ -221,7 +221,7 @@ export function hasClass(ele, cls) {
  * @param {string} cls
  * addClass(document.body, 'showRightPanel')
  */
-export const addClass = (ele, cls) => {
+export function addClass(ele, cls) {
     if (!hasClass(ele, cls)) ele.className += ' ' + cls
 }
 
@@ -233,7 +233,7 @@ export const addClass = (ele, cls) => {
  * @param {string} cls
  * removeClass(document.body, 'showRightPanel')
  */
-export const removeClass = (ele, cls) => {
+export function removeClass(ele, cls) {
     if (hasClass(ele, cls)) {
         const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
         ele.className = ele.className.replace(reg, ' ')
@@ -246,7 +246,7 @@ export const removeClass = (ele, cls) => {
  * 判断内容是否为空
  * isNull(value)
  */
-export const isNull = (value) => {
+export function isNull(value) {
     return value === '' || value === undefined || value === null
 }
 
@@ -257,7 +257,7 @@ export const isNull = (value) => {
  * dataByGroup([1, 6, 12, 18, 19, 46, 16, 15, 17, 19, 22, 64, 76, 56, 45, 58, 93, 77, 12, 45])
  * 结果：[1, 6]，[12, 15, 16, 17, 18, 19]，[22]，[45, 46]，[56, 58]，[64]，[76, 77]，[93]
  */
-export const dataByGroup = (params) => {
+export function dataByGroup(params) {
     const obj = {}
     const finalyArr = []
     params.filter((i, idx) => params.indexOf(i) === idx).sort((a, b) => a - b).forEach(i => {
@@ -279,7 +279,7 @@ export const dataByGroup = (params) => {
  * duplicateRemoval([1, 2, 3, 4, 5, 6, 72, 2, 1, 2, 3, 5])
  * 结果：[1, 2, 3, 4, 5, 6, 72]
  */
-export const duplicateRemoval = (data) => {
+export function duplicateRemoval(data) {
     return data.filter((item, index, arr) => {
         return arr.indexOf(item, 0) === index
     })
@@ -293,7 +293,7 @@ export const duplicateRemoval = (data) => {
  * @param arr 列表数据
  * @description data-xxx 属性用于存储页面或应用程序的私有自定义数据
  */
-export const lazyImg = (el, arr) => {
+export function lazyImg(el, arr) {
     let io = new IntersectionObserver((res) => {
         res.forEach((v) => {
             if (v.isIntersecting) {

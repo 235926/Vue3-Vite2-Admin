@@ -8,7 +8,7 @@ import { Local } from '@/utils/storage.js' // 浏览器存储
  * 设置浏览器标题国际化
  * @method const title = useTitle(); ==> title()
  */
-export const useTitle = () => {
+export function useTitle() {
     nextTick(() => {
         let webTitle = ''
         let globalTitle = store.getters.layoutConfig.globalTitle

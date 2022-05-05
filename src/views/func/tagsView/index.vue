@@ -1,62 +1,64 @@
 <template>
-    <el-card shadow="hover" header="tagsView 当前页演示">
-        <div class="flex-warp">
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="primary" @click="refreshCurrentTagsView">
-                        <el-icon>
-                            <Refresh />
-                        </el-icon>
-                        刷新当前页
-                    </el-button>
+    <div class="page-container">
+        <el-card shadow="hover" header="tagsView 当前页演示">
+            <div class="flex-warp">
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="primary" @click="refreshCurrentTagsView">
+                            <el-icon>
+                                <Refresh />
+                            </el-icon>
+                            刷新当前页
+                        </el-button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="info" @click="closeCurrentTagsView">
-                        <el-icon>
-                            <Close />
-                        </el-icon>
-                        关闭当前页
-                    </el-button>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="info" @click="closeCurrentTagsView">
+                            <el-icon>
+                                <Close />
+                            </el-icon>
+                            关闭当前页
+                        </el-button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="warning" @click="closeOtherTagsView">
-                        <el-icon>
-                            <CircleClose />
-                        </el-icon>
-                        关闭其它
-                    </el-button>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="warning" @click="closeOtherTagsView">
+                            <el-icon>
+                                <CircleClose />
+                            </el-icon>
+                            关闭其它
+                        </el-button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="danger" @click="closeAllTagsView">
-                        <el-icon>
-                            <FolderDelete />
-                        </el-icon>
-                        全部关闭
-                    </el-button>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="danger" @click="closeAllTagsView">
+                            <el-icon>
+                                <FolderDelete />
+                            </el-icon>
+                            全部关闭
+                        </el-button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="success" @click="openCurrenFullscreen">
-                        <el-icon>
-                            <FullScreen />
-                        </el-icon>
-                        当前页全屏
-                    </el-button>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="success" @click="openCurrenFullscreen">
+                            <el-icon>
+                                <FullScreen />
+                            </el-icon>
+                            当前页全屏
+                        </el-button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </el-card>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcTagsView">

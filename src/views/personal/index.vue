@@ -1,5 +1,5 @@
 <template>
-    <div class="personal">
+    <div class="page-container personal">
         <el-row :gutter="20" class="row-gap20">
             <!-- 欢迎回来 -->
             <Welcome />

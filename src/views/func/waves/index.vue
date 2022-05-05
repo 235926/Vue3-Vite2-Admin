@@ -1,45 +1,47 @@
 <template>
-    <el-card shadow="hover" header="波浪指令效果（v-waves）作用于 btn">
-        <el-row class="mb10" style="color: #808080">可选参数 v-waves=" |light|red|orange|purple|green|teal"</el-row>
+    <div class="page-container">
+        <el-card shadow="hover" header="波浪指令效果（v-waves）作用于 btn">
+            <el-row class="mb10" style="color: #808080">可选参数 v-waves=" |light|red|orange|purple|green|teal"</el-row>
 
-        <div class="flex-warp">
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button v-waves>默认效果</el-button>
+            <div class="flex-warp">
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button v-waves>默认效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="primary" v-waves="'light'">light 效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="success" v-waves="'red'">red 效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="info" v-waves="'orange'">orange 效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="warning" v-waves="'purple'">purple 效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="danger" v-waves="'green'">green 效果</el-button>
+                    </div>
+                </div>
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="primary" v-waves="'teal'">teal 效果</el-button>
+                    </div>
                 </div>
             </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="primary" v-waves="'light'">light 效果</el-button>
-                </div>
-            </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="success" v-waves="'red'">red 效果</el-button>
-                </div>
-            </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="info" v-waves="'orange'">orange 效果</el-button>
-                </div>
-            </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="warning" v-waves="'purple'">purple 效果</el-button>
-                </div>
-            </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="danger" v-waves="'green'">green 效果</el-button>
-                </div>
-            </div>
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="primary" v-waves="'teal'">teal 效果</el-button>
-                </div>
-            </div>
-        </div>
-    </el-card>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcWaves">

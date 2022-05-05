@@ -1,5 +1,5 @@
 <template>
-    <div class="error">
+    <div class="page-container error">
         <div class="error-flex">
             <div class="left">
                 <div class="left-item">

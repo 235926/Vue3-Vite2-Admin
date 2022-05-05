@@ -1,19 +1,22 @@
 <template>
-    <el-card shadow="hover" header="vue-grid-layout 拖拽布局演示">
-        <el-alert title="感谢优秀的 `vue-grid-layout`，项目地址：https://github.com/jbaysolutions/vue-grid-layout" type="success"
-            :closable="false" class="mb20"></el-alert>
+    <div class="page-container">
+        <el-card shadow="hover" header="vue-grid-layout 拖拽布局演示">
+            <el-alert title="感谢优秀的 `vue-grid-layout`，项目地址：https://github.com/jbaysolutions/vue-grid-layout"
+                type="success" :closable="false" class="mb20"></el-alert>
 
 
-        <grid-layout :layout="state.layouts" :col-num="12" :row-height="30" :is-draggable="true" :is-resizable="true"
-            :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true">
-            <grid-item v-for="item in state.layouts" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i"
-                :key="item.i" @moved="movedEvent">
-                <div class="w100 h100 flex">
-                    <span class="flex-margin font14">{{ item.i }}</span>
-                </div>
-            </grid-item>
-        </grid-layout>
-    </el-card>
+            <grid-layout :layout="state.layouts" :col-num="12" :row-height="30" :is-draggable="true"
+                :is-resizable="true" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]"
+                :use-css-transforms="true">
+                <grid-item v-for="item in state.layouts" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i"
+                    :key="item.i" @moved="movedEvent">
+                    <div class="w100 h100 flex">
+                        <span class="flex-margin font14">{{ item.i }}</span>
+                    </div>
+                </grid-item>
+            </grid-layout>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcGridLayout">

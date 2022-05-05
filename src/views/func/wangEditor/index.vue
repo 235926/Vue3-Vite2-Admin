@@ -1,20 +1,22 @@
 <template>
-    <el-card shadow="hover" header="wangEditor 富文本编辑器">
-        <el-alert title="感谢优秀的 `wangEditor`，项目地址：https://github.com/wangeditor-team/wangEditor" type="success"
-            :closable="false" class="mb20"></el-alert>
-        <el-alert title="本项目根据 `wangEditor`，封装的富文本组件 @/components/wangEditor/index.vue" type="success" :closable="false"
-            class="mb20"></el-alert>
+    <div class="page-container">
+        <el-card shadow="hover" header="wangEditor 富文本编辑器">
+            <el-alert title="感谢优秀的 `wangEditor`，项目地址：https://github.com/wangeditor-team/wangEditor" type="success"
+                :closable="false" class="mb20"></el-alert>
+            <el-alert title="本项目根据 `wangEditor`，封装的富文本组件 @/components/wangEditor/index.vue" type="success"
+                :closable="false" class="mb20"></el-alert>
 
-        <!-- 富文本编辑器组件 -->
-        <el-row :gutter="20" class="row-gap10">
-            <el-col :span="24">
-                <WangEditor v-model="state.editorVal" />
-            </el-col>
-            <el-col :span="24">
-                {{ state.editorVal }}
-            </el-col>
-        </el-row>
-    </el-card>
+            <!-- 富文本编辑器组件 -->
+            <el-row :gutter="20" class="row-gap10">
+                <el-col :span="24">
+                    <WangEditor v-model="state.editorVal" />
+                </el-col>
+                <el-col :span="24">
+                    {{ state.editorVal }}
+                </el-col>
+            </el-row>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcWangEditor">

@@ -1,19 +1,21 @@
 <template>
-    <el-card shadow="hover" header="svgIcon：演示（支持本地svg）">
-        <SvgIcon name="add" color="red" :size="30" />
-        <SvgIcon name="404" color="var(--el-color-primary)" :size="30" />
-        <SvgIcon name="all" color="#09f" :size="30" />
-    </el-card>
+    <div class="page-container">
+        <el-card shadow="hover" header="svgIcon：演示（支持本地svg）">
+            <SvgIcon name="add" color="red" :size="30" />
+            <SvgIcon name="404" color="var(--el-color-primary)" :size="30" />
+            <SvgIcon name="all" color="#09f" :size="30" />
+        </el-card>
 
-    <el-card shadow="hover" header="svgIcon：参数" class="mt20">
-        <el-table :data="state.tableData">
-            <el-table-column prop="a1" label="参数"> </el-table-column>
-            <el-table-column prop="a2" label="说明"> </el-table-column>
-            <el-table-column prop="a3" label="类型"> </el-table-column>
-            <el-table-column prop="a4" label="可选值"> </el-table-column>
-            <el-table-column prop="a5" label="默认值"> </el-table-column>
-        </el-table>
-    </el-card>
+        <el-card shadow="hover" header="svgIcon：参数" class="mt20">
+            <el-table :data="state.tableData">
+                <el-table-column prop="a1" label="参数"> </el-table-column>
+                <el-table-column prop="a2" label="说明"> </el-table-column>
+                <el-table-column prop="a3" label="类型"> </el-table-column>
+                <el-table-column prop="a4" label="可选值"> </el-table-column>
+                <el-table-column prop="a5" label="默认值"> </el-table-column>
+            </el-table>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcSvgIcon">

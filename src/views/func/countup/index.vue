@@ -1,62 +1,64 @@
 <template>
-    <el-card shadow="hover" header="数字滚动演示">
-        <el-alert title="感谢优秀的 `countup.js`，项目地址：https://github.com/inorganik/countUp.js" type="success"
-            :closable="false" class="mb20"></el-alert>
-        <el-alert title="本项目根据 `countup.js`，封装的数字滚动组件 @/components/CountUp/index.vue" type="success" :closable="false"
-            class="mb20"></el-alert>
+    <div class="page-container">
+        <el-card shadow="hover" header="数字滚动演示">
+            <el-alert title="感谢优秀的 `countup.js`，项目地址：https://github.com/inorganik/countUp.js" type="success"
+                :closable="false" class="mb20"></el-alert>
+            <el-alert title="本项目根据 `countup.js`，封装的数字滚动组件 @/components/CountUp/index.vue" type="success"
+                :closable="false" class="mb20"></el-alert>
 
-        <el-row :gutter="20" class="row-gap20 mb15">
-            <el-col :sm="6" v-for="(v, k) in topCardItemList" :key="k">
-                <div class="countup-card-item countup-card-item-box" :style="{ background: `var(${v.color})` }">
-                    <div class="countup-card-item-flex">
-                        <div class="countup-card-item-title pb3">{{ v.title }}</div>
-                        <div class="countup-card-item-title-num pb6">
-                            <CountUp :endVal="v.titleNum"></CountUp>
+            <el-row :gutter="20" class="row-gap20 mb15">
+                <el-col :sm="6" v-for="(v, k) in topCardItemList" :key="k">
+                    <div class="countup-card-item countup-card-item-box" :style="{ background: `var(${v.color})` }">
+                        <div class="countup-card-item-flex">
+                            <div class="countup-card-item-title pb3">{{ v.title }}</div>
+                            <div class="countup-card-item-title-num pb6">
+                                <CountUp :endVal="v.titleNum"></CountUp>
+                            </div>
+                            <div class="countup-card-item-tip pb3">{{ v.tip }}</div>
+                            <div class="countup-card-item-tip-num">
+                                <CountUp :endVal="v.tipNum"></CountUp>
+                            </div>
                         </div>
-                        <div class="countup-card-item-tip pb3">{{ v.tip }}</div>
-                        <div class="countup-card-item-tip-num">
-                            <CountUp :endVal="v.tipNum"></CountUp>
-                        </div>
+                        <SvgIcon :name="v.icon" :style="{ color: v.iconColor }" />
                     </div>
-                    <SvgIcon :name="v.icon" :style="{ color: v.iconColor }" />
-                </div>
-            </el-col>
-        </el-row>
+                </el-col>
+            </el-row>
 
-        <div class="flex-warp">
-            <div class="flex-warp-item">
-                <div class="flex-warp-item-box">
-                    <el-button type="primary" @click="pauseResume">
-                        <el-icon>
-                            <RefreshRight />
-                        </el-icon>
-                        切换暂停/恢复
-                    </el-button>
-                    <el-button type="primary" @click="reset">
-                        <el-icon>
-                            <RefreshRight />
-                        </el-icon>
-                        重置动画
-                    </el-button>
-                    <el-button type="primary" @click="update">
-                        <el-icon>
-                            <RefreshRight />
-                        </el-icon>
-                        更新end值和animate
-                    </el-button>
+            <div class="flex-warp">
+                <div class="flex-warp-item">
+                    <div class="flex-warp-item-box">
+                        <el-button type="primary" @click="pauseResume">
+                            <el-icon>
+                                <RefreshRight />
+                            </el-icon>
+                            切换暂停/恢复
+                        </el-button>
+                        <el-button type="primary" @click="reset">
+                            <el-icon>
+                                <RefreshRight />
+                            </el-icon>
+                            重置动画
+                        </el-button>
+                        <el-button type="primary" @click="update">
+                            <el-icon>
+                                <RefreshRight />
+                            </el-icon>
+                            更新end值和animate
+                        </el-button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <CountUp :endVal="30000" :duration="5" ref="CountUpRef">
-            <template #prefix>
-                <span>金额</span>
-            </template>
-            <template #suffix>
-                <span>元</span>
-            </template>
-        </CountUp>
-    </el-card>
+            <CountUp :endVal="30000" :duration="5" ref="CountUpRef">
+                <template #prefix>
+                    <span>金额</span>
+                </template>
+                <template #suffix>
+                    <span>元</span>
+                </template>
+            </CountUp>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcCountUp">

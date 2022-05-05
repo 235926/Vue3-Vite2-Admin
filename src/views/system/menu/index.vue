@@ -1,69 +1,71 @@
 <template>
-    <el-card class="system-menu">
-        <div class="system-search mb20">
-            <el-input placeholder="请输入菜单名称"></el-input>
-            <el-button type="primary">
-                <el-icon>
-                    <Search />
-                </el-icon>查询
-            </el-button>
-            <el-button type="success" @click="onOpenAddMenu">
-                <el-icon>
-                    <FolderAdd />
-                </el-icon>新增菜单
-            </el-button>
-        </div>
+    <div class="page-container">
+        <el-card class="system-menu">
+            <div class="system-search mb20">
+                <el-input placeholder="请输入菜单名称"></el-input>
+                <el-button type="primary">
+                    <el-icon>
+                        <Search />
+                    </el-icon>查询
+                </el-button>
+                <el-button type="success" @click="onOpenAddMenu">
+                    <el-icon>
+                        <FolderAdd />
+                    </el-icon>新增菜单
+                </el-button>
+            </div>
 
-        <el-table :data="state.menuTableData" row-key="path"
-            :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
-            <el-table-column label="菜单名称" show-overflow-tooltip>
-                <template #default="scope">
-                    <SvgIcon :name="scope.row.meta.icon" />
-                    <span class="ml10">{{ scope.row.meta.title }}</span>
-                </template>
-            </el-table-column>
+            <el-table :data="state.menuTableData" row-key="path"
+                :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+                <el-table-column label="菜单名称" show-overflow-tooltip>
+                    <template #default="scope">
+                        <SvgIcon :name="scope.row.meta.icon" />
+                        <span class="ml10">{{ scope.row.meta.title }}</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column label="路由路径" show-overflow-tooltip>
-                <template #default="scope">
-                    <span>{{ scope.row.path }}</span>
-                </template>
-            </el-table-column>
+                <el-table-column label="路由路径" show-overflow-tooltip>
+                    <template #default="scope">
+                        <span>{{ scope.row.path }}</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column label="组件路径" show-overflow-tooltip>
-                <template #default="scope">
-                    <span>{{ scope.row.component }}</span>
-                </template>
-            </el-table-column>
+                <el-table-column label="组件路径" show-overflow-tooltip>
+                    <template #default="scope">
+                        <span>{{ scope.row.component }}</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column label="权限标识" show-overflow-tooltip>
-                <template #default="scope">
-                    <span>{{ scope.row.meta.roles }}</span>
-                </template>
-            </el-table-column>
+                <el-table-column label="权限标识" show-overflow-tooltip>
+                    <template #default="scope">
+                        <span>{{ scope.row.meta.roles }}</span>
+                    </template>
+                </el-table-column>
 
-            <el-table-column label="菜单类型" show-overflow-tooltip width="150">
-                <template #default="scope">
-                    <el-tag effect="dark" v-if="scope.row.menuType === 'menu'">菜单</el-tag>
-                    <el-tag effect="dark" type="success" v-if="scope.row.menuType === 'link'">外链</el-tag>
-                    <el-tag effect="dark" type="warning" v-if="scope.row.menuType === 'iframe'">内嵌</el-tag>
-                </template>
-            </el-table-column>
+                <el-table-column label="菜单类型" show-overflow-tooltip width="150">
+                    <template #default="scope">
+                        <el-tag effect="dark" v-if="scope.row.menuType === 'menu'">菜单</el-tag>
+                        <el-tag effect="dark" type="success" v-if="scope.row.menuType === 'link'">外链</el-tag>
+                        <el-tag effect="dark" type="warning" v-if="scope.row.menuType === 'iframe'">内嵌</el-tag>
+                    </template>
+                </el-table-column>
 
-            <el-table-column label="操作" show-overflow-tooltip width="150">
-                <template #default="scope">
-                    <el-button type="text" @click="onOpenAddMenu">新增</el-button>
-                    <el-button type="text" @click="editMenu(scope.row)">编辑</el-button>
-                    <el-button type="text" @click="delMenu(scope.row)">删除</el-button>
-                </template>
-            </el-table-column>
-        </el-table>
-    </el-card>
+                <el-table-column label="操作" show-overflow-tooltip width="150">
+                    <template #default="scope">
+                        <el-button type="text" @click="onOpenAddMenu">新增</el-button>
+                        <el-button type="text" @click="editMenu(scope.row)">编辑</el-button>
+                        <el-button type="text" @click="delMenu(scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-card>
 
-    <!-- 新增菜单 -->
-    <addMenu ref="addMenuRef" />
+        <!-- 新增菜单 -->
+        <addMenu ref="addMenuRef" />
 
-    <!-- 编辑菜单 -->
-    <EditMenu ref="editMenuRef" />
+        <!-- 编辑菜单 -->
+        <EditMenu ref="editMenuRef" />
+    </div>
 </template>
 
 <script setup name="systemMenu">
@@ -71,8 +73,8 @@ import { systemMenu, systemMenuDelete } from '@/api/system.js' // api
 import addMenu from './component/addMenu.vue' // 新增菜单
 import EditMenu from './component/editMenu.vue' // 编辑菜单
 const { proxy } = getCurrentInstance() // vue 实例
-const route = useRoute() // 路由参数
-const store = useStore() // vuex 实例
+
+
 
 
 // 定义响应式数据

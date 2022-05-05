@@ -250,6 +250,24 @@
             },
             "children": [
                 {
+                    "path": "/func/drag",
+                    "name": "funcDrag",
+                    "component": "func/drag/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "拖拽指令",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "drag"
+                    }
+                },
+                {
                     "path": "/func/selector",
                     "name": "funcSelector",
                     "component": "func/selector/index",

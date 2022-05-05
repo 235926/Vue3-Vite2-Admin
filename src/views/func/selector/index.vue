@@ -1,26 +1,28 @@
 <template>
-    <el-card shadow="hover" header="图标选择器(宽度自动)：">
-        <IconSelector @get="onGetIcon" @clear="onClearIcon" v-model="state.modelIcon" />
-    </el-card>
+    <div class="page-container">
+        <el-card shadow="hover" header="图标选择器(宽度自动)：">
+            <IconSelector @get="onGetIcon" @clear="onClearIcon" v-model="state.modelIcon" />
+        </el-card>
 
-    <el-card shadow="hover" header="图标选择器(宽度自动)：参数" class="mt20">
-        <el-table :data="state.tableData">
-            <el-table-column prop="a1" label="参数"> </el-table-column>
-            <el-table-column prop="a2" label="说明"> </el-table-column>
-            <el-table-column prop="a3" label="类型"> </el-table-column>
-            <el-table-column prop="a4" label="可选值"> </el-table-column>
-            <el-table-column prop="a5" label="默认值"> </el-table-column>
-        </el-table>
-    </el-card>
+        <el-card shadow="hover" header="图标选择器(宽度自动)：参数" class="mt20">
+            <el-table :data="state.tableData">
+                <el-table-column prop="a1" label="参数"> </el-table-column>
+                <el-table-column prop="a2" label="说明"> </el-table-column>
+                <el-table-column prop="a3" label="类型"> </el-table-column>
+                <el-table-column prop="a4" label="可选值"> </el-table-column>
+                <el-table-column prop="a5" label="默认值"> </el-table-column>
+            </el-table>
+        </el-card>
 
-    <el-card shadow="hover" header="图标选择器(宽度自动)：事件" class="mt20">
-        <el-table :data="state.tableData1">
-            <el-table-column prop="a1" label="事件名称"> </el-table-column>
-            <el-table-column prop="a2" label="说明"> </el-table-column>
-            <el-table-column prop="a3" label="类型"> </el-table-column>
-            <el-table-column prop="a4" label="回调参数"> </el-table-column>
-        </el-table>
-    </el-card>
+        <el-card shadow="hover" header="图标选择器(宽度自动)：事件" class="mt20">
+            <el-table :data="state.tableData1">
+                <el-table-column prop="a1" label="事件名称"> </el-table-column>
+                <el-table-column prop="a2" label="说明"> </el-table-column>
+                <el-table-column prop="a3" label="类型"> </el-table-column>
+                <el-table-column prop="a4" label="回调参数"> </el-table-column>
+            </el-table>
+        </el-card>
+    </div>
 </template>
 
 <script setup name="funcSelector">
