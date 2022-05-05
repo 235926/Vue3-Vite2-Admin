@@ -7,7 +7,7 @@ import { nextTick } from 'vue' // vue 内置方法
  * @param old 源数据
  * @returns 两数组相同返回 `true`，反之则反
  */
-export const judementSameArr = (news, old) => {
+export function judementSameArr(news, old) {
     let count = 0
     const leng = old.length
     for (let i in old) {

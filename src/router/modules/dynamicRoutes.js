@@ -42,7 +42,7 @@ export const dynamicRoutes = [
                     isKeepAlive: true,
                     isAffix: true,
                     isIframe: false,
-                    roles: ['admin'],
+                    roles: ['admin', 'common'],
                     icon: 'dashboard',
                 },
             },
@@ -112,6 +112,128 @@ export const dynamicRoutes = [
                             icon: 'user'
                         }
                     },
+                ]
+            },
+
+            {
+                path: '/limits',
+                name: 'limits',
+                component: () => import('@/layout/routerView/parent.vue'),
+                menuType: "menu",
+                redirect: '/limits/frontEnd',
+                meta: {
+                    title: '权限管理展示',
+                    isLink: '',
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: false,
+                    isIframe: false,
+                    roles: ['admin', 'common'],
+                    icon: 'limits',
+                },
+                children: [
+                    {
+                        path: '/limits/frontEnd',
+                        name: 'limitsFrontEnd',
+                        component: () => import('@/layout/routerView/parent.vue'),
+                        menuType: "menu",
+                        redirect: '/limits/frontEnd/page',
+                        meta: {
+                            title: '前端控制',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin', 'common'],
+                            icon: 'frontEnd'
+                        },
+                        children: [
+                            {
+                                path: '/limits/frontEnd/page',
+                                name: 'limitsFrontEndPage',
+                                component: () => import('@/views/limits/frontEnd/page.vue'),
+                                menuType: "menu",
+                                meta: {
+                                    title: '页面权限',
+                                    isLink: '',
+                                    isHidden: false,
+                                    isKeepAlive: true,
+                                    isAffix: false,
+                                    isIframe: false,
+                                    roles: ['admin', 'common'],
+                                    icon: 'page'
+                                }
+                            },
+                            {
+                                path: '/limits/frontEnd/button',
+                                name: 'limitsFrontEndButton',
+                                component: () => import('@/views/limits/frontEnd/button.vue'),
+                                menuType: "menu",
+                                meta: {
+                                    title: '按钮权限',
+                                    isLink: '',
+                                    isHidden: false,
+                                    isKeepAlive: true,
+                                    isAffix: false,
+                                    isIframe: false,
+                                    roles: ['admin', 'common'],
+                                    icon: 'button'
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        path: '/limits/backEnd',
+                        name: 'limitsBackEnd',
+                        component: () => import('@/layout/routerView/parent.vue'),
+                        menuType: "menu",
+                        redirect: '/limits/backEnd/page',
+                        meta: {
+                            title: '后端控制',
+                            isLink: '',
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: ['admin', 'common'],
+                            icon: 'backEnd'
+                        },
+                        children: [
+                            {
+                                path: '/limits/backEnd/page',
+                                name: 'limitsBackEndPage',
+                                component: () => import('@/views/limits/backEnd/page.vue'),
+                                menuType: "menu",
+                                meta: {
+                                    title: '页面权限',
+                                    isLink: '',
+                                    isHidden: false,
+                                    isKeepAlive: true,
+                                    isAffix: false,
+                                    isIframe: false,
+                                    roles: ['admin', 'common'],
+                                    icon: 'page'
+                                }
+                            },
+                            {
+                                path: '/limits/backEnd/button',
+                                name: 'limitsBackEndButton',
+                                component: () => import('@/views/limits/backEnd/button.vue'),
+                                menuType: "menu",
+                                meta: {
+                                    title: '按钮权限',
+                                    isLink: '',
+                                    isHidden: false,
+                                    isKeepAlive: true,
+                                    isAffix: false,
+                                    isIframe: false,
+                                    roles: ['admin', 'common'],
+                                    icon: 'button'
+                                }
+                            },
+                        ]
+                    }
                 ]
             },
 
@@ -418,7 +540,7 @@ export const dynamicRoutes = [
                     isKeepAlive: true,
                     isAffix: false,
                     isIframe: false,
-                    roles: ['admin'],
+                    roles: ['admin', 'common'],
                     icon: 'personal',
                 },
                 children: [
@@ -434,7 +556,7 @@ export const dynamicRoutes = [
                             isKeepAlive: true,
                             isAffix: false,
                             isIframe: false,
-                            roles: ['admin'],
+                            roles: ['admin', 'common'],
                             icon: 'personal',
                         },
                     },
@@ -450,7 +572,7 @@ export const dynamicRoutes = [
                             isKeepAlive: true,
                             isAffix: false,
                             isIframe: false,
-                            roles: ['admin'],
+                            roles: ['admin', 'common'],
                             icon: 'personal',
                         },
                     },
@@ -569,7 +691,7 @@ export const dynamicRoutes = [
                     isLink: '',
                     isHidden: false,
                     isKeepAlive: true,
-                    isAffix: true,
+                    isAffix: false,
                     isIframe: false,
                     roles: ['admin'],
                     icon: 'test',

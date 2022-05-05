@@ -15,7 +15,7 @@ import { notFoundAndNoPower } from '@/router/modules/staticRoutes.js' // 前端�
  * @method setAddRoute 添加动态路由
  * @method setFilterMenuAndCacheTagsViewRoutes 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
  */
-export const initFrontEndControlRoutes = async () => {
+export async function initFrontEndControlRoutes() {
     // 界面 loading 动画开始执行
     if (window.nextLoading === undefined) NextLoading.start()
 
@@ -69,7 +69,7 @@ export async function frontEndsResetRoute() {
  * @returns 返回替换后的路由数组
  */
 export function setFilterRouteEnd() {
-    const filterRouteEnd = formatTwoStageRoutes(formatFlatteningRoutes(dynamicRoutes))
+    let filterRouteEnd = formatTwoStageRoutes(formatFlatteningRoutes(dynamicRoutes))
     filterRouteEnd[0].children = [...setFilterRoute(filterRouteEnd[0].children), ...notFoundAndNoPower]
     return filterRouteEnd;
 }
@@ -85,7 +85,7 @@ export function setFilterRouteEnd() {
  */
 export function setFilterRoute(chil) {
     const userInfo = store.getters.userInfo
-    const filterRoute = []
+    let filterRoute = []
     chil.forEach((route) => {
         if (route.meta.roles) {
             route.meta.roles.forEach((metaRoles) => {
@@ -107,7 +107,7 @@ export function setFilterRoute(chil) {
 export function setCacheTagsViewRoutes() {
     // 获取有权限的路由，否则 tagsView、菜单搜索中无权限的路由也将显示
     const userInfo = store.getters.userInfo
-    const rolesRoutes = setFilterHasRolesMenu(dynamicRoutes, userInfo.roles)
+    let rolesRoutes = setFilterHasRolesMenu(dynamicRoutes, userInfo.roles)
     // 添加到 vuex setTagsViewRoutes 中
     store.dispatch('tagsView/setTagsViewRoutes', formatTwoStageRoutes(formatFlatteningRoutes(rolesRoutes))[0].children)
 }

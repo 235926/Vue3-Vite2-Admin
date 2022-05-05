@@ -11,12 +11,25 @@
 
 
 
+## "version": "2.1.7"
+## "date": "2022.05.05"
+## "author": "cdl"
+
+- 🎉 新增 权限验证组件 `@/components/Auth/auth.vue` 单个权限验证
+- 🎉 新增 权限验证组件 `@/components/Auth/auths.vue` 多个权限验证，满足一个则显示
+- 🎉 新增 权限验证组件 `@/components/Auth/authAll.vue` 多个权限验证，全部满足则显示
+- 🎉 新增 权限验证指令 `@/directive/auth/index.js`
+- 🎉 新增 权限管理展示页面 前往体验：[前端控制](https://vue3-vite2-admin.vercel.app/#/limits/frontEnd/page)
+
+
+
 ## "version": "2.1.6"
 ## "date": "2022.05.04"
 ## "author": "cdl"
 
 - 🎯 优化 svgIcon 图标大小显示问题
 - 🎯 优化 `NextLoading.start()`，防止第一次进入界面时出现短暂空白
+- 🌈 重构 路由（`/src/router/index.js`）解决 No match found for location with path "xxx"(前端控制，后端控制未解决) 问题
 
 
 
@@ -25,7 +38,7 @@
 ## "author": "cdl"
 
 - ❄️ 删除 插件 "default-passive-events"
-- 🎉 新增 svgIcon 演示页面 前往体验：[滚动通知栏](https://vue3-vite2-admin.vercel.app/#/func/svgIcon)
+- 🎉 新增 svgIcon 演示页面 前往体验：[svgIcon 演示页面](https://vue3-vite2-admin.vercel.app/#/func/svgIcon)
 
 
 
@@ -52,7 +65,7 @@
 ## "author": "cdl"
 
 - 🎯 优化 图标选择器在不同分辨率下的展示方式
-- 🎉 新增 图标选择器展示页面 前往体验：[滚动通知栏](https://vue3-vite2-admin.vercel.app/#/func/selector)
+- 🎉 新增 图标选择器展示页面 前往体验：[图标选择器](https://vue3-vite2-admin.vercel.app/#/func/selector)
 - 🌟 更新 element-plus 版本到 2.1.11
 
 

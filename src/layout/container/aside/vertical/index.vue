@@ -3,20 +3,11 @@
         <Logo v-if="layoutConfig.isLogo" />
 
         <el-scrollbar class="flex-auto">
-            <el-menu
-                router
-                background-color="transparent"
-                :default-active="state.defaultActive"
-                :collapse="layoutConfig.isCollapse"
-                :unique-opened="layoutConfig.isUniqueOpened"
-                :collapse-transition="false"
-            >
+            <el-menu router background-color="transparent" :default-active="state.defaultActive"
+                :collapse="layoutConfig.isCollapse" :unique-opened="layoutConfig.isUniqueOpened"
+                :collapse-transition="false">
                 <template v-for="val in state.menuList">
-                    <el-sub-menu
-                        :index="val.path"
-                        v-if="val.children && val.children.length > 0"
-                        :key="val.path"
-                    >
+                    <el-sub-menu :index="val.path" v-if="val.children && val.children.length > 0" :key="val.path">
                         <template #title>
                             <SvgIcon :name="val.meta.icon" />
                             <span class="title">{{ val.meta.title }}</span>
@@ -26,19 +17,12 @@
                     <template v-else>
                         <el-menu-item :index="val.path" :key="val.path">
                             <SvgIcon :name="val.meta.icon" />
-                            <template
-                                #title
-                                v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)"
-                            >
+                            <template #title v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)">
                                 <span class="title">{{ val.meta.title }}</span>
                             </template>
                             <template #title v-else>
-                                <a
-                                    :href="val.meta.isLink"
-                                    target="_blank"
-                                    rel="opener"
-                                    class="w100 title"
-                                >{{ val.meta.title }}</a>
+                                <a :href="val.meta.isLink" target="_blank" rel="opener" class="w100 title">{{
+                                    val.meta.title }}</a>
                             </template>
                         </el-menu-item>
                     </template>
@@ -53,7 +37,7 @@ import SubItem from './subItem.vue' // 子级递归菜单
 import Logo from '../logo/index.vue' // Logo 页面
 import { onBeforeRouteUpdate } from 'vue-router' // 路由方法
 import elementResizeDetectorMaker from "element-resize-detector" // 获取DOM元素宽高
-import { Local, Session } from '@/utils/storage.js' // 浏览器存储
+import { Local } from '@/utils/storage.js' // 浏览器存储
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
 
@@ -134,6 +118,14 @@ watch(store.getters.layoutConfig, () => {
     pageWidth()
 }, {
     immediate: true,
+})
+
+
+// 监听vuex值的变化，动态赋值给菜单中
+watch(store.state.routesList, () => {
+    setFilterRoutes()
+}, {
+    deep: true,
 })
 
 

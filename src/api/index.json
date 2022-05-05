@@ -96,6 +96,141 @@
             ]
         },
         {
+            "path": "/limits",
+            "name": "limits",
+            "component": "layout/routerView/parent",
+            "menuType": "menu",
+            "redirect": "/limits/frontEnd",
+            "meta": {
+                "title": "权限管理展示",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "limits"
+            },
+            "children": [
+                {
+                    "path": "/limits/frontEnd",
+                    "name": "limitsFrontEnd",
+                    "component": "layout/routerView/parent",
+                    "menuType": "menu",
+                    "redirect": "/limits/frontEnd/page",
+                    "meta": {
+                        "title": "前端控制",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "frontEnd"
+                    },
+                    "children": [
+                        {
+                            "path": "/limits/frontEnd/page",
+                            "name": "limitsFrontEndPage",
+                            "component": "views/limits/frontEnd/page",
+                            "menuType": "menu",
+                            "meta": {
+                                "title": "页面权限",
+                                "isLink": "",
+                                "isHidden": false,
+                                "isKeepAlive": true,
+                                "isAffix": false,
+                                "isIframe": false,
+                                "roles": [
+                                    "admin"
+                                ],
+                                "icon": "page"
+                            }
+                        },
+                        {
+                            "path": "/limits/frontEnd/button",
+                            "name": "limitsFrontEndButton",
+                            "component": "views/limits/frontEnd/button",
+                            "menuType": "menu",
+                            "meta": {
+                                "title": "按钮权限",
+                                "isLink": "",
+                                "isHidden": false,
+                                "isKeepAlive": true,
+                                "isAffix": false,
+                                "isIframe": false,
+                                "roles": [
+                                    "admin"
+                                ],
+                                "icon": "button"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "path": "/limits/backEnd",
+                    "name": "limitsBackEnd",
+                    "component": "layout/routerView/parent",
+                    "menuType": "menu",
+                    "redirect": "/limits/backEnd/page",
+                    "meta": {
+                        "title": "后端控制",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "backEnd"
+                    },
+                    "children": [
+                        {
+                            "path": "/limits/backEnd/page",
+                            "name": "limitsBackEndPage",
+                            "component": "views/limits/backEnd/page",
+                            "menuType": "menu",
+                            "meta": {
+                                "title": "页面权限",
+                                "isLink": "",
+                                "isHidden": false,
+                                "isKeepAlive": true,
+                                "isAffix": false,
+                                "isIframe": false,
+                                "roles": [
+                                    "admin"
+                                ],
+                                "icon": "page"
+                            }
+                        },
+                        {
+                            "path": "/limits/backEnd/button",
+                            "name": "limitsBackEndButton",
+                            "component": "views/limits/backEnd/button",
+                            "menuType": "menu",
+                            "meta": {
+                                "title": "按钮权限",
+                                "isLink": "",
+                                "isHidden": false,
+                                "isKeepAlive": true,
+                                "isAffix": false,
+                                "isIframe": false,
+                                "roles": [
+                                    "admin"
+                                ],
+                                "icon": "button"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "path": "/func",
             "name": "func",
             "component": "routerView/parent",

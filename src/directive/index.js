@@ -1,10 +1,10 @@
 import chartResize from './chartResize/index.js' // echarts 自适应
 import waves from './waves/index.js' // echarts 自适应
-
+import { auth, auths, authAll } from './auth/index.js' // 权限验证
 
 // 引入自定义的指令
 const directive = {
-    chartResize, waves
+    chartResize, waves, auth, auths, authAll
 }
 
 

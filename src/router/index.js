@@ -87,7 +87,7 @@ export function formatTwoStageRoutes(arr) {
 
 
 // isRequestRoutes 为 true，则开启后端控制路由，路径：`@/store/modules/settings.js`
-if (!isRequestRoutes) initFrontEndControlRoutes()
+if (!isRequestRoutes) await initFrontEndControlRoutes()
 
 
 
