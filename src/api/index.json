@@ -250,6 +250,24 @@
             },
             "children": [
                 {
+                    "path": "/func/waterfall",
+                    "name": "funcWaterfall",
+                    "component": "func/waterfall/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "瀑布屏",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "waterfall"
+                    }
+                },
+                {
                     "path": "/func/drag",
                     "name": "funcDrag",
                     "component": "func/drag/index",

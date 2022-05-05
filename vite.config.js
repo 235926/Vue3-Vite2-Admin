@@ -63,7 +63,6 @@ export default defineConfig(({ command, mode }) => {
             rollupOptions: {
                 output: {
                     manualChunks: {
-                        vue: ['vue', 'vue-router', 'vuex'],
                         'element-plus': ['element-plus'],
                         echarts: ['echarts'],
                     }

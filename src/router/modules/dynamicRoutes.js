@@ -257,6 +257,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/waterfall",
+                        name: "funcWaterfall",
+                        component: () => import('@/views/func/waterfall/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "瀑布屏",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "waterfall"
+                        }
+                    },
+                    {
                         path: "/func/drag",
                         name: "funcDrag",
                         component: () => import('@/views/func/drag/index.vue'),
