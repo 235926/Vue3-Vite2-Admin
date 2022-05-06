@@ -250,6 +250,42 @@
             },
             "children": [
                 {
+                    "path": "/func/listAdapt",
+                    "name": "funcListAdapt",
+                    "component": "func/listAdapt/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "列表自适应",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "list"
+                    }
+                },
+                {
+                    "path": "/func/formAdapt",
+                    "name": "funcFormAdapt",
+                    "component": "func/formAdapt/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "表单自适应",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "form"
+                    }
+                },
+                {
                     "path": "/func/waterfall",
                     "name": "funcWaterfall",
                     "component": "func/waterfall/index",

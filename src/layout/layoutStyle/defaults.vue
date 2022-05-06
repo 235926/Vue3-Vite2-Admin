@@ -1,13 +1,22 @@
 <template>
     <el-container class="layout-container custom-class">
+        <!-- 侧边栏 -->
         <Vertical v-show="!isTagsViewCurrenFull" />
-        <el-container class="flex-column">
+
+        <!-- 主体内容部分 -->
+        <el-container class="flex-column" :class="{ 'layout-backtop': !layoutConfig.isFixedHeader }">
+            <!-- 头部 -->
             <Header v-if="layoutConfig.isFixedHeader && !isTagsViewCurrenFull" />
-            <el-scrollbar>
+
+            <!-- 内容渲染 -->
+            <el-scrollbar :class="{ 'layout-backtop': layoutConfig.isFixedHeader }">
                 <Header v-if="!layoutConfig.isFixedHeader && !isTagsViewCurrenFull" />
                 <Main />
             </el-scrollbar>
         </el-container>
+
+        <!-- 回到顶部 -->
+        <el-backtop target=".layout-backtop .el-scrollbar__wrap"></el-backtop>
     </el-container>
 </template>
 

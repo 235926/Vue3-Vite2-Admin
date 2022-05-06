@@ -1,0 +1,12 @@
+@import './variable.scss'; // 栅格布局（媒体查询变量）
+
+
+/* 页面宽度小于576px
+------------------------------- */
+@media screen and (max-width: $xs) {
+
+    .el-pager,
+    .el-pagination__jump {
+        display: none !important;
+    }
+}

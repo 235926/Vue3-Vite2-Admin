@@ -257,6 +257,42 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/listAdapt",
+                        name: "funcListAdapt",
+                        component: () => import('@/views/func/listAdapt/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "列表自适应",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "list"
+                        }
+                    },
+                    {
+                        path: "/func/formAdapt",
+                        name: "funcFormAdapt",
+                        component: () => import('@/views/func/formAdapt/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "表单自适应",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "form"
+                        }
+                    },
+                    {
                         path: "/func/waterfall",
                         name: "funcWaterfall",
                         component: () => import('@/views/func/waterfall/index.vue'),
