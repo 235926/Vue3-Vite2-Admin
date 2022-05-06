@@ -212,5 +212,9 @@ watch(() => props.modelValue, () => {
             }
         }
     }
+
+    .el-empty {
+        padding: 0;
+    }
 }
 </style>

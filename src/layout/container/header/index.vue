@@ -3,7 +3,7 @@
         <div class="layout-navbars-container">
             <div class="left">
                 <!-- 切换 sidebar -->
-                <ToggleSideBar v-if="layoutConfig.isShowCollapse"/>
+                <ToggleSideBar v-if="layoutConfig.isShowCollapse" />
 
                 <!-- 面包屑 -->
                 <Breadcrumb v-if="layoutConfig.isBreadcrumb" />
@@ -11,6 +11,9 @@
             <div class="right">
                 <!-- 设置打开布局配置 -->
                 <Settings v-if="layoutConfig.isSettings" />
+
+                <!-- 用户通知 -->
+                <UserNews v-if="layoutConfig.isUserNews" />
 
                 <!-- 设置全局组件大小 -->
                 <SizeSelect v-if="layoutConfig.isGlobalComponentSize" />
@@ -31,6 +34,7 @@ import ToggleSideBar from './toggleSideBar.vue' // 切换 sidebar
 import Breadcrumb from './breadcrumb.vue' // 面包屑
 import TagsView from './tagsView/index.vue' // 导航视图
 import UserInfo from './userInfo.vue' // 用户信息
+import UserNews from './userNews.vue' // 用户通知
 import FullScreen from './fullScreen.vue' // 开启全屏
 import SizeSelect from './sizeSelect.vue' // 设置全局组件大小
 import Settings from './settings.vue' // 设置打开布局配置

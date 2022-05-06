@@ -68,6 +68,11 @@
                 </div>
 
                 <div class="drawer-item">
+                    <span>开启修改用户通知</span>
+                    <el-switch v-model="layoutConfig.isUserNews" @change="switchLayoutConfig" />
+                </div>
+
+                <div class="drawer-item">
                     <span>开启修改全局组件大小</span>
                     <el-switch v-model="layoutConfig.isGlobalComponentSize" @change="switchLayoutConfig" />
                 </div>
@@ -75,11 +80,6 @@
                 <div class="drawer-item">
                     <span>开启全屏展示组件</span>
                     <el-switch v-model="layoutConfig.isFullScreen" @change="switchLayoutConfig" />
-                </div>
-
-                <div class="drawer-item">
-                    <span>开启国际化切换语言</span>
-                    <el-switch v-model="layoutConfig.isLanguage" @change="switchLayoutConfig" />
                 </div>
 
                 <div class="drawer-item">

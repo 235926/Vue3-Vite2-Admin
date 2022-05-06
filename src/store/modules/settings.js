@@ -102,6 +102,12 @@ const state = {
         isFullScreen: true,
 
         /**
+         * @description 是否开启用户通知
+         * @type {boolean} true | false
+         */
+        isUserNews: true,
+
+        /**
          * @description 是否开启 Tagsview 视图
          * @type {boolean} true | false
          */

@@ -27,7 +27,6 @@ import { logout } from '@/api/user.js' // api
 import { Session } from '@/utils/storage.js' // 浏览器存储
 const { proxy: ctx } = getCurrentInstance() // vue 实例
 const store = useStore() // vuex 实例
-const route = useRoute() // route 参数
 const router = useRouter() // router 实例
 
 

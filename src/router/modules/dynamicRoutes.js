@@ -565,6 +565,23 @@ export const dynamicRoutes = [
             },
 
             {
+                path: '/notice',
+                name: 'notice',
+                component: () => import('@/views/notice/index.vue'),
+                menuType: "menu",
+                meta: {
+                    title: '通知中心',
+                    isLink: '',
+                    isHidden: true,
+                    isKeepAlive: true,
+                    isAffix: false,
+                    isIframe: false,
+                    roles: ['admin'],
+                    icon: 'notice',
+                },
+            },
+
+            {
                 path: '/personal',
                 name: 'personal',
                 component: () => import('@/views/personal/index.vue'),

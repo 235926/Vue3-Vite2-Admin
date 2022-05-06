@@ -558,6 +558,24 @@
             }
         },
         {
+            "path": "/notice",
+            "name": "notice",
+            "component": "notice/index",
+            "menuType": "menu",
+            "meta": {
+                "title": "通知中心",
+                "isLink": "",
+                "isHidden": true,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "notice"
+            }
+        },
+        {
             "path": "/personal",
             "name": "personal",
             "component": "personal/index",
