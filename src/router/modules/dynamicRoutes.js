@@ -257,6 +257,42 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/filtering",
+                        name: "funcFiltering",
+                        component: () => import('@/views/func/filtering/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "过滤筛选组件",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "filter"
+                        }
+                    },
+                    {
+                        path: "/func/workflow",
+                        name: "funcWorkflow",
+                        component: () => import('@/views/func/workflow/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "工作流",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "workflow"
+                        }
+                    },
+                    {
                         path: "/func/listAdapt",
                         name: "funcListAdapt",
                         component: () => import('@/views/func/listAdapt/index.vue'),
@@ -290,6 +326,60 @@ export const dynamicRoutes = [
                                 "admin"
                             ],
                             icon: "form"
+                        }
+                    },
+                    {
+                        path: "/func/dynamicForm",
+                        name: "funcDynamicForm",
+                        component: () => import('@/views/func/dynamicForm/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "动态复杂表单",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "form"
+                        }
+                    },
+                    {
+                        path: "/func/formRules",
+                        name: "funcFormRules",
+                        component: () => import('@/views/func/formRules/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "多表单验证",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "form"
+                        }
+                    },
+                    {
+                        path: "/func/tableRules",
+                        name: "funcTableRules",
+                        component: () => import('@/views/func/tableRules/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "表单表格验证",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "table"
                         }
                     },
                     {

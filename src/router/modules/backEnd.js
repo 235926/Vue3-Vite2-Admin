@@ -25,7 +25,7 @@ const dynamicViewsModules = Object.assign({}, { ...layouModules }, { ...viewsMod
  * @method store.dispatch('user/setUserInfo') 触发初始化用户信息
  * @method store.dispatch('requestRoutes/setBackEndRoutes') 存储接口原始路由（未处理component），根据需求选择使用
  * @method setAddRoute 添加动态路由
- * @method setFilterMenuAndCacheTagsViewRoutes 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
+ * @method setFilterMenuAndCacheTagsViewRoutes 设置路由到  vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
  */
 export const initBackEndControlRoutes = async () => {
     // 界面 loading 动画开始执行
@@ -56,7 +56,7 @@ export const initBackEndControlRoutes = async () => {
 
 
 /**
- * 设置递归过滤有权限的路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
+ * 设置路由到 vuex routesList 中（已处理成多级嵌套路由）及缓存多级嵌套数组处理后的一维数组
  * @description 用于左侧菜单、横向菜单的显示
  * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHide)
  */
@@ -69,11 +69,9 @@ export function setFilterMenuAndCacheTagsViewRoutes() {
 
 /**
  * 缓存多级嵌套数组处理后的一维数组
- * @description 用于 tagsView、菜单搜索中：未过滤隐藏的(isHide)
+ * @description 用于 tagsView 菜单搜索中：未过滤隐藏的(isHide)
  */
 export function setCacheTagsViewRoutes() {
-    // 获取有权限的路由，否则 tagsView、菜单搜索中无权限的路由也将显示
-    // 添加到 vuex setTagsViewRoutes 中
     store.dispatch('tagsView/setTagsViewRoutes', formatTwoStageRoutes(formatFlatteningRoutes(dynamicRoutes))[0].children)
 }
 
@@ -81,7 +79,8 @@ export function setCacheTagsViewRoutes() {
 
 /**
  * 获取有当前用户权限标识的路由数组，进行对原路由的替换
- * @description 替换 dynamicRoutes（/@/router/route）第一个顶级 children 的路由
+ * 处理路由格式及添加捕获所有路由或 404 Not found 路由
+ * @description 替换 dynamicRoutes（@/router/modules/dynamicRoutes.js）第一个顶级 children 的路由
  * @returns 返回替换后的路由数组
  */
 export function setFilterRouteEnd() {

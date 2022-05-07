@@ -1,7 +1,7 @@
 {
   "name": "vue3-vite2-admin",
   "private": true,
-  "version": "2.2.1",
+  "version": "2.2.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,11 +27,11 @@
     "vue": "^3.2.31",
     "vue-clipboard3": "^2.0.0",
     "vue-grid-layout": "3.0.0-beta1",
-    "vue-router": "^4.0.14",
+    "vue-router": "^4.0.15",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.1",
+    "@vitejs/plugin-vue": "^2.3.2",
     "fast-glob": "^3.2.11",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",

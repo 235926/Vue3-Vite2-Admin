@@ -56,7 +56,7 @@ onUnmounted(() => {
 
 // 监听路由变化，防止 tagsView 多标签时，切换动画消失
 watch(() => route.fullPath, () => {
-    state.refreshRouterViewKey = route.fullPath
+    state.refreshRouterViewKey = decodeURI(route.fullPath)
 })
 </script>
 

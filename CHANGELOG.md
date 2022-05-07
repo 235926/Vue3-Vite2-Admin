@@ -12,6 +12,23 @@
 
 ## 未解决问题
 - ⚠️ 警告 未修复热更新报错 `parentComponent.ctx.deactivate is not a function`
+- ⚠️ 警告 后端获取路由表单的时候第一次报警告 `No match found for location with path "xxx"`
+- 🎉 新增 过滤筛选组件 前往体验：[过滤筛选组件](https://vue3-vite2-admin.vercel.app/#/func/filtering)
+- 🎉 新增 工作流 前往体验：[工作流](https://vue3-vite2-admin.vercel.app/#/func/workflow)
+
+
+
+## "version": "2.2.2"
+## "date": "2022.05.07"
+## "author": "cdl"
+
+- 🎉 新增 表单表格验证 前往体验：[表单表格验证](https://vue3-vite2-admin.vercel.app/#/func/tableRules)
+- 🎉 新增 多表单验证 前往体验：[多表单验证](https://vue3-vite2-admin.vercel.app/#/func/formRules)
+- 🎉 新增 动态复杂表单 前往体验：[动态复杂表单](https://vue3-vite2-admin.vercel.app/#/func/dynamicForm)
+- 🎯 优化 优化 [如果 url 中有中文等特殊字符，第一次切换该 tab 时 keep-alive 失效#I55JS7](https://gitee.com/lyt-top/vue-next-admin/issues/I55JS7)，(https://gitee.com/yuyong1566)
+- 🎯 优化 优化注释
+- 🎯 优化 tagsView 部分标签多了之后右侧没有空隙
+
 
 
 

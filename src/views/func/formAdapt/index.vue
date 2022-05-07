@@ -2,7 +2,7 @@
     <div class="page-container">
         <el-card shadow="hover" header="表单自适应演示(改变窗口查看效果)">
             <el-form :model="state.form" label-width="100px" class="mt35 mb35">
-                <el-row :gutter="35">
+                <el-row :gutter="35" class="row-gap20">
                     <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4">
                         <el-form-item label="姓名">
                             <el-input v-model="state.form.name" placeholder="请输入姓名" clearable></el-input>

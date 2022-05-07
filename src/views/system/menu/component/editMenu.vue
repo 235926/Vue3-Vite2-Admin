@@ -2,7 +2,7 @@
     <el-dialog title="修改菜单" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="900px">
         <el-scrollbar class="scrollbar-x">
             <el-form :model="state.ruleForm" label-width="80px">
-                <el-row :gutter="40">
+                <el-row :gutter="40" class="row-gap20">
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                         <el-form-item label="上级菜单">
                             <el-cascader :options="state.menuData" :props="{

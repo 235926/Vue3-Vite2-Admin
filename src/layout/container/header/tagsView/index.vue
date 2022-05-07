@@ -1,6 +1,6 @@
 <template>
     <div class="tagsView">
-        <el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll">
+        <el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll" class="scrollbarRef">
             <ul ref="tagsUlRef" class="tagsView-ul">
                 <li v-for="(v, k) in state.tagsViewList" :key="k" :data-url="v.url" class="tagsView-li"
                     :class="{ 'is-active': isActive(v) }, layoutConfig.tagsViewStyle"
@@ -553,6 +553,17 @@ watch(() => route, (route1) => {
 </script>
 
 <style lang='scss' scoped>
+.scrollbarRef {
+    // 解决 tagsView 部分标签多了之后右侧没有空隙
+    :deep(.el-scrollbar__wrap) {
+        padding: 0 20px;
+
+        .el-scrollbar__view {
+            display: inline-block;
+        }
+    }
+}
+
 .tagsView {
     border-bottom: 1px solid var(--el-border-color-lighter);
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
@@ -564,7 +575,6 @@ watch(() => route, (route1) => {
         align-items: center;
         font-size: 12px;
         white-space: nowrap;
-        padding: 0 15px;
         color: var(--el-text-color-primary);
 
         .tagsView-li {

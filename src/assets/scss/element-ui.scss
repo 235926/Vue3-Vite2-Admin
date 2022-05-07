@@ -1,3 +1,13 @@
+/* Layout 布局
+------------------------------- */
+.el-row {
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
 /* Button 按钮
 ------------------------------- */
 .el-button {
@@ -5,6 +15,15 @@
     .el-icon,
     .svg-icon {
         margin-right: 5px;
+    }
+
+    // 圆形按钮
+    &.is-circle {
+
+        .el-icon,
+        .svg-icon {
+            margin-right: 0;
+        }
     }
 }
 
@@ -71,10 +90,15 @@
     .el-form-item {
         .el-form-item__content {
 
+            .el-input,
             .el-select,
             .el-input-number {
                 flex: 1;
             }
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
         }
     }
 }

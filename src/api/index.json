@@ -250,6 +250,42 @@
             },
             "children": [
                 {
+                    "path": "/func/filtering",
+                    "name": "funcFiltering",
+                    "component": "func/filtering/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "过滤筛选组件",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "filter"
+                    }
+                },
+                {
+                    "path": "/func/workflow",
+                    "name": "funcWorkflow",
+                    "component": "func/workflow/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "工作流",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "workflow"
+                    }
+                },
+                {
                     "path": "/func/listAdapt",
                     "name": "funcListAdapt",
                     "component": "func/listAdapt/index",
@@ -283,6 +319,60 @@
                             "admin"
                         ],
                         "icon": "form"
+                    }
+                },
+                {
+                    "path": "/func/dynamicForm",
+                    "name": "funcDynamicForm",
+                    "component": "func/dynamicForm/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "动态复杂表单",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "form"
+                    }
+                },
+                {
+                    "path": "/func/formRules",
+                    "name": "funcFormRules",
+                    "component": "func/formRules/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "多表单验证",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "form"
+                    }
+                },
+                {
+                    "path": "/func/tableRules",
+                    "name": "funcTableRules",
+                    "component": "func/tableRules/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "表单表格验证",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "table"
                     }
                 },
                 {
