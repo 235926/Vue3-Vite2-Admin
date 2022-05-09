@@ -554,6 +554,7 @@ watch(() => route, (route1) => {
 
 <style lang='scss' scoped>
 .scrollbarRef {
+
     // 解决 tagsView 部分标签多了之后右侧没有空隙
     :deep(.el-scrollbar__wrap) {
         padding: 0 20px;
@@ -618,7 +619,7 @@ watch(() => route, (route1) => {
         line-height: 26px;
         display: flex;
         align-items: center;
-        border: 1px solid #e6e6e6;
+        border: 1px solid var(--el-border-color-lighter);
         padding: 0 15px;
         margin-right: 5px;
         border-radius: 2px;

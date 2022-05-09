@@ -15,7 +15,7 @@
                 </el-button>
             </div>
 
-            <el-table :data="state.menuTableData" row-key="path"
+            <el-table v-loading="state.loading" :data="state.menuTableData" row-key="path"
                 :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
                 <el-table-column label="菜单名称" show-overflow-tooltip>
                     <template #default="scope">
@@ -82,14 +82,16 @@ const addMenuRef = ref(null)
 const editMenuRef = ref(null)
 const state = reactive({
     menuTableData: [], // 菜单列表数据
-    editRuleForm: {}
+    loading: false, // 加载状态
 })
 
 
 // 获取菜单列表数据
 const getSystemMenu = () => {
+    state.loading = true
     systemMenu().then(res => {
         state.menuTableData = res.routes
+        state.loading = false
     })
 }
 

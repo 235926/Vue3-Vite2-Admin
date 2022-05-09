@@ -1,7 +1,7 @@
 /* Layout 布局
 ------------------------------- */
 .el-row {
-    &:last-child {
+    &:last-of-type {
         margin-bottom: 0;
     }
 }
@@ -52,6 +52,7 @@
 .el-icon {
     vertical-align: -0.15em;
     cursor: pointer;
+    font-size: 14px;
 }
 
 

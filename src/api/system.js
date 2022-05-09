@@ -40,3 +40,11 @@ export const systemMenuDelete = (data) => {
 }
 
 
+// 功能展示 - 过滤筛选组件列表
+export const funcFiltering = (data) => {
+    return request({
+        url: '/func/filtering',
+        method: 'get',
+        params: data
+    })
+}

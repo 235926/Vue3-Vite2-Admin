@@ -2,7 +2,7 @@
     <el-col :span="24" class="personal-information">
         <el-card shadow="hover" header="个人信息">
             <el-form :model="state.userInfo" label-width="80px" v-loading="state.loading">
-                <el-row :gutter="20">
+                <el-row :gutter="20" class="row-gap20">
                     <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4">
                         <el-form-item label="账户">
                             <el-input
