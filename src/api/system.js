@@ -45,6 +45,9 @@ export const funcFiltering = (data) => {
     return request({
         url: '/func/filtering',
         method: 'get',
-        params: data
+        params: {
+            // 传递数组需要JSON.stringify转换
+            data: JSON.stringify(data)
+        }
     })
 }

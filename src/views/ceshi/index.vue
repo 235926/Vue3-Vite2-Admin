@@ -16,7 +16,8 @@
 </template>
 
 <script setup name="ceshi">
-
+const a = ['all','all1','all2']
+console.log(a)
 </script>
 
 <style lang='scss' scoped>
