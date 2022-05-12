@@ -58,10 +58,10 @@ provide("reload", reload)
 
 // 组件挂载后，此方法执行后，页面显示
 onMounted(() => {
-    if (import.meta.env.MODE === 'development') {
-        Local.remove('layoutConfig')
-        Local.set('layoutConfig', layoutConfig.value)
-    }
+    // if (import.meta.env.MODE === 'development') {
+    //     Local.remove('layoutConfig')
+    //     Local.set('layoutConfig', layoutConfig.value)
+    // }
 
     nextTick(() => {
         // 获取缓存中的布局配置

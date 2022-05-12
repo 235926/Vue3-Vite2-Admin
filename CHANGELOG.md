@@ -13,7 +13,20 @@
 ## 未解决问题
 - ⚠️ 警告 未修复热更新报错 `parentComponent.ctx.deactivate is not a function`
 - ⚠️ 警告 后端获取路由表单的时候第一次报警告 `No match found for location with path "xxx"`
+
+
+
+
+
+## "version": "2.2.5"
+## "date": "2022.05.12"
+## "author": "cdl"
+
+- 🎯 优化 用户信息通知添加有消息小红点提示，无消息通知去掉小红点提示
 - 🎉 新增 工作流 前往体验：[工作流](https://vue3-vite2-admin.vercel.app/#/func/workflow)
+- 🎯 优化 个人中心详情页跳转的标题
+- 🌟 更新 适配 `"element-plus": "^2.2.0` 版本
+
 
 
 

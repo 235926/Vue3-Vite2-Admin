@@ -99,9 +99,8 @@ const getFuncFiltering = () => {
     funcFiltering(params).then(res => {
         state.tableData = res.filterList
         state.total = res.total
-        setTimeout(() => {
-            state.loading = false
-        }, 500)
+        state.loading = false
+
     })
 }
 

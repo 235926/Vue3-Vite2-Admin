@@ -1,47 +1,42 @@
 <template>
     <div class="page-container">
-        <ul class="">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>0</li>
-        </ul>
+        <div id="main" style="width: 100%; height: 400px"></div>
     </div>
 </template>
 
 <script setup name="ceshi">
-const a = ['all','all1','all2']
-console.log(a)
+import * as echarts from 'echarts' // echarts 图表
+
+const initJsPlumb = () => {
+    var myChart = echarts.init(document.getElementById("main"))
+
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {},
+        legend: {
+            data: ["销量"],
+        },
+        xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+        },
+        yAxis: {},
+        series: [
+            {
+                name: "销量",
+                type: "bar",
+                data: [5, 20, 36, 10, 10, 20],
+            },
+        ],
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option)
+}
+
+// 组件挂载后，此方法执行后，页面显示
+onMounted(() => {
+    initJsPlumb()
+})
 </script>
 
-<style lang='scss' scoped>
-.page-container {
-    height: 5000px;
-}
-
-
-
-ul {
-    // display: grid;
-    // justify-content: space-between;
-    // grid-template-columns: repeat(auto-fill, calc(25% - 15px));
-    // gap: 20px 20px;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
-    grid-gap: 20px;
-    grid-auto-flow: row dense;
-    grid-auto-rows: 20px;
-
-    li {
-        height: 20px;
-        background: red;
-    }
-}
-</style>
+<style lang="scss" scoped></style>

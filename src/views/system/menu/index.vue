@@ -52,9 +52,9 @@
 
                 <el-table-column label="操作" show-overflow-tooltip width="150">
                     <template #default="scope">
-                        <el-button type="text" @click="onOpenAddMenu">新增</el-button>
-                        <el-button type="text" @click="editMenu(scope.row)">编辑</el-button>
-                        <el-button type="text" @click="delMenu(scope.row)">删除</el-button>
+                        <el-button text type="primary" @click="onOpenAddMenu">新增</el-button>
+                        <el-button text type="primary" @click="editMenu(scope.row)">编辑</el-button>
+                        <el-button text type="primary" @click="delMenu(scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>

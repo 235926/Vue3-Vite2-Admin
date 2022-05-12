@@ -6,7 +6,7 @@
  *      isHidden：      是否隐藏此路由，不在侧边栏展示
  *      isKeepAlive：   是否缓存组件状态
  *      isAffix：       是否固定在 tagsView 栏上
- *      isIframe：      是否内嵌窗口，，开启条件，`1、isIframe:true 2、链接地址不为空`
+ *      isIframe：      是否内嵌窗口，开启条件，`1、isIframe:true 2、链接地址不为空`
  *      roles：         当前路由权限标识，取角色管理。控制路由显示、隐藏。超级管理员：admin 普通角色：common
  *      icon：          菜单、tagsView 图标
  * }

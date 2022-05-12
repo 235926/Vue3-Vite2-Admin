@@ -1,8 +1,13 @@
 <template>
-    <el-dialog title="Tips" v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
+    <el-dialog v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
+        <template #title>
+            <div>title</div>
+        </template>
+
         <el-scrollbar class="scrollbar-x">
             <div class="dialog-main">123</div>
         </el-scrollbar>
+
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="onCancel">取 消</el-button>
@@ -18,38 +23,33 @@ const state = reactive({
     isShowDialog: false, // 弹窗状态
 })
 
-
 // 打开弹窗
 const openDialog = () => {
     state.isShowDialog = true
 }
-
 
 // 关闭弹窗
 const closeDialog = () => {
     state.isShowDialog = false
 }
 
-
 // 取消
 const onCancel = () => {
     closeDialog()
 }
-
 
 // 修改
 const onSubmit = () => {
     closeDialog()
 }
 
-
 // 暴露数据到 vue 实例
 defineExpose({
-    openDialog
+    openDialog,
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .dialog-main {
     height: 1000px;
 }

@@ -40,7 +40,7 @@ Object.entries(Components).forEach(([key, component]) => {
     app.component(key, component)
 })
 
-import VueGridLayout from 'vue-grid-layout'
+import VueGridLayout from 'vue-grid-layout' // 拖拽布局插件
 
 app.use(router).use(store).use(ElementPlus).use(VueGridLayout)
 app.mount('#app')

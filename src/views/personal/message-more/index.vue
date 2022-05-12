@@ -69,8 +69,8 @@ const jumpDetails = (row) => {
     router.push({
         path: '/personal/message-details',
         query: {
-            tagsViewName: '跳转详情',
-            // item: JSON.stringify(row),
+            tagsViewName: row.title,
+            item: JSON.stringify(row),
         }
     })
 }

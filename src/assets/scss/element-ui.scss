@@ -283,7 +283,10 @@
         max-height: calc(100vh - 30vh - 110px);
 
         >.el-scrollbar {
-            height: calc(100vh - 30vh - 110px);
+
+            &.calc {
+                height: calc(100vh - 30vh - 110px);
+            }
 
             .el-scrollbar__view {
                 padding: 20px;
@@ -329,6 +332,16 @@
     }
 
     .el-drawer__body {
+        padding: 0;
+    }
+}
+
+
+
+/* Table 表格
+------------------------------- */
+.el-table {
+    .el-button.is-text {
         padding: 0;
     }
 }

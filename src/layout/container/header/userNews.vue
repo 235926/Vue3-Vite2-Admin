@@ -2,7 +2,9 @@
     <div class="page-container">
         <el-dropdown trigger="click" :show-timeout="70" :hide-timeout="50">
             <div class="svg-icon-container">
-                <SvgIcon name="news" />
+                <el-badge :is-dot="state.newsList.length > 0 ? true : false">
+                    <SvgIcon name="news" />
+                </el-badge>
             </div>
             <template #dropdown>
                 <div class="userNews">
@@ -63,6 +65,12 @@ const onGoToNoticeClick = () => {
 </script>
 
 <style lang='scss' scoped>
+:deep(.el-badge) {
+    .el-badge__content.is-fixed.is-dot {
+        top: 15px;
+    }
+}
+
 .userNews {
     width: 300px;
     padding: 0 10px;
@@ -126,7 +134,7 @@ const onGoToNoticeClick = () => {
         }
     }
 
-    ::v-deep(.el-empty__description p) {
+    :deep(.el-empty__description p) {
         font-size: 13px;
     }
 }

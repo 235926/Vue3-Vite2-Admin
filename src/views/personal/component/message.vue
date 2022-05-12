@@ -44,7 +44,6 @@ const jumpDetails = (item, index) => {
     router.push({
         path: '/personal/message-details',
         query: {
-            id: state.value,
             tagsViewName: item.title,
             item: JSON.stringify(item)
         }
