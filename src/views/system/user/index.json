@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "createTime": "2022/5/13 16:40:04",
+            "department": [
+                "vueNextAdmin",
+                "IT外包服务"
+            ],
+            "describe": "不可删除",
+            "email": "vueNextAdmin@123.com",
+            "password": "123456",
+            "phone": "12345678910",
+            "roleSign": "admin",
+            "sex": "女",
+            "status": true,
+            "userName": "admin",
+            "userNickname": "我是管理员"
+        },
+        {
+            "createTime": "2022/5/13 16:40:04",
+            "department": [
+                "vueNextAdmin",
+                "资本控股"
+            ],
+            "describe": "测试用户",
+            "email": "vueNextAdmin@123.com",
+            "password": "123456",
+            "phone": "12345678910",
+            "roleSign": "common",
+            "sex": "女",
+            "status": true,
+            "userName": "test",
+            "userNickname": "我是普通用户"
+        }
+    ]
+}

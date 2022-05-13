@@ -1,5 +1,5 @@
 <template>
-    <el-drawer :title="`${state.nodeData.type === 'line' ? '线' : '节点'}操作`" v-model="state.isOpen">
+    <el-drawer :title="`${state.nodeData.type === 'line' ? '线' : '节点'}操作`" v-model="state.isOpen" size="400px">
         <el-scrollbar>
             <Line v-if="state.nodeData.type === 'line'" @change="onLineChange" @close="close" ref="lineRef" />
             <Node v-else @submit="onNodeSubmit" @close="close" ref="nodeRef" />

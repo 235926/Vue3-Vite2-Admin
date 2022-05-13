@@ -40,6 +40,70 @@ export const systemMenuDelete = (data) => {
 }
 
 
+// 获取用户列表
+export const systemUser = (data) => {
+    return request({
+        url: '/system/user',
+        method: 'get',
+        params: data
+    })
+}
+
+
+// 新增用户
+export const systemUserAdd = (data) => {
+    return request({
+        url: '/system/user/add',
+        method: 'get',
+        params: data
+    })
+}
+
+
+// 编辑用户
+export const systemUserEdit = (data) => {
+    return request({
+        url: '/system/user/edit',
+        method: 'get',
+        params: data
+    })
+}
+
+
+// 删除用户
+export const systemUserDelete = (data) => {
+    return request({
+        url: '/system/user/delete',
+        method: 'get',
+        params: data
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 功能展示 - 过滤筛选组件列表
 export const funcFiltering = (data) => {
     return request({

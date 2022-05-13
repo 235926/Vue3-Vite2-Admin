@@ -2,24 +2,45 @@
     <div class="tagsView">
         <el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll" class="scrollbarRef">
             <ul ref="tagsUlRef" class="tagsView-ul">
-                <li v-for="(v, k) in state.tagsViewList" :key="k" :data-url="v.url" class="tagsView-li"
-                    :class="{ 'is-active': isActive(v) }, layoutConfig.tagsViewStyle"
-                    :ref="(el) => { if (el) tagsRefs[k] = el }" @contextmenu.prevent="onContextmenu(v, $event)"
-                    @click="onTagsClick(v, k)">
+                <li
+                    v-for="(v, k) in state.tagsViewList"
+                    :key="k"
+                    :data-url="v.url"
+                    class="tagsView-li"
+                    :class="[{ active: isActive(v) }, layoutConfig.tagsViewStyle]"
+                    :ref="
+                        (el) => {
+                            if (el) tagsRefs[k] = el
+                        }
+                    "
+                    @contextmenu.prevent="onContextmenu(v, $event)"
+                    @click="onTagsClick(v, k)"
+                >
                     <span class="dot" v-if="isActive(v)"></span>
                     <SvgIcon :name="v.meta.icon" v-if="!isActive(v) && layoutConfig.isTagsviewIcon" />
                     <span class="title">
                         {{ v.query?.tagsViewName || v.params?.tagsViewName || v.meta.title }}
                     </span>
-                    <SvgIcon class="refresh" name="refresh" v-if="isActive(v)"
-                        @click.stop="refreshCurrentTagsView($route.fullPath)" />
-                    <SvgIcon class="close" name="close" v-if="!v.meta.isAffix && isActive(v)"
-                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? v.path : v.url)" />
+                    <SvgIcon
+                        class="refresh"
+                        name="refresh"
+                        v-if="isActive(v)"
+                        @click.stop="refreshCurrentTagsView($route.fullPath)"
+                    />
+                    <SvgIcon
+                        class="close"
+                        name="close"
+                        v-if="!v.meta.isAffix && isActive(v)"
+                        @click.stop="closeCurrentTagsView(layoutConfig.isShareTagsView ? v.path : v.url)"
+                    />
                 </li>
             </ul>
         </el-scrollbar>
-        <Contextmenu :dropdown="state.dropdown" ref="contextmenuRef"
-            @currentContextmenuClick="onCurrentContextmenuClick" />
+        <Contextmenu
+            :dropdown="state.dropdown"
+            ref="contextmenuRef"
+            @currentContextmenuClick="onCurrentContextmenuClick"
+        />
     </div>
 </template>
 
@@ -34,7 +55,6 @@ const { proxy } = getCurrentInstance() // vue 实例
 const store = useStore() // vuex 实例
 const route = useRoute() // 路由参数
 const router = useRouter() // 路由实例
-
 
 // 定义响应式数据
 const tagsRefs = ref([])
@@ -51,12 +71,10 @@ const state = reactive({
     tagsViewRoutesList: [],
 })
 
-
 // 获取布局配置信息
 const layoutConfig = computed(() => {
     return store.getters.layoutConfig
 })
-
 
 // 设置 tagsView 高亮
 const isActive = (v) => {
@@ -75,12 +93,10 @@ const isActive = (v) => {
     }
 }
 
-
 // 存储 tagsViewList 到浏览器临时缓存中，页面刷新时，保留记录
 const addBrowserSetSession = (tagsViewList) => {
     Session.set('tagsViewList', tagsViewList)
 }
-
 
 // 获取 vuex 中的 tagsViewRoutes 列表
 const getTagsViewRoutes = async () => {
@@ -90,7 +106,6 @@ const getTagsViewRoutes = async () => {
     state.tagsViewRoutesList = store.getters.tagsViewRoutes
     initTagsView()
 }
-
 
 // vuex 中获取路由信息：如果是设置了固定的（isAffix），进行初始化显示
 const initTagsView = async () => {
@@ -110,14 +125,17 @@ const initTagsView = async () => {
     getTagsRefsIndex(layoutConfig.value.isShareTagsView ? state.routePath : state.routeActive)
 }
 
-
 // 处理可开启多标签详情，单标签详情（动态路由（xxx/:id/:name"），普通路由处理）
 const solveAddTagsView = async (path, to) => {
     let isDynamicPath = to.meta.isDynamic ? to.meta.isDynamicPath : path
-    let current = state.tagsViewList.filter((v) => v.path === isDynamicPath && isObjectValueEqual(
-        to.meta.isDynamic ? (v.params ? v.params : null) : v.query ? v.query : null,
-        to.meta.isDynamic ? (to?.params ? to?.params : null) : to?.query ? to?.query : null
-    ))
+    let current = state.tagsViewList.filter(
+        (v) =>
+            v.path === isDynamicPath &&
+            isObjectValueEqual(
+                to.meta.isDynamic ? (v.params ? v.params : null) : v.query ? v.query : null,
+                to.meta.isDynamic ? (to?.params ? to?.params : null) : to?.query ? to?.query : null
+            )
+    )
 
     if (current.length <= 0) {
         // 防止：Avoid app logic that relies on enumerating keys on a component instance. The keys will be empty in production mode to avoid performance overhead.
@@ -131,7 +149,6 @@ const solveAddTagsView = async (path, to) => {
         addBrowserSetSession(state.tagsViewList)
     }
 }
-
 
 // 处理单标签时，第二次的值未覆盖第一次的 tagsViewList 值（Session Storage）
 const singleAddTagsView = (path, to) => {
@@ -150,7 +167,6 @@ const singleAddTagsView = (path, to) => {
         }
     })
 }
-
 
 // 1、添加 tagsView：未设置隐藏（isHidden）也添加到在 tagsView 中（可开启多标签详情，单标签详情）
 const addTagsView = (path, to) => {
@@ -181,12 +197,10 @@ const addTagsView = (path, to) => {
     })
 }
 
-
 // 2、刷新当前 tagsView：
 const refreshCurrentTagsView = (fullPath) => {
     proxy.mittBus.emit('onTagsViewRefreshRouterView', fullPath)
 }
-
 
 // 3、关闭当前 tagsView：如果是设置了固定的（isAffix），不可以关闭
 const closeCurrentTagsView = (path) => {
@@ -195,7 +209,11 @@ const closeCurrentTagsView = (path) => {
             if (layoutConfig.value.isShareTagsView ? v.path === path : v.url === path) {
                 state.tagsViewList.splice(k, 1)
                 setTimeout(() => {
-                    if (state.tagsViewList.length === k && layoutConfig.value.isShareTagsView ? state.routePath === path : state.routeActive === path) {
+                    if (
+                        state.tagsViewList.length === k && layoutConfig.value.isShareTagsView
+                            ? state.routePath === path
+                            : state.routeActive === path
+                    ) {
                         // 最后一个且高亮时
                         if (arr[arr.length - 1].meta.isDynamic) {
                             // 动态路由（xxx/:id/:name"）
@@ -208,7 +226,11 @@ const closeCurrentTagsView = (path) => {
                         }
                     } else {
                         // 非最后一个且高亮时，跳转到下一个
-                        if (state.tagsViewList.length !== k && layoutConfig.value.isShareTagsView ? state.routePath === path : state.routeActive === path) {
+                        if (
+                            state.tagsViewList.length !== k && layoutConfig.value.isShareTagsView
+                                ? state.routePath === path
+                                : state.routeActive === path
+                        ) {
                             if (arr[k].meta.isDynamic) {
                                 // 动态路由（xxx/:id/:name"）
                                 router.push({ name: arr[k].name, params: arr[k].params })
@@ -225,7 +247,6 @@ const closeCurrentTagsView = (path) => {
     addBrowserSetSession(state.tagsViewList)
 }
 
-
 // 4、关闭其它 tagsView：如果是设置了固定的（isAffix），不进行关闭
 const closeOtherTagsView = (path) => {
     if (Session.get('tagsViewList')) {
@@ -240,7 +261,6 @@ const closeOtherTagsView = (path) => {
         addBrowserSetSession(state.tagsViewList)
     }
 }
-
 
 // 5、关闭全部 tagsView：如果是设置了固定的（isAffix），不进行关闭
 const closeAllTagsView = () => {
@@ -257,7 +277,6 @@ const closeAllTagsView = () => {
     }
 }
 
-
 // 6、开启当前页面全屏
 const openCurrenFullscreen = async (path) => {
     const item = state.tagsViewList.find((v) => (layoutConfig.value.isShareTagsView ? v.path === path : v.url === path))
@@ -265,7 +284,6 @@ const openCurrenFullscreen = async (path) => {
     else await router.push({ name: item.name, query: item.query })
     store.dispatch('tagsView/setCurrenFullscreen', true)
 }
-
 
 // 当前项右键菜单点击，拿当前点击的路由路径对比 浏览器缓存中的 tagsView 路由数组，取当前点击项的详细路由信息
 // 防止 tagsView 非当前页演示时，操作异常
@@ -286,11 +304,11 @@ const getCurrentRouteItem = (path, cParams) => {
     })
 }
 
-
 // 当前项右键菜单点击
 const onCurrentContextmenuClick = async (item) => {
     const cParams = item.meta.isDynamic ? item.params : item.query
-    if (!getCurrentRouteItem(item.path, cParams)) return ElMessage({ type: 'warning', message: '请正确输入路径及完整参数（query、params）' })
+    if (!getCurrentRouteItem(item.path, cParams))
+        return ElMessage({ type: 'warning', message: '请正确输入路径及完整参数（query、params）' })
     const { path, name, params, query, meta, url } = getCurrentRouteItem(item.path, cParams)
     switch (item.contextMenuClickId) {
         case 0:
@@ -320,7 +338,6 @@ const onCurrentContextmenuClick = async (item) => {
     }
 }
 
-
 // 右键点击时：传 x,y 坐标值到子组件中（props）
 const onContextmenu = (v, e) => {
     const { clientX, clientY } = e
@@ -329,13 +346,11 @@ const onContextmenu = (v, e) => {
     contextmenuRef.value.openContextmenu(v)
 }
 
-
 // 当前的 tagsView 项点击时
 const onTagsClick = (v, k) => {
     state.tagsRefsIndex = k
     router.push(v)
 }
-
 
 // 处理 tagsView 高亮（多标签详情时使用，单标签详情未使用）
 const setTagsViewHighlight = (v) => {
@@ -349,18 +364,15 @@ const setTagsViewHighlight = (v) => {
     return `${v.meta.isDynamic ? v.meta.isDynamicPath : v.path}-${path}`
 }
 
-
 // 更新滚动条显示
 const updateScrollbar = () => {
     proxy.$refs.scrollbarRef.update()
 }
 
-
 // 鼠标滚轮滚动
 const onHandleScroll = (e) => {
     proxy.$refs.scrollbarRef.$refs.wrap$.scrollLeft += e.wheelDelta / 4
 }
-
 
 // tagsView 横向滚动
 const tagsViewmoveToCurrentTag = () => {
@@ -415,7 +427,6 @@ const tagsViewmoveToCurrentTag = () => {
     })
 }
 
-
 // 获取 tagsView 的下标：用于处理 tagsView 点击时的横向滚动
 const getTagsRefsIndex = (path) => {
     nextTick(async () => {
@@ -432,7 +443,6 @@ const getTagsRefsIndex = (path) => {
         tagsViewmoveToCurrentTag()
     })
 }
-
 
 // 设置 tagsView 可以进行拖拽
 const initSortable = async () => {
@@ -455,13 +465,11 @@ const initSortable = async () => {
     })
 }
 
-
 // 拖动问题，https://gitee.com/lyt-top/vue-next-admin/issues/I3ZRRI
 const onSortableResize = async () => {
     await initSortable()
     if (isMobile()) state.sortable.el && state.sortable.destroy()
 }
-
 
 // 页面加载前
 onBeforeMount(() => {
@@ -492,7 +500,6 @@ onBeforeMount(() => {
     })
 })
 
-
 // 页面卸载时
 onUnmounted(() => {
     // 取消非本页面调用监听
@@ -505,12 +512,10 @@ onUnmounted(() => {
     window.removeEventListener('resize', onSortableResize)
 })
 
-
 // 页面更新时
 onBeforeUpdate(() => {
     tagsRefs.value = []
 })
-
 
 // 页面加载时
 onMounted(() => {
@@ -518,7 +523,6 @@ onMounted(() => {
     getTagsViewRoutes()
     initSortable()
 })
-
 
 // 路由更新时
 onBeforeRouteUpdate(async (to) => {
@@ -528,33 +532,34 @@ onBeforeRouteUpdate(async (to) => {
     getTagsRefsIndex(layoutConfig.value.isShareTagsView ? state.routePath : state.routeActive)
 })
 
-
 // 监听路由的变化，动态赋值给 tagsView
 watch(store.state, (val) => {
     if (val.tagsView.tagsViewRoutes.length === state.tagsViewRoutesList.length) return false
     getTagsViewRoutes()
 })
 
-
 // 监听路由的变化，用于设置不同的 tagsViewName
-watch(() => route, (route1) => {
-    setTimeout(() => {
-        // 区分 "动态路由" 与 "普通路由"
-        state.tagsViewList.forEach((tagsItem) => {
-            let path = route.meta.isDynamic ? route.meta.isDynamicPath : route.path
-            let tagsName = route.meta.isDynamic ? route.params.tagsViewName : route.query.tagsViewName
-            if (path === tagsItem.path && tagsName) tagsItem.meta.title = tagsName
+watch(
+    () => route,
+    () => {
+        setTimeout(() => {
+            // 区分 "动态路由" 与 "普通路由"
+            state.tagsViewList.forEach((tagsItem) => {
+                let path = route.meta.isDynamic ? route.meta.isDynamicPath : route.path
+                let tagsName = route.meta.isDynamic ? route.params.tagsViewName : route.query.tagsViewName
+                if (path === tagsItem.path && tagsName) tagsItem.meta.title = tagsName
+            })
         })
-    })
-}, {
-    deep: true,
-    immediate: true,
-})
+    },
+    {
+        deep: true,
+        immediate: true,
+    }
+)
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .scrollbarRef {
-
     // 解决 tagsView 部分标签多了之后右侧没有空隙
     :deep(.el-scrollbar__wrap) {
         padding: 0 20px;
@@ -619,6 +624,7 @@ watch(() => route, (route1) => {
         line-height: 26px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         border: 1px solid var(--el-border-color-lighter);
         padding: 0 15px;
         margin-right: 5px;
@@ -626,9 +632,8 @@ watch(() => route, (route1) => {
         position: relative;
         z-index: 0;
         cursor: pointer;
-        justify-content: space-between;
 
-        &.is-active {
+        &.active {
             color: #fff;
             background: var(--el-color-primary);
             border-color: var(--el-color-primary);
