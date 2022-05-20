@@ -1,7 +1,7 @@
 {
   "name": "vue3-vite2-admin",
   "private": true,
-  "version": "2.2.6",
+  "version": "2.2.7",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "@vueuse/core": "^8.5.0",
     "@wangeditor/editor": "^5.0.1",
     "@wangeditor/editor-for-vue": "^5.1.10",
     "axios": "^0.26.1",

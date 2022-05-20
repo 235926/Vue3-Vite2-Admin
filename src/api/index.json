@@ -250,6 +250,42 @@
             },
             "children": [
                 {
+                    "path": "/func/asyncComponent",
+                    "name": "funcAsyncComponent",
+                    "component": "func/asyncComponent/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "异步组件",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "async"
+                    }
+                },
+                {
+                    "path": "/func/dynamicComponent",
+                    "name": "funcDynamicComponent",
+                    "component": "func/dynamicComponent/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "动态组件",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "dynamic"
+                    }
+                },
+                {
                     "path": "/func/filtering",
                     "name": "funcFiltering",
                     "component": "func/filtering/index",

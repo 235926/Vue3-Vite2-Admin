@@ -257,6 +257,42 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/asyncComponent",
+                        name: "funcAsyncComponent",
+                        component: () => import('@/views/func/asyncComponent/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "异步组件",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "async"
+                        }
+                    },
+                    {
+                        path: "/func/dynamicComponent",
+                        name: "funcDynamicComponent",
+                        component: () => import('@/views/func/dynamicComponent/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "动态组件",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "dynamic"
+                        }
+                    },
+                    {
                         path: "/func/filtering",
                         name: "funcFiltering",
                         component: () => import('@/views/func/filtering/index.vue'),
