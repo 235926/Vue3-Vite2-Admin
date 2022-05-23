@@ -257,6 +257,24 @@ export const dynamicRoutes = [
                 },
                 children: [
                     {
+                        path: "/func/pinia",
+                        name: "funcPinia",
+                        component: () => import('@/views/func/pinia/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "Pinia 状态管理",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "pinia"
+                        }
+                    },
+                    {
                         path: "/func/asyncComponent",
                         name: "funcAsyncComponent",
                         component: () => import('@/views/func/asyncComponent/index.vue'),

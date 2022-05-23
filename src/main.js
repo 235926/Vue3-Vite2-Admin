@@ -18,8 +18,9 @@ import '@/assets/scss/index.scss'
 // 引入路由
 import router from '@/router/index.js'
 
-// 引入 vuex store
+// 引入 vuex，pinia 状态管理
 import store from '@/store/index.js'
+import pinia from '@/pinia/index.js'
 
 // 引入自定义指令
 import { loadDirectives } from '@/directive/index.js'
@@ -42,7 +43,7 @@ Object.entries(Components).forEach(([key, component]) => {
 
 import VueGridLayout from 'vue-grid-layout' // 拖拽布局插件
 
-app.use(router).use(store).use(ElementPlus).use(VueGridLayout)
+app.use(router).use(store).use(pinia).use(ElementPlus).use(VueGridLayout)
 app.mount('#app')
 
 // 同级组件传值

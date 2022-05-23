@@ -250,6 +250,24 @@
             },
             "children": [
                 {
+                    "path": "/func/pinia",
+                    "name": "funcPinia",
+                    "component": "func/pinia/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "Pinia 状态管理",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "pinia"
+                    }
+                },
+                {
                     "path": "/func/asyncComponent",
                     "name": "funcAsyncComponent",
                     "component": "func/asyncComponent/index",
