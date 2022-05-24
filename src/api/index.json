@@ -231,6 +231,81 @@
             ]
         },
         {
+            "path": "/learning",
+            "name": "learning",
+            "component": "layout/routerView/parent",
+            "menuType": "menu",
+            "redirect": "/learning/pinia",
+            "meta": {
+                "title": "VUE3 知识",
+                "isLink": "",
+                "isHidden": false,
+                "isKeepAlive": true,
+                "isAffix": false,
+                "isIframe": false,
+                "roles": [
+                    "admin"
+                ],
+                "icon": "learning"
+            },
+            "children": [
+                {
+                    "path": "/learning/pinia",
+                    "name": "learningPinia",
+                    "component": "views/learning/pinia/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "Pinia 状态管理",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "pinia"
+                    }
+                },
+                {
+                    "path": "/learning/asyncComponent",
+                    "name": "learningAsyncComponent",
+                    "component": "views/learning/asyncComponent/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "异步组件",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "async"
+                    }
+                },
+                {
+                    "path": "/learning/dynamicComponent",
+                    "name": "learningDynamicComponent",
+                    "component": "views/learning/dynamicComponent/index",
+                    "menuType": "menu",
+                    "meta": {
+                        "title": "动态组件",
+                        "isLink": "",
+                        "isHidden": false,
+                        "isKeepAlive": true,
+                        "isAffix": false,
+                        "isIframe": false,
+                        "roles": [
+                            "admin"
+                        ],
+                        "icon": "dynamic"
+                    }
+                }
+            ]
+        },
+        {
             "path": "/func",
             "name": "func",
             "component": "routerView/parent",
@@ -249,60 +324,6 @@
                 "icon": "func"
             },
             "children": [
-                {
-                    "path": "/func/pinia",
-                    "name": "funcPinia",
-                    "component": "func/pinia/index",
-                    "menuType": "menu",
-                    "meta": {
-                        "title": "Pinia 状态管理",
-                        "isLink": "",
-                        "isHidden": false,
-                        "isKeepAlive": true,
-                        "isAffix": false,
-                        "isIframe": false,
-                        "roles": [
-                            "admin"
-                        ],
-                        "icon": "pinia"
-                    }
-                },
-                {
-                    "path": "/func/asyncComponent",
-                    "name": "funcAsyncComponent",
-                    "component": "func/asyncComponent/index",
-                    "menuType": "menu",
-                    "meta": {
-                        "title": "异步组件",
-                        "isLink": "",
-                        "isHidden": false,
-                        "isKeepAlive": true,
-                        "isAffix": false,
-                        "isIframe": false,
-                        "roles": [
-                            "admin"
-                        ],
-                        "icon": "async"
-                    }
-                },
-                {
-                    "path": "/func/dynamicComponent",
-                    "name": "funcDynamicComponent",
-                    "component": "func/dynamicComponent/index",
-                    "menuType": "menu",
-                    "meta": {
-                        "title": "动态组件",
-                        "isLink": "",
-                        "isHidden": false,
-                        "isKeepAlive": true,
-                        "isAffix": false,
-                        "isIframe": false,
-                        "roles": [
-                            "admin"
-                        ],
-                        "icon": "dynamic"
-                    }
-                },
                 {
                     "path": "/func/filtering",
                     "name": "funcFiltering",

@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<script setup name="funcDynamicComponent">
+<script setup name="learningDynamicComponent">
 import A from './component/A.vue'
 import B from './component/B.vue'
 import C from './component/C.vue'

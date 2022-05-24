@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<script setup name="funcPinia">
+<script setup name="learningPinia">
 import { storeToRefs } from 'pinia' // pinia api
 import { useShop } from '@/pinia/shop.js' // pinia
 const shopStore = useShop()

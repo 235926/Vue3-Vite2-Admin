@@ -4,16 +4,20 @@
             <div class="system-search flex mb20">
                 <el-input v-model="state.search" placeholder="请输入菜单名称"></el-input>
                 <el-button type="primary">
-                    <el-icon><Search /></el-icon>查询
+                    <el-icon>
+                        <Search /> </el-icon
+                    >查询
                 </el-button>
                 <el-button type="success" @click="onOpenAddMenu">
-                    <el-icon><FolderAdd /></el-icon>新增菜单
+                    <el-icon>
+                        <FolderAdd /> </el-icon
+                    >新增菜单
                 </el-button>
             </div>
 
             <el-table
                 v-loading="state.loading"
-                :data="state.menuTableData"
+                :data="menuTableData"
                 row-key="path"
                 :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
             >
@@ -73,6 +77,7 @@ import { systemMenu, systemMenuDelete } from '@/api/system.js' // api
 import addMenu from './component/addMenu.vue' // 新增菜单
 import EditMenu from './component/editMenu.vue' // 编辑菜单
 const { proxy } = getCurrentInstance() // vue 实例
+const store = useStore() // vuex 实例
 
 // 定义响应式数据
 const addMenuRef = ref(null)
@@ -81,6 +86,26 @@ const state = reactive({
     search: '', // 查询参数
     menuTableData: [], // 菜单列表数据
     loading: false, // 加载状态
+})
+
+// 获取 vuex 中的路由
+const menuTableData = computed(() => {
+    const routeList = store.getters.routesList
+    routeList.forEach((item) => {
+        item.component = `${item.component} `
+            .match(/\'(.+)\'/g)
+            ?.join('')
+            .replace(/\'/g, '')
+        if (item.children) {
+            item.children.forEach((citem) => {
+                citem.component = `${citem.component} `
+                    .match(/\'(.+)\'/g)
+                    ?.join('')
+                    .replace(/\'/g, '')
+            })
+        }
+    })
+    return routeList
 })
 
 // 获取菜单列表数据

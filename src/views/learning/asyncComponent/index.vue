@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script setup name="funcAsyncComponent">
+<script setup name="learningAsyncComponent">
 import { useIntersectionObserver } from '@vueuse/core' // Vue Composition API的常用工具集
 // import A from './component/A.vue'
 import B from './component/B.vue'

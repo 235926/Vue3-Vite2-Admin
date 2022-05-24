@@ -238,13 +238,13 @@ export const dynamicRoutes = [
             },
 
             {
-                path: "/func",
-                name: "func",
+                path: "/learning",
+                name: "learning",
                 component: () => import('@/layout/routerView/parent.vue'),
                 menuType: "menu",
-                redirect: '/func/tagsView',
+                redirect: '/learning/pinia',
                 meta: {
-                    title: "功能展示",
+                    title: "VUE3 知识",
                     isLink: "",
                     isHidden: false,
                     isKeepAlive: true,
@@ -253,13 +253,31 @@ export const dynamicRoutes = [
                     roles: [
                         "admin"
                     ],
-                    icon: "func"
+                    icon: "learning"
                 },
                 children: [
                     {
-                        path: "/func/pinia",
-                        name: "funcPinia",
-                        component: () => import('@/views/func/pinia/index.vue'),
+                        path: "/learning/mixin",
+                        name: "learningMixin",
+                        component: () => import('@/views/learning/mixin/index.vue'),
+                        menuType: "menu",
+                        meta: {
+                            title: "Mixin 混入",
+                            isLink: "",
+                            isHidden: false,
+                            isKeepAlive: true,
+                            isAffix: false,
+                            isIframe: false,
+                            roles: [
+                                "admin"
+                            ],
+                            icon: "mixin"
+                        }
+                    },
+                    {
+                        path: "/learning/pinia",
+                        name: "learningPinia",
+                        component: () => import('@/views/learning/pinia/index.vue'),
                         menuType: "menu",
                         meta: {
                             title: "Pinia 状态管理",
@@ -275,9 +293,9 @@ export const dynamicRoutes = [
                         }
                     },
                     {
-                        path: "/func/asyncComponent",
-                        name: "funcAsyncComponent",
-                        component: () => import('@/views/func/asyncComponent/index.vue'),
+                        path: "/learning/asyncComponent",
+                        name: "learningAsyncComponent",
+                        component: () => import('@/views/learning/asyncComponent/index.vue'),
                         menuType: "menu",
                         meta: {
                             title: "异步组件",
@@ -293,9 +311,9 @@ export const dynamicRoutes = [
                         }
                     },
                     {
-                        path: "/func/dynamicComponent",
-                        name: "funcDynamicComponent",
-                        component: () => import('@/views/func/dynamicComponent/index.vue'),
+                        path: "/learning/dynamicComponent",
+                        name: "learningDynamicComponent",
+                        component: () => import('@/views/learning/dynamicComponent/index.vue'),
                         menuType: "menu",
                         meta: {
                             title: "动态组件",
@@ -310,6 +328,28 @@ export const dynamicRoutes = [
                             icon: "dynamic"
                         }
                     },
+                ]
+            },
+
+            {
+                path: "/func",
+                name: "func",
+                component: () => import('@/layout/routerView/parent.vue'),
+                menuType: "menu",
+                redirect: '/func/filtering',
+                meta: {
+                    title: "功能展示",
+                    isLink: "",
+                    isHidden: false,
+                    isKeepAlive: true,
+                    isAffix: false,
+                    isIframe: false,
+                    roles: [
+                        "admin"
+                    ],
+                    icon: "func"
+                },
+                children: [
                     {
                         path: "/func/filtering",
                         name: "funcFiltering",
