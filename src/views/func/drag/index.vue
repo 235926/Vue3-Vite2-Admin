@@ -24,7 +24,7 @@
 
         <!-- 弹窗 dialog 节点 -->
         <el-dialog v-model="state.dialogVisible" :close-on-click-modal="false" destroy-on-close width="800px">
-            <template #title>
+            <template #header>
                 <div v-drag="['.drag-container .el-dialog', '.drag-container .el-dialog__header']">拖动指令效果（v-drag）</div>
             </template>
             <el-scrollbar class="scrollbar-x">

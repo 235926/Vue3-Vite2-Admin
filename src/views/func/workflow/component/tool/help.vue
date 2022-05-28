@@ -1,7 +1,7 @@
 <template>
     <div class="workflow-tool-help">
         <el-dialog v-model="state.isShow" :close-on-click-modal="false" destroy-on-close width="800px">
-            <template #title>
+            <template #header>
                 <div v-drag="['.workflow-tool-help .el-dialog', '.workflow-tool-help .el-dialog__header']">
                     使用帮助
                 </div>

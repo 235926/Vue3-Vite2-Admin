@@ -1,6 +1,6 @@
 <template>
     <el-dialog v-model="state.isShowDialog" :close-on-click-modal="false" destroy-on-close width="800px">
-        <template #title>
+        <template #header>
             <div>title</div>
         </template>
 

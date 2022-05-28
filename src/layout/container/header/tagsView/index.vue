@@ -116,7 +116,7 @@ const initTagsView = async () => {
             if (v.meta.isAffix && !v.meta.isHidden) {
                 v.url = setTagsViewHighlight(v)
                 state.tagsViewList.push({ ...v })
-                addBrowserSetSession(state.tagsViewList)
+                store.dispatch('keepAlive/addCachedView', v)
             }
         })
         await addTagsView(route.path, route)
@@ -146,6 +146,7 @@ const solveAddTagsView = async (path, to) => {
         to.meta.isDynamic ? (findItem.params = to.params) : (findItem.query = to.query)
         findItem.url = setTagsViewHighlight(findItem)
         state.tagsViewList.push({ ...findItem })
+        await store.dispatch('keepAlive/addCachedView', findItem)
         addBrowserSetSession(state.tagsViewList)
     }
 }
@@ -192,14 +193,22 @@ const addTagsView = (path, to) => {
         if (to && to.meta.isDynamic) item.params = to?.params ? to?.params : route.params
         else item.query = to?.query ? to?.query : route.query
         item.url = setTagsViewHighlight(item)
+        await store.dispatch('keepAlive/addCachedView', item)
         await state.tagsViewList.push({ ...item })
         await addBrowserSetSession(state.tagsViewList)
     })
 }
 
 // 2、刷新当前 tagsView：
-const refreshCurrentTagsView = (fullPath) => {
-    proxy.mittBus.emit('onTagsViewRefreshRouterView', fullPath)
+const refreshCurrentTagsView = async (fullPath) => {
+    const item = state.tagsViewList.find((v) =>
+        layoutConfig.value.isShareTagsView ? v.path === fullPath : v.url === fullPath
+    )
+    if (item != null) {
+        await store.dispatch('keepAlive/delCachedView', item)
+        proxy.mittBus.emit('onTagsViewRefreshRouterView', fullPath)
+        if (item.meta.isKeepAlive) store.dispatch('keepAlive/addCachedView', item)
+    }
 }
 
 // 3、关闭当前 tagsView：如果是设置了固定的（isAffix），不可以关闭
@@ -207,6 +216,7 @@ const closeCurrentTagsView = (path) => {
     state.tagsViewList.map((v, k, arr) => {
         if (!v.meta.isAffix) {
             if (layoutConfig.value.isShareTagsView ? v.path === path : v.url === path) {
+                store.dispatch('keepAlive/delCachedView', v)
                 state.tagsViewList.splice(k, 1)
                 setTimeout(() => {
                     if (
@@ -254,6 +264,7 @@ const closeOtherTagsView = (path) => {
         Session.get('tagsViewList').map((v) => {
             if (v.meta.isAffix && !v.meta.isHidden) {
                 v.url = setTagsViewHighlight(v)
+                store.dispatch('keepAlive/delOthersCachedViews', v)
                 state.tagsViewList.push({ ...v })
             }
         })
@@ -265,6 +276,7 @@ const closeOtherTagsView = (path) => {
 // 5、关闭全部 tagsView：如果是设置了固定的（isAffix），不进行关闭
 const closeAllTagsView = () => {
     if (Session.get('tagsViewList')) {
+        store.dispatch('keepAlive/delAllCachedViews')
         state.tagsViewList = []
         Session.get('tagsViewList').map((v) => {
             if (v.meta.isAffix && !v.meta.isHidden) {
@@ -503,11 +515,11 @@ onBeforeMount(() => {
 // 页面卸载时
 onUnmounted(() => {
     // 取消非本页面调用监听
-    proxy.mittBus.off('onCurrentContextmenuClick')
+    proxy.mittBus.off('onCurrentContextmenuClick', () => {})
     // 取消监听布局配置界面开启/关闭拖拽
-    proxy.mittBus.off('openOrCloseSortable')
+    proxy.mittBus.off('openOrCloseSortable', () => {})
     // 取消监听布局配置开启 TagsView 共用
-    proxy.mittBus.off('openShareTagsView')
+    proxy.mittBus.off('openShareTagsView', () => {})
     // 取消窗口 resize 监听
     window.removeEventListener('resize', onSortableResize)
 })

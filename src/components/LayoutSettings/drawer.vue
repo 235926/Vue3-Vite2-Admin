@@ -1,6 +1,6 @@
 <template>
     <el-drawer v-model="state.drawer" :direction="state.direction" destroy-on-close size="400px">
-        <template #title>
+        <template #header>
             <span>布局配置</span>
         </template>
         <template #default>
@@ -27,8 +27,11 @@
 
                 <div class="drawer-item">
                     <span>主题颜色</span>
-                    <el-color-picker v-model="layoutConfig.primary" @change="onColorPickerChange"
-                        :predefine="predefineColors"></el-color-picker>
+                    <el-color-picker
+                        v-model="layoutConfig.primary"
+                        @change="onColorPickerChange"
+                        :predefine="predefineColors"
+                    ></el-color-picker>
                 </div>
 
                 <div class="drawer-item">
@@ -134,43 +137,51 @@ import { getLightColor, getDarkColor } from '@/utils/theme.js' // 改变主题�
 const { proxy } = getCurrentInstance() // vue 实例
 const store = useStore() // vuex 实例
 
-
 // 定义响应式数据>
-const predefineColors = ref([ // 更改主题预定义颜色
-    '#409eff', '#ff8c00', '#ffd700', '#90ee90', '#00ced1', '#1e90ff', '#c71585',
+const predefineColors = ref([
+    // 更改主题预定义颜色
+    '#409eff',
+    '#ff8c00',
+    '#ffd700',
+    '#90ee90',
+    '#00ced1',
+    '#1e90ff',
+    '#c71585',
 ])
 const state = reactive({
     drawer: false, // 开启显示 Drawer
     direction: 'rtl', // Drawer 打开的方向
 })
 
-
 // 获取布局配置信息
 const layoutConfig = computed(() => {
     return store.getters.layoutConfig
 })
-
 
 // 切换 layoutConfig 状态
 const switchLayoutConfig = () => {
     setLocalThemeConfig()
 }
 
-
 // 切换主题颜色
 const onColorPickerChange = () => {
     if (!layoutConfig.value.primary) return proxy.$message.warning('全局主题 primary 颜色值不能为空')
 
     // 颜色加深
-    document.documentElement.style.setProperty('--el-color-primary-dark-2', `${getDarkColor(layoutConfig.value.primary, 0.1)}`)
+    document.documentElement.style.setProperty(
+        '--el-color-primary-dark-2',
+        `${getDarkColor(layoutConfig.value.primary, 0.1)}`
+    )
     document.documentElement.style.setProperty('--el-color-primary', layoutConfig.value.primary)
     // 颜色变浅，不设置的话，更改完主题色，hover 效果什么的不发生变化，还是原来的主题色配套
     for (let i = 1; i <= 9; i++) {
-        document.documentElement.style.setProperty(`--el-color-primary-light-${i}`, `${getLightColor(layoutConfig.value.primary, i / 10)}`)
+        document.documentElement.style.setProperty(
+            `--el-color-primary-light-${i}`,
+            `${getLightColor(layoutConfig.value.primary, i / 10)}`
+        )
     }
     setDispatchThemeConfig()
 }
-
 
 // 全局主题 --> 灰色模式/色弱模式
 const onAddFilterChange = (attr) => {
@@ -179,12 +190,14 @@ const onAddFilterChange = (attr) => {
     } else {
         if (layoutConfig.value.isInvert) layoutConfig.value.isGrayscale = false
     }
-    const cssAttr = attr === 'grayscale' ? `grayscale(${layoutConfig.value.isGrayscale ? 1 : 0})` : `invert(${layoutConfig.value.isInvert ? '80%' : '0%'})`
+    const cssAttr =
+        attr === 'grayscale'
+            ? `grayscale(${layoutConfig.value.isGrayscale ? 1 : 0})`
+            : `invert(${layoutConfig.value.isInvert ? '80%' : '0%'})`
 
     document.body.setAttribute('style', `filter: ${cssAttr}`)
     setLocalThemeConfig()
 }
-
 
 // 深色模式
 const onAddDarkChange = () => {
@@ -192,10 +205,8 @@ const onAddDarkChange = () => {
     if (layoutConfig.value.isDark) {
         body.setAttribute('data-theme', 'dark')
         setLocalThemeConfig()
-    }
-    else body.setAttribute('data-theme', '')
+    } else body.setAttribute('data-theme', '')
 }
-
 
 // 触发 store 布局配置更新
 const setDispatchThemeConfig = () => {
@@ -203,19 +214,16 @@ const setDispatchThemeConfig = () => {
     setLocalThemeConfigStyle()
 }
 
-
 // 存储布局配置
 const setLocalThemeConfig = () => {
     Local.remove('layoutConfig')
     Local.set('layoutConfig', layoutConfig.value)
 }
 
-
 // 存储布局配置全局主题样式（html根标签）,也就是 :root 部分
 const setLocalThemeConfigStyle = () => {
     Local.set('layoutConfigStyle', document.documentElement.style.cssText)
 }
-
 
 // 组件挂载后，此方法执行后，页面显示
 onMounted(() => {
@@ -241,14 +249,13 @@ onMounted(() => {
     })
 })
 
-
 // 页面卸载时
 onUnmounted(() => {
     proxy.mittBus.off('openLayoutSetings')
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .layout-settings-main {
     height: calc(100vh - 50px);
     padding: 0 20px;
@@ -261,9 +268,9 @@ onUnmounted(() => {
         justify-content: space-between;
         align-items: center;
 
-        >span,
-        >.el-input,
-        >.el-select {
+        > span,
+        > .el-input,
+        > .el-select {
             flex: 1;
         }
     }

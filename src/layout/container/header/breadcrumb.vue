@@ -20,10 +20,10 @@
 
 <script setup name="breadcrumb">
 import { onBeforeRouteUpdate } from 'vue-router' // 路由
+import { useTitle } from '@/utils/global.js' // 修改项目布局方法
 const router = useRouter() // 定义 router 实例
 const route = useRoute() // 路由参数
 const store = useStore() // 定义 vuex 实例
-
 
 // 定义响应式数据>
 const state = reactive({
@@ -50,6 +50,8 @@ const initRouteSplit = (path) => {
     state.routeSplitFirst = `/${state.routeSplit[0]}`
     state.routeSplitIndex = 1
     getBreadcrumbList(store.getters.routesList)
+    if (route.name === 'dashboard' || (route.name === 'notFound' && state.breadcrumbList.length > 1)) state.breadcrumbList.shift();
+	if (state.breadcrumbList.length > 0) state.breadcrumbList[state.breadcrumbList.length - 1].meta.tagsViewName = useTitle(route)
 }
 
 

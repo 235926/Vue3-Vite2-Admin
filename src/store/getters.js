@@ -13,6 +13,7 @@ export default {
 
     // 路由缓存（name字段）
     keepAlive: (state) => state.keepAlive.keepAliveNames,
+    cachedViews: (state) => state.keepAlive.cachedViews,
 
     // tagsView 视图列表
     tagsViewRoutes: (state) => state.tagsView.tagsViewRoutes,
