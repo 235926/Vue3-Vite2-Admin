@@ -23,8 +23,8 @@ const mutations = {
 
     // addCachedView 添加要缓存的路由 names（关闭 Tagsview）
     ADD_CACHED_VIEW(state, data) {
-        if (state.cachedViews.includes(data.name)) return
-        if (data.meta.isKeepAlive) state.cachedViews.push(data.name)
+        if (state.cachedViews?.includes(data.name)) return
+        if (data.meta.isKeepAlive) state.cachedViews?.push(data.name)
     },
 
     // delCachedView 删除要缓存的路由 names（关闭 Tagsview）
